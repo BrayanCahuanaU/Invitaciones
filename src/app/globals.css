@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+/* Cada invitación define sus propios --inv-* en src/app/[slug]/page.tsx
+   según el tema elegido en su data.ts (ver src/themes). Estos son solo
+   valores por defecto para que nada se rompa si faltan. */
+:root {
+  --inv-bg: #1a0f14;
+  --inv-surface: #241318;
+  --inv-text: #f7e9ec;
+  --inv-text-muted: #c9a8b1;
+  --inv-accent: #e8b4c8;
+  --inv-accent-muted: #b98a9a;
+}
+
+body {
+  font-family: var(--font-body), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
