@@ -18,12 +18,15 @@ export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
 }
 
-export function generateMetadata({
+type PageParams = Promise<{ slug: string }>;
+
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const data = getInvitation(params.slug);
+  params: PageParams;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const data = getInvitation(slug);
   if (!data) return {};
   return {
     title: data.seo.title,
@@ -32,12 +35,13 @@ export function generateMetadata({
   };
 }
 
-export default function InvitationPage({
+export default async function InvitationPage({
   params,
 }: {
-  params: { slug: string };
+  params: PageParams;
 }) {
-  const data = getInvitation(params.slug);
+  const { slug } = await params;
+  const data = getInvitation(slug);
   if (!data) notFound();
 
   const theme = getTheme(data.theme);
