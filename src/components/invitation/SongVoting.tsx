@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Music, Search } from "lucide-react";
+import { Music, Search, Plus } from "lucide-react";
 import { Section } from "./Section";
 
 interface Track {
@@ -31,7 +31,7 @@ export function SongVoting({ slug }: { slug: string }) {
       const data = JSON.parse(text);
       setRanking(data.songs ?? []);
     } catch {
-      // Redis no configurado u otro error: la playlist es un extra
+      // silencioso
     }
   }
 
@@ -103,25 +103,29 @@ export function SongVoting({ slug }: { slug: string }) {
           />
         </div>
         {results.length > 0 && (
-          <ul className="absolute z-10 left-0 right-0 bg-[var(--inv-surface)] border border-[var(--inv-text-muted)]/30 mt-1 max-h-64 overflow-y-auto text-left">
+          <ul className="absolute z-10 left-0 right-0 bg-[var(--inv-surface)] border border-[var(--inv-text-muted)]/30 mt-1 max-h-64 overflow-y-auto text-left rounded-lg overflow-hidden">
             {results.map((t) => (
               <li key={t.id}>
                 <button
                   onClick={() => addTrack(t)}
                   className="w-full flex items-center gap-3 px-3 py-2 hover:bg-[var(--inv-accent)]/10 transition-colors"
                 >
-                  {t.cover && (
+                  {t.cover ? (
                     <Image
                       src={t.cover}
-                      alt=""
-                      width={36}
-                      height={36}
-                      className="rounded-sm"
+                      alt={t.title}
+                      width={40}
+                      height={40}
+                      className="rounded-md flex-shrink-0"
                     />
+                  ) : (
+                    <div className="w-10 h-10 rounded-md bg-[var(--inv-accent)]/10 flex items-center justify-center flex-shrink-0">
+                      <Music className="w-4 h-4 text-[var(--inv-accent-muted)]" />
+                    </div>
                   )}
-                  <span className="text-sm">
-                    <span className="block">{t.title}</span>
-                    <span className="block text-[var(--inv-text-muted)] text-xs">
+                  <span className="text-sm min-w-0">
+                    <span className="block truncate">{t.title}</span>
+                    <span className="block text-[var(--inv-text-muted)] text-xs truncate">
                       {t.artist}
                     </span>
                   </span>
@@ -132,39 +136,48 @@ export function SongVoting({ slug }: { slug: string }) {
         )}
       </div>
 
+      {/* Ranking de canciones */}
       {ranking.length > 0 && (
-        <div className="mt-8 text-left max-w-sm mx-auto">
-          <p className="text-xs uppercase tracking-widest text-[var(--inv-text-muted)] mb-3">
-            Canciones elegidas por los invitados
+        <div className="mt-8 max-w-lg mx-auto">
+          <p className="text-xs uppercase tracking-widest text-[var(--inv-text-muted)] mb-3 text-center">
+            Playlist de la fiesta ({ranking.length})
           </p>
-          <ul className="space-y-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {ranking.map((t) => (
-              <li key={t.id} className="flex items-center gap-3">
-                {t.cover && (
+              <div
+                key={t.id}
+                className="flex items-center gap-3 bg-[var(--inv-surface)]/50 rounded-lg px-3 py-2 border border-[var(--inv-accent)]/10"
+              >
+                {t.cover ? (
                   <Image
                     src={t.cover}
-                    alt=""
-                    width={36}
-                    height={36}
-                    className="rounded-sm"
+                    alt={t.title}
+                    width={48}
+                    height={48}
+                    className="rounded-md flex-shrink-0"
                   />
+                ) : (
+                  <div className="w-12 h-12 rounded-md bg-[var(--inv-accent)]/10 flex items-center justify-center flex-shrink-0">
+                    <Music className="w-5 h-5 text-[var(--inv-accent-muted)]" />
+                  </div>
                 )}
-                <span className="flex-1 text-sm">
-                  <span className="block">{t.title}</span>
-                  <span className="block text-[var(--inv-text-muted)] text-xs">
+                <span className="flex-1 text-sm min-w-0">
+                  <span className="block truncate">{t.title}</span>
+                  <span className="block text-[var(--inv-text-muted)] text-xs truncate">
                     {t.artist}
                   </span>
                 </span>
                 <button
                   onClick={() => addTrack(t)}
                   disabled={addedIds.has(t.id)}
-                  className="text-xs rounded-full border border-[var(--inv-accent)] px-3 py-1 disabled:opacity-40 hover:bg-[var(--inv-accent)]/10 transition-colors"
+                  className="flex items-center gap-0.5 text-xs rounded-full border border-[var(--inv-accent)] px-2.5 py-1 disabled:opacity-40 hover:bg-[var(--inv-accent)]/10 transition-colors flex-shrink-0"
                 >
-                  +{t.score}
+                  <Plus className="w-3 h-3" />
+                  {t.score}
                 </button>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
     </Section>

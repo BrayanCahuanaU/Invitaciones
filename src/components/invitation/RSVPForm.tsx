@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CheckCircle, Users } from "lucide-react";
+import { CheckCircle, XCircle, Users } from "lucide-react";
 import { Section } from "./Section";
 
 interface PublicEntry {
@@ -55,6 +55,9 @@ export function RSVPForm({ slug }: { slug: string }) {
       setStatus("error");
     }
   }
+
+  const guestsGoing = publicEntries.filter((e) => e.attending);
+  const guestsNotGoing = publicEntries.filter((e) => !e.attending);
 
   if (status === "done") {
     return (
@@ -153,19 +156,67 @@ export function RSVPForm({ slug }: { slug: string }) {
         )}
       </form>
 
+      {/* Lista de asistentes */}
       {publicEntries.length > 0 && (
-        <div className="mt-10 text-left max-w-sm mx-auto">
-          <p className="text-xs uppercase tracking-widest text-[var(--inv-text-muted)] mb-3">
-            Ya confirmaron
+        <div className="mt-10 max-w-lg mx-auto">
+          {/* Asistirán */}
+          {guestsGoing.length > 0 && (
+            <div className="mb-6">
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <CheckCircle className="w-4 h-4 text-emerald-400" />
+                <p className="text-xs uppercase tracking-widest text-[var(--inv-text-muted)]">
+                  Asistirán ({guestsGoing.length})
+                </p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                {guestsGoing.map((e, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 bg-[var(--inv-surface)]/50 rounded-lg px-3 py-2 border border-emerald-400/15"
+                  >
+                    <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                    <span className="min-w-0 truncate text-sm">{e.name}</span>
+                    {e.guests > 0 && (
+                      <span className="text-xs text-[var(--inv-accent-muted)] flex-shrink-0">
+                        +{e.guests}
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* No podrán ir */}
+          {guestsNotGoing.length > 0 && (
+            <div>
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <XCircle className="w-4 h-4 text-red-400/60" />
+                <p className="text-xs uppercase tracking-widest text-[var(--inv-text-muted)]">
+                  No podrán ir ({guestsNotGoing.length})
+                </p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                {guestsNotGoing.map((e, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 bg-[var(--inv-surface)]/30 rounded-lg px-3 py-2 border border-red-400/10 opacity-60"
+                  >
+                    <XCircle className="w-4 h-4 text-red-400/60 flex-shrink-0" />
+                    <span className="min-w-0 truncate text-sm">{e.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {publicEntries.length === 0 && (
+        <div className="mt-10 text-center">
+          <p className="text-[var(--inv-text-muted)] text-sm">
+            Sé el primero en confirmar tu asistencia
           </p>
-          <ul className="space-y-1 text-sm">
-            {publicEntries.map((e, i) => (
-              <li key={i}>
-                {e.name} {e.attending ? "✓" : "✗"}
-                {e.attending && e.guests > 0 ? ` (+${e.guests})` : ""}
-              </li>
-            ))}
-          </ul>
         </div>
       )}
     </Section>
