@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CheckCircle, Users } from "lucide-react";
 import { Section } from "./Section";
 
 interface PublicEntry {
@@ -25,7 +26,7 @@ export function RSVPForm({ slug }: { slug: string }) {
       const data = await res.json();
       setPublicEntries(data.entries ?? []);
     } catch {
-      // silencioso: la lista pública es un extra, no bloquea el formulario
+      // silencioso
     }
   }
 
@@ -58,7 +59,10 @@ export function RSVPForm({ slug }: { slug: string }) {
   if (status === "done") {
     return (
       <Section id="confirmar">
-        <p className="font-display text-2xl">¡Gracias por confirmar!</p>
+        <CheckCircle className="w-10 h-10 text-[var(--inv-accent)] mx-auto mb-4" />
+        <p className="font-display text-2xl md:text-3xl">
+          ¡Gracias por confirmar!
+        </p>
         <p className="text-[var(--inv-text-muted)] mt-2">
           Te esperamos en la celebración.
         </p>
@@ -68,25 +72,28 @@ export function RSVPForm({ slug }: { slug: string }) {
 
   return (
     <Section id="confirmar">
-      <p className="font-display text-3xl mb-6">Confirma tu asistencia</p>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
+      <div className="flex items-center justify-center gap-2 mb-6">
+        <CheckCircle className="w-5 h-5 text-[var(--inv-accent)]" />
+        <p className="font-display text-3xl md:text-4xl">Confirma tu asistencia</p>
+      </div>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left max-w-sm mx-auto">
         <input
           type="text"
           placeholder="Tu nombre completo"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="bg-transparent border-b border-[var(--inv-text-muted)] py-2 outline-none focus:border-[var(--inv-accent)]"
+          className="bg-transparent border-b border-[var(--inv-text-muted)] py-2 outline-none focus:border-[var(--inv-accent)] transition-colors"
         />
 
         <div className="flex gap-3">
           <button
             type="button"
             onClick={() => setAttending(true)}
-            className={`flex-1 rounded-full border px-4 py-2 text-sm ${
+            className={`flex-1 rounded-full border px-4 py-2 text-sm transition-all ${
               attending
                 ? "border-[var(--inv-accent)] bg-[var(--inv-accent)] text-[var(--inv-bg)]"
-                : "border-[var(--inv-text-muted)]"
+                : "border-[var(--inv-text-muted)] hover:border-[var(--inv-accent)]"
             }`}
           >
             Sí asistiré
@@ -94,10 +101,10 @@ export function RSVPForm({ slug }: { slug: string }) {
           <button
             type="button"
             onClick={() => setAttending(false)}
-            className={`flex-1 rounded-full border px-4 py-2 text-sm ${
+            className={`flex-1 rounded-full border px-4 py-2 text-sm transition-all ${
               !attending
                 ? "border-[var(--inv-accent)] bg-[var(--inv-accent)] text-[var(--inv-bg)]"
-                : "border-[var(--inv-text-muted)]"
+                : "border-[var(--inv-text-muted)] hover:border-[var(--inv-accent)]"
             }`}
           >
             No podré ir
@@ -106,7 +113,10 @@ export function RSVPForm({ slug }: { slug: string }) {
 
         {attending && (
           <label className="flex items-center justify-between text-sm">
-            Acompañantes
+            <span className="flex items-center gap-2">
+              <Users className="w-4 h-4 text-[var(--inv-accent-muted)]" />
+              Acompañantes
+            </span>
             <input
               type="number"
               min={0}
@@ -123,6 +133,7 @@ export function RSVPForm({ slug }: { slug: string }) {
             type="checkbox"
             checked={isPublic}
             onChange={(e) => setIsPublic(e.target.checked)}
+            className="accent-[var(--inv-accent)]"
           />
           Mostrar mi confirmación en la lista pública
         </label>
@@ -130,7 +141,7 @@ export function RSVPForm({ slug }: { slug: string }) {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="mt-2 rounded-full bg-[var(--inv-accent)] text-[var(--inv-bg)] px-6 py-3 font-medium disabled:opacity-60"
+          className="mt-2 rounded-full bg-[var(--inv-accent)] text-[var(--inv-bg)] px-6 py-3 font-medium disabled:opacity-60 hover:opacity-90 transition-opacity"
         >
           {status === "sending" ? "Enviando..." : "Confirmar asistencia"}
         </button>
@@ -143,7 +154,7 @@ export function RSVPForm({ slug }: { slug: string }) {
       </form>
 
       {publicEntries.length > 0 && (
-        <div className="mt-10 text-left">
+        <div className="mt-10 text-left max-w-sm mx-auto">
           <p className="text-xs uppercase tracking-widest text-[var(--inv-text-muted)] mb-3">
             Ya confirmaron
           </p>

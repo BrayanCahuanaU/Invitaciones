@@ -20,6 +20,61 @@ body {
   font-family: var(--font-display), serif;
 }
 
+/* ── Decorative divider ── */
+.inv-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 16rem;
+}
+.inv-divider::before,
+.inv-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--inv-accent-muted),
+    transparent
+  );
+}
+.inv-divider-icon {
+  color: var(--inv-accent);
+  flex-shrink: 0;
+}
+
+/* ── Responsive section widths ── */
+@media (min-width: 768px) {
+  .inv-section-responsive {
+    max-width: 42rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .inv-section-responsive {
+    max-width: 56rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* ── Scroll arrow bounce ── */
+@keyframes bounce-arrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+.scroll-bounce {
+  animation: bounce-arrow 1.8s ease-in-out infinite;
+}
+
+/* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;

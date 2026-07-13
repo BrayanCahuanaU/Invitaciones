@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Timer } from "lucide-react";
 import { Section } from "./Section";
 
 function getRemaining(target: number) {
@@ -30,14 +31,19 @@ export function Countdown({ eventDate }: { eventDate: string }) {
 
   return (
     <Section>
-      <p className="uppercase tracking-widest text-xs text-[var(--inv-text-muted)] mb-4">
-        Falta muy poco
-      </p>
-      <div className="flex justify-center gap-4">
+      <div className="flex items-center justify-center gap-2 mb-4">
+        <Timer className="w-4 h-4 text-[var(--inv-accent)]" />
+        <p className="uppercase tracking-widest text-xs text-[var(--inv-text-muted)]">
+          Falta muy poco
+        </p>
+      </div>
+      <div className="flex justify-center gap-6 md:gap-10">
         {units.map((u) => (
-          <div key={u.label} className="w-16">
-            <div className="font-display text-4xl tabular-nums">{u.value}</div>
-            <div className="text-xs uppercase text-[var(--inv-text-muted)]">
+          <div key={u.label} className="w-16 md:w-20">
+            <div className="font-display text-4xl md:text-5xl tabular-nums">
+              {u.value}
+            </div>
+            <div className="text-xs uppercase text-[var(--inv-text-muted)] mt-1">
               {u.label}
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Music, Search } from "lucide-react";
 import { Section } from "./Section";
 
 interface Track {
@@ -22,9 +23,16 @@ export function SongVoting({ slug }: { slug: string }) {
   const [addedIds, setAddedIds] = useState<Set<string>>(new Set());
 
   async function loadRanking() {
-    const res = await fetch(`/api/songs?slug=${slug}`);
-    const data = await res.json();
-    setRanking(data.songs ?? []);
+    try {
+      const res = await fetch(`/api/songs?slug=${slug}`);
+      if (!res.ok) return;
+      const text = await res.text();
+      if (!text) return;
+      const data = JSON.parse(text);
+      setRanking(data.songs ?? []);
+    } catch {
+      // Redis no configurado u otro error: la playlist es un extra
+    }
   }
 
   useEffect(() => {
@@ -40,19 +48,30 @@ export function SongVoting({ slug }: { slug: string }) {
       return;
     }
     const id = setTimeout(async () => {
-      const res = await fetch(`/api/songs/search?q=${encodeURIComponent(query)}`);
-      const data = await res.json();
-      setResults(data.results ?? []);
+      try {
+        const res = await fetch(`/api/songs/search?q=${encodeURIComponent(query)}`);
+        if (!res.ok) return;
+        const text = await res.text();
+        if (!text) return;
+        const data = JSON.parse(text);
+        setResults(data.results ?? []);
+      } catch {
+        // silencioso
+      }
     }, 350);
     return () => clearTimeout(id);
   }, [query]);
 
   async function addTrack(track: Track) {
-    await fetch("/api/songs", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ slug, track }),
-    });
+    try {
+      await fetch("/api/songs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug, track }),
+      });
+    } catch {
+      // silencioso
+    }
     setAddedIds((prev) => new Set(prev).add(track.id));
     setQuery("");
     setResults([]);
@@ -61,27 +80,35 @@ export function SongVoting({ slug }: { slug: string }) {
 
   return (
     <Section id="playlist">
-      <p className="font-display text-3xl mb-2">Sugiere una canción</p>
+      <div className="flex items-center justify-center gap-2 mb-2">
+        <Music className="w-5 h-5 text-[var(--inv-accent)]" />
+        <p className="font-display text-3xl md:text-4xl">
+          Sugiere una canción
+        </p>
+      </div>
       <p className="text-[var(--inv-text-muted)] text-sm mb-6">
         Ayúdanos a armar la playlist de la fiesta. Si tu canción ya fue
         elegida por alguien más, súmale tu voto.
       </p>
 
-      <div className="relative">
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Buscar canción o artista..."
-          className="w-full bg-transparent border-b border-[var(--inv-text-muted)] py-2 outline-none focus:border-[var(--inv-accent)]"
-        />
+      <div className="relative max-w-sm mx-auto">
+        <div className="flex items-center border-b border-[var(--inv-text-muted)]">
+          <Search className="w-4 h-4 text-[var(--inv-accent-muted)]" />
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Buscar canción o artista..."
+            className="w-full bg-transparent py-2 pl-2 outline-none focus:border-[var(--inv-accent)]"
+          />
+        </div>
         {results.length > 0 && (
           <ul className="absolute z-10 left-0 right-0 bg-[var(--inv-surface)] border border-[var(--inv-text-muted)]/30 mt-1 max-h-64 overflow-y-auto text-left">
             {results.map((t) => (
               <li key={t.id}>
                 <button
                   onClick={() => addTrack(t)}
-                  className="w-full flex items-center gap-3 px-3 py-2 hover:bg-[var(--inv-accent)]/10"
+                  className="w-full flex items-center gap-3 px-3 py-2 hover:bg-[var(--inv-accent)]/10 transition-colors"
                 >
                   {t.cover && (
                     <Image
@@ -106,7 +133,7 @@ export function SongVoting({ slug }: { slug: string }) {
       </div>
 
       {ranking.length > 0 && (
-        <div className="mt-8 text-left">
+        <div className="mt-8 text-left max-w-sm mx-auto">
           <p className="text-xs uppercase tracking-widest text-[var(--inv-text-muted)] mb-3">
             Canciones elegidas por los invitados
           </p>
@@ -131,7 +158,7 @@ export function SongVoting({ slug }: { slug: string }) {
                 <button
                   onClick={() => addTrack(t)}
                   disabled={addedIds.has(t.id)}
-                  className="text-xs rounded-full border border-[var(--inv-accent)] px-3 py-1 disabled:opacity-40"
+                  className="text-xs rounded-full border border-[var(--inv-accent)] px-3 py-1 disabled:opacity-40 hover:bg-[var(--inv-accent)]/10 transition-colors"
                 >
                   +{t.score}
                 </button>

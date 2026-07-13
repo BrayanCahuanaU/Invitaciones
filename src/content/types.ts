@@ -2,6 +2,7 @@ export type EventType = "xv" | "boda" | "cumpleanos" | "bautizo" | "otro";
 
 export interface BankAccount {
   bank: string;
+  logo?: string;
   owner: string;
   accountNumber: string;
   cci?: string;
@@ -19,8 +20,12 @@ export interface InvitationData {
   };
 
   envelope: {
-    closedImage: string; // sobre cerrado, pantalla completa
-    openVideo: string; // video de apertura
+    closedImage: string; // sobre cerrado (mobile)
+    openVideo: string; // video de apertura (mobile)
+    closedImageTablet?: string;
+    openVideoTablet?: string;
+    closedImageDesktop?: string;
+    openVideoDesktop?: string;
   };
 
   hero: {
@@ -36,15 +41,26 @@ export interface InvitationData {
   location: {
     venueName: string;
     address: string;
+    district?: string;
     mapsUrl: string;
   };
 
   whatsappGroupUrl?: string;
+  whatsappGroupName?: string;
+  whatsappGroupPhoto?: string;
+  whatsappGroupDescription?: string;
 
   guidelines: {
-    dressCode?: string;
-    colorsToAvoid?: string[];
-    notes?: string;
+    dressCode?: {
+      level: string;
+      maleSuggestions?: string[];
+      femaleSuggestions?: string[];
+    };
+    colorsToAvoid?: {
+      name: string;
+      hex: string;
+    }[];
+    notes?: string[];
   };
 
   gifts: {

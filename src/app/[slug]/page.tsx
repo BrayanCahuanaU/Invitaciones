@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getAllSlugs, getInvitation } from "@/content/registry";
 import { getTheme } from "@/themes/registry";
 import { Envelope } from "@/components/invitation/Envelope";
+import { ParticleBackground } from "@/components/invitation/ParticleBackground";
 import { Hero } from "@/components/invitation/Hero";
 import { Quote } from "@/components/invitation/Quote";
 import { Countdown } from "@/components/invitation/Countdown";
@@ -63,40 +64,52 @@ export default async function InvitationPage({
       <Envelope
         closedImage={data.envelope.closedImage}
         openVideo={data.envelope.openVideo}
+        closedImageTablet={data.envelope.closedImageTablet}
+        openVideoTablet={data.envelope.openVideoTablet}
+        closedImageDesktop={data.envelope.closedImageDesktop}
+        openVideoDesktop={data.envelope.openVideoDesktop}
         protagonists={data.hero.protagonists}
       >
-        <Hero
-          photo={data.hero.photo}
-          protagonists={data.hero.protagonists}
-          motivo={data.hero.motivo}
-        />
-        <Quote text={data.quote} />
-        <Countdown eventDate={data.eventDate} />
-        <EventDetails
-          eventDate={data.eventDate}
-          venueName={data.location.venueName}
-          address={data.location.address}
-          mapsUrl={data.location.mapsUrl}
-        />
-        <RSVPForm slug={data.slug} />
-        <WhatsappGroup url={data.whatsappGroupUrl} />
-        <Guidelines
-          dressCode={data.guidelines.dressCode}
-          colorsToAvoid={data.guidelines.colorsToAvoid}
-          notes={data.guidelines.notes}
-        />
-        <Gifts
-          message={data.gifts.message}
-          bankAccounts={data.gifts.bankAccounts}
-          suggestions={data.gifts.suggestions}
-        />
-        <SongVoting slug={data.slug} />
-        <Farewell
-          message={data.farewellMessage}
-          hostName={data.host.name}
-          hostRelation={data.host.relation}
-          hostPhone={data.host.phone}
-        />
+        <ParticleBackground count={28} />
+        <div className="relative z-10">
+          <Hero
+            photo={data.hero.photo}
+            protagonists={data.hero.protagonists}
+            motivo={data.hero.motivo}
+          />
+          <Quote text={data.quote} />
+          <Countdown eventDate={data.eventDate} />
+          <EventDetails
+            eventDate={data.eventDate}
+            venueName={data.location.venueName}
+            address={data.location.address}
+            mapsUrl={data.location.mapsUrl}
+          />
+          <RSVPForm slug={data.slug} />
+          <WhatsappGroup
+            url={data.whatsappGroupUrl}
+            fallbackName={data.whatsappGroupName}
+            fallbackPhoto={data.whatsappGroupPhoto}
+            fallbackDescription={data.whatsappGroupDescription}
+          />
+          <Guidelines
+            dressCode={data.guidelines.dressCode}
+            colorsToAvoid={data.guidelines.colorsToAvoid}
+            notes={data.guidelines.notes}
+          />
+          <Gifts
+            message={data.gifts.message}
+            bankAccounts={data.gifts.bankAccounts}
+            suggestions={data.gifts.suggestions}
+          />
+          <SongVoting slug={data.slug} />
+          <Farewell
+            message={data.farewellMessage}
+            hostName={data.host.name}
+            hostRelation={data.host.relation}
+            hostPhone={data.host.phone}
+          />
+        </div>
       </Envelope>
     </div>
   );
