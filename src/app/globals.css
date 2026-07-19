@@ -12,6 +12,10 @@
   --inv-accent-muted: #b98a9a;
 }
 
+html{
+  background-color: black;
+}
+
 body {
   font-family: var(--font-body), sans-serif;
 }

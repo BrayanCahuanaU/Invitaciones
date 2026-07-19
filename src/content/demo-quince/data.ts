@@ -20,7 +20,7 @@ export const demoQuince: InvitationData = {
   },
 
   hero: {
-    photo: "/invitaciones/demo-quince/protagonista.png",
+    photo: "/invitaciones/demo-quince/protagonista.jpeg",
     protagonists: "Emireth",
     motivo: "Mis XV Años",
   },
@@ -103,14 +103,14 @@ export const demoQuince: InvitationData = {
   },
 
   rsvp: {
-    whatsappPhone: "51900000000",
+    whatsappPhone: "51997767502",
   },
 
   farewellMessage:
     "Gracias por ser parte de este día tan especial para mí. ¡Te espero!",
 
   host: {
-    name: "Familia Ejemplo",
+    name: "Familia Rodriguez",
     relation: "Padres de la quinceañera",
     phone: "51900000000",
   },

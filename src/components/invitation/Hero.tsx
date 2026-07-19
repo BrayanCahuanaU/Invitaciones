@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Crown, ChevronDown } from "lucide-react";
-import { Section } from "./Section";
+import { ChevronDown } from "lucide-react";
 
 function ScrollArrow() {
   function handleClick() {
@@ -33,24 +32,22 @@ export function Hero({
   motivo: string;
 }) {
   return (
-    <>
-      <div className="relative w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-[16/9] overflow-hidden">
-        <Image src={photo} alt={protagonists} fill className="object-cover" priority />
-        <ScrollArrow />
+    <div className="relative w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-[16/9] overflow-hidden">
+      <Image src={photo} alt={protagonists} fill className="object-cover" priority />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+
+      <div className="absolute inset-0 flex flex-col items-center justify-between p-6 pb-20 sm:p-8 lg:flex-row lg:items-center lg:px-24 pointer-events-none">
+        <p className="font-display text-4xl sm:text-5xl lg:text-5xl drop-shadow-lg text-white/90 lg:order-1">
+          {protagonists}
+        </p>
+
+        <p className="font-display text-4xl sm:text-5xl lg:text-5xl drop-shadow-lg text-white/90 lg:order-2">
+          {motivo}
+        </p>
       </div>
 
-      <Section>
-        <div className="mt-4 flex items-center justify-center gap-3">
-          <Crown className="w-5 h-5 text-[var(--inv-accent)]" />
-          <p className="font-display italic text-lg md:text-xl text-[var(--inv-text-muted)]">
-            {motivo}
-          </p>
-          <Crown className="w-5 h-5 text-[var(--inv-accent)]" />
-        </div>
-        <h1 className="font-display text-5xl md:text-6xl lg:text-7xl mt-2">
-          {protagonists}
-        </h1>
-      </Section>
-    </>
+      <ScrollArrow />
+    </div>
   );
 }
