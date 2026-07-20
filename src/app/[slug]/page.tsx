@@ -84,7 +84,7 @@ export default async function InvitationPage({
               src="/invitaciones/demo-quince/img/flores-div.png"
               alt=""
               width={1200}
-              height={200}
+              height={484}
               className="w-full h-auto object-contain drop-shadow-lg brightness-75"
             />
           </div>
@@ -103,6 +103,13 @@ export default async function InvitationPage({
             />
           </RevealSection>
           <RevealSection>
+            <Guidelines
+              dressCode={data.guidelines.dressCode}
+              colorsToAvoid={data.guidelines.colorsToAvoid}
+              notes={data.guidelines.notes}
+            />
+          </RevealSection>
+          <RevealSection>
             <RSVPForm slug={data.slug} />
           </RevealSection>
           <RevealSection>
@@ -111,13 +118,6 @@ export default async function InvitationPage({
               fallbackName={data.whatsappGroupName}
               fallbackPhoto={data.whatsappGroupPhoto}
               fallbackDescription={data.whatsappGroupDescription}
-            />
-          </RevealSection>
-          <RevealSection>
-            <Guidelines
-              dressCode={data.guidelines.dressCode}
-              colorsToAvoid={data.guidelines.colorsToAvoid}
-              notes={data.guidelines.notes}
             />
           </RevealSection>
           <RevealSection>

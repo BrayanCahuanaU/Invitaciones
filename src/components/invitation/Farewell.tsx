@@ -28,7 +28,7 @@ export function Farewell({
           src="/invitaciones/demo-quince/img/flores-div.png"
           alt=""
           width={1200}
-          height={200}
+          height={384}
           className="w-full h-auto object-contain drop-shadow-lg brightness-75"
         />
       </div>

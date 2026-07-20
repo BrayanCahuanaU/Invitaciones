@@ -40,12 +40,12 @@ export function WhatsappGroup({
   const hasImage = image && image.length > 0;
 
   return (
-    <Section>
-      <p className="font-display text-2xl md:text-3xl mb-4">
+    <Section backgroundImage="/invitaciones/demo-quince/img/papel-fondo.png" fullWidth>
+      <p className="font-display text-gray-800 text-2xl md:text-3xl mb-4">
         Únete al grupo del evento
       </p>
 
-      <div className="rounded-xl border border-[var(--inv-accent)]/15 bg-[var(--inv-surface)]/60 backdrop-blur-sm overflow-hidden max-w-sm mx-auto text-left">
+      <div className="rounded-xl border border-gray-300 bg-white/60 backdrop-blur-sm overflow-hidden max-w-sm mx-auto text-left">
         <div className="relative w-full h-36 overflow-hidden bg-[#25D366]/10 flex items-center justify-center">
           {hasImage ? (
             <Image
@@ -66,16 +66,16 @@ export function WhatsappGroup({
               <MessageCircle className="w-5 h-5 text-[#25D366]" />
             </div>
             <div className="min-w-0">
-              <p className="font-display text-lg truncate">{name}</p>
+              <p className="font-display text-gray-800 text-lg truncate">{name}</p>
               {description && description !== "WhatsApp Group Invite" && (
-                <p className="text-[var(--inv-text-muted)] text-xs truncate">
+                <p className="text-gray-500 text-xs truncate">
                   {description}
                 </p>
               )}
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 text-[var(--inv-text-muted)] text-xs mb-3">
+          <div className="flex items-center gap-1.5 text-gray-500 text-xs mb-3">
             <Users className="w-3.5 h-3.5" />
             <span>Grupo de WhatsApp</span>
           </div>
