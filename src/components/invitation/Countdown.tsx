@@ -15,9 +15,12 @@ function getRemaining(target: number) {
 
 export function Countdown({ eventDate }: { eventDate: string }) {
   const target = new Date(eventDate).getTime();
-  const [remaining, setRemaining] = useState(() => getRemaining(target));
+  const [remaining, setRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setRemaining(getRemaining(target));
+    setMounted(true);
     const id = setInterval(() => setRemaining(getRemaining(target)), 1000);
     return () => clearInterval(id);
   }, [target]);

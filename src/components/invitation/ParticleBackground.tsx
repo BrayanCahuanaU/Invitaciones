@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 interface Particle {
@@ -24,7 +24,11 @@ function generateParticles(count: number): Particle[] {
 }
 
 export function ParticleBackground({ count = 24 }: { count?: number }) {
-  const [particles] = useState(() => generateParticles(count));
+  const [particles, setParticles] = useState<Particle[]>([]);
+
+  useEffect(() => {
+    setParticles(generateParticles(count));
+  }, [count]);
 
   return (
     <div

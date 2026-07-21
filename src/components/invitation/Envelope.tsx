@@ -64,54 +64,65 @@ export function Envelope({
     videoRef.current?.play();
   }
 
-  if (stage === "open") {
-    return <>{children}</>;
-  }
-
   return (
-    <div className="fixed inset-0 min-h-dvh z-50 bg-[var(--inv-bg)] text-[var(--inv-text)]">
+    <>
+      <div className={stage === "open" ? "relative z-10" : "relative z-10 invisible"}>
+        {children}
+      </div>
+
       <AnimatePresence>
-        {stage === "closed" && (
-          <motion.button
-            key="closed"
-            onClick={handleOpen}
-            aria-label={`Abrir invitación de ${protagonists}`}
-            className="relative min-h-dvh w-full block focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--inv-accent)]"
+        {stage !== "open" && (
+          <motion.div
+            key="envelope"
+            className="fixed inset-0 min-h-dvh z-50 bg-[var(--inv-bg)] text-[var(--inv-text)]"
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
           >
-            <Image
-              src={currentClosed}
-              alt=""
-              fill
-              priority
-              className="object-cover object-center"
+            <AnimatePresence>
+              {stage === "closed" && (
+                <motion.button
+                  key="closed"
+                  onClick={handleOpen}
+                  aria-label={`Abrir invitación de ${protagonists}`}
+                  className="relative min-h-dvh w-full block focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--inv-accent)]"
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Image
+                    src={currentClosed}
+                    alt=""
+                    fill
+                    priority
+                    className="object-cover object-center"
+                  />
+                  <motion.span
+                    className="absolute inset-x-0 bottom-16 md:bottom-24 lg:bottom-32 text-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                  >
+                    <span className="inline-flex items-center gap-2 rounded-full border border-[var(--inv-accent)] px-6 py-2 text-sm tracking-widest uppercase bg-black/30 backdrop-blur-sm">
+                      <Mail className="w-4 h-4" />
+                      Toca para abrir
+                    </span>
+                  </motion.span>
+                </motion.button>
+              )}
+            </AnimatePresence>
+
+            <video
+              ref={videoRef}
+              src={currentVideo}
+              muted
+              playsInline
+              className={`absolute inset-0 h-full w-full object-cover ${
+                stage === "opening" ? "block" : "hidden"
+              }`}
+              onEnded={() => setStage("open")}
             />
-            <motion.span
-              className="absolute inset-x-0 bottom-16 md:bottom-24 lg:bottom-32 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            >
-              <span className="inline-flex items-center gap-2 rounded-full border border-[var(--inv-accent)] px-6 py-2 text-sm tracking-widest uppercase bg-black/30 backdrop-blur-sm">
-                <Mail className="w-4 h-4" />
-                Toca para abrir
-              </span>
-            </motion.span>
-          </motion.button>
+          </motion.div>
         )}
       </AnimatePresence>
-
-      <video
-        ref={videoRef}
-        src={currentVideo}
-        muted
-        playsInline
-        className={`absolute inset-0 h-full w-full object-cover ${
-          stage === "opening" ? "block" : "hidden"
-        }`}
-        onEnded={() => setStage("open")}
-      />
-    </div>
+    </>
   );
 }
