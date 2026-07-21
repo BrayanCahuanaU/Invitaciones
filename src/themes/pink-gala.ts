@@ -7,11 +7,11 @@ export const pinkGala: Theme = {
     body: "var(--font-body)",
   },
   colors: {
-    background: "#1a0f14", // vino oscuro casi negro
-    surface: "#241318",
-    text: "#f7e9ec",
-    textMuted: "#c9a8b1",
-    accent: "#e8b4c8", // rosa palo
-    accentMuted: "#b98a9a",
+    background: "#0d0a0e",
+    surface: "#1a1219",
+    text: "#f5ede6",
+    textMuted: "#b8a0a8",
+    accent: "#8B1A3A",
+    accentMuted: "#6B2D4A",
   },
 };

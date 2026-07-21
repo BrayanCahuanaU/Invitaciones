@@ -33,7 +33,7 @@ export function Farewell({
         />
       </div>
 
-      <Section className="relative z-10 pb-20">
+      <Section className="relative z-10 pt-20 pb-20">
         <Heart className="w-6 h-6 text-[var(--inv-accent)] mx-auto mb-4" />
         <p className="font-display italic text-2xl md:text-3xl lg:text-4xl leading-snug">
           {message}
@@ -49,7 +49,7 @@ export function Farewell({
               href={`https://wa.me/${hostPhone}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-3 text-sm text-[var(--inv-accent)] hover:opacity-80 transition-opacity"
+              className="inline-flex items-center gap-2 mt-3 text-sm text-neon hover:opacity-80 transition-opacity"
             >
               <Phone className="w-4 h-4" />
               Contactar por WhatsApp

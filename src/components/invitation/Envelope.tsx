@@ -69,14 +69,14 @@ export function Envelope({
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-[var(--inv-bg)] text-[var(--inv-text)]">
+    <div className="fixed inset-0 min-h-dvh z-50 bg-[var(--inv-bg)] text-[var(--inv-text)]">
       <AnimatePresence>
         {stage === "closed" && (
           <motion.button
             key="closed"
             onClick={handleOpen}
             aria-label={`Abrir invitación de ${protagonists}`}
-            className="relative h-full w-full block focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--inv-accent)]"
+            className="relative min-h-dvh w-full block focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--inv-accent)]"
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
           >
@@ -85,7 +85,7 @@ export function Envelope({
               alt=""
               fill
               priority
-              className="object-cover"
+              className="object-cover object-center"
             />
             <motion.span
               className="absolute inset-x-0 bottom-16 md:bottom-24 lg:bottom-32 text-center"

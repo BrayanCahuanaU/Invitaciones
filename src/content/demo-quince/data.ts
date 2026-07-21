@@ -11,7 +11,7 @@ export const demoQuince: InvitationData = {
   },
 
   envelope: {
-    closedImage: "/invitaciones/demo-quince/sobre-cerrado.jpeg",
+    closedImage: "/invitaciones/demo-quince/sobre-cerrado.png",
     openVideo: "/invitaciones/demo-quince/sobre-abriendo.mp4",
     closedImageTablet: undefined,
     openVideoTablet: undefined,
@@ -25,7 +25,7 @@ export const demoQuince: InvitationData = {
     motivo: "Mis XV Años",
   },
 
-  quote: "No es una fiesta, es el evento del año.",
+  quote: "Hay momentos en vida que merecen ser celebrados, y este es uno de ellos. ¡Acompáñame a vivir esta experiencia única!",
 
   eventDate: "2026-11-14T19:00:00-05:00",
 
@@ -58,8 +58,8 @@ export const demoQuince: InvitationData = {
       ],
     },
     colorsToAvoid: [
-      { name: "Blanco", hex: "#FFFFFF" },
-      { name: "Rosa palo", hex: "#F4C2C2" },
+      { name: "Blanco", hex: "#e5e6e7" },
+      { name: "Rosa palo", hex: "#b34141" },
     ],
     notes: [
       "Evento solo para adultos y jóvenes a partir de 12 años",

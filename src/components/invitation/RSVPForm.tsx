@@ -95,7 +95,7 @@ export function RSVPForm({ slug }: { slug: string }) {
             onClick={() => setAttending(true)}
             className={`flex-1 rounded-full border px-4 py-2 text-sm transition-all ${
               attending
-                ? "border-[var(--inv-accent)] bg-[var(--inv-accent)] text-[var(--inv-bg)]"
+                ? "border-[var(--inv-accent)] bg-[var(--inv-accent)] text-white"
                 : "border-[var(--inv-text-muted)] hover:border-[var(--inv-accent)]"
             }`}
           >
@@ -106,7 +106,7 @@ export function RSVPForm({ slug }: { slug: string }) {
             onClick={() => setAttending(false)}
             className={`flex-1 rounded-full border px-4 py-2 text-sm transition-all ${
               !attending
-                ? "border-[var(--inv-accent)] bg-[var(--inv-accent)] text-[var(--inv-bg)]"
+                ? "border-[var(--inv-accent)] bg-[var(--inv-accent)] text-white"
                 : "border-[var(--inv-text-muted)] hover:border-[var(--inv-accent)]"
             }`}
           >
@@ -144,7 +144,7 @@ export function RSVPForm({ slug }: { slug: string }) {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="mt-2 rounded-full bg-[var(--inv-accent)] text-[var(--inv-bg)] px-6 py-3 font-medium disabled:opacity-60 hover:opacity-90 transition-opacity"
+          className="mt-2 rounded-full bg-[var(--inv-accent)] text-white px-6 py-3 font-medium disabled:opacity-60 hover:opacity-90 transition-opacity"
         >
           {status === "sending" ? "Enviando..." : "Confirmar asistencia"}
         </button>

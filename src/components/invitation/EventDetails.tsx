@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Clock } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { Section } from "./Section";
 
 export function EventDetails({
@@ -15,11 +15,14 @@ export function EventDetails({
   mapsUrl: string;
 }) {
   const date = new Date(eventDate);
-  const formattedDate = new Intl.DateTimeFormat("es-PE", {
+  const dayName = new Intl.DateTimeFormat("es-PE", {
     weekday: "long",
+  }).format(date);
+  const dayNumber = new Intl.DateTimeFormat("es-PE", {
     day: "numeric",
+  }).format(date);
+  const monthName = new Intl.DateTimeFormat("es-PE", {
     month: "long",
-    year: "numeric",
   }).format(date);
   const formattedTime = new Intl.DateTimeFormat("es-PE", {
     hour: "numeric",
@@ -31,17 +34,13 @@ export function EventDetails({
 
   return (
     <Section>
-      <div className="flex items-center justify-center gap-2 mb-6">
-        <Calendar className="w-5 h-5 text-[var(--inv-accent)]" />
-        <p className="font-display text-3xl md:text-4xl capitalize">
-          {formattedDate}
-        </p>
+      <div className="flex items-center justify-center gap-4 mb-2">
+        <p className="font-display text-2xl md:text-3xl text-[var(--inv-text-muted)] capitalize">{dayName}</p>
+        <p className="font-display text-8xl md:text-9xl font-bold text-neon">{dayNumber}</p>
+        <p className="font-display text-2xl md:text-3xl text-[var(--inv-text-muted)] capitalize">{monthName}</p>
       </div>
 
-      <div className="flex items-center justify-center gap-2 mb-8">
-        <Clock className="w-4 h-4 text-[var(--inv-accent-muted)]" />
-        <p className="text-[var(--inv-text-muted)]">{formattedTime} hrs</p>
-      </div>
+      <p className="text-[var(--inv-text-muted)] mb-10 text-xl ">{formattedTime}</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto text-left">
         {/* Columna 1 — Info */}

@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Birthstone, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
-const display = Cormorant_Garamond({
+const display = Birthstone({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: "400",
 });
 
-const body = Manrope({
+const body = Cormorant_Garamond({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {

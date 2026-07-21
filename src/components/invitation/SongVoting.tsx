@@ -79,8 +79,8 @@ export function SongVoting({ slug }: { slug: string }) {
   }
 
   return (
-    <Section id="playlist">
-      <div className="flex items-center justify-center gap-2 mb-2">
+    <Section id="playlist" className="mb-20 md:mb-20">
+      <div className="flex flex-col items-center gap-2 mb-2">
         <Music className="w-5 h-5 text-[var(--inv-accent)]" />
         <p className="font-display text-3xl md:text-4xl">
           Sugiere una canción

@@ -45,10 +45,10 @@ function BankCard({ acc }: { acc: BankAccount }) {
     <div className="rounded-xl border border-[var(--inv-accent)]/15 bg-[var(--inv-surface)]/60 backdrop-blur-sm overflow-hidden transition-all hover:border-[var(--inv-accent)]/30">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="w-full flex flex-col items-center gap-2 p-4 text-center"
+        className="w-full flex flex-col items-center gap-2 p-3 md:p-4 text-center"
       >
         {acc.logo && (
-          <div className="relative w-full h-70 rounded-md overflow-hidden bg-white/10">
+          <div className="relative w-40 h-40 md:w-full md:h-70 rounded-md overflow-hidden bg-white/10">
             <Image src={acc.logo} alt={acc.bank} fill className="object-cover" />
           </div>
         )}
@@ -75,7 +75,7 @@ function SuggestionCard({ items }: { items: string[] }) {
     <div className="rounded-xl border border-[var(--inv-accent)]/15 bg-[var(--inv-surface)]/60 backdrop-blur-sm overflow-hidden transition-all hover:border-[var(--inv-accent)]/30 md:col-span-2">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="w-full flex items-center justify-center gap-3 p-4 text-center"
+        className="w-full flex items-center justify-center gap-3 p-3 md:p-4 text-center"
       >
         <Gift className="w-5 h-5 text-[var(--inv-accent)]" />
         <span className="font-display text-lg">Sugerencias de regalo</span>
@@ -114,7 +114,7 @@ export function Gifts({
   if (!message && !bankAccounts?.length && !suggestions?.length) return null;
   return (
     <Section>
-      <div className="flex items-center justify-center gap-2 mb-4">
+      <div className="flex flex-col items-center gap-2 mb-4">
         <Gift className="w-5 h-5 text-[var(--inv-accent)]" />
         <p className="font-display text-3xl md:text-4xl">Regalos</p>
       </div>

@@ -5,12 +5,14 @@ export function Section({
   className = "",
   id,
   backgroundImage,
+  backgroundImageMobile,
   fullWidth,
 }: {
   children: ReactNode;
   className?: string;
   id?: string;
   backgroundImage?: string;
+  backgroundImageMobile?: string;
   fullWidth?: boolean;
 }) {
   if (fullWidth && backgroundImage) {
@@ -19,14 +21,33 @@ export function Section({
         id={id}
         className={`relative w-full py-50 md:py-36 lg:py-44 text-center overflow-hidden ${className}`}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-            zIndex: 0,
-          }}
-        />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-10 lg:px-16">
+        {backgroundImageMobile ? (
+          <>
+            <div
+              className="absolute inset-0 bg-cover bg-center md:hidden"
+              style={{
+                backgroundImage: `url(${backgroundImageMobile})`,
+                zIndex: 0,
+              }}
+            />
+            <div
+              className="absolute inset-0 bg-cover bg-center hidden md:block"
+              style={{
+                backgroundImage: `url(${backgroundImage})`,
+                zIndex: 0,
+              }}
+            />
+          </>
+        ) : (
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${backgroundImage})`,
+              zIndex: 0,
+            }}
+          />
+        )}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-10 lg:px-16">
           {children}
         </div>
       </section>

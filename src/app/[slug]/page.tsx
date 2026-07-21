@@ -61,8 +61,14 @@ export default async function InvitationPage({
           "--inv-accent-muted": theme.colors.accentMuted,
         } as React.CSSProperties
       }
-      className="min-h-screen bg-[var(--inv-bg)] text-[var(--inv-text)]"
+      className="min-h-screen text-[var(--inv-text)]"
     >
+      <div className="fixed inset-0 -z-20 bg-[var(--inv-bg)]" />
+      <div
+        className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url(/invitaciones/demo-quince/img/background.png)" }}
+      />
+      <div className="fixed inset-0 -z-[9] bg-black/40" />
       <Envelope
         closedImage={data.envelope.closedImage}
         openVideo={data.envelope.openVideo}

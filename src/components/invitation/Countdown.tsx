@@ -30,28 +30,28 @@ export function Countdown({ eventDate }: { eventDate: string }) {
   ];
 
   return (
-    <Section backgroundImage="/invitaciones/demo-quince/img/papel-fondo.png" fullWidth>
-      <div className="flex items-center justify-center gap-2 mb-4">
-        <Timer className="w-4 h-4 text-amber-700" />
-        <p className="uppercase tracking-widest text-xs text-gray-500">
+    <Section backgroundImage="/invitaciones/demo-quince/img/papel-fondo.png" fullWidth >
+      <div className="flex flex-col items-center gap-2 mb-5">
+        <Timer className="w-6 h-6 text-[var(--inv-accent)]" />
+        <p className="uppercase tracking-widest text-xs text-gray-800 md:text-xl">
           Falta muy poco
         </p>
       </div>
       <div className="flex justify-center gap-6 md:gap-15">
         {units.map((u) => (
-          <div key={u.label} className="w-16 md:w-auto">
+          <div key={u.label} className="w-16 md:w-24">
             <div
               className="font-display text-4xl md:text-7xl tabular-nums font-bold"
               style={{
-                background: "linear-gradient(180deg, #f5d98e 0%, #d4a843 40%, #b8860b 100%)",
+                background: "linear-gradient(180deg, #c9a0b0 0%, #8B1A3A 40%, #5a1025 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 1px 2px rgba(180,130,40,0.4))",
+                filter: "drop-shadow(0 1px 2px rgba(139,26,58,0.4))",
               }}
             >
               {u.value}
             </div>
-            <div className="text-xs uppercase text-gray-500 mt-1">
+            <div className="text-s uppercase text-gray-800 mt-1">
               {u.label}
             </div>
           </div>

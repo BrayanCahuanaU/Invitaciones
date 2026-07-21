@@ -4,12 +4,12 @@
    según el tema elegido en su data.ts (ver src/themes). Estos son solo
    valores por defecto para que nada se rompa si faltan. */
 :root {
-  --inv-bg: #1a0f14;
-  --inv-surface: #241318;
-  --inv-text: #f7e9ec;
-  --inv-text-muted: #c9a8b1;
-  --inv-accent: #e8b4c8;
-  --inv-accent-muted: #b98a9a;
+  --inv-bg: #0d0a0e;
+  --inv-surface: #1a1219;
+  --inv-text: #f5ede6;
+  --inv-text-muted: #b8a0a8;
+  --inv-accent: #8B1A3A;
+  --inv-accent-muted: #6B2D4A;
 }
 
 html{
@@ -22,6 +22,16 @@ body {
 
 .font-display {
   font-family: var(--font-display), serif;
+}
+
+/* ── Neon glow for accent text ── */
+.text-neon {
+  color: var(--inv-accent);
+  text-shadow:
+    0 0 7px var(--inv-accent),
+    0 0 10px var(--inv-accent),
+    0 0 21px var(--inv-accent),
+    0 0 42px var(--inv-accent-muted);
 }
 
 /* ── Decorative divider ── */
