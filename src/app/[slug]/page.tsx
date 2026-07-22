@@ -16,6 +16,10 @@ import { Gifts } from "@/components/invitation/Gifts";
 import { SongVoting } from "@/components/invitation/SongVoting";
 import { Farewell } from "@/components/invitation/Farewell";
 import { RevealSection } from "@/components/invitation/RevealSection";
+import { CinematicHero } from "@/components/invitation/cinematic/CinematicHero";
+import { GuestArtists } from "@/components/invitation/cinematic/GuestArtists";
+import { CinematicTimeline } from "@/components/invitation/cinematic/CinematicTimeline";
+import { CinematicFooter } from "@/components/invitation/cinematic/CinematicFooter";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -48,6 +52,7 @@ export default async function InvitationPage({
   if (!data) notFound();
 
   const theme = getTheme(data.theme);
+  const isCinematic = data.layout === "cinematic";
 
   return (
     <div
@@ -61,14 +66,27 @@ export default async function InvitationPage({
           "--inv-accent-muted": theme.colors.accentMuted,
         } as React.CSSProperties
       }
-      className="min-h-screen text-[var(--inv-text)]"
+      className={`min-h-screen text-[var(--inv-text)] ${isCinematic ? "cinematic-grain" : ""}`}
     >
       <div className="fixed inset-0 -z-20 bg-[var(--inv-bg)]" />
-      <div
-        className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url(/invitaciones/demo-quince/img/background.png)" }}
-      />
-      <div className="fixed inset-0 -z-[9] bg-black/40" />
+      {!isCinematic && (
+        <>
+          <div
+            className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url(/invitaciones/demo-quince/img/background.png)" }}
+          />
+          <div className="fixed inset-0 -z-[9] bg-black/40" />
+        </>
+      )}
+      {isCinematic && (
+        <>
+          <div
+            className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url(/invitaciones/ximena-cahuana-xv/img/background.png)" }}
+          />
+          <div className="fixed inset-0 -z-[9] bg-[#090909]/70" />
+        </>
+      )}
       <Envelope
         closedImage={data.envelope.closedImage}
         openVideo={data.envelope.openVideo}
@@ -78,72 +96,153 @@ export default async function InvitationPage({
         openVideoDesktop={data.envelope.openVideoDesktop}
         protagonists={data.hero.protagonists}
       >
-        <ParticleBackground count={28} />
+        <ParticleBackground count={isCinematic ? 40 : 28} />
         <div className="relative z-10">
-          <Hero
-            photo={data.hero.photo}
-            protagonists={data.hero.protagonists}
-            motivo={data.hero.motivo}
-          />
-          <div className="relative z-10 -mt-20 sm:-mt-24 lg:-mt-90 w-full pointer-events-none select-none">
-            <Image
-              src="/invitaciones/demo-quince/img/flores-div.png"
-              alt=""
-              width={1200}
-              height={484}
-              className="w-full h-auto object-contain drop-shadow-lg brightness-75"
-            />
-          </div>
-          <RevealSection>
-            <Quote text={data.quote} />
-          </RevealSection>
-          <RevealSection>
-            <Countdown eventDate={data.eventDate} />
-          </RevealSection>
-          <RevealSection>
-            <EventDetails
-              eventDate={data.eventDate}
-              venueName={data.location.venueName}
-              address={data.location.address}
-              mapsUrl={data.location.mapsUrl}
-            />
-          </RevealSection>
-          <RevealSection>
-            <Guidelines
-              dressCode={data.guidelines.dressCode}
-              colorsToAvoid={data.guidelines.colorsToAvoid}
-              notes={data.guidelines.notes}
-            />
-          </RevealSection>
-          <RevealSection>
-            <RSVPForm slug={data.slug} />
-          </RevealSection>
-          <RevealSection>
-            <WhatsappGroup
-              url={data.whatsappGroupUrl}
-              fallbackName={data.whatsappGroupName}
-              fallbackPhoto={data.whatsappGroupPhoto}
-              fallbackDescription={data.whatsappGroupDescription}
-            />
-          </RevealSection>
-          <RevealSection>
-            <Gifts
-              message={data.gifts.message}
-              bankAccounts={data.gifts.bankAccounts}
-              suggestions={data.gifts.suggestions}
-            />
-          </RevealSection>
-          <RevealSection>
-            <SongVoting slug={data.slug} />
-          </RevealSection>
-          <RevealSection>
-            <Farewell
-              message={data.farewellMessage}
-              hostName={data.host.name}
-              hostRelation={data.host.relation}
-              hostPhone={data.host.phone}
-            />
-          </RevealSection>
+          {isCinematic ? (
+            /* ═══ CINEMATIC LAYOUT ═══ */
+            <>
+              <CinematicHero
+                photo={data.hero.photo}
+                protagonists={data.hero.protagonists}
+                motivo={data.hero.motivo}
+                eventDate={data.eventDate}
+                venueName={data.location.venueName}
+              />
+              <RevealSection>
+                <Quote text={data.quote} />
+              </RevealSection>
+              <RevealSection>
+                <EventDetails
+                  eventDate={data.eventDate}
+                  venueName={data.location.venueName}
+                  address={data.location.address}
+                  mapsUrl={data.location.mapsUrl}
+                />
+              </RevealSection>
+              {data.guestArtists && data.guestArtists.length > 0 && (
+                <RevealSection>
+                  <GuestArtists artists={data.guestArtists} />
+                </RevealSection>
+              )}
+              <RevealSection>
+                <Countdown eventDate={data.eventDate} />
+              </RevealSection>
+              {data.timeline && data.timeline.length > 0 && (
+                <RevealSection>
+                  <CinematicTimeline items={data.timeline} />
+                </RevealSection>
+              )}
+              <RevealSection>
+                <Guidelines
+                  dressCode={data.guidelines.dressCode}
+                  colorsToAvoid={data.guidelines.colorsToAvoid}
+                  notes={data.guidelines.notes}
+                />
+              </RevealSection>
+              <RevealSection>
+                <RSVPForm slug={data.slug} />
+              </RevealSection>
+              <RevealSection>
+                <WhatsappGroup
+                  url={data.whatsappGroupUrl}
+                  fallbackName={data.whatsappGroupName}
+                  fallbackPhoto={data.whatsappGroupPhoto}
+                  fallbackDescription={data.whatsappGroupDescription}
+                />
+              </RevealSection>
+              <RevealSection>
+                <Gifts
+                  message={data.gifts.message}
+                  bankAccounts={data.gifts.bankAccounts}
+                  suggestions={data.gifts.suggestions}
+                />
+              </RevealSection>
+              <RevealSection>
+                <SongVoting slug={data.slug} />
+              </RevealSection>
+              <RevealSection>
+                <Farewell
+                  message={data.farewellMessage}
+                  hostName={data.host.name}
+                  hostRelation={data.host.relation}
+                  hostPhone={data.host.phone}
+                />
+              </RevealSection>
+              <CinematicFooter
+                hostName={data.host.name}
+                hostRelation={data.host.relation}
+                socialLinks={data.socialLinks}
+              />
+            </>
+          ) : (
+            /* ═══ CLASSIC LAYOUT (sin cambios) ═══ */
+            <>
+              <Hero
+                photo={data.hero.photo}
+                protagonists={data.hero.protagonists}
+                motivo={data.hero.motivo}
+              />
+              <div className="relative z-10 -mt-20 sm:-mt-24 lg:-mt-90 w-full pointer-events-none select-none">
+                <Image
+                  src="/invitaciones/demo-quince/img/flores-div.png"
+                  alt=""
+                  width={1200}
+                  height={484}
+                  className="w-full h-auto object-contain drop-shadow-lg brightness-75"
+                />
+              </div>
+              <RevealSection>
+                <Quote text={data.quote} />
+              </RevealSection>
+              <RevealSection>
+                <Countdown eventDate={data.eventDate} />
+              </RevealSection>
+              <RevealSection>
+                <EventDetails
+                  eventDate={data.eventDate}
+                  venueName={data.location.venueName}
+                  address={data.location.address}
+                  mapsUrl={data.location.mapsUrl}
+                />
+              </RevealSection>
+              <RevealSection>
+                <Guidelines
+                  dressCode={data.guidelines.dressCode}
+                  colorsToAvoid={data.guidelines.colorsToAvoid}
+                  notes={data.guidelines.notes}
+                />
+              </RevealSection>
+              <RevealSection>
+                <RSVPForm slug={data.slug} />
+              </RevealSection>
+              <RevealSection>
+                <WhatsappGroup
+                  url={data.whatsappGroupUrl}
+                  fallbackName={data.whatsappGroupName}
+                  fallbackPhoto={data.whatsappGroupPhoto}
+                  fallbackDescription={data.whatsappGroupDescription}
+                />
+              </RevealSection>
+              <RevealSection>
+                <Gifts
+                  message={data.gifts.message}
+                  bankAccounts={data.gifts.bankAccounts}
+                  suggestions={data.gifts.suggestions}
+                />
+              </RevealSection>
+              <RevealSection>
+                <SongVoting slug={data.slug} />
+              </RevealSection>
+              <RevealSection>
+                <Farewell
+                  message={data.farewellMessage}
+                  hostName={data.host.name}
+                  hostRelation={data.host.relation}
+                  hostPhone={data.host.phone}
+                />
+              </RevealSection>
+            </>
+          )}
         </div>
       </Envelope>
     </div>

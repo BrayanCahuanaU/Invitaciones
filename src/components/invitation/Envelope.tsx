@@ -60,8 +60,12 @@ export function Envelope({
     openVideo;
 
   function handleOpen() {
+    if (!currentVideo) {
+      setStage("open");
+      return;
+    }
     setStage("opening");
-    videoRef.current?.play();
+    videoRef.current?.play().catch(() => setStage("open"));
   }
 
   return (
@@ -119,6 +123,7 @@ export function Envelope({
                 stage === "opening" ? "block" : "hidden"
               }`}
               onEnded={() => setStage("open")}
+              onError={() => setStage("open")}
             />
           </motion.div>
         )}

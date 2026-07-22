@@ -1,4 +1,5 @@
 export type EventType = "xv" | "boda" | "cumpleanos" | "bautizo" | "otro";
+export type LayoutType = "classic" | "cinematic";
 
 export interface BankAccount {
   bank: string;
@@ -8,10 +9,28 @@ export interface BankAccount {
   cci?: string;
 }
 
+export interface GuestArtist {
+  name: string;
+  role?: string;
+  photo?: string;
+}
+
+export interface TimelineItem {
+  time: string;
+  title: string;
+  description?: string;
+}
+
+export interface SocialLink {
+  platform: string;
+  url: string;
+}
+
 export interface InvitationData {
   slug: string;
   eventType: EventType;
   theme: string; // clave del tema visual (ver src/themes)
+  layout?: LayoutType; // "classic" (default) o "cinematic"
 
   seo: {
     title: string;
@@ -82,4 +101,9 @@ export interface InvitationData {
     relation?: string;
     phone?: string;
   };
+
+  // ── Solo para layout "cinematic" ──
+  guestArtists?: GuestArtist[];
+  timeline?: TimelineItem[];
+  socialLinks?: SocialLink[];
 }

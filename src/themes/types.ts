@@ -12,4 +12,14 @@ export interface Theme {
     accent: string;
     accentMuted: string;
   };
+  extended?: {
+    backgroundSecondary: string;
+    cards: string;
+    wineRed: string;
+    intenseRed: string;
+    burgundy: string;
+    gold: string;
+    brightGold: string;
+    border: string;
+  };
 }
