@@ -107,15 +107,18 @@ body {
    CINEMATIC STYLES — Dark Luxury
    ══════════════════════════════════════════ */
 
-/* ── Cinematic Card Base ── */
+/* ── Cinematic Card Base (Glassmorphism) ── */
 .cinematic-card {
-  background: var(--cin-cards);
-  border: 1px solid var(--cin-border);
+  background: rgba(37, 37, 37, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .cinematic-card:hover {
-  border-color: rgba(168, 24, 53, 0.4);
+  border-color: rgba(168, 24, 53, 0.35);
+  background: rgba(37, 37, 37, 0.55);
   box-shadow:
     0 0 20px rgba(168, 24, 53, 0.1),
     0 8px 32px rgba(0, 0, 0, 0.4);

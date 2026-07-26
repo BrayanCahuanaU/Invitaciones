@@ -45,7 +45,7 @@ export function WhatsappGroup({
         Únete al grupo del evento
       </p>
 
-      <div className="rounded-xl border border-gray-300 bg-white/60 backdrop-blur-sm overflow-hidden max-w-sm mx-auto text-left">
+      <div className="rounded-xl border border-white/10 bg-[var(--inv-surface)]/40 backdrop-blur-md overflow-hidden max-w-sm mx-auto text-left">
         <div className="relative w-full h-36 overflow-hidden bg-[#25D366]/10 flex items-center justify-center">
           {hasImage ? (
             <Image

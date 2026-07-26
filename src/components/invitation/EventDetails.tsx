@@ -44,7 +44,7 @@ export function EventDetails({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto text-left">
         {/* Columna 1 — Info */}
-        <div className="bg-[var(--inv-surface)]/50 rounded-xl p-6 backdrop-blur-sm border border-[var(--inv-accent)]/10">
+        <div className="bg-[var(--inv-surface)]/40 backdrop-blur-md rounded-xl p-6 border border-white/8">
           <div className="flex items-center gap-2 mb-4">
             <MapPin className="w-5 h-5 text-[var(--inv-accent)]" />
             <p className="font-display text-xl md:text-2xl">{venueName}</p>
@@ -65,7 +65,7 @@ export function EventDetails({
         </div>
 
         {/* Columna 2 — Mapa */}
-        <div className="rounded-xl overflow-hidden border border-[var(--inv-accent)]/10 bg-[var(--inv-surface)]/50 min-h-[250px]">
+        <div className="rounded-xl overflow-hidden border border-white/8 bg-[var(--inv-surface)]/40 backdrop-blur-md min-h-[250px]">
           <iframe
             src={mapEmbedUrl}
             width="100%"

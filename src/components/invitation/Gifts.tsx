@@ -42,7 +42,7 @@ function BankCard({ acc }: { acc: BankAccount }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="rounded-xl border border-[var(--inv-accent)]/15 bg-[var(--inv-surface)]/60 backdrop-blur-sm overflow-hidden transition-all hover:border-[var(--inv-accent)]/30">
+    <div className="rounded-xl border border-white/8 bg-[var(--inv-surface)]/40 backdrop-blur-md overflow-hidden transition-all hover:border-[var(--inv-accent)]/30">
       <button
         onClick={() => setOpen((o) => !o)}
         className="w-full flex flex-col items-center gap-2 p-3 md:p-4 text-center"
@@ -72,7 +72,7 @@ function SuggestionCard({ items }: { items: string[] }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="rounded-xl border border-[var(--inv-accent)]/15 bg-[var(--inv-surface)]/60 backdrop-blur-sm overflow-hidden transition-all hover:border-[var(--inv-accent)]/30 md:col-span-2">
+    <div className="rounded-xl border border-white/8 bg-[var(--inv-surface)]/40 backdrop-blur-md overflow-hidden transition-all hover:border-[var(--inv-accent)]/30 md:col-span-2">
       <button
         onClick={() => setOpen((o) => !o)}
         className="w-full flex items-center justify-center gap-3 p-3 md:p-4 text-center"

@@ -94,7 +94,7 @@ export interface InvitationData {
     whatsappPhone?: string;
   };
 
-  farewellMessage: string;
+  farewellMessage?: string;
 
   host: {
     name: string;
@@ -106,4 +106,11 @@ export interface InvitationData {
   guestArtists?: GuestArtist[];
   timeline?: TimelineItem[];
   socialLinks?: SocialLink[];
+  footerBackground?: string; // imagen de fondo para el footer
+
+  // ── Background ──
+  backgroundVideo?: {
+    mobile?: string;   // video vertical para móvil
+    desktop?: string;  // video horizontal para desktop
+  };
 }

@@ -172,7 +172,7 @@ export function RSVPForm({ slug }: { slug: string }) {
                 {guestsGoing.map((e, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-2 bg-[var(--inv-surface)]/50 rounded-lg px-3 py-2 border border-emerald-400/15"
+                    className="flex items-center gap-2 bg-[var(--inv-surface)]/40 backdrop-blur-md rounded-lg px-3 py-2 border border-emerald-400/15"
                   >
                     <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                     <span className="min-w-0 truncate text-sm">{e.name}</span>
@@ -200,7 +200,7 @@ export function RSVPForm({ slug }: { slug: string }) {
                 {guestsNotGoing.map((e, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-2 bg-[var(--inv-surface)]/30 rounded-lg px-3 py-2 border border-red-400/10 opacity-60"
+                    className="flex items-center gap-2 bg-[var(--inv-surface)]/30 backdrop-blur-md rounded-lg px-3 py-2 border border-red-400/10 opacity-60"
                   >
                     <XCircle className="w-4 h-4 text-red-400/60 flex-shrink-0" />
                     <span className="min-w-0 truncate text-sm">{e.name}</span>

@@ -103,7 +103,7 @@ export function SongVoting({ slug }: { slug: string }) {
           />
         </div>
         {results.length > 0 && (
-          <ul className="absolute z-10 left-0 right-0 bg-[var(--inv-surface)] border border-[var(--inv-text-muted)]/30 mt-1 max-h-64 overflow-y-auto text-left rounded-lg overflow-hidden">
+          <ul className="absolute z-10 left-0 right-0 bg-[var(--inv-surface)]/80 backdrop-blur-md border border-white/10 mt-1 max-h-64 overflow-y-auto text-left rounded-lg overflow-hidden">
             {results.map((t) => (
               <li key={t.id}>
                 <button
@@ -146,7 +146,7 @@ export function SongVoting({ slug }: { slug: string }) {
             {ranking.map((t) => (
               <div
                 key={t.id}
-                className="flex items-center gap-3 bg-[var(--inv-surface)]/50 rounded-lg px-3 py-2 border border-[var(--inv-accent)]/10"
+                className="flex items-center gap-3 bg-[var(--inv-surface)]/40 backdrop-blur-md rounded-lg px-3 py-2 border border-white/8"
               >
                 {t.cover ? (
                   <Image

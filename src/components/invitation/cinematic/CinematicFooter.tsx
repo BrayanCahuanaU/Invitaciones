@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SocialLink } from "@/content/types";
 import { Heart } from "lucide-react";
 
@@ -16,14 +17,28 @@ export function CinematicFooter({
   hostName,
   hostRelation,
   socialLinks,
+  background,
 }: {
   hostName: string;
   hostRelation?: string;
   socialLinks?: SocialLink[];
+  background?: string;
 }) {
   return (
-    <footer className="relative w-full border-t border-[#4A4A4A] bg-[#090909]">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#4E0B18]/10 pointer-events-none" />
+    <footer className="relative w-full border-t border-[#4A4A4A] bg-[#090909] overflow-hidden">
+
+      {background && (
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src={background}
+            alt=""
+            fill
+            className="object-contain object-bottom"
+            sizes="100vw"
+          />
+        </div>
+      )}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#090909]/60 via-transparent to-[#090909]/80 pointer-events-none" />
 
       <div className="relative max-w-md mx-auto px-6 py-12 md:max-w-2xl md:px-10 lg:max-w-4xl lg:px-16">
         <div className="flex items-center justify-center gap-2 mb-4">

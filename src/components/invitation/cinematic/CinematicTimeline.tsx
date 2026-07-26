@@ -35,7 +35,7 @@ export function CinematicTimeline({ items }: { items: TimelineItem[] }) {
               <div className="absolute left-4 sm:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#D8A718] border-2 border-[#090909] shadow-[0_0_10px_rgba(216,167,24,0.5)] z-10" />
 
               <div className={`ml-10 sm:ml-0 sm:w-1/2 ${isLeft ? "sm:pl-8" : "sm:pr-8"}`}>
-                <div className="cinematic-card rounded-xl border border-[#4A4A4A] bg-[#252525] p-4 sm:p-5 transition-all duration-300 hover:border-[#D8A718]/30">
+                <div className="cinematic-card rounded-xl p-4 sm:p-5 transition-all duration-300 hover:border-[#D8A718]/30">
                   <span
                     className="text-lg sm:text-xl font-bold text-[#D8A718]"
                     style={{ fontFamily: "var(--font-cinematic-display)" }}

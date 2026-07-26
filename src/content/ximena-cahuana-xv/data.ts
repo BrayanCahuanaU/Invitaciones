@@ -64,7 +64,7 @@ export const ximenaCahuanaXv: InvitationData = {
   },
 
   farewellMessage:
-    "Gracias por ser parte de este momento tan especial. Tu presencia hará esta noche inolvidable.",
+    "",
 
   host: {
     name: "Familia Cahuana",
@@ -85,6 +85,13 @@ export const ximenaCahuanaXv: InvitationData = {
     { time: "22:00", title: "Fiesta", description: "Pista de baile y música en vivo" },
     { time: "00:00", title: "Cierre", description: "Cierre de la celebración" },
   ],
+
+  backgroundVideo: {
+    mobile: "/invitaciones/ximena-cahuana-xv/background-vertical.mp4",
+    desktop: "/invitaciones/ximena-cahuana-xv/background-horizontal.mp4",
+  },
+
+  footerBackground: "/invitaciones/ximena-cahuana-xv/img/footer.svg",
 
   socialLinks: [
     { platform: "instagram", url: "https://instagram.com/ximena.cahuana" },

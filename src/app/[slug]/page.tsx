@@ -80,10 +80,35 @@ export default async function InvitationPage({
       )}
       {isCinematic && (
         <>
-          <div
-            className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url(/invitaciones/ximena-cahuana-xv/img/background.png)" }}
-          />
+          {data.backgroundVideo ? (
+            <>
+              {data.backgroundVideo.mobile && (
+                <video
+                  src={data.backgroundVideo.mobile}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="fixed inset-0 -z-10 min-w-full min-h-full object-cover md:hidden"
+                />
+              )}
+              {data.backgroundVideo.desktop && (
+                <video
+                  src={data.backgroundVideo.desktop}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="fixed inset-0 -z-10 min-w-full min-h-full object-cover hidden md:block"
+                />
+              )}
+            </>
+          ) : (
+            <div
+              className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: "url(/invitaciones/ximena-cahuana-xv/img/background.png)" }}
+            />
+          )}
           <div className="fixed inset-0 -z-[9] bg-[#090909]/70" />
         </>
       )}
@@ -108,6 +133,15 @@ export default async function InvitationPage({
                 eventDate={data.eventDate}
                 venueName={data.location.venueName}
               />
+              <div className="relative z-10 -mt-20 sm:-mt-24 lg:-mt-90 w-full pointer-events-none select-none">
+                <Image
+                  src="/invitaciones/ximena-cahuana-xv/img/flores-div.png"
+                  alt=""
+                  width={1200}
+                  height={484}
+                  className="w-full h-auto object-contain drop-shadow-lg brightness-75"
+                />
+              </div>
               <RevealSection>
                 <Quote text={data.quote} />
               </RevealSection>
@@ -160,18 +194,31 @@ export default async function InvitationPage({
               <RevealSection>
                 <SongVoting slug={data.slug} />
               </RevealSection>
-              <RevealSection>
-                <Farewell
-                  message={data.farewellMessage}
-                  hostName={data.host.name}
-                  hostRelation={data.host.relation}
-                  hostPhone={data.host.phone}
-                />
-              </RevealSection>
+              <div className="relative z-30 w-full pointer-events-none select-none -mt-8 md:-mt-14 -mb-4 md:-mb-8">
+                <div className="block md:hidden">
+                  <Image
+                    src="/invitaciones/ximena-cahuana-xv/img/divisor.svg"
+                    alt=""
+                    width={1200}
+                    height={384}
+                    className="w-full h-auto object-cover max-h-28"
+                  />
+                </div>
+                <div className="hidden md:block">
+                  <Image
+                    src="/invitaciones/ximena-cahuana-xv/img/divisor.svg"
+                    alt=""
+                    width={1200}
+                    height={384}
+                    className="w-full h-auto object-contain max-h-40"
+                  />
+                </div>
+              </div>
               <CinematicFooter
                 hostName={data.host.name}
                 hostRelation={data.host.relation}
                 socialLinks={data.socialLinks}
+                background={data.footerBackground}
               />
             </>
           ) : (
@@ -233,14 +280,16 @@ export default async function InvitationPage({
               <RevealSection>
                 <SongVoting slug={data.slug} />
               </RevealSection>
-              <RevealSection>
-                <Farewell
-                  message={data.farewellMessage}
-                  hostName={data.host.name}
-                  hostRelation={data.host.relation}
-                  hostPhone={data.host.phone}
-                />
-              </RevealSection>
+              {data.farewellMessage && (
+                <RevealSection>
+                  <Farewell
+                    message={data.farewellMessage}
+                    hostName={data.host.name}
+                    hostRelation={data.host.relation}
+                    hostPhone={data.host.phone}
+                  />
+                </RevealSection>
+              )}
             </>
           )}
         </div>
