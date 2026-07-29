@@ -21,7 +21,7 @@ export function GuestArtists({ artists }: { artists: GuestArtist[] }) {
         {artists.map((artist) => (
           <div
             key={artist.name}
-            className="cinematic-card group relative overflow-hidden rounded-2xl p-4 transition-all duration-500 hover:border-[#A81835]/50 hover:shadow-[0_0_30px_rgba(168,24,53,0.15)]"
+            className="cinematic-card group relative overflow-hidden rounded-2xl p-4 transition-all duration-500 hover:border-[#D8A718]/50 hover:shadow-[0_0_30px_rgba(216,167,24,0.15)]"
           >
             {artist.photo && (
               <div className="relative w-full aspect-square mb-4 overflow-hidden rounded-xl">

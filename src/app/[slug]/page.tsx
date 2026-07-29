@@ -89,7 +89,7 @@ export default async function InvitationPage({
                   loop
                   muted
                   playsInline
-                  className="fixed inset-0 -z-10 min-w-full min-h-full object-cover md:hidden"
+                  className="fixed inset-0 -z-10 w-full h-full object-cover md:hidden"
                 />
               )}
               {data.backgroundVideo.desktop && (
@@ -99,7 +99,7 @@ export default async function InvitationPage({
                   loop
                   muted
                   playsInline
-                  className="fixed inset-0 -z-10 min-w-full min-h-full object-cover hidden md:block"
+                  className="fixed inset-0 -z-10 w-full h-full object-cover hidden md:block"
                 />
               )}
             </>
@@ -109,7 +109,7 @@ export default async function InvitationPage({
               style={{ backgroundImage: "url(/invitaciones/ximena-cahuana-xv/img/background.png)" }}
             />
           )}
-          <div className="fixed inset-0 -z-[9] bg-[#090909]/70" />
+          <div className="fixed inset-0 -z-[9] bg-[#090909]/90" />
         </>
       )}
       <Envelope
@@ -130,8 +130,7 @@ export default async function InvitationPage({
                 photo={data.hero.photo}
                 protagonists={data.hero.protagonists}
                 motivo={data.hero.motivo}
-                eventDate={data.eventDate}
-                venueName={data.location.venueName}
+                nameSvg="/invitaciones/ximena-cahuana-xv/img/ximena.svg"
               />
               <div className="relative z-10 -mt-20 sm:-mt-24 lg:-mt-90 w-full pointer-events-none select-none">
                 <Image
@@ -159,7 +158,10 @@ export default async function InvitationPage({
                 </RevealSection>
               )}
               <RevealSection>
-                <Countdown eventDate={data.eventDate} />
+                <Countdown
+                  eventDate={data.eventDate}
+                  backgroundImage="/invitaciones/ximena-cahuana-xv/img/fondo-temporizador.png"
+                />
               </RevealSection>
               {data.timeline && data.timeline.length > 0 && (
                 <RevealSection>
@@ -171,6 +173,9 @@ export default async function InvitationPage({
                   dressCode={data.guidelines.dressCode}
                   colorsToAvoid={data.guidelines.colorsToAvoid}
                   notes={data.guidelines.notes}
+                  backgroundImage="/invitaciones/ximena-cahuana-xv/img/fondo-indicaciones.svg"
+                  backgroundImageMobile="/invitaciones/ximena-cahuana-xv/img/fondo-indicaciones.svg"
+                  hideTitle
                 />
               </RevealSection>
               <RevealSection>
@@ -194,7 +199,7 @@ export default async function InvitationPage({
               <RevealSection>
                 <SongVoting slug={data.slug} />
               </RevealSection>
-              <div className="relative z-30 w-full pointer-events-none select-none -mt-8 md:-mt-14 -mb-4 md:-mb-8">
+              <div className="relative z-30 w-full pointer-events-none select-none mt-8 md:mt-14 -mb-13 md:-mb-16">
                 <div className="block md:hidden">
                   <Image
                     src="/invitaciones/ximena-cahuana-xv/img/divisor.svg"
@@ -219,6 +224,7 @@ export default async function InvitationPage({
                 hostRelation={data.host.relation}
                 socialLinks={data.socialLinks}
                 background={data.footerBackground}
+                backgroundMobile={data.footerBackgroundMobile}
               />
             </>
           ) : (

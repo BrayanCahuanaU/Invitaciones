@@ -19,7 +19,7 @@ export function CinematicTimeline({ items }: { items: TimelineItem[] }) {
       </h2>
 
       <div className="relative">
-        <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#D8A718] via-[#A81835] to-[#4E0B18]" />
+        <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#F1C232] via-[#D8A718] to-[#B8860B]" />
 
         {items.map((item, i) => {
           const isLeft = i % 2 === 0;

@@ -14,6 +14,9 @@ export function Guidelines({
   dressCode,
   colorsToAvoid,
   notes,
+  backgroundImage,
+  backgroundImageMobile,
+  hideTitle,
 }: {
   dressCode?: {
     level: string;
@@ -25,14 +28,19 @@ export function Guidelines({
     hex: string;
   }[];
   notes?: string[];
+  backgroundImage?: string;
+  backgroundImageMobile?: string;
+  hideTitle?: boolean;
 }) {
   if (!dressCode && !colorsToAvoid?.length && !notes?.length) return null;
 
   return (
-    <Section backgroundImage="/invitaciones/demo-quince/img/papel-fondo.png" backgroundImageMobile="/invitaciones/demo-quince/img/papel-fondo-vertical.png" fullWidth>
-      <div className="flex items-center justify-center gap-2 mb-8">
-        <p className="font-display text-gray-800 text-3xl md:text-5xl">Indicaciones</p>
-      </div>
+    <Section backgroundImage={backgroundImage ?? "/invitaciones/demo-quince/img/papel-fondo.png"} backgroundImageMobile={backgroundImageMobile ?? "/invitaciones/demo-quince/img/papel-fondo-vertical.png"} fullWidth>
+      {!hideTitle && (
+        <div className="flex items-center justify-center gap-2 mb-8">
+          <p className="font-display text-gray-800 text-3xl md:text-5xl">Indicaciones</p>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-6">
         {/* Columna 1 — Vestimenta */}
@@ -43,8 +51,8 @@ export function Guidelines({
             </div>
 
             {dressCode.maleSuggestions && dressCode.maleSuggestions.length > 0 && dressCode.femaleSuggestions && dressCode.femaleSuggestions.length > 0 ? (
-              <div className="flex flex-col md:flex-row md:gap-8 mt-6">
-                <div className="flex-1">
+              <div className="flex flex-row gap-4 md:gap-8 mt-6">
+                  <div className="flex-1">
                   <div className="flex flex-col items-center mb-3">
                       <Image src="/invitaciones/demo-quince/img/men.png" alt="Varón" width={500} height={500} className="object-contain w-40 h-40 md:w-52 md:h-52" />
                   </div>
@@ -126,11 +134,11 @@ export function Guidelines({
             <div className="flex flex-col items-center gap-2 mb-3">
               <p className="font-display text-gray-800 text-3xl">Consideraciones</p>
             </div>
-            <div className={`grid grid-cols-1 gap-8 ${notes.length % 2 !== 0 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
+            <div className={`grid grid-cols-2 gap-4 md:gap-8 ${notes.length % 2 !== 0 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
               {notes.map((note, i) => (
                 <div key={i} className="flex flex-col items-center gap-2">
                   <Image src={getNoteIcon(note)} alt="" width={500} height={500} className="object-cover aspect-square w-40 h-40 md:w-52 md:h-52" />
-                  <span className="text-sm text-gray-700 px-15 md:px-0">{note}</span>
+                  <span className="text-sm text-gray-700 px-2 md:px-0">{note}</span>
                 </div>
               ))}
             </div>

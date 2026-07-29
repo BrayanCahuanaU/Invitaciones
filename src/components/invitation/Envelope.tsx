@@ -88,7 +88,7 @@ export function Envelope({
                   key="closed"
                   onClick={handleOpen}
                   aria-label={`Abrir invitación de ${protagonists}`}
-                  className="relative min-h-dvh w-full block focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--inv-accent)]"
+                  className="relative min-h-dvh w-full block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D8A718]"
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.6 }}
                 >
@@ -105,7 +105,7 @@ export function Envelope({
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.8 }}
                   >
-                    <span className="inline-flex items-center gap-2 rounded-full border border-[var(--inv-accent)] px-6 py-2 text-sm tracking-widest uppercase bg-black/30 backdrop-blur-sm">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-[#D8A718] px-6 py-2 text-sm tracking-widest uppercase bg-black/30 backdrop-blur-sm">
                       <Mail className="w-4 h-4" />
                       Toca para abrir
                     </span>

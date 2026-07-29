@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Birthstone, Cormorant_Garamond, Bebas_Neue, Inter } from "next/font/google";
+import { Birthstone, Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 
 const display = Birthstone({
@@ -15,10 +15,11 @@ const body = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 
-const cinematicDisplay = Bebas_Neue({
+const cinematicDisplay = Cormorant_Garamond({
   variable: "--font-cinematic-display",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const cinematicBody = Inter({

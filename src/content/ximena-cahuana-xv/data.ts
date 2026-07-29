@@ -50,12 +50,18 @@ export const ximenaCahuanaXv: InvitationData = {
     message: "Tu presencia es el mejor regalo. Si deseas obsequiarnos, aquí tienes opciones:",
     bankAccounts: [
       {
-        bank: "BCP",
-        logo: "/invitaciones/ximena-cahuana-xv/logos/bcp.webp",
-        owner: "Cahuana",
-        accountNumber: "123-456-789",
-        cci: "002-123-45678901-12-34",
+        bank: "Yape",
+        logo: "/invitaciones/ximena-cahuana-xv/logos/yape.png",
+        owner: "Ximena",
+        accountNumber: "999 888 777",
       },
+    ],
+    suggestions: [
+      "Ropa",
+      "Perfumes",
+      "Zapatos",
+      "Accesorios",
+      "Maquillaje",
     ],
   },
 
@@ -92,6 +98,7 @@ export const ximenaCahuanaXv: InvitationData = {
   },
 
   footerBackground: "/invitaciones/ximena-cahuana-xv/img/footer.svg",
+  footerBackgroundMobile: "/invitaciones/ximena-cahuana-xv/img/footer-movil.svg",
 
   socialLinks: [
     { platform: "instagram", url: "https://instagram.com/ximena.cahuana" },

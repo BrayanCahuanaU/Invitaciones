@@ -13,7 +13,7 @@ function getRemaining(target: number) {
   return { days, hours, minutes, seconds };
 }
 
-export function Countdown({ eventDate }: { eventDate: string }) {
+export function Countdown({ eventDate, backgroundImage }: { eventDate: string; backgroundImage?: string }) {
   const target = new Date(eventDate).getTime();
   const [remaining, setRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [mounted, setMounted] = useState(false);
@@ -33,9 +33,9 @@ export function Countdown({ eventDate }: { eventDate: string }) {
   ];
 
   return (
-    <Section backgroundImage="/invitaciones/demo-quince/img/papel-fondo.png" fullWidth >
+    <Section backgroundImage={backgroundImage ?? "/invitaciones/demo-quince/img/papel-fondo.png"} fullWidth >
       <div className="flex flex-col items-center gap-2 mb-5">
-        <Timer className="w-6 h-6 text-[var(--inv-accent)]" />
+        <Timer className="w-6 h-6 text-[#D8A718]" />
         <p className="uppercase tracking-widest text-xs text-gray-800 md:text-xl">
           Falta muy poco
         </p>
@@ -43,15 +43,7 @@ export function Countdown({ eventDate }: { eventDate: string }) {
       <div className="flex justify-center gap-6 md:gap-15">
         {units.map((u) => (
           <div key={u.label} className="w-16 md:w-24">
-            <div
-              className="font-display text-4xl md:text-7xl tabular-nums font-bold"
-              style={{
-                background: "linear-gradient(180deg, #c9a0b0 0%, #8B1A3A 40%, #5a1025 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 1px 2px rgba(139,26,58,0.4))",
-              }}
-            >
+            <div className="font-display text-4xl md:text-7xl tabular-nums font-bold text-[#D8A718]" style={{ textShadow: "0 0 10px rgba(216,167,24,0.4)" }}>
               {u.value}
             </div>
             <div className="text-s uppercase text-gray-800 mt-1">

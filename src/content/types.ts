@@ -106,7 +106,8 @@ export interface InvitationData {
   guestArtists?: GuestArtist[];
   timeline?: TimelineItem[];
   socialLinks?: SocialLink[];
-  footerBackground?: string; // imagen de fondo para el footer
+  footerBackground?: string; // imagen de fondo para el footer (desktop)
+  footerBackgroundMobile?: string; // imagen de fondo para el footer (mobile)
 
   // ── Background ──
   backgroundVideo?: {
