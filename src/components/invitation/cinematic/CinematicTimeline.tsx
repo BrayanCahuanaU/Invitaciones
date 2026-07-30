@@ -4,9 +4,8 @@ import { TimelineItem } from "@/content/types";
 export function CinematicTimeline({ items }: { items: TimelineItem[] }) {
   return (
     <div className="w-full max-w-md mx-auto px-6 py-14 md:max-w-2xl md:px-10 md:py-16 lg:max-w-4xl lg:px-16 lg:py-20">
-      <div className="flex items-center justify-center gap-3 mb-2">
+      <div className="flex items-center justify-center mb-2">
         <Clock className="w-5 h-5 text-[#D8A718]" />
-        <p className="uppercase tracking-[0.3em] text-xs text-[#A8A8A8]">Cronograma</p>
       </div>
       <h2
         className="text-3xl sm:text-4xl md:text-5xl font-bold mb-10 sm:mb-14 text-center"

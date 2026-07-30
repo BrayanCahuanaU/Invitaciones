@@ -130,15 +130,22 @@ export default async function InvitationPage({
                 photo={data.hero.photo}
                 protagonists={data.hero.protagonists}
                 motivo={data.hero.motivo}
-                nameSvg="/invitaciones/ximena-cahuana-xv/img/ximena.svg"
+                nameSvg="/invitaciones/ximena-cahuana-xv/img/ximena.png"
               />
-              <div className="relative z-10 -mt-20 sm:-mt-24 lg:-mt-90 w-full pointer-events-none select-none">
+              <div className="relative z-10 -mt-39 sm:-mt-24 lg:-mt-90 w-full pointer-events-none select-none">
                 <Image
-                  src="/invitaciones/ximena-cahuana-xv/img/flores-div.png"
+                  src="/invitaciones/ximena-cahuana-xv/img/flores-div-movil.png"
                   alt=""
                   width={1200}
                   height={484}
-                  className="w-full h-auto object-contain drop-shadow-lg brightness-75"
+                  className="w-full h-auto object-contain drop-shadow-lg brightness-90 md:hidden"
+                />
+                <Image
+                  src="/invitaciones/ximena-cahuana-xv/img/flores-div-desktop.png"
+                  alt=""
+                  width={1200}
+                  height={484}
+                  className="w-full h-auto object-contain drop-shadow-lg brightness-75 hidden md:block"
                 />
               </div>
               <RevealSection>
@@ -173,8 +180,8 @@ export default async function InvitationPage({
                   dressCode={data.guidelines.dressCode}
                   colorsToAvoid={data.guidelines.colorsToAvoid}
                   notes={data.guidelines.notes}
-                  backgroundImage="/invitaciones/ximena-cahuana-xv/img/fondo-indicaciones.svg"
-                  backgroundImageMobile="/invitaciones/ximena-cahuana-xv/img/fondo-indicaciones.svg"
+                  backgroundImage="/invitaciones/ximena-cahuana-xv/img/fondo-indicaciones.png"
+                  backgroundImageMobile="/invitaciones/ximena-cahuana-xv/img/fondo-indicaciones.png"
                   hideTitle
                 />
               </RevealSection>
@@ -202,7 +209,7 @@ export default async function InvitationPage({
               <div className="relative z-30 w-full pointer-events-none select-none mt-8 md:mt-14 -mb-13 md:-mb-16">
                 <div className="block md:hidden">
                   <Image
-                    src="/invitaciones/ximena-cahuana-xv/img/divisor.svg"
+                    src="/invitaciones/ximena-cahuana-xv/img/divisor-footer.png"
                     alt=""
                     width={1200}
                     height={384}
@@ -211,7 +218,7 @@ export default async function InvitationPage({
                 </div>
                 <div className="hidden md:block">
                   <Image
-                    src="/invitaciones/ximena-cahuana-xv/img/divisor.svg"
+                    src="/invitaciones/ximena-cahuana-xv/img/divisor-footer.png"
                     alt=""
                     width={1200}
                     height={384}

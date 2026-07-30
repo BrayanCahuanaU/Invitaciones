@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { GuestArtist } from "@/content/types";
+import { ExternalLink } from "lucide-react";
 
 export function GuestArtists({ artists }: { artists: GuestArtist[] }) {
   return (
@@ -41,7 +42,20 @@ export function GuestArtists({ artists }: { artists: GuestArtist[] }) {
               {artist.name}
             </h3>
             {artist.role && (
-              <p className="text-xs uppercase tracking-widest text-[#D8A718]">{artist.role}</p>
+              <div className="flex items-center gap-2">
+                <p className="text-xs uppercase tracking-widest text-[#D8A718]">{artist.role}</p>
+                {artist.socialUrl && (
+                  <a
+                    href={artist.socialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-6 h-6 rounded-full bg-[#D8A718]/20 text-[#D8A718] hover:bg-[#D8A718] hover:text-[#090909] transition-all duration-300"
+                    aria-label={`Instagram de ${artist.name}`}
+                  >
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                )}
+              </div>
             )}
           </div>
         ))}

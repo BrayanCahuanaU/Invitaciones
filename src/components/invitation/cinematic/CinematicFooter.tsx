@@ -2,17 +2,6 @@ import Image from "next/image";
 import { SocialLink } from "@/content/types";
 import { Heart } from "lucide-react";
 
-function getSocialIcon(platform: string) {
-  const icons: Record<string, string> = {
-    instagram: "IG",
-    tiktok: "TK",
-    facebook: "FB",
-    youtube: "YT",
-    twitter: "X",
-  };
-  return icons[platform.toLowerCase()] ?? platform.slice(0, 2).toUpperCase();
-}
-
 export function CinematicFooter({
   hostName,
   hostRelation,
@@ -78,21 +67,18 @@ export function CinematicFooter({
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-[#4A4A4A] bg-[#171717] flex items-center justify-center text-xs font-bold text-[#D8A718] hover:border-[#D8A718] hover:bg-[#D8A718]/10 transition-all duration-300"
+                className="w-10 h-10 rounded-full border border-[#4A4A4A] bg-[#171717] flex items-center justify-center hover:border-[#D8A718] hover:bg-[#D8A718]/10 transition-all duration-300"
               >
-                {getSocialIcon(link.platform)}
+                {link.logo ? (
+                  <Image src={link.logo} alt={link.platform} width={20} height={20} className="object-contain" />
+                ) : (
+                  <span className="text-xs font-bold text-[#D8A718]">{link.platform.slice(0, 2).toUpperCase()}</span>
+                )}
               </a>
             ))}
           </div>
         )}
 
-        <div className="text-center">
-          <p className="text-[10px] uppercase tracking-widest text-[#4A4A4A]">
-            Hecho con{" "}
-            <span className="text-[#D8A718]">&#9829;</span>{" "}
-            para celebrar a Ximena
-          </p>
-        </div>
       </div>
     </footer>
   );

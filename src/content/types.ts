@@ -13,6 +13,7 @@ export interface GuestArtist {
   name: string;
   role?: string;
   photo?: string;
+  socialUrl?: string;
 }
 
 export interface TimelineItem {
@@ -24,6 +25,7 @@ export interface TimelineItem {
 export interface SocialLink {
   platform: string;
   url: string;
+  logo?: string;
 }
 
 export interface InvitationData {
