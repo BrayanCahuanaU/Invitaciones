@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { Music, Search, Plus } from "lucide-react";
 import { Section } from "./Section";
@@ -22,28 +22,35 @@ export function SongVoting({ slug }: { slug: string }) {
   const [ranking, setRanking] = useState<RankedTrack[]>([]);
   const [addedIds, setAddedIds] = useState<Set<string>>(new Set());
 
-  async function loadRanking() {
+  const loadRanking = useCallback(async () => {
     try {
       const res = await fetch(`/api/songs?slug=${slug}`);
       if (!res.ok) return;
       const text = await res.text();
       if (!text) return;
       const data = JSON.parse(text);
-      setRanking(data.songs ?? []);
+      const songs: RankedTrack[] = data.songs ?? [];
+      setRanking(songs);
+      setAddedIds(new Set(songs.map((s: RankedTrack) => s.id)));
     } catch {
       // silencioso
     }
-  }
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    loadRanking();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
   useEffect(() => {
+    loadRanking();
+  }, [loadRanking]);
+
+  useEffect(() => {
+    function onFocus() {
+      loadRanking();
+    }
+    window.addEventListener("focus", onFocus);
+    return () => window.removeEventListener("focus", onFocus);
+  }, [loadRanking]);
+
+  useEffect(() => {
     if (query.trim().length < 2) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setResults([]);
       return;
     }
@@ -75,7 +82,7 @@ export function SongVoting({ slug }: { slug: string }) {
     setAddedIds((prev) => new Set(prev).add(track.id));
     setQuery("");
     setResults([]);
-    loadRanking();
+    await loadRanking();
   }
 
   return (
@@ -103,7 +110,7 @@ export function SongVoting({ slug }: { slug: string }) {
           />
         </div>
         {results.length > 0 && (
-          <ul className="absolute z-10 left-0 right-0 bg-[var(--inv-surface)]/80 backdrop-blur-md border border-white/10 mt-1 max-h-64 overflow-y-auto text-left rounded-lg overflow-hidden">
+          <ul className="absolute z-50 left-0 right-0 bg-[var(--inv-surface)]/80 backdrop-blur-md border border-white/10 mt-1 max-h-64 overflow-y-auto text-left rounded-lg overflow-hidden">
             {results.map((t) => (
               <li key={t.id}>
                 <button
