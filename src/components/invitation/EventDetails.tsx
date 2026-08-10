@@ -17,16 +17,20 @@ export function EventDetails({
   const date = new Date(eventDate);
   const dayName = new Intl.DateTimeFormat("es-PE", {
     weekday: "long",
+    timeZone: "America/Lima",
   }).format(date);
   const dayNumber = new Intl.DateTimeFormat("es-PE", {
     day: "numeric",
+    timeZone: "America/Lima",
   }).format(date);
   const monthName = new Intl.DateTimeFormat("es-PE", {
     month: "long",
+    timeZone: "America/Lima",
   }).format(date);
   const formattedTime = new Intl.DateTimeFormat("es-PE", {
     hour: "numeric",
     minute: "2-digit",
+    timeZone: "America/Lima",
   }).format(date);
 
   const mapQuery = encodeURIComponent(`${venueName} ${address} ${district ?? ""}`);

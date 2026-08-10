@@ -60,6 +60,7 @@ export function Envelope({
     openVideo;
 
   function handleOpen() {
+    window.dispatchEvent(new CustomEvent("invitation:opened"));
     if (!currentVideo) {
       setStage("open");
       return;

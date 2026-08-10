@@ -116,4 +116,11 @@ export interface InvitationData {
     mobile?: string;   // video vertical para móvil
     desktop?: string;  // video horizontal para desktop
   };
+
+  // ── Música de fondo ──
+  backgroundMusic?: {
+    src: string;   // ruta del mp3 en public
+    title?: string;
+    artist?: string;
+  };
 }

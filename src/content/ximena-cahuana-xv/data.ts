@@ -96,6 +96,12 @@ export const ximenaCahuanaXv: InvitationData = {
     desktop: "/invitaciones/ximena-cahuana-xv/background-horizontal.mp4",
   },
 
+  backgroundMusic: {
+    src: "/invitaciones/ximena-cahuana-xv/Cochinear.mp3",
+    title: "Cochinear",
+    artist: "Dj Rafy Mercenario",
+  },
+
   footerBackground: "/invitaciones/ximena-cahuana-xv/img/footer-desktop.png",
   footerBackgroundMobile: "/invitaciones/ximena-cahuana-xv/img/footer-movil.png",
 

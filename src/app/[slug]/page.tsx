@@ -14,6 +14,7 @@ import { WhatsappGroup } from "@/components/invitation/WhatsappGroup";
 import { Guidelines } from "@/components/invitation/Guidelines";
 import { Gifts } from "@/components/invitation/Gifts";
 import { SongVoting } from "@/components/invitation/SongVoting";
+import { MusicPlayer } from "@/components/invitation/MusicPlayer";
 import { Farewell } from "@/components/invitation/Farewell";
 import { RevealSection } from "@/components/invitation/RevealSection";
 import { CinematicHero } from "@/components/invitation/cinematic/CinematicHero";
@@ -64,6 +65,9 @@ export default async function InvitationPage({
           "--inv-text-muted": theme.colors.textMuted,
           "--inv-accent": theme.colors.accent,
           "--inv-accent-muted": theme.colors.accentMuted,
+          ...(isCinematic
+            ? { "--font-display": "var(--font-cinematic-display)" }
+            : {}),
         } as React.CSSProperties
       }
       className={`min-h-screen text-[var(--inv-text)] ${isCinematic ? "cinematic-grain" : ""}`}
@@ -171,6 +175,15 @@ export default async function InvitationPage({
                   mapsUrl={data.location.mapsUrl}
                 />
               </RevealSection>
+              {data.backgroundMusic && (
+                <RevealSection>
+                  <MusicPlayer
+                    src={data.backgroundMusic.src}
+                    title={data.backgroundMusic.title}
+                    artist={data.backgroundMusic.artist}
+                  />
+                </RevealSection>
+              )}
               {data.guestArtists && data.guestArtists.length > 0 && (
                 <RevealSection>
                   <GuestArtists artists={data.guestArtists} />
