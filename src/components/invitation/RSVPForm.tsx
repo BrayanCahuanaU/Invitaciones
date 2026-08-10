@@ -62,7 +62,7 @@ export function RSVPForm({ slug }: { slug: string }) {
   if (status === "done") {
     return (
       <Section id="confirmar">
-        <CheckCircle className="w-10 h-10 text-[#D8A718] mx-auto mb-4" />
+        <CheckCircle className="w-10 h-10 text-[#C0C0C0] mx-auto mb-4" />
         <p className="font-display text-2xl md:text-3xl">
           ¡Gracias por confirmar!
         </p>
@@ -76,7 +76,7 @@ export function RSVPForm({ slug }: { slug: string }) {
   return (
     <Section id="confirmar">
       <div className="flex items-center justify-center gap-2 mb-6">
-        <CheckCircle className="w-5 h-5 text-[#D8A718]" />
+        <CheckCircle className="w-5 h-5 text-[#C0C0C0]" />
         <p className="font-display text-3xl md:text-4xl">Confirma tu asistencia</p>
       </div>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left max-w-sm mx-auto">
@@ -86,7 +86,7 @@ export function RSVPForm({ slug }: { slug: string }) {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="bg-transparent border-b border-[var(--inv-text-muted)] py-2 outline-none focus:border-[#D8A718] transition-colors"
+          className="bg-transparent border-b border-[var(--inv-text-muted)] py-2 outline-none focus:border-[#C0C0C0] transition-colors"
         />
 
         <div className="flex gap-3">
@@ -95,8 +95,8 @@ export function RSVPForm({ slug }: { slug: string }) {
             onClick={() => setAttending(true)}
             className={`flex-1 rounded-full border px-4 py-2 text-sm transition-all ${
               attending
-                ? "border-[#D8A718] bg-[#D8A718] text-[#090909]"
-                : "border-[var(--inv-text-muted)] hover:border-[#D8A718]"
+                ? "border-[#C0C0C0] bg-[#C0C0C0] text-[#090909]"
+                : "border-[var(--inv-text-muted)] hover:border-[#C0C0C0]"
             }`}
           >
             Sí asistiré
@@ -106,8 +106,8 @@ export function RSVPForm({ slug }: { slug: string }) {
             onClick={() => setAttending(false)}
             className={`flex-1 rounded-full border px-4 py-2 text-sm transition-all ${
               !attending
-                ? "border-[#D8A718] bg-[#D8A718] text-[#090909]"
-                : "border-[var(--inv-text-muted)] hover:border-[#D8A718]"
+                ? "border-[#C0C0C0] bg-[#C0C0C0] text-[#090909]"
+                : "border-[var(--inv-text-muted)] hover:border-[#C0C0C0]"
             }`}
           >
             No podré ir
@@ -117,7 +117,7 @@ export function RSVPForm({ slug }: { slug: string }) {
         {attending && (
           <label className="flex items-center justify-between text-sm">
             <span className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-[#D8A718]" />
+              <Users className="w-4 h-4 text-[#C0C0C0]" />
               Acompañantes
             </span>
             <input
@@ -136,7 +136,7 @@ export function RSVPForm({ slug }: { slug: string }) {
             type="checkbox"
             checked={isPublic}
             onChange={(e) => setIsPublic(e.target.checked)}
-            className="accent-[#D8A718]"
+            className="accent-[#C0C0C0]"
           />
           Mostrar mi confirmación en la lista pública
         </label>
@@ -144,7 +144,7 @@ export function RSVPForm({ slug }: { slug: string }) {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="mt-2 rounded-full bg-[#D8A718] text-[#090909] px-6 py-3 font-medium disabled:opacity-60 hover:opacity-90 transition-opacity"
+          className="mt-2 rounded-full bg-[#C0C0C0] text-[#090909] px-6 py-3 font-medium disabled:opacity-60 hover:opacity-90 transition-opacity"
         >
           {status === "sending" ? "Enviando..." : "Confirmar asistencia"}
         </button>
@@ -177,7 +177,7 @@ export function RSVPForm({ slug }: { slug: string }) {
                     <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                     <span className="min-w-0 truncate text-sm">{e.name}</span>
                     {e.guests > 0 && (
-                      <span className="text-xs text-[#D8A718] flex-shrink-0">
+                      <span className="text-xs text-[#C0C0C0] flex-shrink-0">
                         +{e.guests}
                       </span>
                     )}

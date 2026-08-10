@@ -46,7 +46,7 @@ export function EventDetails({
         {/* Columna 1 — Info */}
         <div className="bg-[var(--inv-surface)]/40 backdrop-blur-md rounded-xl p-6 border border-white/8 text-center md:text-left">
           <div className="flex flex-col items-center gap-1 mb-4">
-            <MapPin className="w-6 h-6 text-[#D8A718]" />
+            <MapPin className="w-6 h-6 text-[#C0C0C0]" />
             <p className="text-2xl md:text-3xl uppercase" style={{ fontFamily: "var(--font-cinematic-display)" }}>{venueName}</p>
           </div>
           <p className="text-[var(--inv-text-muted)] mb-1">{address}</p>
@@ -57,7 +57,7 @@ export function EventDetails({
             href={mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-2 rounded-full border border-[#D8A718] px-6 py-2 text-sm text-[#D8A718] hover:bg-[#D8A718]/10 transition-colors mx-auto md:mx-0"
+            className="inline-flex items-center gap-2 mt-2 rounded-full border border-[#C0C0C0] px-6 py-2 text-sm text-[#C0C0C0] hover:bg-[#C0C0C0]/10 transition-colors mx-auto md:mx-0"
           >
             <MapPin className="w-4 h-4" />
             Ver ubicación en Maps

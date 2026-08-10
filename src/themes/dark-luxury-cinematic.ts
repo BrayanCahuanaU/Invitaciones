@@ -20,8 +20,8 @@ export const darkLuxuryCinematic: Theme = {
     wineRed: "#7B0F24",
     intenseRed: "#A81835",
     burgundy: "#4E0B18",
-    gold: "#D8A718",
-    brightGold: "#F1C232",
+    gold: "#C0C0C0",
+    brightGold: "#E8E8E8",
     border: "#4A4A4A",
   },
 };

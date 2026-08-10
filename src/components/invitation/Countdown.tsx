@@ -35,7 +35,7 @@ export function Countdown({ eventDate, backgroundImage }: { eventDate: string; b
   return (
     <Section backgroundImage={backgroundImage ?? "/invitaciones/demo-quince/img/papel-fondo.png"} fullWidth >
       <div className="flex flex-col items-center gap-2 mb-5">
-        <Timer className="w-6 h-6 text-[#D8A718]" />
+        <Timer className="w-6 h-6 text-[#C0C0C0]" />
         <p className="uppercase tracking-widest text-xs text-gray-800 md:text-xl">
           Falta muy poco
         </p>
@@ -43,7 +43,7 @@ export function Countdown({ eventDate, backgroundImage }: { eventDate: string; b
       <div className="flex justify-center gap-6 md:gap-15">
         {units.map((u) => (
           <div key={u.label} className="w-16 md:w-24">
-            <div className="font-display text-4xl md:text-7xl tabular-nums font-bold text-[#D8A718]" style={{ textShadow: "0 0 10px rgba(216,167,24,0.4)" }}>
+            <div className="font-display text-4xl md:text-7xl tabular-nums font-bold text-[#C0C0C0]" style={{ textShadow: "0 0 10px rgba(192,192,192,0.4)" }}>
               {u.value}
             </div>
             <div className="text-s uppercase text-gray-800 mt-1">

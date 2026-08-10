@@ -13,7 +13,7 @@ export const ximenaCahuanaXv: InvitationData = {
 
   envelope: {
     closedImage: "/invitaciones/ximena-cahuana-xv/sobre-cerrado.jpeg",
-    openVideo: "/invitaciones/ximena-cahuana-xv/sobre-abriendo.mp4",
+    openVideo: "",
   },
 
   hero: {
@@ -40,8 +40,8 @@ export const ximenaCahuanaXv: InvitationData = {
       maleSuggestions: ["Traje oscuro", "Camisa blanca", "Zapatos formales"],
     },
     colorsToAvoid: [
-      { name: "Blanco", hex: "#FFFFFF" },
-      { name: "Rojo", hex: "#FF0000" },
+      { name: "Plateado", hex: "#C0C0C0" },
+      { name: "Azul", hex: "#0000FF" },
     ],
     notes: ["La entrada será a las 7:00 PM", "Estacionamiento disponible"],
   },

@@ -44,7 +44,7 @@ export function CinematicFooter({
 
       <div className="relative max-w-md mx-auto px-6 py-12 md:max-w-2xl md:px-10 lg:max-w-4xl lg:px-16">
         <div className="flex items-center justify-center gap-2 mb-4">
-          <Heart className="w-4 h-4 text-[#D8A718]" />
+          <Heart className="w-4 h-4 text-[#C0C0C0]" />
           <p
             className="text-lg sm:text-xl font-bold text-[#F2F2F2]"
             style={{ fontFamily: "var(--font-cinematic-display)" }}
@@ -67,12 +67,12 @@ export function CinematicFooter({
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-[#4A4A4A] bg-[#171717] flex items-center justify-center hover:border-[#D8A718] hover:bg-[#D8A718]/10 transition-all duration-300"
+                className="w-10 h-10 rounded-full border border-[#4A4A4A] bg-[#171717] flex items-center justify-center hover:border-[#C0C0C0] hover:bg-[#C0C0C0]/10 transition-all duration-300"
               >
                 {link.logo ? (
                   <Image src={link.logo} alt={link.platform} width={20} height={20} className="object-contain" />
                 ) : (
-                  <span className="text-xs font-bold text-[#D8A718]">{link.platform.slice(0, 2).toUpperCase()}</span>
+                  <span className="text-xs font-bold text-[#C0C0C0]">{link.platform.slice(0, 2).toUpperCase()}</span>
                 )}
               </a>
             ))}

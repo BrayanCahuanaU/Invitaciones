@@ -88,7 +88,7 @@ export function SongVoting({ slug }: { slug: string }) {
   return (
     <Section id="playlist" className="mb-20 md:mb-20">
       <div className="flex flex-col items-center gap-2 mb-2">
-        <Music className="w-5 h-5 text-[#D8A718]" />
+        <Music className="w-5 h-5 text-[#C0C0C0]" />
         <p className="font-display text-3xl md:text-4xl">
           Sugiere una canción
         </p>
@@ -100,13 +100,13 @@ export function SongVoting({ slug }: { slug: string }) {
 
       <div className="relative max-w-sm mx-auto">
         <div className="flex items-center border-b border-[var(--inv-text-muted)]">
-          <Search className="w-4 h-4 text-[#D8A718]" />
+          <Search className="w-4 h-4 text-[#C0C0C0]" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Buscar canción o artista..."
-            className="w-full bg-transparent py-2 pl-2 outline-none focus:border-[#D8A718]"
+            className="w-full bg-transparent py-2 pl-2 outline-none focus:border-[#C0C0C0]"
           />
         </div>
         {results.length > 0 && (
@@ -115,7 +115,7 @@ export function SongVoting({ slug }: { slug: string }) {
               <li key={t.id}>
                 <button
                   onClick={() => addTrack(t)}
-                  className="w-full flex items-center gap-3 px-3 py-2 hover:bg-[#D8A718]/10 transition-colors"
+                  className="w-full flex items-center gap-3 px-3 py-2 hover:bg-[#C0C0C0]/10 transition-colors"
                 >
                   {t.cover ? (
                     <Image
@@ -126,8 +126,8 @@ export function SongVoting({ slug }: { slug: string }) {
                       className="rounded-md flex-shrink-0"
                     />
                   ) : (
-                    <div className="w-10 h-10 rounded-md bg-[#D8A718]/10 flex items-center justify-center flex-shrink-0">
-                      <Music className="w-4 h-4 text-[#D8A718]" />
+                    <div className="w-10 h-10 rounded-md bg-[#C0C0C0]/10 flex items-center justify-center flex-shrink-0">
+                      <Music className="w-4 h-4 text-[#C0C0C0]" />
                     </div>
                   )}
                   <span className="text-sm min-w-0">
@@ -164,8 +164,8 @@ export function SongVoting({ slug }: { slug: string }) {
                     className="rounded-md flex-shrink-0"
                   />
                 ) : (
-                  <div className="w-12 h-12 rounded-md bg-[#D8A718]/10 flex items-center justify-center flex-shrink-0">
-                    <Music className="w-5 h-5 text-[#D8A718]" />
+                  <div className="w-12 h-12 rounded-md bg-[#C0C0C0]/10 flex items-center justify-center flex-shrink-0">
+                    <Music className="w-5 h-5 text-[#C0C0C0]" />
                   </div>
                 )}
                 <span className="flex-1 text-sm min-w-0">
@@ -177,7 +177,7 @@ export function SongVoting({ slug }: { slug: string }) {
                 <button
                   onClick={() => addTrack(t)}
                   disabled={addedIds.has(t.id)}
-                  className="flex items-center gap-0.5 text-xs rounded-full border border-[#D8A718] px-2.5 py-1 disabled:opacity-40 hover:bg-[#D8A718]/10 transition-colors flex-shrink-0"
+                  className="flex items-center gap-0.5 text-xs rounded-full border border-[#C0C0C0] px-2.5 py-1 disabled:opacity-40 hover:bg-[#C0C0C0]/10 transition-colors flex-shrink-0"
                 >
                   <Plus className="w-3 h-3" />
                   {t.score}

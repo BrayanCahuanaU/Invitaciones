@@ -54,7 +54,15 @@ export async function GET(req: NextRequest) {
     const score = Number(ranked[i + 1]);
     const rawMeta = metaMap[id];
     if (!rawMeta) continue;
-    const meta = JSON.parse(rawMeta) as TrackResult;
+    let meta: TrackResult;
+    try {
+      meta = JSON.parse(rawMeta) as TrackResult;
+    } catch {
+      // Metadata corrupta (ej: "[object Object]" guardada por versiones antiguas).
+      // Se limpia y se salta para no tumbar todo el ranking.
+      await redis.hdel(`songmeta:${slug}`, id);
+      continue;
+    }
     songs.push({ ...meta, score });
   }
 

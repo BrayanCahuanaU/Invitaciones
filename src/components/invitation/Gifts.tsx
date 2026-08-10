@@ -21,13 +21,13 @@ function CopyableRow({
         setCopied(true);
         setTimeout(() => setCopied(false), 1500);
       }}
-      className="w-full flex justify-between items-center py-1.5 text-sm hover:bg-[#D8A718]/5 rounded px-2 transition-colors"
+      className="w-full flex justify-between items-center py-1.5 text-sm hover:bg-[#C0C0C0]/5 rounded px-2 transition-colors"
     >
       <span className="text-center flex-1">
         <span className="text-[var(--inv-text-muted)] text-xs block">{label}</span>
         {value}
       </span>
-      <span className="text-xs text-[#D8A718] flex items-center gap-1 flex-shrink-0 ml-2">
+      <span className="text-xs text-[#C0C0C0] flex items-center gap-1 flex-shrink-0 ml-2">
         {copied ? (
           <><Check className="w-3 h-3" /> Copiado</>
         ) : (
@@ -42,23 +42,29 @@ function BankCard({ acc }: { acc: BankAccount }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="rounded-xl border border-white/8 bg-[var(--inv-surface)]/40 backdrop-blur-md overflow-hidden transition-all hover:border-[#D8A718]/30">
+    <div className="rounded-xl border border-white/8 bg-[var(--inv-surface)]/40 backdrop-blur-md overflow-hidden transition-all hover:border-[#C0C0C0]/30">
       <button
         onClick={() => setOpen((o) => !o)}
         className="w-full flex flex-col items-center gap-2 p-3 md:p-4 text-center"
       >
         {acc.logo && (
           <div className="relative w-40 h-40 md:w-full md:h-70 rounded-md overflow-hidden bg-white/10">
-            <Image src={acc.logo} alt={acc.bank} fill className="object-cover" />
+            <Image
+              src={acc.logo}
+              alt={acc.bank}
+              fill
+              sizes="(min-width: 768px) 320px, 160px"
+              className="object-cover"
+            />
           </div>
         )}
         <ChevronDown
-          className={`w-4 h-4 text-[#D8A718] transition-transform ${open ? "rotate-180" : ""}`}
+          className={`w-4 h-4 text-[#C0C0C0] transition-transform ${open ? "rotate-180" : ""}`}
         />
       </button>
 
       {open && (
-        <div className="px-4 pb-4 space-y-1 border-t border-[#D8A718]/10 pt-3">
+        <div className="px-4 pb-4 space-y-1 border-t border-[#C0C0C0]/10 pt-3">
           <CopyableRow label="Titular" value={acc.owner} />
           <CopyableRow label="N° de cuenta" value={acc.accountNumber} />
           {acc.cci && <CopyableRow label="CCI" value={acc.cci} />}
@@ -72,20 +78,20 @@ function SuggestionCard({ items }: { items: string[] }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="rounded-xl border border-white/8 bg-[var(--inv-surface)]/40 backdrop-blur-md overflow-hidden transition-all hover:border-[#D8A718]/30 md:col-span-2">
+    <div className="rounded-xl border border-white/8 bg-[var(--inv-surface)]/40 backdrop-blur-md overflow-hidden transition-all hover:border-[#C0C0C0]/30 md:col-span-2">
       <button
         onClick={() => setOpen((o) => !o)}
         className="w-full flex items-center justify-center gap-3 p-3 md:p-4 text-center"
       >
-        <Gift className="w-5 h-5 text-[#D8A718]" />
+        <Gift className="w-5 h-5 text-[#C0C0C0]" />
         <span className="font-display text-lg">Sugerencias de regalo</span>
         <ChevronDown
-          className={`w-4 h-4 text-[#D8A718] transition-transform ${open ? "rotate-180" : ""}`}
+          className={`w-4 h-4 text-[#C0C0C0] transition-transform ${open ? "rotate-180" : ""}`}
         />
       </button>
 
       {open && (
-        <div className="px-4 pb-4 border-t border-[#D8A718]/10 pt-3">
+        <div className="px-4 pb-4 border-t border-[#C0C0C0]/10 pt-3">
           <div className="flex flex-wrap justify-center gap-2">
             {items.map((s) => (
               <span
@@ -115,7 +121,7 @@ export function Gifts({
   return (
     <Section>
       <div className="flex flex-col items-center gap-2 mb-4">
-        <Gift className="w-5 h-5 text-[#D8A718]" />
+        <Gift className="w-5 h-5 text-[#C0C0C0]" />
         <p className="font-display text-3xl md:text-4xl">Regalos</p>
       </div>
       {message && <p className="text-[var(--inv-text-muted)] mb-6">{message}</p>}

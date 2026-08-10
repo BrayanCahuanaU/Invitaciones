@@ -22,7 +22,7 @@ export function GuestArtists({ artists }: { artists: GuestArtist[] }) {
         {artists.map((artist) => (
           <div
             key={artist.name}
-            className="cinematic-card group relative overflow-hidden rounded-2xl p-4 transition-all duration-500 hover:border-[#D8A718]/50 hover:shadow-[0_0_30px_rgba(216,167,24,0.15)]"
+            className="cinematic-card group relative overflow-hidden rounded-2xl p-4 transition-all duration-500 hover:border-[#C0C0C0]/50 hover:shadow-[0_0_30px_rgba(192,192,192,0.15)]"
           >
             {artist.photo && (
               <div className="relative w-full aspect-square mb-4 overflow-hidden rounded-xl">
@@ -43,13 +43,13 @@ export function GuestArtists({ artists }: { artists: GuestArtist[] }) {
             </h3>
             {artist.role && (
               <div className="flex items-center gap-2">
-                <p className="text-xs uppercase tracking-widest text-[#D8A718]">{artist.role}</p>
+                <p className="text-xs uppercase tracking-widest text-[#C0C0C0]">{artist.role}</p>
                 {artist.socialUrl && (
                   <a
                     href={artist.socialUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-6 h-6 rounded-full bg-[#D8A718]/20 text-[#D8A718] hover:bg-[#D8A718] hover:text-[#090909] transition-all duration-300"
+                    className="flex items-center justify-center w-6 h-6 rounded-full bg-[#C0C0C0]/20 text-[#C0C0C0] hover:bg-[#C0C0C0] hover:text-[#090909] transition-all duration-300"
                     aria-label={`Instagram de ${artist.name}`}
                   >
                     <ExternalLink className="w-3 h-3" />

@@ -20,8 +20,8 @@
   --cin-wine: #7B0F24;
   --cin-red: #A81835;
   --cin-burgundy: #4E0B18;
-  --cin-gold: #D8A718;
-  --cin-gold-bright: #F1C232;
+  --cin-gold: #C0C0C0;
+  --cin-gold-bright: #E8E8E8;
   --cin-text: #F2F2F2;
   --cin-text-muted: #A8A8A8;
   --cin-border: #4A4A4A;
@@ -152,10 +152,10 @@ body {
 /* ── Gold Glow ── */
 @keyframes gold-pulse {
   0%, 100% {
-    text-shadow: 0 0 10px rgba(216, 167, 24, 0.3);
+    text-shadow: 0 0 10px rgba(192, 192, 192, 0.3);
   }
   50% {
-    text-shadow: 0 0 20px rgba(216, 167, 24, 0.6);
+    text-shadow: 0 0 20px rgba(192, 192, 192, 0.6);
   }
 }
 
@@ -223,7 +223,7 @@ body {
 
 /* ── Cinematic Button Gold (CTA) ── */
 .cinematic-btn-gold {
-  background: linear-gradient(135deg, #D8A718, #F1C232);
+  background: linear-gradient(135deg, #C0C0C0, #E8E8E8);
   color: #090909;
   border: none;
   border-radius: 12px;
@@ -236,8 +236,8 @@ body {
   transition: all 0.3s ease;
 }
 .cinematic-btn-gold:hover {
-  background: linear-gradient(135deg, #F1C232, #D8A718);
-  box-shadow: 0 0 25px rgba(216, 167, 24, 0.4);
+  background: linear-gradient(135deg, #E8E8E8, #C0C0C0);
+  box-shadow: 0 0 25px rgba(192, 192, 192, 0.4);
 }
 
 /* ── Reduced motion ── */

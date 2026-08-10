@@ -38,7 +38,7 @@ export function ParticleBackground({ count = 24 }: { count?: number }) {
       {particles.map((p) => (
         <motion.span
           key={p.id}
-          className="absolute rounded-full bg-[#D8A718]"
+          className="absolute rounded-full bg-[#C0C0C0]"
           style={{
             left: `${p.x}%`,
             width: p.size,
