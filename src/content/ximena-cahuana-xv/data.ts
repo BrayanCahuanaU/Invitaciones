@@ -22,7 +22,7 @@ export const ximenaCahuanaXv: InvitationData = {
     motivo: "Mis XV Años",
   },
 
-  quote: "La vida es una celebración, y hoy lo haremos realidad.",
+  quote: "La vida es una celebración y Con gusto la haremos realidad. Con la alegría de ver cumplido un sueño, mis padres y yo tenemos el honor de invitarte a la celebración de mis XV años",
 
   eventDate: "2026-08-29T19:00:00-05:00",
 
@@ -81,7 +81,6 @@ export const ximenaCahuanaXv: InvitationData = {
   guestArtists: [
     { name: "DJ Diego Salinas", role: "DJ Principal", photo: "/invitaciones/ximena-cahuana-xv/img/dj.jpg", socialUrl: "https://www.instagram.com/djdiegosalinas/" },
     { name: "Fernando Salinas", role: "Animador", photo: "/invitaciones/ximena-cahuana-xv/img/animador.jpg", socialUrl: "https://www.instagram.com/fernandosalinas.15/" },
-    { name: "Leche de Monja", role: "Anfitrión", photo: "/invitaciones/ximena-cahuana-xv/img/animador2.jpg", socialUrl: "https://www.instagram.com/lechedemonja/" },
   ],
 
   timeline: [
@@ -101,7 +100,7 @@ export const ximenaCahuanaXv: InvitationData = {
   footerBackgroundMobile: "/invitaciones/ximena-cahuana-xv/img/footer-movil.png",
 
   socialLinks: [
-    { platform: "instagram", url: "https://instagram.com/ximena.cahuana", logo: "/invitaciones/ximena-cahuana-xv/logos/instagram.png" },
-    { platform: "tiktok", url: "https://tiktok.com/@ximena.cahuana", logo: "/invitaciones/ximena-cahuana-xv/logos/tiktok.png" },
+    { platform: "instagram", url: "https://www.instagram.com/xmena.w", logo: "/invitaciones/ximena-cahuana-xv/logos/instagram.png" },
+    { platform: "tiktok", url: "https://www.tiktok.com/@xmena.wv", logo: "/invitaciones/ximena-cahuana-xv/logos/tiktok.png" },
   ],
 };

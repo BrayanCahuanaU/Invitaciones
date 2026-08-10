@@ -126,12 +126,24 @@ export default async function InvitationPage({
           {isCinematic ? (
             /* ═══ CINEMATIC LAYOUT ═══ */
             <>
-              <CinematicHero
-                photo={data.hero.photo}
-                protagonists={data.hero.protagonists}
-                motivo={data.hero.motivo}
-                nameSvg="/invitaciones/ximena-cahuana-xv/img/ximena.png"
-              />
+              <div className="relative">
+                <CinematicHero
+                  photo={data.hero.photo}
+                  protagonists={data.hero.protagonists}
+                  motivo={data.hero.motivo}
+                  nameSvg="/invitaciones/ximena-cahuana-xv/img/ximena.png"
+                />
+                <div className="absolute inset-x-0 top-[42%] bottom-0 overflow-hidden pointer-events-none select-none">
+                  <Image
+                    src="/invitaciones/ximena-cahuana-xv/personaje.png"
+                    alt=""
+                    fill
+                    sizes="100vw"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
               <div className="relative z-10 -mt-39 sm:-mt-24 lg:-mt-90 w-full pointer-events-none select-none">
                 <Image
                   src="/invitaciones/ximena-cahuana-xv/img/flores-div-movil.png"

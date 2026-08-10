@@ -26,7 +26,7 @@ export function CinematicHero({
       <div className="absolute inset-0 bg-gradient-to-t from-[#090909] via-[#090909]/40 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#090909]/60 via-transparent to-[#090909]" />
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-8 sm:gap-12 text-center px-4">
+      <div className="absolute inset-0 flex flex-col items-center justify-start gap-6 sm:gap-8 text-center px-4 pt-16 sm:pt-20 md:pt-24">
         <p className="uppercase tracking-[0.3em] text-lg sm:text-xl md:text-2xl text-[#A8A8A8]">
           {motivo}
         </p>
