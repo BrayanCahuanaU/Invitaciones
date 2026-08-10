@@ -53,16 +53,41 @@ export async function GET(req: NextRequest) {
     const id = ranked[i] as unknown as string;
     const score = Number(ranked[i + 1]);
     const rawMeta = metaMap[id];
-    if (!rawMeta) continue;
     let meta: TrackResult;
-    try {
-      meta = JSON.parse(rawMeta) as TrackResult;
-    } catch {
-      // Metadata corrupta (ej: "[object Object]" guardada por versiones antiguas).
-      // Se limpia y se salta para no tumbar todo el ranking.
-      await redis.hdel(`songmeta:${slug}`, id);
-      continue;
+    if (rawMeta) {
+      try {
+        meta = JSON.parse(rawMeta) as TrackResult;
+      } catch {
+        await redis.hdel(`songmeta:${slug}`, id);
+        meta = null as unknown as TrackResult;
+      }
+    } else {
+      meta = null as unknown as TrackResult;
     }
+
+    // Sin metadata (o corrupta): se recupera desde Deezer y se cachea.
+    if (!meta) {
+      try {
+        const res = await fetch(`https://api.deezer.com/track/${encodeURIComponent(id)}`);
+        if (!res.ok) continue;
+        const t = (await res.json()) as {
+          title?: string;
+          artist?: { name?: string };
+          album?: { cover_medium?: string };
+        };
+        if (!t.title) continue;
+        meta = {
+          id,
+          title: t.title,
+          artist: t.artist?.name ?? "",
+          cover: t.album?.cover_medium ?? "",
+        };
+        await redis.hsetnx(`songmeta:${slug}`, id, JSON.stringify(meta));
+      } catch {
+        continue;
+      }
+    }
+
     songs.push({ ...meta, score });
   }
 

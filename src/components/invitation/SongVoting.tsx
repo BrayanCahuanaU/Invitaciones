@@ -143,6 +143,13 @@ export function SongVoting({ slug }: { slug: string }) {
         )}
       </div>
 
+      {/* Estado vacío: aún no hay canciones votadas */}
+      {ranking.length === 0 && (
+        <p className="text-[var(--inv-text-muted)] text-sm mt-6 text-center">
+          Aún no hay canciones en la playlist. ¡Sé el primero en sugerir una!
+        </p>
+      )}
+
       {/* Ranking de canciones */}
       {ranking.length > 0 && (
         <div className="mt-8 max-w-lg mx-auto">
