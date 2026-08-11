@@ -40,10 +40,10 @@ export const ximenaCahuanaXv: InvitationData = {
       maleSuggestions: ["Traje oscuro", "Camisa blanca", "Zapatos formales"],
     },
     colorsToAvoid: [
-      { name: "Plateado", hex: "#C0C0C0" },
+      { name: "Negro", hex: "#000000" },
       { name: "Azul", hex: "#0000FF" },
     ],
-    notes: ["La entrada será a las 7:00 PM", "Estacionamiento disponible"],
+    notes: ["Llegar puntual para la entrada", "Se asistira solo con la invitación confirmada"],
   },
 
   gifts: {
@@ -67,14 +67,15 @@ export const ximenaCahuanaXv: InvitationData = {
 
   rsvp: {
     whatsappPhone: "+51 974777591",
+    allowGuests: false,
   },
 
   farewellMessage:
     "",
 
   host: {
-    name: "Ximena Cahuana",
-    relation: "",
+    name: "Ximena",
+    relation: "La patrona",
     phone: "+51 974777591",
   },
 

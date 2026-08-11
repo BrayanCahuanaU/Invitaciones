@@ -94,6 +94,8 @@ export interface InvitationData {
     // Si se define, además de guardar en la lista interna, se ofrece
     // un botón directo a WhatsApp con mensaje prellenado.
     whatsappPhone?: string;
+    // Si es false, no se permite agregar acompañantes en el RSVP.
+    allowGuests?: boolean;
   };
 
   farewellMessage?: string;

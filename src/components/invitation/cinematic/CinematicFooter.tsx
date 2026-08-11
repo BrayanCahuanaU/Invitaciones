@@ -43,8 +43,8 @@ export function CinematicFooter({
       <div className="absolute inset-0 bg-gradient-to-b from-[#090909]/60 via-transparent to-[#090909]/80 pointer-events-none" />
 
       <div className="relative max-w-md mx-auto px-6 py-12 md:max-w-2xl md:px-10 lg:max-w-4xl lg:px-16">
-        <div className="flex items-center justify-center gap-2 mb-4">
-          <Heart className="w-4 h-4 text-[#C0C0C0]" />
+        <div className="flex flex-col items-center justify-center gap-2 mb-4">
+          <Heart className="w-5 h-5 text-[#C0C0C0]" />
           <p
             className="text-lg sm:text-xl font-bold text-[#F2F2F2]"
             style={{ fontFamily: "var(--font-cinematic-display)" }}

@@ -188,6 +188,58 @@ body {
   animation: gradient-shift 6s ease-in-out infinite;
 }
 
+/* ── Reserved Color Swatches (animated silk/sheen) ── */
+.color-swatch {
+  position: relative;
+  overflow: hidden;
+  animation: swatch-glow 4s ease-in-out infinite;
+}
+.color-swatch::before {
+  content: "";
+  position: absolute;
+  inset: -45%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.22) 55deg,
+    rgba(255, 255, 255, 0.02) 110deg,
+    transparent 160deg,
+    transparent 220deg,
+    rgba(255, 255, 255, 0.14) 290deg,
+    transparent 360deg
+  );
+  animation: swatch-rotate 7s linear infinite;
+  pointer-events: none;
+}
+.color-swatch::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -80%;
+  width: 45%;
+  height: 120%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: skewX(-18deg);
+  animation: swatch-sheen 3.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes swatch-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes swatch-sheen {
+  0% { left: -80%; }
+  55%, 100% { left: 130%; }
+}
+@keyframes swatch-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.07), inset 0 0 14px rgba(0, 0, 0, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 26px rgba(255, 255, 255, 0.18), inset 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+}
+
 /* ── Cinematic Button Styles ── */
 .cinematic-btn-primary {
   background: linear-gradient(135deg, #A81835, #7B0F24);

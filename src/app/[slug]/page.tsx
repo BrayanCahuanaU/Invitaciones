@@ -208,10 +208,17 @@ export default async function InvitationPage({
                   backgroundImage="/invitaciones/ximena-cahuana-xv/img/fondo-indicaciones.png"
                   backgroundImageMobile="/invitaciones/ximena-cahuana-xv/img/fondo-indicaciones.png"
                   hideTitle
+                  variant="dark"
+                  manImage="/invitaciones/ximena-cahuana-xv/img/genero/hombre.png"
+                  womanImage="/invitaciones/ximena-cahuana-xv/img/genero/mujer.png"
+                  noteImages={{
+                    time: "/invitaciones/ximena-cahuana-xv/img/consideraciones/tiempo.png",
+                    default: "/invitaciones/ximena-cahuana-xv/img/consideraciones/lista.png",
+                  }}
                 />
               </RevealSection>
               <RevealSection>
-                <RSVPForm slug={data.slug} />
+                <RSVPForm slug={data.slug} allowGuests={data.rsvp.allowGuests ?? true} />
               </RevealSection>
               <RevealSection>
                 <WhatsappGroup
@@ -298,7 +305,7 @@ export default async function InvitationPage({
                 />
               </RevealSection>
               <RevealSection>
-                <RSVPForm slug={data.slug} />
+                <RSVPForm slug={data.slug} allowGuests={data.rsvp.allowGuests ?? true} />
               </RevealSection>
               <RevealSection>
                 <WhatsappGroup

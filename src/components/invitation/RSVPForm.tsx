@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CheckCircle, XCircle, Users } from "lucide-react";
+import { CheckCircle, XCircle } from "lucide-react";
 import { Section } from "./Section";
 
 interface PublicEntry {
@@ -10,7 +10,13 @@ interface PublicEntry {
   guests: number;
 }
 
-export function RSVPForm({ slug }: { slug: string }) {
+export function RSVPForm({
+  slug,
+  allowGuests = true,
+}: {
+  slug: string;
+  allowGuests?: boolean;
+}) {
   const [name, setName] = useState("");
   const [attending, setAttending] = useState(true);
   const [guests, setGuests] = useState(0);
@@ -114,10 +120,9 @@ export function RSVPForm({ slug }: { slug: string }) {
           </button>
         </div>
 
-        {attending && (
+        {allowGuests && attending && (
           <label className="flex items-center justify-between text-sm">
             <span className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-[#C0C0C0]" />
               Acompañantes
             </span>
             <input
