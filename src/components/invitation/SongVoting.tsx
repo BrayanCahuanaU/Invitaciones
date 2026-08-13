@@ -172,7 +172,7 @@ export function SongVoting({ slug }: { slug: string }) {
                   />
                 ) : (
                   <div className="w-12 h-12 rounded-md bg-[#C0C0C0]/10 flex items-center justify-center flex-shrink-0">
-                    <Music className="w-5 h-5 text-[#C0C0C0]" />
+        <Music className="w-8 h-8 text-[#C0C0C0]" />
                   </div>
                 )}
                 <span className="flex-1 text-sm min-w-0">

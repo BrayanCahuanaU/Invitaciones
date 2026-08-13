@@ -23,6 +23,7 @@ export function WhatsappGroup({
   fallbackDescription?: string;
 }) {
   const [meta, setMeta] = useState<Meta | null>(null);
+  const [imgError, setImgError] = useState(false);
 
   useEffect(() => {
     if (!url) return;
@@ -37,7 +38,7 @@ export function WhatsappGroup({
   const name = meta?.title || fallbackName || "Grupo del evento";
   const description = meta?.description || fallbackDescription || "";
   const image = meta?.image || fallbackPhoto || "";
-  const hasImage = image && image.length > 0;
+  const hasImage = image && image.length > 0 && !imgError;
 
   return (
     <Section backgroundImage="/invitaciones/demo-quince/img/papel-fondo.png" fullWidth>
@@ -45,8 +46,8 @@ export function WhatsappGroup({
         Únete al grupo del evento
       </p>
 
-      <div className="rounded-xl border border-white/10 bg-[var(--inv-surface)]/40 backdrop-blur-md overflow-hidden max-w-sm mx-auto text-left">
-        <div className="relative w-full h-36 overflow-hidden bg-[#25D366]/10 flex items-center justify-center">
+      <div className="rounded-xl border border-white/10 bg-[var(--inv-surface)] overflow-hidden max-w-sm mx-auto text-left">
+        <div className="relative w-full aspect-square overflow-hidden bg-[#25D366]/10 flex items-center justify-center">
           {hasImage ? (
             <Image
               src={image}
@@ -54,6 +55,7 @@ export function WhatsappGroup({
               fill
               className="object-cover"
               unoptimized
+              onError={() => setImgError(true)}
             />
           ) : (
             <MessageCircle className="w-16 h-16 text-[#25D366]/30" />
@@ -66,16 +68,16 @@ export function WhatsappGroup({
               <MessageCircle className="w-5 h-5 text-[#25D366]" />
             </div>
             <div className="min-w-0">
-              <p className="font-display text-gray-800 text-lg truncate">{name}</p>
+              <p className="font-display text-gray-100 text-lg truncate">{name}</p>
               {description && description !== "WhatsApp Group Invite" && (
-                <p className="text-gray-500 text-xs truncate">
+                <p className="text-gray-400 text-xs truncate">
                   {description}
                 </p>
               )}
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 text-gray-500 text-xs mb-3">
+          <div className="flex items-center gap-1.5 text-gray-400 text-xs mb-3">
             <Users className="w-3.5 h-3.5" />
             <span>Grupo de WhatsApp</span>
           </div>

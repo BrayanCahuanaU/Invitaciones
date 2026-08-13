@@ -1,7 +1,7 @@
 import { InvitationData } from "@/content/types";
 
 export const ximenaCahuanaXv: InvitationData = {
-  slug: "ximena-cahuana-xv",
+  slug: "ximena-xv",
   eventType: "xv",
   theme: "dark-luxury-cinematic",
   layout: "cinematic",
@@ -24,7 +24,7 @@ export const ximenaCahuanaXv: InvitationData = {
 
   quote: "La vida es una celebración y Con gusto la haremos realidad. Con la alegría de ver cumplido un sueño, mis padres y yo tenemos el honor de invitarte a la celebración de mis XV años",
 
-  eventDate: "2026-08-29T19:00:00-05:00",
+  eventDate: "2026-08-29T18:00:00-05:00",
 
   location: {
     venueName: "Salón Flor y Fiesta",
@@ -33,15 +33,20 @@ export const ximenaCahuanaXv: InvitationData = {
     mapsUrl: "https://maps.google.com/?q=Salón+de+Recepciones+Flor+y+Fiesta+Arequipa",
   },
 
+  whatsappGroupUrl: "https://chat.whatsapp.com/FqHkxmHQRvu0tF6n33jyZz?s=sw&p=a&ilr=0",
+  whatsappGroupName: "",
+  whatsappGroupPhoto: "",
+  whatsappGroupDescription: "",
+
   guidelines: {
     dressCode: {
       level: "Elegante",
-      femaleSuggestions: ["Vestido largo", "Tacos altos", "Joyas doradas"],
+      femaleSuggestions: ["Completamente libre"],
       maleSuggestions: ["Traje oscuro", "Camisa blanca", "Zapatos formales"],
     },
     colorsToAvoid: [
+      { name: "Plateado", hex: "#C0C0C0" },
       { name: "Negro", hex: "#000000" },
-      { name: "Azul", hex: "#0000FF" },
     ],
     notes: ["Llegar puntual para la entrada", "Se asistira solo con la invitación confirmada"],
   },
@@ -85,11 +90,11 @@ export const ximenaCahuanaXv: InvitationData = {
   ],
 
   timeline: [
-    { time: "19:00", title: "Recepción", description: "Bienvenida y mocktail de bienvenida" },
+    { time: "18:00", title: "Recepción", description: "Bienvenida y mocktail de bienvenida" },
     { time: "20:00", title: "Ceremonia", description: "Inicio de la ceremonia inicial" },
-    { time: "21:00", title: "Cena", description: "Presentación de los invitados" },
     { time: "22:00", title: "Fiesta", description: "Pista de baile y música en vivo" },
-    { time: "00:00", title: "Cierre", description: "Cierre de la celebración" },
+    { time: "00:00", title: "Hora Loca", description: "Empieza la hora loca" },
+    { time: "02:00", title: "Cierre", description: "Cierre de la celebración" },
   ],
 
   backgroundVideo: {

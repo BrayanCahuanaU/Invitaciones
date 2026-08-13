@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    localPatterns: [
+      { pathname: "/invitaciones/**" },
+    ],
     remotePatterns: [
       { protocol: "https", hostname: "*.dzcdn.net" },
       { protocol: "https", hostname: "pps.whatsapp.net" },

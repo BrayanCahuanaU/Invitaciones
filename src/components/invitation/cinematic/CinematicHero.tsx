@@ -8,11 +8,13 @@ export function CinematicHero({
   protagonists,
   motivo,
   nameSvg,
+  children,
 }: {
   photo: string;
   protagonists: string;
   motivo: string;
   nameSvg?: string;
+  children?: React.ReactNode;
 }) {
   function handleScrollDown() {
     const section = document.getElementById("quote");
@@ -55,6 +57,8 @@ export function CinematicHero({
             {protagonists}
           </h1>
         )}
+
+        {children}
 
         <button
           onClick={handleScrollDown}

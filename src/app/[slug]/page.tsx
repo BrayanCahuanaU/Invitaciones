@@ -136,10 +136,18 @@ export default async function InvitationPage({
                   protagonists={data.hero.protagonists}
                   motivo={data.hero.motivo}
                   nameSvg="/invitaciones/ximena-cahuana-xv/img/ximena.png"
-                />
+                >
+                  {data.backgroundMusic && (
+                    <MusicPlayer
+                      src={data.backgroundMusic.src}
+                      title={data.backgroundMusic.title}
+                      artist={data.backgroundMusic.artist}
+                    />
+                  )}
+                </CinematicHero>
                 <div className="absolute inset-x-0 top-[42%] bottom-0 overflow-hidden pointer-events-none select-none">
                   <Image
-                    src="/invitaciones/ximena-cahuana-xv/personaje.png"
+                    src="/invitaciones/ximena-cahuana-xv/personaje.png?v=2"
                     alt=""
                     fill
                     sizes="100vw"
@@ -175,15 +183,6 @@ export default async function InvitationPage({
                   mapsUrl={data.location.mapsUrl}
                 />
               </RevealSection>
-              {data.backgroundMusic && (
-                <RevealSection>
-                  <MusicPlayer
-                    src={data.backgroundMusic.src}
-                    title={data.backgroundMusic.title}
-                    artist={data.backgroundMusic.artist}
-                  />
-                </RevealSection>
-              )}
               {data.guestArtists && data.guestArtists.length > 0 && (
                 <RevealSection>
                   <GuestArtists artists={data.guestArtists} />

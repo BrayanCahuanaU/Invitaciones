@@ -50,7 +50,7 @@ export function EventDetails({
         {/* Columna 1 — Info */}
         <div className="bg-[var(--inv-surface)]/40 backdrop-blur-md rounded-xl p-6 border border-white/8 text-center md:text-left">
           <div className="flex flex-col items-center gap-1 mb-4">
-            <MapPin className="w-6 h-6 text-[#C0C0C0]" />
+            <MapPin className="w-8 h-8 text-[#C0C0C0]" />
             <p className="text-2xl md:text-3xl uppercase" style={{ fontFamily: "var(--font-cinematic-display)" }}>{venueName}</p>
           </div>
           <p className="text-[var(--inv-text-muted)] mb-1">{address}</p>

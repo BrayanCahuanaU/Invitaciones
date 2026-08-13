@@ -81,8 +81,8 @@ export function RSVPForm({
 
   return (
     <Section id="confirmar">
-      <div className="flex items-center justify-center gap-2 mb-6">
-        <CheckCircle className="w-5 h-5 text-[#C0C0C0]" />
+      <div className="flex flex-col items-center justify-center gap-2 mb-6">
+        <CheckCircle className="w-8 h-8 text-[#C0C0C0]" />
         <p className="font-display text-3xl md:text-4xl">Confirma tu asistencia</p>
       </div>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left max-w-sm mx-auto">

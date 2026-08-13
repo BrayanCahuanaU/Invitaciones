@@ -6,6 +6,21 @@ interface WhatsappMeta {
   image: string;
 }
 
+function decodeHtmlEntities(value: string): string {
+  return value
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_m, hex: string) =>
+      String.fromCodePoint(parseInt(hex, 16))
+    )
+    .replace(/&#(\d+);/g, (_m, dec: string) =>
+      String.fromCodePoint(parseInt(dec, 10))
+    );
+}
+
 function extractMeta(html: string): WhatsappMeta {
   const ogTitle = html.match(/<meta\s+property="og:title"\s+content="([^"]*)"/i)
     ?? html.match(/<meta\s+content="([^"]*)"\s+property="og:title"/i);
@@ -15,9 +30,9 @@ function extractMeta(html: string): WhatsappMeta {
     ?? html.match(/<meta\s+content="([^"]*)"\s+property="og:image"/i);
 
   return {
-    title: ogTitle?.[1] ?? "",
-    description: ogDesc?.[1] ?? "",
-    image: ogImage?.[1] ?? "",
+    title: decodeHtmlEntities(ogTitle?.[1] ?? ""),
+    description: decodeHtmlEntities(ogDesc?.[1] ?? ""),
+    image: decodeHtmlEntities(ogImage?.[1] ?? ""),
   };
 }
 

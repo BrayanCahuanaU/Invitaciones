@@ -6,7 +6,7 @@ import { ximenaCahuanaXv } from "./ximena-cahuana-xv/data";
 // + una línea aquí. No se tocan rutas ni componentes.
 export const invitations: Record<string, InvitationData> = {
   "demo-quince": demoQuince,
-  "ximena-cahuana-xv": ximenaCahuanaXv,
+  "ximena-xv": ximenaCahuanaXv,
 };
 
 export function getAllSlugs(): string[] {

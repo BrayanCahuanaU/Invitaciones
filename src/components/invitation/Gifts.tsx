@@ -121,7 +121,7 @@ export function Gifts({
   return (
     <Section>
       <div className="flex flex-col items-center gap-2 mb-4">
-        <Gift className="w-5 h-5 text-[#C0C0C0]" />
+        <Gift className="w-8 h-8 text-[#C0C0C0]" />
         <p className="font-display text-3xl md:text-4xl">Regalos</p>
       </div>
       {message && <p className="text-[var(--inv-text-muted)] mb-6">{message}</p>}
