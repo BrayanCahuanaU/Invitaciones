@@ -21,6 +21,7 @@ export function SongVoting({ slug }: { slug: string }) {
   const [results, setResults] = useState<Track[]>([]);
   const [ranking, setRanking] = useState<RankedTrack[]>([]);
   const [addedIds, setAddedIds] = useState<Set<string>>(new Set());
+  const [pendingId, setPendingId] = useState<string | null>(null);
 
   const loadRanking = useCallback(async () => {
     try {
@@ -70,19 +71,25 @@ export function SongVoting({ slug }: { slug: string }) {
   }, [query]);
 
   async function addTrack(track: Track) {
+    if (pendingId) return;
+    setPendingId(track.id);
     try {
-      await fetch("/api/songs", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug, track }),
-      });
-    } catch {
-      // silencioso
+      try {
+        await fetch("/api/songs", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ slug, track }),
+        });
+      } catch {
+        // silencioso
+      }
+      setAddedIds((prev) => new Set(prev).add(track.id));
+      setQuery("");
+      setResults([]);
+      await loadRanking();
+    } finally {
+      setPendingId(null);
     }
-    setAddedIds((prev) => new Set(prev).add(track.id));
-    setQuery("");
-    setResults([]);
-    await loadRanking();
   }
 
   return (
@@ -115,7 +122,8 @@ export function SongVoting({ slug }: { slug: string }) {
               <li key={t.id}>
                 <button
                   onClick={() => addTrack(t)}
-                  className="w-full flex items-center gap-3 px-3 py-2 hover:bg-[#C0C0C0]/10 transition-colors"
+                  disabled={pendingId !== null}
+                  className="w-full flex items-center gap-3 px-3 py-2 hover:bg-[#C0C0C0]/10 transition-colors disabled:opacity-50"
                 >
                   {t.cover ? (
                     <Image
@@ -183,7 +191,7 @@ export function SongVoting({ slug }: { slug: string }) {
                 </span>
                 <button
                   onClick={() => addTrack(t)}
-                  disabled={addedIds.has(t.id)}
+                  disabled={pendingId !== null || addedIds.has(t.id)}
                   className="flex items-center gap-0.5 text-xs rounded-full border border-[#C0C0C0] px-2.5 py-1 disabled:opacity-40 hover:bg-[#C0C0C0]/10 transition-colors flex-shrink-0"
                 >
                   <Plus className="w-3 h-3" />

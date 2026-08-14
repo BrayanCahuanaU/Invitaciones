@@ -26,8 +26,6 @@ export async function POST(req: NextRequest) {
   const redis = getRedis();
 
   await redis.zincrby(`songs:${slug}`, 1, track.id);
-  // Solo se guarda metadata la primera vez (no pisa si ya existe).
-  await redis.hsetnx(`songmeta:${slug}`, track.id, JSON.stringify(track));
 
   return NextResponse.json({ ok: true });
 }
