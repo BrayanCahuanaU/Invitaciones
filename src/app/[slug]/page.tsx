@@ -217,7 +217,11 @@ export default async function InvitationPage({
                 />
               </RevealSection>
               <RevealSection>
-                <RSVPForm slug={data.slug} allowGuests={data.rsvp.allowGuests ?? true} />
+                <RSVPForm
+                  slug={data.slug}
+                  allowGuests={data.rsvp.allowGuests ?? true}
+                  rsvpStatus={data.rsvp.status ?? "open"}
+                />
               </RevealSection>
               <RevealSection>
                 <WhatsappGroup
@@ -304,7 +308,11 @@ export default async function InvitationPage({
                 />
               </RevealSection>
               <RevealSection>
-                <RSVPForm slug={data.slug} allowGuests={data.rsvp.allowGuests ?? true} />
+                <RSVPForm
+                  slug={data.slug}
+                  allowGuests={data.rsvp.allowGuests ?? true}
+                  rsvpStatus={data.rsvp.status ?? "open"}
+                />
               </RevealSection>
               <RevealSection>
                 <WhatsappGroup

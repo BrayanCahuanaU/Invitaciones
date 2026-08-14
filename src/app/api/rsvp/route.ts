@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { getRedis } from "@/lib/redis";
+import { getInvitation } from "@/content/registry";
 
 const rsvpSchema = z.object({
   slug: z.string().min(1),
@@ -18,6 +19,14 @@ export async function POST(req: NextRequest) {
   }
 
   const { slug, ...entry } = parsed.data;
+  const invitation = getInvitation(slug);
+  if (invitation?.rsvp.status === "full" || invitation?.rsvp.status === "closed") {
+    return NextResponse.json(
+      { error: "Aforo lleno. Ya no se aceptan más confirmaciones." },
+      { status: 403 }
+    );
+  }
+
   const redis = getRedis();
   const record = { ...entry, createdAt: new Date().toISOString() };
   await redis.lpush(`rsvp:${slug}`, JSON.stringify(record));

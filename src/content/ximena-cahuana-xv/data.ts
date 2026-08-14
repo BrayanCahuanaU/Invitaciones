@@ -73,6 +73,7 @@ export const ximenaCahuanaXv: InvitationData = {
   rsvp: {
     whatsappPhone: "+51 974777591",
     allowGuests: false,
+    status: "full",
   },
 
   farewellMessage:

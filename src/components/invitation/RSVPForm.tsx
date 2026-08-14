@@ -13,9 +13,11 @@ interface PublicEntry {
 export function RSVPForm({
   slug,
   allowGuests = true,
+  rsvpStatus = "open",
 }: {
   slug: string;
   allowGuests?: boolean;
+  rsvpStatus?: "open" | "full" | "closed";
 }) {
   const [name, setName] = useState("");
   const [attending, setAttending] = useState(true);
@@ -62,8 +64,17 @@ export function RSVPForm({
     }
   }
 
-  const guestsGoing = publicEntries.filter((e) => e.attending);
-  const guestsNotGoing = publicEntries.filter((e) => !e.attending);
+  const isRegistrationOpen = rsvpStatus === "open";
+
+  const sortByName = (a: PublicEntry, b: PublicEntry) =>
+    a.name.localeCompare(b.name, "es", { sensitivity: "base" });
+
+  const guestsGoing = publicEntries
+    .filter((e) => e.attending)
+    .sort(sortByName);
+  const guestsNotGoing = publicEntries
+    .filter((e) => !e.attending)
+    .sort(sortByName);
 
   if (status === "done") {
     return (
@@ -83,9 +94,13 @@ export function RSVPForm({
     <Section id="confirmar">
       <div className="flex flex-col items-center justify-center gap-2 mb-6">
         <CheckCircle className="w-8 h-8 text-[#C0C0C0]" />
-        <p className="font-display text-3xl md:text-4xl">Confirma tu asistencia</p>
+        <p className="font-display text-3xl md:text-4xl">
+          {isRegistrationOpen ? "Confirma tu asistencia" : "Aforo lleno"}
+        </p>
       </div>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left max-w-sm mx-auto">
+
+      {isRegistrationOpen ? (
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left max-w-sm mx-auto">
         <input
           type="text"
           id="rsvp-name"
@@ -165,7 +180,17 @@ export function RSVPForm({
             No se pudo enviar. Intenta de nuevo.
           </p>
         )}
-      </form>
+        </form>
+      ) : (
+        <div className="flex flex-col items-center gap-2 max-w-sm mx-auto">
+          <p className="font-display text-xl md:text-2xl">
+            Hemos alcanzado el aforo máximo
+          </p>
+          <p className="text-sm text-[var(--inv-text-muted)]">
+            Ya no se aceptan más confirmaciones de asistencia.
+          </p>
+        </div>
+      )}
 
       {/* Lista de asistentes */}
       {publicEntries.length > 0 && (
@@ -223,7 +248,7 @@ export function RSVPForm({
         </div>
       )}
 
-      {publicEntries.length === 0 && (
+      {publicEntries.length === 0 && isRegistrationOpen && (
         <div className="mt-10 text-center">
           <p className="text-[var(--inv-text-muted)] text-sm">
             Sé el primero en confirmar tu asistencia

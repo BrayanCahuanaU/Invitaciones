@@ -96,6 +96,10 @@ export interface InvitationData {
     whatsappPhone?: string;
     // Si es false, no se permite agregar acompañantes en el RSVP.
     allowGuests?: boolean;
+    // Estado de la confirmación. "open" (default) permite registrarse;
+    // "full"/"closed" ocultan el formulario y muestran "aforo lleno",
+    // pero la lista pública de confirmados sigue visible.
+    status?: "open" | "full" | "closed";
   };
 
   farewellMessage?: string;
