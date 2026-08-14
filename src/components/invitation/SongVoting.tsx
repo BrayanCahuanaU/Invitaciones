@@ -76,7 +76,7 @@ export function SongVoting({ slug }: { slug: string }) {
         await fetch("/api/songs", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ slug, track }),
+          body: JSON.stringify({ slug, track: { ...track, id: String(track.id) } }),
         });
       } catch {
         // silencioso

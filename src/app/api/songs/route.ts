@@ -86,7 +86,7 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    songs.push({ ...meta, score });
+    songs.push({ ...meta, id, score });
   }
 
   return NextResponse.json({ songs });

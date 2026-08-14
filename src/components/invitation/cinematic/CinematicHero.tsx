@@ -23,7 +23,7 @@ export function CinematicHero({
 
   return (
     <div className="relative w-full h-screen min-h-[600px] overflow-hidden">
-      <Image src={photo} alt={protagonists} fill className="object-cover" priority />
+      <Image src={photo} alt={protagonists} fill sizes="100vw" className="object-cover" priority />
 
       <div className="absolute inset-0 bg-gradient-to-t from-[#090909] via-[#090909]/40 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#090909]/60 via-transparent to-[#090909]" />

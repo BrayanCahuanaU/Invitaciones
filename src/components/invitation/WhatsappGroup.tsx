@@ -53,6 +53,7 @@ export function WhatsappGroup({
               src={image}
               alt={name}
               fill
+              sizes="(min-width: 640px) 384px, 100vw"
               className="object-cover"
               unoptimized
               onError={() => setImgError(true)}

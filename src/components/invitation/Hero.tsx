@@ -33,7 +33,7 @@ export function Hero({
 }) {
   return (
     <div className="relative w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-[16/9] overflow-hidden">
-      <Image src={photo} alt={protagonists} fill className="object-cover" priority />
+      <Image src={photo} alt={protagonists} fill sizes="100vw" className="object-cover" priority />
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
 

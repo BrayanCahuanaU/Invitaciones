@@ -19,6 +19,7 @@ export function Farewell({
         src="/invitaciones/demo-quince/img/textura.jpeg"
         alt=""
         fill
+        sizes="100vw"
         className="object-cover"
       />
       <div className="absolute inset-0 bg-black/60" />

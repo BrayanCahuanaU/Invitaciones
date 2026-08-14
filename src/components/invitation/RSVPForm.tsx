@@ -88,6 +88,8 @@ export function RSVPForm({
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left max-w-sm mx-auto">
         <input
           type="text"
+          id="rsvp-name"
+          name="name"
           placeholder="Tu nombre completo"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -127,6 +129,8 @@ export function RSVPForm({
             </span>
             <input
               type="number"
+              id="rsvp-guests"
+              name="guests"
               min={0}
               max={10}
               value={guests}
@@ -139,6 +143,8 @@ export function RSVPForm({
         <label className="flex items-center gap-2 text-sm text-[var(--inv-text-muted)]">
           <input
             type="checkbox"
+            id="rsvp-public"
+            name="isPublic"
             checked={isPublic}
             onChange={(e) => setIsPublic(e.target.checked)}
             className="accent-[#C0C0C0]"
