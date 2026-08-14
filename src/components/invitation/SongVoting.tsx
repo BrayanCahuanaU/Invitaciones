@@ -20,7 +20,6 @@ export function SongVoting({ slug }: { slug: string }) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Track[]>([]);
   const [ranking, setRanking] = useState<RankedTrack[]>([]);
-  const [addedIds, setAddedIds] = useState<Set<string>>(new Set());
   const [pendingId, setPendingId] = useState<string | null>(null);
 
   const loadRanking = useCallback(async () => {
@@ -32,7 +31,6 @@ export function SongVoting({ slug }: { slug: string }) {
       const data = JSON.parse(text);
       const songs: RankedTrack[] = data.songs ?? [];
       setRanking(songs);
-      setAddedIds(new Set(songs.map((s: RankedTrack) => s.id)));
     } catch {
       // silencioso
     }
@@ -83,7 +81,6 @@ export function SongVoting({ slug }: { slug: string }) {
       } catch {
         // silencioso
       }
-      setAddedIds((prev) => new Set(prev).add(track.id));
       setQuery("");
       setResults([]);
       await loadRanking();
@@ -191,7 +188,7 @@ export function SongVoting({ slug }: { slug: string }) {
                 </span>
                 <button
                   onClick={() => addTrack(t)}
-                  disabled={pendingId !== null || addedIds.has(t.id)}
+                  disabled={pendingId !== null}
                   className="flex items-center gap-0.5 text-xs rounded-full border border-[#C0C0C0] px-2.5 py-1 disabled:opacity-40 hover:bg-[#C0C0C0]/10 transition-colors flex-shrink-0"
                 >
                   <Plus className="w-3 h-3" />
