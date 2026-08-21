@@ -13,7 +13,7 @@ export function GiftEnvelope() {
         className="w-24 md:w-28 h-auto mx-auto mb-5 drop-shadow-lg"
       />
 
-      <p className="font-display font-bold text-black text-[2.0625rem] md:text-4xl mb-6">
+      <p className="font-script font-bold text-black text-4xl md:text-5xl mb-6">
         Un regalo para la quinceañera
       </p>
 

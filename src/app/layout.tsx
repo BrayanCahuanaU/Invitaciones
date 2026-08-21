@@ -8,6 +8,12 @@ const display = Birthstone({
   weight: "400",
 });
 
+const script = Birthstone({
+  variable: "--font-script",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 const body = Cormorant_Garamond({
   variable: "--font-body",
   subsets: ["latin"],
@@ -39,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${display.variable} ${body.variable} ${cinematicDisplay.variable} ${cinematicBody.variable} h-full antialiased`}>
+    <html lang="es" className={`${display.variable} ${script.variable} ${body.variable} ${cinematicDisplay.variable} ${cinematicBody.variable} h-full antialiased`}>
       <body className="min-h-full">{children}</body>
     </html>
   );

@@ -39,6 +39,10 @@ body {
   font-family: var(--font-display), serif;
 }
 
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
 /* ── Neon glow for accent text ── */
 .text-neon {
   color: var(--inv-accent);
