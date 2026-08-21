@@ -13,16 +13,16 @@ export function GiftEnvelope() {
         className="w-24 md:w-28 h-auto mx-auto mb-5 drop-shadow-lg"
       />
 
-      <p className="font-display text-gray-800 text-2xl md:text-3xl mb-6">
+      <p className="font-display font-bold text-black text-3xl md:text-4xl mb-6">
         Un regalo para la quinceañera
       </p>
 
-      <p className="text-gray-700 max-w-md mx-auto mb-4">
+      <p className="text-black text-base md:text-lg max-w-md mx-auto mb-4">
         En tu silla encontrarás un sobre especial. Si lo deseas, podrás hacerle
         un regalo voluntario a la quinceañera en efectivo o a través de Yape,
         escaneando el QR que encontrarás dentro del sobre.
       </p>
-      <p className="text-gray-700 max-w-md mx-auto">
+      <p className="text-black text-base md:text-lg max-w-md mx-auto">
         No olvides escribirle tus deseos: al finalizar tu participación,
         deposita el sobre en la ánfora dispuesta especialmente para ella.
       </p>
