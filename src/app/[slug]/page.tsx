@@ -214,7 +214,13 @@ export default async function InvitationPage({
                   noteImages={{
                     time: "/invitaciones/ximena-cahuana-xv/img/consideraciones/tiempo.png",
                     default: "/invitaciones/ximena-cahuana-xv/img/consideraciones/lista.png",
+                    ...(data.slug === "ximena-xv-adultos"
+                      ? { children: "/invitaciones/ximena-cahuana-xv/img/consideraciones/niños.png" }
+                      : {}),
                   }}
+                  noteTextClass={
+                    data.slug === "ximena-xv-adultos" ? "text-lg md:text-xl" : undefined
+                  }
                 />
               </RevealSection>
               <RevealSection>

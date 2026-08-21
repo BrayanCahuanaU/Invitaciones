@@ -35,6 +35,7 @@ export function Guidelines({
   manImage = "/invitaciones/demo-quince/img/men.png",
   womanImage = "/invitaciones/demo-quince/img/women.png",
   noteImages = DEFAULT_NOTE_IMAGES,
+  noteTextClass = "text-base",
 }: {
   dressCode?: {
     level: string;
@@ -53,6 +54,7 @@ export function Guidelines({
   manImage?: string;
   womanImage?: string;
   noteImages?: Partial<NoteImages>;
+  noteTextClass?: string;
 }) {
   if (!dressCode && !colorsToAvoid?.length && !notes?.length) return null;
 
@@ -162,11 +164,11 @@ export function Guidelines({
             <div className="flex flex-col items-center gap-2 mb-3">
               <p className={`font-display ${titleClass} text-3xl`}>Consideraciones</p>
             </div>
-            <div className={`grid grid-cols-2 gap-4 md:gap-8 ${notes.length % 2 !== 0 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
+            <div className={`grid gap-4 md:gap-8 ${notes.length === 1 ? "grid-cols-1 max-w-md mx-auto" : `grid-cols-2 ${notes.length % 2 !== 0 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}`}>
               {notes.map((note, i) => (
                 <div key={i} className="flex flex-col items-center gap-2">
                   <Image src={getNoteIcon(note, images)} alt="" width={500} height={500} className="object-cover aspect-square w-28 h-28 md:w-48 md:h-48 my-2" />
-                  <span className={`text-base ${bodyClass} px-2 md:px-0`}>{note}</span>
+                  <span className={`${noteTextClass} ${bodyClass} px-2 md:px-0`}>{note}</span>
                 </div>
               ))}
             </div>

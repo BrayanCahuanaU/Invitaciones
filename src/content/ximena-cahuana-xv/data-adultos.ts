@@ -5,6 +5,12 @@ import { ximenaCahuanaXv } from "./data";
 export const ximenaCahuanaXvAdultos: InvitationData = {
   ...ximenaCahuanaXv,
   slug: "ximena-xv-adultos",
+  guidelines: {
+    ...ximenaCahuanaXv.guidelines,
+    notes: [
+      "Amamos a los niños, sin embargo esta noche será una celebración exclusiva para adultos. ¡Agradecemos tu comprensión!",
+    ],
+  },
   rsvp: {
     ...ximenaCahuanaXv.rsvp,
     status: "open",
