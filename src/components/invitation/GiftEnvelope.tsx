@@ -1,25 +1,28 @@
-import { MailOpen, Amphora } from "lucide-react";
+import Image from "next/image";
 import { Section } from "./Section";
 
 export function GiftEnvelope() {
   return (
-    <Section>
+    <Section backgroundImage="/invitaciones/demo-quince/img/papel-fondo.png" fullWidth>
       {/* Ícono: sobre depositándose en una ánfora */}
-      <div className="relative w-16 h-16 mx-auto mb-5">
-        <MailOpen className="absolute left-1/2 top-0 -translate-x-1/2 rotate-[18deg] w-6 h-6 text-[#C0C0C0]/60 z-10" />
-        <Amphora className="absolute left-1/2 bottom-0 -translate-x-1/2 w-10 h-10 text-[#C0C0C0]" />
-      </div>
+      <Image
+        src="/invitaciones/ximena-cahuana-xv/img/icono-sobre-anfora.png"
+        alt="Sobre depositándose en una ánfora"
+        width={1080}
+        height={1440}
+        className="w-24 md:w-28 h-auto mx-auto mb-5 drop-shadow-lg"
+      />
 
-      <p className="font-display text-3xl md:text-4xl mb-6">
+      <p className="font-display text-gray-800 text-2xl md:text-3xl mb-6">
         Un regalo para la quinceañera
       </p>
 
-      <p className="text-[var(--inv-text-muted)] max-w-md mx-auto mb-4">
+      <p className="text-gray-700 max-w-md mx-auto mb-4">
         En tu silla encontrarás un sobre especial. Si lo deseas, podrás hacerle
         un regalo voluntario a la quinceañera en efectivo o a través de Yape,
         escaneando el QR que encontrarás dentro del sobre.
       </p>
-      <p className="text-[var(--inv-text-muted)] max-w-md mx-auto">
+      <p className="text-gray-700 max-w-md mx-auto">
         No olvides escribirle tus deseos: al finalizar tu participación,
         deposita el sobre en la ánfora dispuesta especialmente para ella.
       </p>
