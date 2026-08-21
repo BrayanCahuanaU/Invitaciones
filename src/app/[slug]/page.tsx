@@ -11,6 +11,7 @@ import { Countdown } from "@/components/invitation/Countdown";
 import { EventDetails } from "@/components/invitation/EventDetails";
 import { RSVPForm } from "@/components/invitation/RSVPForm";
 import { WhatsappGroup } from "@/components/invitation/WhatsappGroup";
+import { GiftEnvelope } from "@/components/invitation/GiftEnvelope";
 import { Guidelines } from "@/components/invitation/Guidelines";
 import { Gifts } from "@/components/invitation/Gifts";
 import { SongVoting } from "@/components/invitation/SongVoting";
@@ -224,12 +225,7 @@ export default async function InvitationPage({
                 />
               </RevealSection>
               <RevealSection>
-                <WhatsappGroup
-                  url={data.whatsappGroupUrl}
-                  fallbackName={data.whatsappGroupName}
-                  fallbackPhoto={data.whatsappGroupPhoto}
-                  fallbackDescription={data.whatsappGroupDescription}
-                />
+                <GiftEnvelope />
               </RevealSection>
               <RevealSection>
                 <Gifts
