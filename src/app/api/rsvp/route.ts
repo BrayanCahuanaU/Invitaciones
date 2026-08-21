@@ -27,9 +27,17 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const redis = getRedis();
-  const record = { ...entry, createdAt: new Date().toISOString() };
-  await redis.lpush(`rsvp:${slug}`, JSON.stringify(record));
+  try {
+    const redis = getRedis();
+    const record = { ...entry, createdAt: new Date().toISOString() };
+    await redis.lpush(`rsvp:${slug}`, JSON.stringify(record));
+  } catch (err) {
+    console.error("[rsvp POST]", err);
+    return NextResponse.json(
+      { error: "Error interno al guardar la confirmación." },
+      { status: 500 }
+    );
+  }
 
   return NextResponse.json({ ok: true });
 }
@@ -41,17 +49,25 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Falta slug" }, { status: 400 });
   }
 
-  const redis = getRedis();
-  const raw = await redis.lrange(`rsvp:${slug}`, 0, -1);
-  const entries = raw
-    .map((r) => {
-      try {
-        return typeof r === "string" ? JSON.parse(r) : r;
-      } catch {
-        return null;
-      }
-    })
-    .filter((e) => e && e.isPublic);
+  try {
+    const redis = getRedis();
+    const raw = await redis.lrange(`rsvp:${slug}`, 0, -1);
+    const entries = raw
+      .map((r) => {
+        try {
+          return typeof r === "string" ? JSON.parse(r) : r;
+        } catch {
+          return null;
+        }
+      })
+      .filter((e) => e && e.isPublic);
 
-  return NextResponse.json({ entries });
+    return NextResponse.json({ entries });
+  } catch (err) {
+    console.error("[rsvp GET]", err);
+    return NextResponse.json(
+      { error: "Error interno al leer las confirmaciones.", entries: [] },
+      { status: 500 }
+    );
+  }
 }
