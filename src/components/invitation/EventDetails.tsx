@@ -7,12 +7,14 @@ export function EventDetails({
   address,
   district,
   mapsUrl,
+  mapsEmbedUrl,
 }: {
   eventDate: string;
   venueName: string;
   address: string;
   district?: string;
   mapsUrl: string;
+  mapsEmbedUrl?: string;
 }) {
   const date = new Date(eventDate);
   const dayName = new Intl.DateTimeFormat("es-PE", {
@@ -20,7 +22,7 @@ export function EventDetails({
     timeZone: "America/Lima",
   }).format(date);
   const dayNumber = new Intl.DateTimeFormat("es-PE", {
-    day: "numeric",
+    day: "2-digit",
     timeZone: "America/Lima",
   }).format(date);
   const monthName = new Intl.DateTimeFormat("es-PE", {
@@ -34,7 +36,8 @@ export function EventDetails({
   }).format(date);
 
   const mapQuery = encodeURIComponent(`${venueName} ${address} ${district ?? ""}`);
-  const mapEmbedUrl = `https://maps.google.com/maps?q=${mapQuery}&output=embed&z=16`;
+  const embedUrl =
+    mapsEmbedUrl ?? `https://maps.google.com/maps?q=${mapQuery}&output=embed&z=16`;
 
   return (
     <Section>
@@ -71,7 +74,7 @@ export function EventDetails({
         {/* Columna 2 — Mapa */}
         <div className="rounded-xl overflow-hidden border border-white/8 bg-[var(--inv-surface)]/40 backdrop-blur-md min-h-[250px]">
           <iframe
-            src={mapEmbedUrl}
+            src={embedUrl}
             width="100%"
             height="100%"
             style={{ border: 0, minHeight: "250px" }}

@@ -19,9 +19,45 @@ import { MusicPlayer } from "@/components/invitation/MusicPlayer";
 import { Farewell } from "@/components/invitation/Farewell";
 import { RevealSection } from "@/components/invitation/RevealSection";
 import { CinematicHero } from "@/components/invitation/cinematic/CinematicHero";
+import { FamilySection } from "@/components/invitation/cinematic/FamilySection";
 import { GuestArtists } from "@/components/invitation/cinematic/GuestArtists";
 import { CinematicTimeline } from "@/components/invitation/cinematic/CinematicTimeline";
 import { CinematicFooter } from "@/components/invitation/cinematic/CinematicFooter";
+
+interface CinematicAssetPaths {
+  heroNameSvg: string;
+  characterImage: string;
+  dividerFlowersMobile: string;
+  dividerFlowersDesktop: string;
+  countdownBackground: string;
+  guidelinesBackground: string;
+  guidelinesBackgroundMobile: string;
+  guidelinesManImage: string;
+  guidelinesWomanImage: string;
+  guidelineNoteImages: { time: string; default: string };
+  footerDivider: string;
+  giftEnvelopeIcon: string;
+  fallbackBackground: string;
+}
+
+const DEFAULT_CINEMATIC_ASSETS: CinematicAssetPaths = {
+  heroNameSvg: "/invitaciones/ximena-cahuana-xv/img/ximena.png",
+  characterImage: "/invitaciones/ximena-cahuana-xv/personaje.png?v=2",
+  dividerFlowersMobile: "/invitaciones/ximena-cahuana-xv/img/flores-div-movil.png",
+  dividerFlowersDesktop: "/invitaciones/ximena-cahuana-xv/img/flores-div-desktop.png",
+  countdownBackground: "/invitaciones/ximena-cahuana-xv/img/fondo-temporizador.png",
+  guidelinesBackground: "/invitaciones/ximena-cahuana-xv/img/fondo-indicaciones.png",
+  guidelinesBackgroundMobile: "/invitaciones/ximena-cahuana-xv/img/fondo-indicaciones.png",
+  guidelinesManImage: "/invitaciones/ximena-cahuana-xv/img/genero/hombre.png",
+  guidelinesWomanImage: "/invitaciones/ximena-cahuana-xv/img/genero/mujer.png",
+  guidelineNoteImages: {
+    time: "/invitaciones/ximena-cahuana-xv/img/consideraciones/tiempo.png",
+    default: "/invitaciones/ximena-cahuana-xv/img/consideraciones/lista.png",
+  },
+  footerDivider: "/invitaciones/ximena-cahuana-xv/img/divisor-footer.png",
+  giftEnvelopeIcon: "/invitaciones/ximena-cahuana-xv/img/icono-sobre-anfora.png",
+  fallbackBackground: "/invitaciones/ximena-cahuana-xv/img/background.png",
+};
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -55,6 +91,36 @@ export default async function InvitationPage({
 
   const theme = getTheme(data.theme);
   const isCinematic = data.layout === "cinematic";
+
+  const assets = data.cinematicAssets ?? {};
+  const cinematicAssets: CinematicAssetPaths = {
+    heroNameSvg: assets.heroNameSvg ?? DEFAULT_CINEMATIC_ASSETS.heroNameSvg,
+    characterImage: assets.characterImage ?? DEFAULT_CINEMATIC_ASSETS.characterImage,
+    dividerFlowersMobile:
+      assets.dividerFlowersMobile ?? DEFAULT_CINEMATIC_ASSETS.dividerFlowersMobile,
+    dividerFlowersDesktop:
+      assets.dividerFlowersDesktop ?? DEFAULT_CINEMATIC_ASSETS.dividerFlowersDesktop,
+    countdownBackground:
+      assets.countdownBackground ?? DEFAULT_CINEMATIC_ASSETS.countdownBackground,
+    guidelinesBackground:
+      assets.guidelinesBackground ?? DEFAULT_CINEMATIC_ASSETS.guidelinesBackground,
+    guidelinesBackgroundMobile:
+      assets.guidelinesBackgroundMobile ??
+      DEFAULT_CINEMATIC_ASSETS.guidelinesBackgroundMobile,
+    guidelinesManImage:
+      assets.guidelinesManImage ?? DEFAULT_CINEMATIC_ASSETS.guidelinesManImage,
+    guidelinesWomanImage:
+      assets.guidelinesWomanImage ?? DEFAULT_CINEMATIC_ASSETS.guidelinesWomanImage,
+    guidelineNoteImages: {
+      time: assets.guidelineNoteImages?.time ?? DEFAULT_CINEMATIC_ASSETS.guidelineNoteImages.time,
+      default:
+        assets.guidelineNoteImages?.default ?? DEFAULT_CINEMATIC_ASSETS.guidelineNoteImages.default,
+    },
+    footerDivider: assets.footerDivider ?? DEFAULT_CINEMATIC_ASSETS.footerDivider,
+    giftEnvelopeIcon: assets.giftEnvelopeIcon ?? DEFAULT_CINEMATIC_ASSETS.giftEnvelopeIcon,
+    fallbackBackground:
+      assets.fallbackBackground ?? DEFAULT_CINEMATIC_ASSETS.fallbackBackground,
+  };
 
   return (
     <div
@@ -111,7 +177,7 @@ export default async function InvitationPage({
           ) : (
             <div
               className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: "url(/invitaciones/ximena-cahuana-xv/img/background.png)" }}
+              style={{ backgroundImage: `url(${cinematicAssets.fallbackBackground})` }}
             />
           )}
           <div className="fixed inset-0 -z-[9] bg-[#090909]/90" />
@@ -136,7 +202,7 @@ export default async function InvitationPage({
                   photo={data.hero.photo}
                   protagonists={data.hero.protagonists}
                   motivo={data.hero.motivo}
-                  nameSvg="/invitaciones/ximena-cahuana-xv/img/ximena.png"
+                  nameSvg={cinematicAssets.heroNameSvg}
                 >
                   {data.backgroundMusic && (
                     <MusicPlayer
@@ -148,7 +214,7 @@ export default async function InvitationPage({
                 </CinematicHero>
                 <div className="absolute inset-x-0 top-[42%] bottom-0 overflow-hidden pointer-events-none select-none">
                   <Image
-                    src="/invitaciones/ximena-cahuana-xv/personaje.png?v=2"
+                    src={cinematicAssets.characterImage}
                     alt=""
                     fill
                     sizes="100vw"
@@ -159,14 +225,14 @@ export default async function InvitationPage({
               </div>
               <div className="relative z-10 -mt-39 sm:-mt-24 lg:-mt-90 w-full pointer-events-none select-none">
                 <Image
-                  src="/invitaciones/ximena-cahuana-xv/img/flores-div-movil.png"
+                  src={cinematicAssets.dividerFlowersMobile}
                   alt=""
                   width={1200}
                   height={484}
                   className="w-full h-auto object-contain drop-shadow-lg brightness-90 md:hidden"
                 />
                 <Image
-                  src="/invitaciones/ximena-cahuana-xv/img/flores-div-desktop.png"
+                  src={cinematicAssets.dividerFlowersDesktop}
                   alt=""
                   width={1200}
                   height={484}
@@ -177,11 +243,15 @@ export default async function InvitationPage({
                 <Quote text={data.quote} />
               </RevealSection>
               <RevealSection>
+                <FamilySection parents={data.family?.parents} godparents={data.family?.godparents} />
+              </RevealSection>
+              <RevealSection>
                 <EventDetails
                   eventDate={data.eventDate}
                   venueName={data.location.venueName}
                   address={data.location.address}
                   mapsUrl={data.location.mapsUrl}
+                  mapsEmbedUrl={data.location.mapsEmbedUrl}
                 />
               </RevealSection>
               {data.guestArtists && data.guestArtists.length > 0 && (
@@ -192,7 +262,7 @@ export default async function InvitationPage({
               <RevealSection>
                 <Countdown
                   eventDate={data.eventDate}
-                  backgroundImage="/invitaciones/ximena-cahuana-xv/img/fondo-temporizador.png"
+                  backgroundImage={cinematicAssets.countdownBackground}
                 />
               </RevealSection>
               {data.timeline && data.timeline.length > 0 && (
@@ -205,15 +275,15 @@ export default async function InvitationPage({
                   dressCode={data.guidelines.dressCode}
                   colorsToAvoid={data.guidelines.colorsToAvoid}
                   notes={data.guidelines.notes}
-                  backgroundImage="/invitaciones/ximena-cahuana-xv/img/fondo-indicaciones.png"
-                  backgroundImageMobile="/invitaciones/ximena-cahuana-xv/img/fondo-indicaciones.png"
+                  backgroundImage={cinematicAssets.guidelinesBackground}
+                  backgroundImageMobile={cinematicAssets.guidelinesBackgroundMobile}
                   hideTitle
                   variant="dark"
-                  manImage="/invitaciones/ximena-cahuana-xv/img/genero/hombre.png"
-                  womanImage="/invitaciones/ximena-cahuana-xv/img/genero/mujer.png"
+                  manImage={cinematicAssets.guidelinesManImage}
+                  womanImage={cinematicAssets.guidelinesWomanImage}
                   noteImages={{
-                    time: "/invitaciones/ximena-cahuana-xv/img/consideraciones/tiempo.png",
-                    default: "/invitaciones/ximena-cahuana-xv/img/consideraciones/lista.png",
+                    time: cinematicAssets.guidelineNoteImages.time,
+                    default: cinematicAssets.guidelineNoteImages.default,
                     ...(data.slug === "ximena-xv-adultos"
                       ? { children: "/invitaciones/ximena-cahuana-xv/img/consideraciones/niños.png" }
                       : {}),
@@ -231,7 +301,10 @@ export default async function InvitationPage({
                 />
               </RevealSection>
               <RevealSection>
-                <GiftEnvelope />
+                <GiftEnvelope
+                  icon={cinematicAssets.giftEnvelopeIcon}
+                  message={data.gifts.envelopeMessage}
+                />
               </RevealSection>
               <RevealSection>
                 <Gifts
@@ -246,7 +319,7 @@ export default async function InvitationPage({
               <div className="relative z-30 w-full pointer-events-none select-none mt-8 md:mt-14 -mb-13 md:-mb-16">
                 <div className="block md:hidden">
                   <Image
-                    src="/invitaciones/ximena-cahuana-xv/img/divisor-footer.png"
+                    src={cinematicAssets.footerDivider}
                     alt=""
                     width={1200}
                     height={384}
@@ -255,7 +328,7 @@ export default async function InvitationPage({
                 </div>
                 <div className="hidden md:block">
                   <Image
-                    src="/invitaciones/ximena-cahuana-xv/img/divisor-footer.png"
+                    src={cinematicAssets.footerDivider}
                     alt=""
                     width={1200}
                     height={384}

@@ -28,6 +28,36 @@ export interface SocialLink {
   logo?: string;
 }
 
+export interface GuidelineNoteImages {
+  children?: string;
+  adults?: string;
+  time?: string;
+  default?: string;
+}
+
+// Rutas de media del diseño cinematic. Si se omiten se usan los
+// recursos por defecto (estilo cinematic estándar) de cada invitación.
+export interface CinematicAssets {
+  heroNameSvg?: string; // nombre en SVG superpuesto al hero
+  characterImage?: string; // overlay personaje bajo el hero
+  dividerFlowersMobile?: string;
+  dividerFlowersDesktop?: string;
+  countdownBackground?: string;
+  guidelinesBackground?: string;
+  guidelinesBackgroundMobile?: string;
+  guidelinesManImage?: string;
+  guidelinesWomanImage?: string;
+  guidelineNoteImages?: GuidelineNoteImages;
+  footerDivider?: string;
+  giftEnvelopeIcon?: string;
+  fallbackBackground?: string; // si no hay video de fondo
+}
+
+export interface Family {
+  parents?: string[];
+  godparents?: string[];
+}
+
 export interface InvitationData {
   slug: string;
   eventType: EventType;
@@ -57,6 +87,8 @@ export interface InvitationData {
 
   quote: string;
 
+  family?: Family;
+
   eventDate: string; // ISO 8601, ej "2026-11-14T19:00:00-05:00"
 
   location: {
@@ -64,6 +96,7 @@ export interface InvitationData {
     address: string;
     district?: string;
     mapsUrl: string;
+    mapsEmbedUrl?: string; // URL embed para el mini-mapa (iframe); si falta se genera desde los datos
   };
 
   whatsappGroupUrl?: string;
@@ -86,6 +119,7 @@ export interface InvitationData {
 
   gifts: {
     message?: string;
+    envelopeMessage?: string; // texto del sobre de regalo (layout cinematic)
     bankAccounts?: BankAccount[];
     suggestions?: string[];
   };
@@ -122,6 +156,9 @@ export interface InvitationData {
     mobile?: string;   // video vertical para móvil
     desktop?: string;  // video horizontal para desktop
   };
+
+  // ── Media del diseño cinematic ──
+  cinematicAssets?: CinematicAssets;
 
   // ── Música de fondo ──
   backgroundMusic?: {
