@@ -10,21 +10,24 @@ export function FamilySection({
   if (!parents?.length && !godparents?.length) return null;
 
   return (
-    <Section>
+    <Section
+      backgroundImage="/invitaciones/demo-quince/img/papel-fondo.png"
+      fullWidth
+    >
       <div className="flex flex-col items-center gap-2">
-        <div className="h-px w-24 bg-gradient-to-r from-transparent via-[#C0C0C0] to-transparent" />
+        <div className="h-px w-24 bg-gradient-to-r from-transparent via-black/40 to-transparent" />
       </div>
 
       {parents && parents.length > 0 && (
         <div className="text-center mt-10">
-          <p className="uppercase tracking-[0.3em] text-xs text-[#A8A8A8] mb-4">
+          <p className="uppercase tracking-[0.3em] text-xs text-black/60 mb-4">
             Con la bendición de sus padres
           </p>
           <div className="space-y-2">
             {parents.map((name) => (
               <p
                 key={name}
-                className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#F2F2F2]"
+                className="text-2xl sm:text-3xl md:text-4xl font-bold text-black"
                 style={{
                   fontFamily: "var(--font-cinematic-display)",
                   letterSpacing: "0.05em",
@@ -39,14 +42,14 @@ export function FamilySection({
 
       {godparents && godparents.length > 0 && (
         <div className="text-center mt-12">
-          <p className="uppercase tracking-[0.3em] text-xs text-[#A8A8A8] mb-4">
+          <p className="uppercase tracking-[0.3em] text-xs text-black/60 mb-4">
             Padrinos
           </p>
           <div className="space-y-2">
             {godparents.map((name) => (
               <p
                 key={name}
-                className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#C0C0C0]"
+                className="text-2xl sm:text-3xl md:text-4xl font-bold text-black/75"
                 style={{
                   fontFamily: "var(--font-cinematic-display)",
                   letterSpacing: "0.05em",
