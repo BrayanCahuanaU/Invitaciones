@@ -112,16 +112,28 @@ export function Gifts({
   message,
   bankAccounts,
   suggestions,
+  icon,
 }: {
   message?: string;
   bankAccounts?: BankAccount[];
   suggestions?: string[];
+  icon?: string;
 }) {
   if (!message && !bankAccounts?.length && !suggestions?.length) return null;
   return (
     <Section>
       <div className="flex flex-col items-center gap-2 mb-4">
-        <Gift className="w-8 h-8 text-[#C0C0C0]" />
+        {icon ? (
+          <Image
+            src={icon}
+            alt=""
+            width={64}
+            height={64}
+            className="w-8 h-8 object-contain"
+          />
+        ) : (
+          <Gift className="w-8 h-8 text-[#C0C0C0]" />
+        )}
         <p className="font-display text-3xl md:text-4xl">Regalos</p>
       </div>
       {message && <p className="text-[var(--inv-text-muted)] mb-6">{message}</p>}

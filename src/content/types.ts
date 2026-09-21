@@ -49,7 +49,15 @@ export interface CinematicAssets {
   guidelinesWomanImage?: string;
   guidelineNoteImages?: GuidelineNoteImages;
   footerDivider?: string;
+  footerIcon?: string; // icono del footer (tiara, corazón, etc.)
   giftEnvelopeIcon?: string;
+  paperBackground?: string; // fondo de papel para secciones como madres/padres y sobre de regalo
+  countdownIcon?: string; // icono del temporizador
+  locationIcon?: string; // icono de ubicación
+  giftIcon?: string; // icono de regalos
+  rsvpIcon?: string; // icono de "Confirma tu asistencia"
+  timelineIcon?: string; // icono de "Programa del evento"
+  musicIcon?: string; // icono del reproductor de música
   fallbackBackground?: string; // si no hay video de fondo
 }
 

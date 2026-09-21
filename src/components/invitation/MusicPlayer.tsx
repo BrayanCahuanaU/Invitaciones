@@ -1,20 +1,41 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Music, Pause, Play, Volume2, VolumeX } from "lucide-react";
 
 export function MusicPlayer({
   src,
   title,
   artist,
+  icon,
 }: {
   src: string;
   title?: string;
   artist?: string;
+  icon?: string;
 }) {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const fadeIdRef = useRef<number | null>(null);
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
+
+  function fadeIn(audio: HTMLAudioElement, target = 0.5, duration = 2000) {
+    if (fadeIdRef.current !== null) cancelAnimationFrame(fadeIdRef.current);
+    audio.volume = 0;
+    const startTime = performance.now();
+    const step = (now: number) => {
+      const progress = Math.min(1, (now - startTime) / duration);
+      audio.volume = Math.max(0.02, target * progress);
+      if (progress < 1) {
+        fadeIdRef.current = requestAnimationFrame(step);
+      } else {
+        audio.volume = target;
+        fadeIdRef.current = null;
+      }
+    };
+    fadeIdRef.current = requestAnimationFrame(step);
+  }
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -23,19 +44,32 @@ export function MusicPlayer({
     audio.loop = true;
 
     const start = () => {
-      audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+      audio.play().then(() => {
+        fadeIn(audio, 0.5, 2000);
+        setPlaying(true);
+      }).catch(() => setPlaying(false));
     };
 
     window.addEventListener("invitation:opened", start);
-    return () => window.removeEventListener("invitation:opened", start);
+    return () => {
+      window.removeEventListener("invitation:opened", start);
+      if (fadeIdRef.current !== null) cancelAnimationFrame(fadeIdRef.current);
+    };
   }, []);
 
   function togglePlay() {
     const audio = audioRef.current;
     if (!audio) return;
     if (audio.paused) {
-      audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+      audio.play().then(() => {
+        fadeIn(audio, 0.5, 2000);
+        setPlaying(true);
+      }).catch(() => setPlaying(false));
     } else {
+      if (fadeIdRef.current !== null) {
+        cancelAnimationFrame(fadeIdRef.current);
+        fadeIdRef.current = null;
+      }
       audio.pause();
       setPlaying(false);
     }
@@ -52,7 +86,11 @@ export function MusicPlayer({
     <div className="flex justify-center">
       <div className="inline-flex items-center gap-3 md:gap-4 rounded-full border border-[#C0C0C0]/30 bg-[var(--inv-surface)]/50 backdrop-blur-md px-4 md:px-6 py-3">
         <audio ref={audioRef} src={src} loop preload="auto" />
-        <Music className="w-5 h-5 text-[#C0C0C0] flex-shrink-0" />
+        {icon ? (
+          <Image src={icon} alt="" width={32} height={32} className="w-5 h-5 object-contain flex-shrink-0" />
+        ) : (
+          <Music className="w-5 h-5 text-[#C0C0C0] flex-shrink-0" />
+        )}
         <span className="min-w-0 text-left">
           <span className="block truncate text-sm">{title ?? "Música"}</span>
           {artist && (

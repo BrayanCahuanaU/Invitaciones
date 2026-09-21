@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { CheckCircle, XCircle } from "lucide-react";
 import { Section } from "./Section";
 
@@ -14,10 +15,12 @@ export function RSVPForm({
   slug,
   allowGuests = true,
   rsvpStatus = "open",
+  icon,
 }: {
   slug: string;
   allowGuests?: boolean;
   rsvpStatus?: "open" | "full" | "closed";
+  icon?: string;
 }) {
   const [name, setName] = useState("");
   const [attending, setAttending] = useState(true);
@@ -79,7 +82,11 @@ export function RSVPForm({
   if (status === "done") {
     return (
       <Section id="confirmar">
-        <CheckCircle className="w-10 h-10 text-[#C0C0C0] mx-auto mb-4" />
+        {icon ? (
+          <Image src={icon} alt="" width={48} height={48} className="w-8 h-8 object-contain mx-auto mb-4" />
+        ) : (
+          <CheckCircle className="w-10 h-10 text-[#C0C0C0] mx-auto mb-4" />
+        )}
         <p className="font-display text-2xl md:text-3xl">
           ¡Gracias por confirmar!
         </p>
@@ -92,8 +99,12 @@ export function RSVPForm({
 
   return (
     <Section id="confirmar">
-      <div className="flex flex-col items-center justify-center gap-2 mb-6">
-        <CheckCircle className="w-8 h-8 text-[#C0C0C0]" />
+<div className="flex flex-col items-center justify-center gap-2 mb-6">
+        {icon ? (
+          <Image src={icon} alt="" width={48} height={48} className="w-8 h-8 object-contain" />
+        ) : (
+          <CheckCircle className="w-10 h-10 text-[#C0C0C0]" />
+        )}
         <p className="font-display text-3xl md:text-4xl">
           {isRegistrationOpen ? "Confirma tu asistencia" : "Aforo lleno"}
         </p>
@@ -170,7 +181,7 @@ export function RSVPForm({
         <button
           type="submit"
           disabled={status === "sending"}
-          className="mt-2 rounded-full bg-[#C0C0C0] text-[#090909] px-6 py-3 font-medium disabled:opacity-60 hover:opacity-90 transition-opacity"
+          className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-[#C0C0C0] bg-[var(--inv-surface)]/50 text-[#C0C0C0] px-6 py-3 font-medium backdrop-blur-md transition-colors hover:bg-[#C0C0C0]/10 disabled:opacity-60"
         >
           {status === "sending" ? "Enviando..." : "Confirmar asistencia"}
         </button>

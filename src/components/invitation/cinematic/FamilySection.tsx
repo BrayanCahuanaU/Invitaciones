@@ -3,25 +3,25 @@ import { Section } from "../Section";
 export function FamilySection({
   parents,
   godparents,
+  backgroundImage = "/invitaciones/demo-quince/img/papel-fondo.png",
 }: {
   parents?: string[];
   godparents?: string[];
+  backgroundImage?: string;
 }) {
   if (!parents?.length && !godparents?.length) return null;
 
   return (
     <Section
-      backgroundImage="/invitaciones/demo-quince/img/papel-fondo.png"
+      backgroundImage={backgroundImage}
       fullWidth
     >
-      <div className="flex flex-col items-center gap-2">
-        <div className="h-px w-24 bg-gradient-to-r from-transparent via-black/40 to-transparent" />
-      </div>
+      
 
       {parents && parents.length > 0 && (
         <div className="text-center mt-10">
           <p
-            className="uppercase tracking-[0.3em] text-sm md:text-base font-bold text-black/85 mb-4"
+            className="uppercase tracking-[0.3em] text-sm md:text-base font-bold text-white/65 mb-4"
             style={{ fontFamily: "var(--font-cinematic-display)" }}
           >
             Con la bendición de sus padres
@@ -30,7 +30,7 @@ export function FamilySection({
             {parents.map((name) => (
               <p
                 key={name}
-                className="text-2xl sm:text-3xl md:text-4xl font-bold text-black"
+                className="text-2xl sm:text-3xl md:text-4xl font-bold text-gold/100"
                 style={{
                   fontFamily: "var(--font-cinematic-display)",
                   letterSpacing: "0.05em",
@@ -43,10 +43,14 @@ export function FamilySection({
         </div>
       )}
 
+      <div className="flex flex-col items-center gap-2">
+        <div className="h-px w-24 bg-gradient-to-r from-transparent via-black/40 to-transparent" />
+      </div>
+
       {godparents && godparents.length > 0 && (
         <div className="text-center mt-12">
           <p
-            className="uppercase tracking-[0.3em] text-sm md:text-base font-bold text-black/85 mb-4"
+            className="uppercase tracking-[0.3em] text-sm md:text-base font-bold text-white/65 mb-4"
             style={{ fontFamily: "var(--font-cinematic-display)" }}
           >
             Padrinos
@@ -55,7 +59,7 @@ export function FamilySection({
             {godparents.map((name) => (
               <p
                 key={name}
-                className="text-2xl sm:text-3xl md:text-4xl font-bold text-black/75"
+                className="text-2xl sm:text-3xl md:text-4xl font-bold text-gold/100"
                 style={{
                   fontFamily: "var(--font-cinematic-display)",
                   letterSpacing: "0.05em",

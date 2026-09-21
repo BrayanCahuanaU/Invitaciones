@@ -36,7 +36,15 @@ interface CinematicAssetPaths {
   guidelinesWomanImage: string;
   guidelineNoteImages: { time: string; default: string };
   footerDivider: string;
+  footerIcon?: string;
   giftEnvelopeIcon: string;
+  paperBackground: string;
+  countdownIcon?: string;
+  locationIcon?: string;
+  giftIcon?: string;
+  rsvpIcon?: string;
+  timelineIcon?: string;
+  musicIcon?: string;
   fallbackBackground: string;
 }
 
@@ -56,6 +64,7 @@ const DEFAULT_CINEMATIC_ASSETS: CinematicAssetPaths = {
   },
   footerDivider: "/invitaciones/ximena-cahuana-xv/img/divisor-footer.png",
   giftEnvelopeIcon: "/invitaciones/ximena-cahuana-xv/img/icono-sobre-anfora.png",
+  paperBackground: "/invitaciones/demo-quince/img/papel-fondo.png",
   fallbackBackground: "/invitaciones/ximena-cahuana-xv/img/background.png",
 };
 
@@ -117,7 +126,14 @@ export default async function InvitationPage({
         assets.guidelineNoteImages?.default ?? DEFAULT_CINEMATIC_ASSETS.guidelineNoteImages.default,
     },
     footerDivider: assets.footerDivider ?? DEFAULT_CINEMATIC_ASSETS.footerDivider,
+    footerIcon: assets.footerIcon,
     giftEnvelopeIcon: assets.giftEnvelopeIcon ?? DEFAULT_CINEMATIC_ASSETS.giftEnvelopeIcon,
+    paperBackground: assets.paperBackground ?? DEFAULT_CINEMATIC_ASSETS.paperBackground,
+    countdownIcon: assets.countdownIcon,
+    locationIcon: assets.locationIcon,
+    giftIcon: assets.giftIcon,
+    rsvpIcon: assets.rsvpIcon,
+    timelineIcon: assets.timelineIcon,
     fallbackBackground:
       assets.fallbackBackground ?? DEFAULT_CINEMATIC_ASSETS.fallbackBackground,
   };
@@ -209,6 +225,7 @@ export default async function InvitationPage({
                       src={data.backgroundMusic.src}
                       title={data.backgroundMusic.title}
                       artist={data.backgroundMusic.artist}
+                      icon={cinematicAssets.musicIcon}
                     />
                   )}
                 </CinematicHero>
@@ -243,7 +260,11 @@ export default async function InvitationPage({
                 <Quote text={data.quote} />
               </RevealSection>
               <RevealSection>
-                <FamilySection parents={data.family?.parents} godparents={data.family?.godparents} />
+                <FamilySection
+                  parents={data.family?.parents}
+                  godparents={data.family?.godparents}
+                  backgroundImage={cinematicAssets.paperBackground}
+                />
               </RevealSection>
               <RevealSection>
                 <EventDetails
@@ -253,6 +274,7 @@ export default async function InvitationPage({
                   mapsUrl={data.location.mapsUrl}
                   mapsEmbedUrl={data.location.mapsEmbedUrl}
                   venuePhoto={data.location.venuePhoto}
+                  icon={cinematicAssets.locationIcon}
                 />
               </RevealSection>
               {data.guestArtists && data.guestArtists.length > 0 && (
@@ -264,11 +286,12 @@ export default async function InvitationPage({
                 <Countdown
                   eventDate={data.eventDate}
                   backgroundImage={cinematicAssets.countdownBackground}
+                  icon={cinematicAssets.countdownIcon}
                 />
               </RevealSection>
               {data.timeline && data.timeline.length > 0 && (
                 <RevealSection>
-                  <CinematicTimeline items={data.timeline} />
+                  <CinematicTimeline items={data.timeline} icon={cinematicAssets.timelineIcon} />
                 </RevealSection>
               )}
               <RevealSection>
@@ -299,12 +322,14 @@ export default async function InvitationPage({
                   slug={data.slug}
                   allowGuests={data.rsvp.allowGuests ?? true}
                   rsvpStatus={data.rsvp.status ?? "open"}
+                  icon={cinematicAssets.rsvpIcon}
                 />
               </RevealSection>
               <RevealSection>
                 <GiftEnvelope
                   icon={cinematicAssets.giftEnvelopeIcon}
                   message={data.gifts.envelopeMessage}
+                  backgroundImage={cinematicAssets.paperBackground}
                 />
               </RevealSection>
               <RevealSection>
@@ -312,10 +337,11 @@ export default async function InvitationPage({
                   message={data.gifts.message}
                   bankAccounts={data.gifts.bankAccounts}
                   suggestions={data.gifts.suggestions}
+                  icon={cinematicAssets.giftIcon}
                 />
               </RevealSection>
               <RevealSection>
-                <SongVoting slug={data.slug} />
+                <SongVoting slug={data.slug} icon={cinematicAssets.musicIcon} />
               </RevealSection>
               <div className="relative z-30 w-full pointer-events-none select-none mt-8 md:mt-14 -mb-13 md:-mb-16">
                 <div className="block md:hidden">
@@ -343,6 +369,7 @@ export default async function InvitationPage({
                 socialLinks={data.socialLinks}
                 background={data.footerBackground}
                 backgroundMobile={data.footerBackgroundMobile}
+                icon={cinematicAssets.footerIcon}
               />
             </>
           ) : (
@@ -364,9 +391,9 @@ export default async function InvitationPage({
               </div>
               <RevealSection>
                 <Quote text={data.quote} />
-              </RevealSection>
+            </RevealSection>
               <RevealSection>
-                <Countdown eventDate={data.eventDate} />
+                <SongVoting slug={data.slug} icon={cinematicAssets.musicIcon} />
               </RevealSection>
               <RevealSection>
                 <EventDetails
@@ -407,7 +434,7 @@ export default async function InvitationPage({
                 />
               </RevealSection>
               <RevealSection>
-                <SongVoting slug={data.slug} />
+                <SongVoting slug={data.slug} icon={cinematicAssets.musicIcon} />
               </RevealSection>
               {data.farewellMessage && (
                 <RevealSection>

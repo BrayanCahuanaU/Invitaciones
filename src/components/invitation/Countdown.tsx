@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Timer } from "lucide-react";
 import { Section } from "./Section";
 
@@ -13,7 +14,7 @@ function getRemaining(target: number) {
   return { days, hours, minutes, seconds };
 }
 
-export function Countdown({ eventDate, backgroundImage }: { eventDate: string; backgroundImage?: string }) {
+export function Countdown({ eventDate, backgroundImage, icon }: { eventDate: string; backgroundImage?: string; icon?: string }) {
   const target = new Date(eventDate).getTime();
   const [remaining, setRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [mounted, setMounted] = useState(false);
@@ -35,7 +36,17 @@ export function Countdown({ eventDate, backgroundImage }: { eventDate: string; b
   return (
     <Section backgroundImage={backgroundImage ?? "/invitaciones/demo-quince/img/papel-fondo.png"} fullWidth >
       <div className="flex flex-col items-center gap-2 mb-5">
-        <Timer className="w-6 h-6 text-[#C0C0C0]" />
+        {icon ? (
+          <Image
+            src={icon}
+            alt=""
+            width={48}
+            height={48}
+            className="w-6 h-6 object-contain"
+          />
+        ) : (
+          <Timer className="w-6 h-6 text-[#C0C0C0]" />
+        )}
         <p className="uppercase tracking-widest text-xs text-gray-800 md:text-xl">
           Falta muy poco
         </p>
@@ -43,7 +54,7 @@ export function Countdown({ eventDate, backgroundImage }: { eventDate: string; b
       <div className="flex justify-center gap-6 md:gap-15">
         {units.map((u) => (
           <div key={u.label} className="w-16 md:w-24">
-            <div className="font-display text-4xl md:text-7xl tabular-nums font-bold text-[#7DE9FF]" style={{ textShadow: "0 0 6px rgba(125, 233, 255, 0.9), 0 0 18px rgba(125, 233, 255, 0.55), 0 0 42px rgba(56, 189, 248, 0.45)" }}>
+            <div className="font-display text-4xl md:text-7xl tabular-nums font-bold text-[#7DE9FF]" style={{ textShadow: "0 0 6px rgb(0, 11, 14), 0 0 18px rgba(125, 233, 255, 0.55), 0 0 42px rgba(56, 189, 248, 0.45)" }}>
               {u.value}
             </div>
             <div className="text-s uppercase text-gray-800 mt-1">

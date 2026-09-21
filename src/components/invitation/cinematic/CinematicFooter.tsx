@@ -8,12 +8,14 @@ export function CinematicFooter({
   socialLinks,
   background,
   backgroundMobile,
+  icon,
 }: {
   hostName: string;
   hostRelation?: string;
   socialLinks?: SocialLink[];
   background?: string;
   backgroundMobile?: string;
+  icon?: string;
 }) {
   return (
     <footer className="relative w-full border-t border-[#4A4A4A] bg-[#090909] overflow-hidden">
@@ -43,8 +45,18 @@ export function CinematicFooter({
       <div className="absolute inset-0 bg-gradient-to-b from-[#090909]/60 via-transparent to-[#090909]/80 pointer-events-none" />
 
       <div className="relative max-w-md mx-auto px-6 py-12 md:max-w-2xl md:px-10 lg:max-w-4xl lg:px-16">
-        <div className="flex flex-col items-center justify-center gap-2 mb-4">
-          <Heart className="w-5 h-5 text-[#C0C0C0]" />
+        <div className="flex flex-col items-center justify-center mb-4">
+          {icon ? (
+            <Image
+              src={icon}
+              alt=""
+              width={80}
+              height={80}
+              className="w-12 h-12 object-contain -mb-3"
+            />
+          ) : (
+            <Heart className="w-5 h-5 text-[#C0C0C0]" />
+          )}
           <p
             className="text-lg sm:text-xl font-bold text-[#F2F2F2]"
             style={{ fontFamily: "var(--font-cinematic-display)" }}

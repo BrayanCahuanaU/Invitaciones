@@ -12,27 +12,35 @@ const DEFAULT_MESSAGE_2 =
 export function GiftEnvelope({
   icon = DEFAULT_ICON,
   message,
+  backgroundImage = "/invitaciones/demo-quince/img/papel-fondo.png",
 }: {
   icon?: string;
   message?: string;
+  backgroundImage?: string;
 }) {
   return (
-    <Section backgroundImage="/invitaciones/demo-quince/img/papel-fondo.png" fullWidth>
+    <Section backgroundImage={backgroundImage} fullWidth>
       {/* Ícono: sobre depositándose en una ánfora */}
       <Image
         src={icon}
         alt="Sobre depositándose en una ánfora"
-        width={1080}
-        height={1440}
-        className="w-24 md:w-28 h-auto mx-auto mb-5 drop-shadow-lg"
+        width={980}
+        height={1240}
+        className="w-15 md:w-28 h-auto mx-auto mb-5 drop-shadow-lg"
       />
 
-      <p className="font-script font-bold text-black text-[2.5625rem] md:text-5xl mb-6">
+      <p className="uppercase tracking-[0.3em] text-sm md:text-base font-bold text-white/75 mb-4 text-xl"
+            style={{ fontFamily: "var(--font-cinematic-display)" }}
+            >
         Un regalo para la quinceañera
       </p>
 
       {message ? (
-        <p className="text-black font-semibold text-[1.5rem] md:text-lg max-w-md mx-auto">
+        <p className="text-xl sm:text-3xl md:text-4xl text-gold/100"
+                style={{
+                  fontFamily: "var(--font-cinematic-display)",
+                  letterSpacing: "0.05em",
+                }}>
           {message}
         </p>
       ) : (

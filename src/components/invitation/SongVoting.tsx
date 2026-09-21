@@ -16,7 +16,13 @@ interface RankedTrack extends Track {
   score: number;
 }
 
-export function SongVoting({ slug }: { slug: string }) {
+export function SongVoting({
+  slug,
+  icon,
+}: {
+  slug: string;
+  icon?: string;
+}) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Track[]>([]);
   const [ranking, setRanking] = useState<RankedTrack[]>([]);
@@ -92,7 +98,11 @@ export function SongVoting({ slug }: { slug: string }) {
   return (
     <Section id="playlist" className="mb-20 md:mb-20">
       <div className="flex flex-col items-center gap-2 mb-2">
-        <Music className="w-5 h-5 text-[#C0C0C0]" />
+        {icon ? (
+          <Image src={icon} alt="" width={40} height={40} className="w-5 h-5 object-contain" />
+        ) : (
+          <Music className="w-5 h-5 text-[#C0C0C0]" />
+        )}
         <p className="font-display text-3xl md:text-4xl">
           Sugiere una canción
         </p>
