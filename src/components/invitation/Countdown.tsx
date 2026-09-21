@@ -43,7 +43,7 @@ export function Countdown({ eventDate, backgroundImage }: { eventDate: string; b
       <div className="flex justify-center gap-6 md:gap-15">
         {units.map((u) => (
           <div key={u.label} className="w-16 md:w-24">
-            <div className="font-display text-4xl md:text-7xl tabular-nums font-bold text-[#211B04]" style={{ textShadow: "0 0 5px rgba(60, 9, 84, 0.87)" }}>
+            <div className="font-display text-4xl md:text-7xl tabular-nums font-bold text-[#7DE9FF]" style={{ textShadow: "0 0 6px rgba(125, 233, 255, 0.9), 0 0 18px rgba(125, 233, 255, 0.55), 0 0 42px rgba(56, 189, 248, 0.45)" }}>
               {u.value}
             </div>
             <div className="text-s uppercase text-gray-800 mt-1">

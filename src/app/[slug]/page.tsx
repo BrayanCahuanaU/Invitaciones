@@ -252,6 +252,7 @@ export default async function InvitationPage({
                   address={data.location.address}
                   mapsUrl={data.location.mapsUrl}
                   mapsEmbedUrl={data.location.mapsEmbedUrl}
+                  venuePhoto={data.location.venuePhoto}
                 />
               </RevealSection>
               {data.guestArtists && data.guestArtists.length > 0 && (
@@ -373,6 +374,7 @@ export default async function InvitationPage({
                   venueName={data.location.venueName}
                   address={data.location.address}
                   mapsUrl={data.location.mapsUrl}
+                  venuePhoto={data.location.venuePhoto}
                 />
               </RevealSection>
               <RevealSection>

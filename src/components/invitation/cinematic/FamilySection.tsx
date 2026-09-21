@@ -20,7 +20,10 @@ export function FamilySection({
 
       {parents && parents.length > 0 && (
         <div className="text-center mt-10">
-          <p className="uppercase tracking-[0.3em] text-xs text-black/60 mb-4">
+          <p
+            className="uppercase tracking-[0.3em] text-sm md:text-base font-bold text-black/85 mb-4"
+            style={{ fontFamily: "var(--font-cinematic-display)" }}
+          >
             Con la bendición de sus padres
           </p>
           <div className="space-y-2">
@@ -42,7 +45,10 @@ export function FamilySection({
 
       {godparents && godparents.length > 0 && (
         <div className="text-center mt-12">
-          <p className="uppercase tracking-[0.3em] text-xs text-black/60 mb-4">
+          <p
+            className="uppercase tracking-[0.3em] text-sm md:text-base font-bold text-black/85 mb-4"
+            style={{ fontFamily: "var(--font-cinematic-display)" }}
+          >
             Padrinos
           </p>
           <div className="space-y-2">

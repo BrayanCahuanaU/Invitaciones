@@ -97,6 +97,7 @@ export interface InvitationData {
     district?: string;
     mapsUrl: string;
     mapsEmbedUrl?: string; // URL embed para el mini-mapa (iframe); si falta se genera desde los datos
+    venuePhoto?: string; // foto de la fachada / vista exterior del local
   };
 
   whatsappGroupUrl?: string;

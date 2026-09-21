@@ -1,4 +1,5 @@
 import { MapPin } from "lucide-react";
+import Image from "next/image";
 import { Section } from "./Section";
 
 export function EventDetails({
@@ -8,6 +9,7 @@ export function EventDetails({
   district,
   mapsUrl,
   mapsEmbedUrl,
+  venuePhoto,
 }: {
   eventDate: string;
   venueName: string;
@@ -15,6 +17,7 @@ export function EventDetails({
   district?: string;
   mapsUrl: string;
   mapsEmbedUrl?: string;
+  venuePhoto?: string;
 }) {
   const date = new Date(eventDate);
   const dayName = new Intl.DateTimeFormat("es-PE", {
@@ -56,6 +59,18 @@ export function EventDetails({
             <MapPin className="w-8 h-8 text-[#C0C0C0]" />
             <p className="text-2xl md:text-3xl uppercase" style={{ fontFamily: "var(--font-cinematic-display)" }}>{venueName}</p>
           </div>
+          {venuePhoto && (
+            <div className="relative w-full h-36 md:h-44 mb-4 overflow-hidden rounded-xl border border-white/10">
+              <Image
+                src={venuePhoto}
+                alt={`Vista exterior del local ${venueName}`}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+                loading="lazy"
+              />
+            </div>
+          )}
           <p className="text-[var(--inv-text-muted)] mb-1">{address}</p>
           {district && (
             <p className="text-[var(--inv-text-muted)] mb-4">{district}</p>

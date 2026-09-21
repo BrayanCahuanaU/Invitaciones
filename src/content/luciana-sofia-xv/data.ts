@@ -45,6 +45,7 @@ export const lucianaSofiaXv: InvitationData = {
     district: "Mariano Melgar, Arequipa",
     mapsUrl: "https://maps.app.goo.gl/JYQehaHoa4uh3eVN9",
     mapsEmbedUrl: "https://maps.google.com/maps?q=-16.3997053,-71.499686&z=17&output=embed",
+    venuePhoto: "/invitaciones/luciana-sofia-xv/img/local-fachada.jpg",
   },
 
   guidelines: {
