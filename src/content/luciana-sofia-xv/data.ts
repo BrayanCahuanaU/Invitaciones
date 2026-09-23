@@ -33,10 +33,10 @@ export const lucianaSofiaXv: InvitationData = {
 
   family: {
     parents: ["Renzo Paul Lazo Vilca", "Patricia Valdivia Valeriano"],
-    godparents: ["Verónica Pineda Valeriano", "Angel Charca Ccaccasaca"],
+    godparents: ["Angel Charca", "Verónica Pineda"],
   },
 
-  eventDate: "2026-11-06T19:00:00-05:00",
+  eventDate: "2026-11-06T18:00:00-05:00",
 
   location: {
     venueName: "Santorini",
@@ -51,7 +51,7 @@ export const lucianaSofiaXv: InvitationData = {
   guidelines: {
     dressCode: {
       level: "Formal",
-      maleSuggestions: ["Traje formal oscuro", "Camisa blanca", "Zapatos formales"],
+      maleSuggestions: ["Traje formal oscuro", "Camisa", "Zapatos formales"],
       femaleSuggestions: [
         "Vestido largo formal",
         "Tacos formales",
@@ -102,11 +102,11 @@ export const lucianaSofiaXv: InvitationData = {
   },
 
   timeline: [
-    { time: "19:00", title: "Recepción", description: "Bienvenida y coctel de bienvenida" },
-    { time: "20:00", title: "Ceremonia", description: "Inicio de la ceremonia" },
-    { time: "21:00", title: "Fiesta", description: "Pista de baile y música" },
-    { time: "23:00", title: "Hora Loca", description: "Empieza la hora loca" },
-    { time: "02:00", title: "Cierre", description: "Cierre de la celebración" },
+    { time: "18:00", title: "Recepción", description: "Bienvenida y coctel de bienvenida" },
+    { time: "19:00", title: "Ceremonia", description: "Inicio de la ceremonia" },
+    { time: "20:00", title: "Fiesta", description: "Pista de baile y música" },
+    { time: "22:00", title: "Hora Loca", description: "Empieza la hora loca" },
+    { time: "01:00", title: "Cierre", description: "Cierre de la celebración" },
   ],
 
   backgroundVideo: {
