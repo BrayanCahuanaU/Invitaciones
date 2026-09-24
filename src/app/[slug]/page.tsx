@@ -325,6 +325,19 @@ export default async function InvitationPage({
                   icon={cinematicAssets.rsvpIcon}
                 />
               </RevealSection>
+              {data.whatsappGroupUrl && (
+                <RevealSection>
+                  <WhatsappGroup
+                    url={data.whatsappGroupUrl}
+                    fallbackName={data.whatsappGroupName}
+                    fallbackPhoto={data.whatsappGroupPhoto}
+                    fallbackDescription={data.whatsappGroupDescription}
+                    backgroundImage={cinematicAssets.guidelinesBackground}
+                    backgroundImageMobile={cinematicAssets.guidelinesBackgroundMobile}
+                    variant="dark"
+                  />
+                </RevealSection>
+              )}
               <RevealSection>
                 <GiftEnvelope
                   icon={cinematicAssets.giftEnvelopeIcon}

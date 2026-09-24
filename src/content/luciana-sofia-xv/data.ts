@@ -48,15 +48,13 @@ export const lucianaSofiaXv: InvitationData = {
     venuePhoto: "/invitaciones/luciana-sofia-xv/img/local-fachada.jpg",
   },
 
+  whatsappGroupUrl: "https://chat.whatsapp.com/KT1QDcz70IBL9hNUG8NoTI",
+
   guidelines: {
     dressCode: {
       level: "Formal",
-      maleSuggestions: ["Traje formal oscuro", "Camisa", "Zapatos formales"],
-      femaleSuggestions: [
-        "Vestido largo formal",
-        "Tacos formales",
-        "Accesorios elegantes",
-      ],
+      maleSuggestions: ["Traje formal oscuro", "Camisa"],
+      femaleSuggestions: ["Vestimenta libre"],
     },
     colorsToAvoid: [
       { name: "Azul acero", hex: "#4682B4" },
@@ -101,12 +99,21 @@ export const lucianaSofiaXv: InvitationData = {
     phone: "+51 914091151",
   },
 
+  guestArtists: [
+    {
+      name: "Asoto",
+      role: "Imitador de Paulo Londra",
+      photo: "/invitaciones/luciana-sofia-xv/img/asoto.jpg",
+      socialUrl: "https://www.instagram.com/asotomen/",
+    },
+  ],
+
   timeline: [
-    { time: "18:00", title: "Recepción", description: "Bienvenida y coctel de bienvenida" },
-    { time: "19:00", title: "Ceremonia", description: "Inicio de la ceremonia" },
-    { time: "20:00", title: "Fiesta", description: "Pista de baile y música" },
+    { time: "18:00", title: "Ingreso", description: "Recepción de los invitados (hasta las 8:00 pm)" },
+    { time: "20:00", title: "Ceremonia", description: "Inicio de la ceremonia" },
+    { time: "21:00", title: "Fiesta", description: "Pista de baile y música" },
     { time: "22:00", title: "Hora Loca", description: "Empieza la hora loca" },
-    { time: "01:00", title: "Cierre", description: "Cierre de la celebración" },
+    { time: "02:00", title: "Finalización", description: "Cierre de la celebración" },
   ],
 
   backgroundVideo: {

@@ -16,11 +16,17 @@ export function WhatsappGroup({
   fallbackName,
   fallbackPhoto,
   fallbackDescription,
+  backgroundImage,
+  backgroundImageMobile,
+  variant = "light",
 }: {
   url?: string;
   fallbackName?: string;
   fallbackPhoto?: string;
   fallbackDescription?: string;
+  backgroundImage?: string;
+  backgroundImageMobile?: string;
+  variant?: "light" | "dark";
 }) {
   const [meta, setMeta] = useState<Meta | null>(null);
   const [imgError, setImgError] = useState(false);
@@ -41,8 +47,18 @@ export function WhatsappGroup({
   const hasImage = image && image.length > 0 && !imgError;
 
   return (
-    <Section backgroundImage="/invitaciones/demo-quince/img/papel-fondo.png" fullWidth>
-      <p className="font-display text-gray-800 text-2xl md:text-3xl mb-4">
+    <Section
+      backgroundImage={backgroundImage ?? "/invitaciones/demo-quince/img/papel-fondo.png"}
+      backgroundImageMobile={
+        backgroundImageMobile ?? "/invitaciones/demo-quince/img/papel-fondo-vertical.png"
+      }
+      fullWidth
+    >
+      <p
+        className={`font-display text-2xl md:text-3xl mb-4 ${
+          variant === "dark" ? "text-gray-100" : "text-gray-800"
+        }`}
+      >
         Únete al grupo del evento
       </p>
 
