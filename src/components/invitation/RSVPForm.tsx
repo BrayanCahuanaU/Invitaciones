@@ -30,12 +30,14 @@ export function RSVPForm({
     "idle"
   );
   const [publicEntries, setPublicEntries] = useState<PublicEntry[]>([]);
+  const [isAtCapacity, setIsAtCapacity] = useState(false);
 
   async function loadEntries() {
     try {
       const res = await fetch(`/api/rsvp?slug=${slug}`);
       const data = await res.json();
       setPublicEntries(data.entries ?? []);
+      setIsAtCapacity(data.isFull === true);
     } catch {
       // silencioso
     }
@@ -57,7 +59,14 @@ export function RSVPForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ slug, name, attending, guests, isPublic }),
       });
+      const data = await res.json().catch(() => ({}));
+      if (res.status === 409 && data.code === "FULL") {
+        setIsAtCapacity(true);
+        setStatus("idle");
+        return;
+      }
       if (!res.ok) throw new Error();
+      setIsAtCapacity(data.isFull === true);
       setStatus("done");
       setName("");
       setGuests(0);
@@ -67,7 +76,7 @@ export function RSVPForm({
     }
   }
 
-  const isRegistrationOpen = rsvpStatus === "open";
+  const isRegistrationOpen = rsvpStatus === "open" && !isAtCapacity;
 
   const sortByName = (a: PublicEntry, b: PublicEntry) =>
     a.name.localeCompare(b.name, "es", { sensitivity: "base" });
@@ -79,7 +88,7 @@ export function RSVPForm({
     .filter((e) => !e.attending)
     .sort(sortByName);
 
-  if (status === "done") {
+  if (status === "done" && !isAtCapacity) {
     return (
       <Section id="confirmar">
         {icon ? (
@@ -106,7 +115,7 @@ export function RSVPForm({
           <CheckCircle className="w-10 h-10 text-[#C0C0C0]" />
         )}
         <p className="font-display text-3xl md:text-4xl">
-          {isRegistrationOpen ? "Confirma tu asistencia" : "Aforo lleno"}
+          {isRegistrationOpen ? "Confirma tu asistencia" : "Lista llena"}
         </p>
       </div>
 
@@ -194,8 +203,11 @@ export function RSVPForm({
         </form>
       ) : (
         <div className="flex flex-col items-center gap-2 max-w-sm mx-auto">
+          {status === "done" && (
+            <p className="font-display text-lg">¡Gracias por confirmar!</p>
+          )}
           <p className="font-display text-xl md:text-2xl">
-            Hemos alcanzado el aforo máximo
+            Hemos alcanzado el límite de 150 invitados
           </p>
           <p className="text-sm text-[var(--inv-text-muted)]">
             Ya no se aceptan más confirmaciones de asistencia.
