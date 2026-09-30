@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
     const redis = getRedis();
     const record = { ...entry, createdAt: new Date().toISOString() };
     if (slug === LUCIANA_SLUG) {
-      const result = await redis.eval<number>(
+      const result = await redis.eval(
         addLucianaRsvpScript,
         [`rsvp:${slug}`],
         [JSON.stringify(record), String(LUCIANA_CAPACITY), String(entry.attending)]
