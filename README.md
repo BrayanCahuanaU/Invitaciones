@@ -31,6 +31,28 @@ public/invitaciones/{slug}/  → fotos/videos propios de cada invitación
    cliente es `tudominio.com/nombre-slug`. Las invitaciones ya entregadas
    siguen funcionando igual (son datos estáticos, no se "bajan").
 
+## Invitación de boda (layout `elegant`)
+
+La boda de prueba está en `/boda-demo` y usa el layout claro `elegant` con el
+tema `botanical-garden` (papel crema, follaje verde salvia, flores en tono
+rubor y filetes dorados). Los datos están en `src/content/boda-demo/data.ts`.
+
+- Todo el contenido editable está en `data.ts`: novios, padres de ambos,
+  padrinos (por cargo o en una sola lista), ceremonia civil y/o religiosa,
+  recepción, itinerario, regalos, indicaciones y confirmación.
+- `wedding.ceremonies` es un arreglo: puedes dejar solo la civil, solo la
+  iglesia, o ambas.
+- La portada, el sobre y las secciones usan ilustraciones botánicas SVG
+  (`Ornaments.tsx`), así que no dependen de imágenes externas.
+- Para una foto en la portada, sube la imagen a
+  `public/invitaciones/boda-demo/` y coloca la ruta en `hero.photo`; aparece
+  como medallón sobre los nombres.
+- Para música de fondo, sube un mp3 y descomenta `backgroundMusic` en
+  `data.ts`; aparece un botón flotante para reproducir/pausar.
+- Para revisar el diseño sin abrir el sobre: `/boda-demo?preview=1`.
+- Para una boda real, duplica la carpeta con el slug definitivo, cambia
+  `slug` en `data.ts` y regístralo en `src/content/registry.ts`.
+
 ## Variables de entorno
 
 Ver `.env.example`. Se configuran **una sola vez** en Vercel (Project Settings

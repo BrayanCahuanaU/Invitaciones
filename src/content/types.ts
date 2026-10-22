@@ -1,5 +1,5 @@
 export type EventType = "xv" | "boda" | "cumpleanos" | "bautizo" | "otro";
-export type LayoutType = "classic" | "cinematic";
+export type LayoutType = "classic" | "cinematic" | "elegant";
 
 export interface BankAccount {
   bank: string;
@@ -66,6 +66,44 @@ export interface Family {
   godparents?: string[];
 }
 
+// ── Solo para layout "elegant" (bodas) ──
+
+export interface WeddingVenue {
+  name: string;
+  address: string;
+  district?: string;
+  time?: string; // "17:30"
+  mapsUrl?: string;
+  mapsEmbedUrl?: string;
+  note?: string;
+}
+
+export interface WeddingCeremony {
+  kind: "civil" | "iglesia";
+  title?: string;
+  venue: WeddingVenue;
+}
+
+export interface PadrinosGroup {
+  role: string; // "Padrinos de anillos"
+  names: string[];
+}
+
+export interface WeddingDetails {
+  monogram?: string; // "V & S" — si no se define se calcula con los nombres
+  hashtag?: string; // "#ValentinaYSebastian"
+  city?: string; // "Arequipa, Perú"
+  brideParents?: string[];
+  groomParents?: string[];
+  // Padrinos en una sola lista (se muestra sin cargos)…
+  padrinos?: string[];
+  // …o agrupados por cargo (recomendado).
+  padrinosGroups?: PadrinosGroup[];
+  ceremonies?: WeddingCeremony[];
+  reception?: WeddingVenue;
+  rsvpDeadline?: string; // "1 de noviembre de 2026"
+}
+
 export interface InvitationData {
   slug: string;
   eventType: EventType;
@@ -96,6 +134,9 @@ export interface InvitationData {
   quote: string;
 
   family?: Family;
+
+  // ── Solo para layout "elegant" (bodas) ──
+  wedding?: WeddingDetails;
 
   eventDate: string; // ISO 8601, ej "2026-11-14T19:00:00-05:00"
 

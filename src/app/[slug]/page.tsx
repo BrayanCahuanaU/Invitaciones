@@ -23,6 +23,7 @@ import { FamilySection } from "@/components/invitation/cinematic/FamilySection";
 import { GuestArtists } from "@/components/invitation/cinematic/GuestArtists";
 import { CinematicTimeline } from "@/components/invitation/cinematic/CinematicTimeline";
 import { CinematicFooter } from "@/components/invitation/cinematic/CinematicFooter";
+import { ElegantInvitation } from "@/components/invitation/elegant/ElegantInvitation";
 
 interface CinematicAssetPaths {
   heroNameSvg: string;
@@ -100,6 +101,7 @@ export default async function InvitationPage({
 
   const theme = getTheme(data.theme);
   const isCinematic = data.layout === "cinematic";
+  const isElegant = data.layout === "elegant";
 
   const assets = data.cinematicAssets ?? {};
   const cinematicAssets: CinematicAssetPaths = {
@@ -148,15 +150,28 @@ export default async function InvitationPage({
           "--inv-text-muted": theme.colors.textMuted,
           "--inv-accent": theme.colors.accent,
           "--inv-accent-muted": theme.colors.accentMuted,
+          ...(isElegant && theme.palette
+            ? {
+                "--elegant-gold": theme.palette.gold,
+                "--elegant-gold-soft": theme.palette.goldSoft,
+                "--elegant-sage": theme.palette.sage,
+                "--elegant-sage-deep": theme.palette.sageDeep,
+                "--elegant-blush": theme.palette.blush,
+                "--elegant-blush-deep": theme.palette.blushDeep,
+                "--elegant-cream": theme.palette.cream,
+              }
+            : {}),
           ...(isCinematic
             ? { "--font-display": "var(--font-cinematic-display)" }
             : {}),
         } as React.CSSProperties
       }
-      className={`min-h-screen text-[var(--inv-text)] ${isCinematic ? "cinematic-grain" : ""}`}
+      className={`min-h-screen text-[var(--inv-text)] ${
+        isCinematic ? "cinematic-grain" : ""
+      } ${isElegant ? "elegant-page" : ""}`}
     >
       <div className="fixed inset-0 -z-20 bg-[var(--inv-bg)]" />
-      {!isCinematic && (
+      {!isCinematic && !isElegant && (
         <>
           <div
             className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
@@ -199,6 +214,9 @@ export default async function InvitationPage({
           <div className="fixed inset-0 -z-[9] bg-[#090909]/90" />
         </>
       )}
+      {isElegant ? (
+        <ElegantInvitation data={data} />
+      ) : (
       <Envelope
         closedImage={data.envelope.closedImage}
         openVideo={data.envelope.openVideo}
@@ -463,6 +481,7 @@ export default async function InvitationPage({
           )}
         </div>
       </Envelope>
+      )}
     </div>
   );
 }

@@ -48,7 +48,8 @@ export const lucianaSofiaXv: InvitationData = {
     venuePhoto: "/invitaciones/luciana-sofia-xv/img/local-fachada.jpg",
   },
 
-  whatsappGroupUrl: "https://chat.whatsapp.com/KT1QDcz70IBL9hNUG8NoTI",
+  whatsappGroupUrl:
+    "https://chat.whatsapp.com/HeNsoRcgONK8KtfuBDh1QL?s=cl&p=i&mlu=4&ilr=4",
 
   guidelines: {
     dressCode: {

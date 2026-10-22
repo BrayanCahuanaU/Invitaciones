@@ -296,6 +296,229 @@ body {
   box-shadow: 0 0 25px rgba(192, 192, 192, 0.4);
 }
 
+/* ══════════════════════════════════════════
+   ELEGANT BOTANICAL — Bodas (claro)
+   ══════════════════════════════════════════ */
+
+:root {
+  /* Reutilizamos Cormorant Garamond (ya cargada) como display elegante. */
+  --font-elegant-display: var(--font-cinematic-display);
+}
+
+html:has(.elegant-page),
+body:has(.elegant-page) {
+  background-color: #f8f4eb;
+  color-scheme: light;
+}
+
+.font-elegant-display {
+  font-family: var(--font-elegant-display);
+}
+
+.font-elegant-body {
+  font-family: var(--font-elegant-body), sans-serif;
+}
+
+.font-elegant-script {
+  font-family: var(--font-elegant-script), cursive;
+}
+
+.elegant-page {
+  --elegant-gold: #af8a4f;
+  --elegant-gold-soft: #d8c49b;
+  --elegant-sage: #8ba58b;
+  --elegant-sage-deep: #4c6855;
+  --elegant-blush: #e8c6c1;
+  --elegant-blush-deep: #cd9c97;
+  --elegant-cream: #f2ebdd;
+  --elegant-line: rgba(175, 138, 79, 0.32);
+  --elegant-line-strong: rgba(175, 138, 79, 0.58);
+  --elegant-paper: #fffdf8;
+  --elegant-shadow: rgba(34, 49, 39, 0.14);
+}
+
+/* Textura de papel muy sutil, sin imágenes externas. */
+.elegant-paper-texture {
+  background-image:
+    radial-gradient(rgba(76, 104, 85, 0.055) 0.7px, transparent 0.7px),
+    radial-gradient(45% 32% at 8% 12%, rgba(139, 165, 139, 0.1) 0%, transparent 70%),
+    radial-gradient(40% 30% at 92% 72%, rgba(232, 198, 193, 0.12) 0%, transparent 70%),
+    radial-gradient(90% 60% at 50% 0%, rgba(255, 255, 255, 0.75) 0%, transparent 70%);
+  background-size: 4px 4px, 100% 100%, 100% 100%, 100% 100%;
+}
+
+.elegant-eyebrow {
+  font-family: var(--font-elegant-body), sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+}
+
+/* Tarjeta de papel blanco con doble filete dorado. */
+.elegant-card {
+  position: relative;
+  background: rgba(255, 253, 248, 0.94);
+  border: 1px solid var(--elegant-line);
+  box-shadow:
+    0 26px 60px -44px var(--elegant-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.elegant-card::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(216, 196, 155, 0.42);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.elegant-card-hover {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+
+.elegant-card-hover:hover {
+  transform: translateY(-3px);
+  border-color: var(--elegant-line-strong);
+  box-shadow:
+    0 32px 70px -40px rgba(34, 49, 39, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+/* Tarjeta principal (portada y sobre). */
+.elegant-paper-frame {
+  position: relative;
+  background: rgba(255, 253, 248, 0.96);
+  border: 1px solid var(--elegant-line-strong);
+  box-shadow:
+    0 40px 90px -60px rgba(34, 49, 39, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.75);
+}
+
+.elegant-paper-frame::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--elegant-line);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.elegant-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border: 1px solid var(--elegant-gold-soft);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #7d977e 0%, #5f7a63 52%, #4c6855 100%);
+  color: #fffdf8;
+  font-family: var(--font-elegant-body), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.8rem;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+  box-shadow: 0 16px 32px -18px rgba(76, 104, 85, 0.75);
+}
+
+.elegant-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 20px 40px -18px rgba(76, 104, 85, 0.7);
+}
+
+.elegant-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid var(--elegant-line-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--inv-accent);
+  font-family: var(--font-elegant-body), sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.4rem;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.elegant-btn-outline:hover {
+  background: rgba(139, 165, 139, 0.14);
+  border-color: var(--inv-accent);
+}
+
+.elegant-input {
+  width: 100%;
+  background: rgba(255, 253, 248, 0.86);
+  border: 1px solid var(--elegant-line);
+  border-radius: 0.4rem;
+  padding: 0.8rem 1rem;
+  color: var(--inv-text);
+  outline: none;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.elegant-input::placeholder {
+  color: var(--inv-text-muted);
+  opacity: 0.75;
+}
+
+.elegant-input:focus {
+  border-color: var(--inv-accent);
+  box-shadow: 0 0 0 3px rgba(139, 165, 139, 0.16);
+}
+
+.elegant-swatch {
+  position: relative;
+  overflow: hidden;
+  animation: elegant-swatch 5s ease-in-out infinite;
+}
+
+.elegant-swatch::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -90%;
+  width: 55%;
+  height: 140%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+  transform: skewX(-18deg);
+  animation: elegant-sheen 4.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes elegant-sheen {
+  0% { left: -90%; }
+  60%, 100% { left: 140%; }
+}
+
+@keyframes elegant-swatch {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(168, 131, 79, 0.25), 0 8px 24px -14px rgba(51, 45, 38, 0.4); }
+  50% { box-shadow: 0 0 0 1px rgba(168, 131, 79, 0.5), 0 10px 30px -12px rgba(51, 45, 38, 0.35); }
+}
+
+/* Línea ornamental que separa secciones */
+.elegant-section-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--elegant-line), transparent);
+}
+
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   * {

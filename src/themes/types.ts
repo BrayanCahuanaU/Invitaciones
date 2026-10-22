@@ -22,4 +22,14 @@ export interface Theme {
     brightGold: string;
     border: string;
   };
+  /** Paleta adicional para layouts botánicos/claros (opcional). */
+  palette?: {
+    gold?: string;
+    goldSoft?: string;
+    sage?: string;
+    sageDeep?: string;
+    blush?: string;
+    blushDeep?: string;
+    cream?: string;
+  };
 }

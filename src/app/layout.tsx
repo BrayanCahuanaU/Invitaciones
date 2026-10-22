@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Birthstone, Cormorant_Garamond, Inter } from "next/font/google";
+import { Birthstone, Cormorant_Garamond, Great_Vibes, Inter, Jost } from "next/font/google";
 import "./globals.css";
 
 const display = Birthstone({
@@ -34,6 +34,18 @@ const cinematicBody = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
+const elegantBody = Jost({
+  variable: "--font-elegant-body",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+});
+
+const elegantScript = Great_Vibes({
+  variable: "--font-elegant-script",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   title: "Invitaciones digitales",
   description: "Invitaciones digitales para XV años, bodas y cumpleaños",
@@ -45,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${display.variable} ${script.variable} ${body.variable} ${cinematicDisplay.variable} ${cinematicBody.variable} h-full antialiased`}>
+    <html lang="es" className={`${display.variable} ${script.variable} ${body.variable} ${cinematicDisplay.variable} ${cinematicBody.variable} ${elegantBody.variable} ${elegantScript.variable} h-full antialiased`}>
       <body className="min-h-full">{children}</body>
     </html>
   );
