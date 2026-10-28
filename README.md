@@ -33,17 +33,41 @@ public/invitaciones/{slug}/  → fotos/videos propios de cada invitación
 
 ## Invitación de boda (layout `elegant`)
 
-La boda de prueba está en `/boda-demo` y usa el layout claro `elegant` con el
-tema `botanical-garden` (papel crema, follaje verde salvia, flores en tono
-rubor y filetes dorados). Los datos están en `src/content/boda-demo/data.ts`.
+La boda de Yeny Taco & Hernan Luque está en `/boda-demo` (slug de trabajo) y
+usa el layout claro `elegant` con el tema `botanical-garden` (papel crema,
+follaje verde salvia, flores en tono rubor y filetes dorados). Los datos están
+en `src/content/boda-demo/data.ts`.
 
 - Todo el contenido editable está en `data.ts`: novios, padres de ambos,
   padrinos (por cargo o en una sola lista), ceremonia civil y/o religiosa,
   recepción, itinerario, regalos, indicaciones y confirmación.
+- Los textos de la plantilla (títulos de sección, botones, etiquetas del
+  formulario, mensajes) están en `wedding.texts` dentro del mismo `data.ts`.
+  Se pueden sobreescribir todos o solo algunos; los que falten usan los
+  valores por defecto de `src/content/wedding-texts.ts`. Los componentes de
+  `src/components/invitation/elegant/` no contienen copy fijo.
 - `wedding.ceremonies` es un arreglo: puedes dejar solo la civil, solo la
   iglesia, o ambas.
 - La portada, el sobre y las secciones usan ilustraciones botánicas SVG
   (`Ornaments.tsx`), así que no dependen de imágenes externas.
+- `wedding.cardBackground` permite usar una textura de papel propia en las
+  tarjetas del layout; por ejemplo
+  `"/invitaciones/boda-demo/papel-fondo.png"`.
+- `wedding.heroEmblem` reemplaza el monograma de la portada por una imagen
+  (por ejemplo, las argollas): `"/invitaciones/boda-demo/argollas.png"`.
+- `wedding.footerEmblem` reemplaza el monograma del footer por una imagen
+  (por ejemplo, las palomas): `"/invitaciones/boda-demo/palomas.png"`.
+- `backgroundVideo` define el video de fondo de la invitación abierta (queda
+  fijo al hacer scroll). Se puede usar el mismo archivo en móvil y escritorio
+  o variantes distintas:
+  ```ts
+  backgroundVideo: {
+    mobile: "/invitaciones/boda-demo/fondo.mp4",
+    desktop: "/invitaciones/boda-demo/fondo.mp4",
+  },
+  ```
+  Con video activo se desactiva la textura de papel de la página y se añade un
+  velo crema suave para mantener la legibilidad del texto.
 - Para una foto en la portada, sube la imagen a
   `public/invitaciones/boda-demo/` y coloca la ruta en `hero.photo`; aparece
   como medallón sobre los nombres.

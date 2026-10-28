@@ -358,7 +358,13 @@ body:has(.elegant-page) {
 /* Tarjeta de papel blanco con doble filete dorado. */
 .elegant-card {
   position: relative;
-  background: rgba(255, 253, 248, 0.94);
+  background-color: rgba(255, 253, 248, 0.94);
+  background-image:
+    linear-gradient(rgba(255, 253, 248, 0.55), rgba(255, 253, 248, 0.55)),
+    var(--elegant-card-texture, none);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   border: 1px solid var(--elegant-line);
   box-shadow:
     0 26px 60px -44px var(--elegant-shadow),
@@ -392,7 +398,13 @@ body:has(.elegant-page) {
 /* Tarjeta principal (portada y sobre). */
 .elegant-paper-frame {
   position: relative;
-  background: rgba(255, 253, 248, 0.96);
+  background-color: rgba(255, 253, 248, 0.96);
+  background-image:
+    linear-gradient(rgba(255, 253, 248, 0.55), rgba(255, 253, 248, 0.55)),
+    var(--elegant-card-texture, none);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   border: 1px solid var(--elegant-line-strong);
   box-shadow:
     0 40px 90px -60px rgba(34, 49, 39, 0.55),

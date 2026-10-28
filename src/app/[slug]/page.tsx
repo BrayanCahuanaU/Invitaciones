@@ -161,6 +161,11 @@ export default async function InvitationPage({
                 "--elegant-cream": theme.palette.cream,
               }
             : {}),
+          ...(isElegant && data.wedding?.cardBackground
+            ? {
+                "--elegant-card-texture": `url(${data.wedding.cardBackground})`,
+              }
+            : {}),
           ...(isCinematic
             ? { "--font-display": "var(--font-cinematic-display)" }
             : {}),
@@ -171,6 +176,35 @@ export default async function InvitationPage({
       } ${isElegant ? "elegant-page" : ""}`}
     >
       <div className="fixed inset-0 -z-20 bg-[var(--inv-bg)]" />
+      {isElegant && data.backgroundVideo && (
+        <>
+          {data.backgroundVideo.mobile && (
+            <video
+              src={data.backgroundVideo.mobile}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="fixed inset-0 z-0 h-full w-full object-cover md:hidden"
+            />
+          )}
+          {data.backgroundVideo.desktop && (
+            <video
+              src={data.backgroundVideo.desktop}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="fixed inset-0 z-0 hidden h-full w-full object-cover md:block"
+            />
+          )}
+          {/* Velo crema para mantener legible el texto sobre el video. */}
+          <div
+            aria-hidden
+            className="pointer-events-none fixed inset-0 z-0 bg-[#f8f4eb]/55"
+          />
+        </>
+      )}
       {!isCinematic && !isElegant && (
         <>
           <div

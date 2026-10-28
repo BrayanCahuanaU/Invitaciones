@@ -2,13 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Music, Pause } from "lucide-react";
+import { WeddingTexts } from "@/content/types";
 
 export function ElegantMusicPlayer({
   src,
   title,
+  texts,
 }: {
   src: string;
   title?: string;
+  texts: WeddingTexts;
 }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const fadeRef = useRef<number | null>(null);
@@ -81,7 +84,7 @@ export function ElegantMusicPlayer({
       <button
         type="button"
         onClick={toggle}
-        aria-label={playing ? "Pausar música de fondo" : "Reproducir música de fondo"}
+        aria-label={playing ? texts.music.pauseAriaLabel : texts.music.playAriaLabel}
         className="group relative flex h-12 w-12 items-center justify-center rounded-full transition-transform hover:scale-105"
         style={{
           border: "1px solid var(--elegant-gold-soft)",
@@ -109,7 +112,7 @@ export function ElegantMusicPlayer({
             color: "var(--inv-text-muted)",
           }}
         >
-          {title ?? "Música de fondo"}
+          {title ?? texts.music.label}
         </span>
       </button>
     </div>

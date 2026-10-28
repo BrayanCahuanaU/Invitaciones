@@ -1,11 +1,11 @@
 import { InvitationData } from "@/content/types";
 
 // ══════════════════════════════════════════════════════════════════════
-// INVITACIÓN DE BODA — DATOS DE PRUEBA
-// Reemplaza los textos marcados como "ficticio" con la información real.
+// INVITACIÓN DE BODA — YENY TACO & HERNAN LUQUE
+// Datos oficiales del evento.
 // El diseño se controla con layout: "elegant" + theme: "botanical-garden".
-// Para una boda real se recomienda duplicar esta carpeta con el slug
-// definitivo y registrarlo en src/content/registry.ts.
+// Para publicar con otro slug, duplica esta carpeta y regístrala en
+// src/content/registry.ts.
 // ══════════════════════════════════════════════════════════════════════
 
 export const bodaDemo: InvitationData = {
@@ -15,9 +15,9 @@ export const bodaDemo: InvitationData = {
   layout: "elegant",
 
   seo: {
-    title: "Valentina & Sebastián — Nuestra Boda",
+    title: "Yeny Taco & Hernan Luque — Nuestra Boda",
     description:
-      "Con la bendición de nuestras familias, te invitamos a celebrar nuestra boda. 14 de noviembre de 2026 · Arequipa, Perú.",
+      "Con la bendición de nuestras familias, te invitamos a celebrar nuestra boda. 19 de diciembre de 2026 · Arequipa, Perú.",
   },
 
   // El layout "elegant" usa su propio sobre ilustrado, por eso estas
@@ -32,91 +32,198 @@ export const bodaDemo: InvitationData = {
     // Opcional: si colocas una foto en public/invitaciones/boda-demo/
     // y pones la ruta aquí, aparecerá en el arco del hero.
     photo: "",
-    protagonists: "Valentina & Sebastián",
+    protagonists: "Yeny Taco & Hernan Luque",
     motivo: "Nuestra Boda",
   },
 
   quote:
     "Hoy, delante de Dios y de nuestras familias, unimos nuestras vidas y comenzamos el viaje más hermoso: el de amarnos para siempre.",
 
-  eventDate: "2026-11-14T16:00:00-05:00",
+  eventDate: "2026-12-19T17:00:00-05:00",
 
   location: {
-    venueName: "Hacienda Los Nogales",
-    address: "Carretera a Sachaca Km. 4.5, s/n",
-    district: "Sachaca, Arequipa",
+    venueName: "Salón de eventos EL BOSQUE",
+    address: "Arequipa, Perú",
     mapsUrl:
-      "https://maps.google.com/?q=Hacienda+Los+Nogales+Sachaca+Arequipa",
+      "https://maps.google.com/?q=Salón+de+eventos+EL+BOSQUE+Arequipa",
   },
 
   wedding: {
-    monogram: "V & S",
-    hashtag: "#ValentinaYSebastian",
+    monogram: "Y & H",
     city: "Arequipa, Perú",
 
-    brideParents: ["Roberto Álvarez Mendoza", "Claudia Ríos de Álvarez"],
-    groomParents: ["Fernando Salazar Paredes", "Lucía Torres de Salazar"],
+    // Textura de papel propia de esta invitación (tarjetas del layout elegant).
+    cardBackground: "/invitaciones/boda-demo/papel-fondo.png",
+
+    // Imagen que reemplaza el monograma en la portada (argollas de boda).
+    heroEmblem: "/invitaciones/boda-demo/argollas.png",
+
+    // Imagen que reemplaza el monograma en el footer (palomas).
+    footerEmblem: "/invitaciones/boda-demo/palomas.png",
+
+    // Todos los textos de la plantilla viven aquí. Cambia libremente: el
+    // diseño (src/components/invitation/elegant) no contiene copy fijo.
+    texts: {
+      envelope: {
+        eyebrow: "Nuestra boda",
+        title: "¡Nos casamos!",
+        openButton: "Abrir invitación",
+        footerNote: "Una invitación hecha con amor",
+        openAriaLabel: "Abrir invitación de {couple}",
+      },
+      hero: {
+        title: "¡Nos casamos!",
+        discoverButton: "Descubre la invitación",
+        discoverAriaLabel: "Descubrir la invitación",
+      },
+      family: {
+        eyebrow: "Con la bendición de",
+        title: "Nuestras familias",
+        subtitle:
+          "Con profundo amor y gratitud, queremos compartir este día junto a quienes nos han acompañado siempre.",
+        brideParentsLabel: "Padres de la novia",
+        groomParentsLabel: "Padres del novio",
+        padrinosEyebrow: "Con cariño y gratitud",
+        padrinosTitle: "Padrinos y testigos",
+      },
+      countdown: {
+        eyebrow: "Cuenta regresiva",
+        title: "Falta muy poco para nuestro gran día",
+        days: "Días",
+        hours: "Horas",
+        minutes: "Minutos",
+        seconds: "Segundos",
+      },
+      venues: {
+        eyebrow: "Ceremonia y celebración",
+        title: "Dónde nos encontramos",
+        subtitle:
+          "Cada lugar ha sido elegido pensando en ti. Aquí encontrarás los detalles para acompañarnos.",
+        civilLabel: "Matrimonio civil",
+        churchLabel: "Ceremonia religiosa",
+        receptionLabel: "Recepción y fiesta",
+        viewMap: "Ver mapa",
+        openMap: "Abrir mapa",
+        closeMap: "Ocultar mapa",
+        mapAriaLabel: "Mapa de {venue}",
+        closingNote: "Te esperamos para celebrar juntos",
+      },
+      timeline: {
+        eyebrow: "Itinerario",
+        title: "El gran día",
+        subtitle:
+          "Cada momento ha sido pensado para que disfrutes con nosotros de principio a fin.",
+      },
+      guidelines: {
+        eyebrow: "Indicaciones",
+        title: "Para tener en cuenta",
+        subtitle:
+          "Queremos que este día sea perfecto para todos. Aquí te compartimos algunos detalles.",
+        dressCodeLabel: "Código de vestimenta",
+        femaleLabel: "Ellas",
+        maleLabel: "Ellos",
+        colorsEyebrow: "Colores reservados",
+        colorsTitle: "Evita estos tonos",
+        colorsNote: "Están reservados para los novios y el cortejo.",
+        notesEyebrow: "Indicaciones adicionales",
+        notesTitle: "Un par de detalles",
+        closingNote: "Gracias por ayudarnos a cuidar cada detalle",
+      },
+      gifts: {
+        eyebrow: "Regalos",
+        title: "Un detalle con nosotros",
+        suggestionsTitle: "Sugerencias de regalo",
+        envelopeTitle: "Lluvia de sobres",
+        viewData: "Ver datos",
+        holderLabel: "Titular",
+        accountLabel: "Número de cuenta",
+        cciLabel: "CCI",
+        copy: "Copiar",
+        copied: "Copiado",
+      },
+      rsvp: {
+        eyebrow: "Confirmación",
+        titleOpen: "Confirma tu asistencia",
+        titleDone: "¡Gracias por confirmar!",
+        titleClosed: "Aforo completo",
+        deadlineTemplate: "Antes del {date}",
+        doneMessage:
+          "Tu respuesta ha sido registrada. Nos hace muy felices contar contigo en este día tan especial.",
+        confirmAnother: "Confirmar otra persona",
+        nameLabel: "Nombre completo",
+        namePlaceholder: "Escribe tu nombre",
+        attendingQuestion: "¿Nos acompañarás?",
+        yes: "Sí asistiré",
+        no: "No podré ir",
+        guestsLabel: "Acompañantes",
+        guestsHint: "Incluyéndote en el total",
+        guestsAddAriaLabel: "Agregar acompañante",
+        guestsRemoveAriaLabel: "Quitar acompañante",
+        publicLabel: "Mostrar mi confirmación en la lista de invitados",
+        submit: "Confirmar asistencia",
+        sending: "Enviando...",
+        errorMessage: "No se pudo enviar. Intenta de nuevo.",
+        whatsappCta: "También puedes confirmar por WhatsApp",
+        whatsappText: "¡Hola! Quiero confirmar mi asistencia a la boda.",
+        closedTitle: "Hemos alcanzado el aforo máximo",
+        closedMessage: "Ya no se aceptan más confirmaciones de asistencia.",
+        goingLabel: "Asistirán ({count})",
+        notGoingLabel: "No podrán ir ({count})",
+        emptyMessage: "Sé el primero en confirmar tu asistencia",
+      },
+      footer: {
+        thanks: "Gracias por acompañarnos",
+        madeWith: "Hecho con amor",
+        forOurDay: "Para nuestro gran día",
+      },
+      music: {
+        label: "Música de fondo",
+        playAriaLabel: "Reproducir música de fondo",
+        pauseAriaLabel: "Pausar música de fondo",
+      },
+    },
+
+    brideParents: ["Asunción Mayta Quispe", "Agapito Amador Taco Quispe"],
+    groomParents: ["Antonia Zencara Uturunco", "Benito Luque Vargas"],
 
     padrinosGroups: [
       {
-        role: "Padrinos de honor",
-        names: ["Jorge y Mariana Villalobos"],
+        role: "Padrinos de iglesia",
+        names: ["Herminia y Epifanio"],
       },
       {
-        role: "Padrinos de anillos",
-        names: ["Diego y Camila Herrera"],
-      },
-      {
-        role: "Padrinos de velación",
-        names: ["Ricardo y Ana Beltrán"],
+        role: "Testigos de civil",
+        names: ["Pilar Walberta Cutipa Luna", "Wigberto John Ccanaza Chambi"],
       },
     ],
 
     ceremonies: [
       {
-        kind: "civil",
-        title: "Matrimonio civil",
-        venue: {
-          name: "Municipalidad Provincial de Arequipa",
-          address: "Calle Palacio Viejo 306",
-          district: "Cercado, Arequipa",
-          time: "16:00",
-          mapsUrl:
-            "https://maps.google.com/?q=Municipalidad+Provincial+de+Arequipa",
-          note: "Ingreso por la puerta principal, salón de actos.",
-        },
-      },
-      {
         kind: "iglesia",
         title: "Ceremonia religiosa",
         venue: {
-          name: "Iglesia San Juan Bautista",
-          address: "Calle Cuesta del Ángel 100",
-          district: "Yanahuara, Arequipa",
-          time: "17:30",
+          name: "Parroquia Santa Gertrudis",
+          address: "Av. Fernandini",
+          district: "Sachaca, Arequipa",
+          time: "17:00",
           mapsUrl:
-            "https://maps.google.com/?q=Iglesia+San+Juan+Bautista+Yanahuara+Arequipa",
-          note: "Te pedimos llegar 20 minutos antes para acomodarte.",
+            "https://maps.google.com/?q=Parroquia+Santa+Gertrudis+Sachaca+Arequipa",
         },
       },
     ],
 
     reception: {
-      name: "Hacienda Los Nogales",
-      address: "Carretera a Sachaca Km. 4.5, s/n",
-      district: "Sachaca, Arequipa",
-      time: "19:30",
+      name: "Salón de eventos EL BOSQUE",
+      address: "Arequipa, Perú",
+      time: "19:00",
       mapsUrl:
-        "https://maps.google.com/?q=Hacienda+Los+Nogales+Sachaca+Arequipa",
-      note: "Cena de gala, brindis y baile hasta la madrugada.",
+        "https://maps.google.com/?q=Salón+de+eventos+EL+BOSQUE+Arequipa",
     },
-
-    rsvpDeadline: "1 de noviembre de 2026",
   },
 
   guidelines: {
     dressCode: {
-      level: "Formal / Etiqueta rigurosa",
+      level: "Formal",
       maleSuggestions: [
         "Traje formal en tonos oscuros",
         "Camisa blanca o marfil",
@@ -135,38 +242,12 @@ export const bodaDemo: InvitationData = {
       { name: "Marfil", hex: "#F4EFE6" },
       { name: "Dorado", hex: "#C9A227" },
     ],
-    notes: [
-      "Ceremonia y recepción solo para adultos",
-      "Te pedimos llegar 20 minutos antes de cada ceremonia",
-      "Habrá estacionamiento privado en la hacienda",
-      "No se permite el ingreso de mascotas",
-    ],
+    notes: ["Te pedimos llegar 20 minutos antes de la ceremonia"],
   },
 
   gifts: {
     message:
       "Tu presencia es nuestro mayor regalo. Si deseas tener un detalle con nosotros, te dejamos algunas opciones:",
-    envelopeMessage:
-      "En tu mesa encontrarás un sobre para la lluvia de sobres. Cada muestra de cariño nos ayudará a comenzar esta nueva etapa.",
-    bankAccounts: [
-      {
-        bank: "Yape",
-        owner: "Valentina Álvarez Ríos",
-        accountNumber: "987 654 321",
-      },
-      {
-        bank: "BCP",
-        owner: "Sebastián Salazar Torres",
-        accountNumber: "193-0000000-0-00",
-        cci: "00219300000000000000",
-      },
-      {
-        bank: "Interbank",
-        owner: "Valentina Álvarez Ríos",
-        accountNumber: "898-3000000000",
-        cci: "00389830000000000000",
-      },
-    ],
     suggestions: [
       "Lluvia de sobres",
       "Vajilla fina",
@@ -177,7 +258,6 @@ export const bodaDemo: InvitationData = {
   },
 
   rsvp: {
-    whatsappPhone: "51987654321",
     allowGuests: true,
     status: "open",
   },
@@ -186,48 +266,28 @@ export const bodaDemo: InvitationData = {
     "Gracias por acompañarnos en el día más importante de nuestras vidas. Su presencia y sus buenos deseos son el mejor regalo que podemos recibir.",
 
   host: {
-    name: "Valentina & Sebastián",
+    name: "Yeny & Hernan",
     relation: "Los novios",
-    phone: "51987654321",
   },
 
   timeline: [
     {
-      time: "16:00",
-      title: "Matrimonio civil",
-      description: "Municipalidad Provincial de Arequipa",
-    },
-    {
-      time: "17:30",
+      time: "17:00",
       title: "Ceremonia religiosa",
-      description: "Iglesia San Juan Bautista, Yanahuara",
+      description: "Parroquia Santa Gertrudis, Sachaca",
     },
     {
-      time: "19:30",
-      title: "Recepción y cóctel",
-      description: "Hacienda Los Nogales, Sachaca",
-    },
-    {
-      time: "20:30",
-      title: "Cena de gala",
-      description: "Menú de tres tiempos y brindis de honor",
-    },
-    {
-      time: "22:00",
-      title: "Primer baile",
-      description: "Apertura de la pista de baile",
-    },
-    {
-      time: "23:00",
-      title: "Fiesta y sorpresas",
-      description: "Música en vivo, barra libre y hora loca",
-    },
-    {
-      time: "02:00",
-      title: "Fin de la celebración",
-      description: "Gracias por acompañarnos",
+      time: "19:00",
+      title: "Recepción y fiesta",
+      description: "Salón de eventos EL BOSQUE",
     },
   ],
+
+  // Fondo principal de la invitación abierta (se mantiene fijo al hacer scroll).
+  backgroundVideo: {
+    mobile: "/invitaciones/boda-demo/fondo.mp4",
+    desktop: "/invitaciones/boda-demo/fondo.mp4",
+  },
 
   // Para activar música de fondo, sube un mp3 a
   // public/invitaciones/boda-demo/ y descomenta:

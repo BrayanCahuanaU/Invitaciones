@@ -9,6 +9,8 @@ import {
   Plus,
   XCircle,
 } from "lucide-react";
+import { WeddingTexts } from "@/content/types";
+import { fillTemplate } from "@/content/wedding-texts";
 import { BotanicalCorner, BotanicalSprig, GoldDivider } from "./Ornaments";
 
 interface PublicEntry {
@@ -23,12 +25,14 @@ export function ElegantRSVP({
   rsvpStatus = "open",
   deadline,
   whatsappPhone,
+  texts,
 }: {
   slug: string;
   allowGuests?: boolean;
   rsvpStatus?: "open" | "full" | "closed";
   deadline?: string;
   whatsappPhone?: string;
+  texts: WeddingTexts;
 }) {
   const [name, setName] = useState("");
   const [attending, setAttending] = useState(true);
@@ -96,13 +100,17 @@ export function ElegantRSVP({
         <div className="relative text-center">
           <BotanicalSprig className="mx-auto h-7 w-16" />
           <p className="elegant-eyebrow mt-1" style={{ color: "var(--inv-accent)" }}>
-            Confirmación
+            {texts.rsvp.eyebrow}
           </p>
           <h2
             className="mt-3 font-elegant-display text-3xl sm:text-4xl"
             style={{ color: "var(--inv-text)" }}
           >
-            {status === "done" ? "¡Gracias por confirmar!" : isOpen ? "Confirma tu asistencia" : "Aforo completo"}
+            {status === "done"
+              ? texts.rsvp.titleDone
+              : isOpen
+                ? texts.rsvp.titleOpen
+                : texts.rsvp.titleClosed}
           </h2>
           <GoldDivider className="mt-5" />
           {deadline && (
@@ -110,7 +118,7 @@ export function ElegantRSVP({
               className="mt-5 text-[0.62rem] uppercase tracking-[0.28em]"
               style={{ color: "var(--inv-text-muted)" }}
             >
-              Antes del {deadline}
+              {fillTemplate(texts.rsvp.deadlineTemplate, { date: deadline })}
             </p>
           )}
         </div>
@@ -129,14 +137,14 @@ export function ElegantRSVP({
                 <Heart className="h-6 w-6" />
               </span>
               <p className="text-sm leading-relaxed" style={{ color: "var(--inv-text-muted)" }}>
-                Tu respuesta ha sido registrada. Nos hace muy felices contar contigo en este día tan especial.
+                {texts.rsvp.doneMessage}
               </p>
               <button
                 type="button"
                 onClick={() => setStatus("idle")}
                 className="elegant-btn-outline"
               >
-                Confirmar otra persona
+                {texts.rsvp.confirmAnother}
               </button>
             </div>
           ) : isOpen ? (
@@ -147,13 +155,13 @@ export function ElegantRSVP({
                   className="mb-2 block text-[0.58rem] uppercase tracking-[0.26em]"
                   style={{ color: "var(--inv-text-muted)" }}
                 >
-                  Nombre completo
+                  {texts.rsvp.nameLabel}
                 </label>
                 <input
                   type="text"
                   id="elegant-rsvp-name"
                   name="name"
-                  placeholder="Escribe tu nombre"
+                  placeholder={texts.rsvp.namePlaceholder}
                   value={name}
                   onChange={(event) => setName(event.target.value)}
                   required
@@ -166,7 +174,7 @@ export function ElegantRSVP({
                   className="mb-2 text-[0.58rem] uppercase tracking-[0.26em]"
                   style={{ color: "var(--inv-text-muted)" }}
                 >
-                  ¿Nos acompañarás?
+                  {texts.rsvp.attendingQuestion}
                 </p>
                 <div className="grid grid-cols-2 gap-3">
                   <button
@@ -187,7 +195,7 @@ export function ElegantRSVP({
                           }
                     }
                   >
-                    Sí asistiré
+                    {texts.rsvp.yes}
                   </button>
                   <button
                     type="button"
@@ -207,7 +215,7 @@ export function ElegantRSVP({
                           }
                     }
                   >
-                    No podré ir
+                    {texts.rsvp.no}
                   </button>
                 </div>
               </div>
@@ -219,10 +227,10 @@ export function ElegantRSVP({
                       className="text-[0.58rem] uppercase tracking-[0.26em]"
                       style={{ color: "var(--inv-text-muted)" }}
                     >
-                      Acompañantes
+                      {texts.rsvp.guestsLabel}
                     </p>
                     <p className="mt-1 text-xs" style={{ color: "var(--inv-text-muted)", opacity: 0.8 }}>
-                      Incluyéndote en el total
+                      {texts.rsvp.guestsHint}
                     </p>
                   </div>
 
@@ -234,7 +242,7 @@ export function ElegantRSVP({
                       type="button"
                       onClick={() => setGuests((value) => Math.max(0, value - 1))}
                       className="flex h-8 w-8 items-center justify-center rounded-full transition-colors hover:bg-[rgba(139,165,139,0.14)]"
-                      aria-label="Quitar acompañante"
+                      aria-label={texts.rsvp.guestsRemoveAriaLabel}
                       style={{ color: "var(--inv-accent)" }}
                     >
                       <Minus className="h-3.5 w-3.5" />
@@ -249,7 +257,7 @@ export function ElegantRSVP({
                       type="button"
                       onClick={() => setGuests((value) => Math.min(10, value + 1))}
                       className="flex h-8 w-8 items-center justify-center rounded-full transition-colors hover:bg-[rgba(139,165,139,0.14)]"
-                      aria-label="Agregar acompañante"
+                      aria-label={texts.rsvp.guestsAddAriaLabel}
                       style={{ color: "var(--inv-accent)" }}
                     >
                       <Plus className="h-3.5 w-3.5" />
@@ -270,7 +278,7 @@ export function ElegantRSVP({
                   onChange={(event) => setIsPublic(event.target.checked)}
                   className="mt-0.5 accent-[#5D7A64]"
                 />
-                Mostrar mi confirmación en la lista de invitados
+                {texts.rsvp.publicLabel}
               </label>
 
               <button
@@ -278,19 +286,19 @@ export function ElegantRSVP({
                 disabled={status === "sending"}
                 className="elegant-btn mt-1 w-full disabled:opacity-60"
               >
-                {status === "sending" ? "Enviando..." : "Confirmar asistencia"}
+                {status === "sending" ? texts.rsvp.sending : texts.rsvp.submit}
               </button>
 
               {status === "error" && (
                 <p className="text-center text-xs" style={{ color: "#A84A3A" }}>
-                  No se pudo enviar. Intenta de nuevo.
+                  {texts.rsvp.errorMessage}
                 </p>
               )}
 
               {whatsappPhone && (
                 <a
                   href={`https://wa.me/${whatsappPhone.replace(/\D/g, "")}?text=${encodeURIComponent(
-                    "¡Hola! Quiero confirmar mi asistencia a la boda."
+                    texts.rsvp.whatsappText
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -298,17 +306,17 @@ export function ElegantRSVP({
                   style={{ color: "var(--inv-accent)" }}
                 >
                   <MessageCircle className="h-3.5 w-3.5" />
-                  También puedes confirmar por WhatsApp
+                  {texts.rsvp.whatsappCta}
                 </a>
               )}
             </form>
           ) : (
             <div className="flex flex-col items-center gap-3 py-4 text-center">
               <p className="font-elegant-display text-xl" style={{ color: "var(--inv-text)" }}>
-                Hemos alcanzado el aforo máximo
+                {texts.rsvp.closedTitle}
               </p>
               <p className="text-sm" style={{ color: "var(--inv-text-muted)" }}>
-                Ya no se aceptan más confirmaciones de asistencia.
+                {texts.rsvp.closedMessage}
               </p>
             </div>
           )}
@@ -327,7 +335,7 @@ export function ElegantRSVP({
                   className="mb-3 text-center text-[0.55rem] uppercase tracking-[0.26em]"
                   style={{ color: "var(--inv-text-muted)" }}
                 >
-                  Asistirán ({going.length})
+                  {fillTemplate(texts.rsvp.goingLabel, { count: going.length })}
                 </p>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                   {going.map((entry, index) => (
@@ -369,7 +377,7 @@ export function ElegantRSVP({
                   className="mb-3 text-center text-[0.55rem] uppercase tracking-[0.26em]"
                   style={{ color: "var(--inv-text-muted)" }}
                 >
-                  No podrán ir ({notGoing.length})
+                  {fillTemplate(texts.rsvp.notGoingLabel, { count: notGoing.length })}
                 </p>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                   {notGoing.map((entry, index) => (
@@ -398,7 +406,7 @@ export function ElegantRSVP({
             className="relative mt-8 text-center text-xs"
             style={{ color: "var(--inv-text-muted)" }}
           >
-            Sé el primero en confirmar tu asistencia
+            {texts.rsvp.emptyMessage}
           </p>
         )}
       </div>

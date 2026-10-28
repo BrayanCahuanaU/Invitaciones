@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { WeddingTexts } from "@/content/types";
 import {
   BotanicalBranch,
   BotanicalSprig,
@@ -9,12 +11,16 @@ export function ElegantFooter({
   names,
   dateLabel,
   hashtag,
-  monogram = "V & S",
+  monogram,
+  emblem,
+  texts,
 }: {
   names: string;
   dateLabel: string;
   hashtag?: string;
-  monogram?: string;
+  monogram: string;
+  emblem?: string;
+  texts: WeddingTexts;
 }) {
   return (
     <footer className="relative overflow-hidden px-6 pb-12 pt-16">
@@ -42,13 +48,25 @@ export function ElegantFooter({
       />
 
       <div className="relative mx-auto flex max-w-2xl flex-col items-center text-center">
-        <Monogram text={monogram} className="h-12 w-12 text-sm" />
+        {emblem ? (
+          <Image
+            src={emblem}
+            alt=""
+            width={192}
+            height={192}
+            sizes="96px"
+            className="h-20 w-20 object-contain sm:h-24 sm:w-24"
+            style={{ mixBlendMode: "multiply" }}
+          />
+        ) : (
+          <Monogram text={monogram} className="h-12 w-12 text-sm" />
+        )}
 
         <p
           className="mt-5 font-elegant-script text-3xl sm:text-4xl"
           style={{ color: "var(--inv-accent)" }}
         >
-          Gracias por acompañarnos
+          {texts.footer.thanks}
         </p>
 
         <BotanicalSprig className="mt-2 h-7 w-16" />
@@ -82,12 +100,12 @@ export function ElegantFooter({
           className="mt-10 flex items-center gap-2 text-[0.55rem] uppercase tracking-[0.28em]"
           style={{ color: "var(--inv-text-muted)", opacity: 0.8 }}
         >
-          <span>Hecho con amor</span>
+          <span>{texts.footer.madeWith}</span>
           <span
             className="h-1.5 w-1.5 rotate-45"
             style={{ backgroundColor: "var(--elegant-gold)" }}
           />
-          <span>Para nuestro gran día</span>
+          <span>{texts.footer.forOurDay}</span>
         </div>
       </div>
     </footer>

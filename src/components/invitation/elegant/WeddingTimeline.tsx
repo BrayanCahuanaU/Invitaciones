@@ -1,16 +1,22 @@
-import { TimelineItem } from "@/content/types";
+import { TimelineItem, WeddingTexts } from "@/content/types";
 import { SectionHeading } from "./Ornaments";
 
-export function WeddingTimeline({ items }: { items: TimelineItem[] }) {
+export function WeddingTimeline({
+  items,
+  texts,
+}: {
+  items: TimelineItem[];
+  texts: WeddingTexts;
+}) {
   if (!items.length) return null;
 
   return (
     <section className="w-full px-4 py-14 sm:py-20">
       <div className="mx-auto max-w-2xl">
         <SectionHeading
-          eyebrow="Itinerario"
-          title="El gran día"
-          subtitle="Cada momento ha sido pensado para que disfrutes con nosotros de principio a fin."
+          eyebrow={texts.timeline.eyebrow}
+          title={texts.timeline.title}
+          subtitle={texts.timeline.subtitle}
         />
 
         <div className="mt-12">

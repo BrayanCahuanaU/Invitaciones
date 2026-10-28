@@ -1,5 +1,5 @@
 import { Section } from "../Section";
-import { PadrinosGroup } from "@/content/types";
+import { PadrinosGroup, WeddingTexts } from "@/content/types";
 import { BotanicalCorner, BotanicalSprig, GoldDivider, SectionHeading } from "./Ornaments";
 
 function FamilyCard({
@@ -38,11 +38,13 @@ export function WeddingFamily({
   groomParents,
   padrinosGroups,
   padrinos,
+  texts,
 }: {
   brideParents?: string[];
   groomParents?: string[];
   padrinosGroups?: PadrinosGroup[];
   padrinos?: string[];
+  texts: WeddingTexts;
 }) {
   const hasParents =
     (brideParents?.length ?? 0) > 0 || (groomParents?.length ?? 0) > 0;
@@ -54,23 +56,29 @@ export function WeddingFamily({
   return (
     <Section>
       <SectionHeading
-        eyebrow="Con la bendición de"
-        title="Nuestras familias"
-        subtitle="Con profundo amor y gratitud, queremos compartir este día junto a quienes nos han acompañado siempre."
+        eyebrow={texts.family.eyebrow}
+        title={texts.family.title}
+        subtitle={texts.family.subtitle}
       />
 
       {hasParents && (
         <div className="mt-12 grid gap-5 sm:grid-cols-2">
-          <FamilyCard label="Padres de la novia" names={brideParents ?? []} />
-          <FamilyCard label="Padres del novio" names={groomParents ?? []} />
+          <FamilyCard
+            label={texts.family.brideParentsLabel}
+            names={brideParents ?? []}
+          />
+          <FamilyCard
+            label={texts.family.groomParentsLabel}
+            names={groomParents ?? []}
+          />
         </div>
       )}
 
       {hasPadrinos && (
         <div className="mt-20">
           <SectionHeading
-            eyebrow="Gracias por apadrinar nuestro amor"
-            title="Nuestros padrinos"
+            eyebrow={texts.family.padrinosEyebrow}
+            title={texts.family.padrinosTitle}
           />
 
           {padrinosGroups && padrinosGroups.length > 0 ? (

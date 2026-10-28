@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { MailOpen } from "lucide-react";
+import { WeddingTexts } from "@/content/types";
+import { fillTemplate } from "@/content/wedding-texts";
 import {
   BotanicalBranch,
   BotanicalSprig,
@@ -18,12 +20,14 @@ export function ElegantEnvelope({
   dateLabel,
   city,
   monogram,
+  texts,
   children,
 }: {
   coupleName: string;
   dateLabel: string;
   city?: string;
   monogram: string;
+  texts: WeddingTexts;
   children: React.ReactNode;
 }) {
   const [stage, setStage] = useState<Stage>("closed");
@@ -83,13 +87,13 @@ export function ElegantEnvelope({
                   className="elegant-eyebrow text-[0.58rem]"
                   style={{ color: "var(--inv-accent)" }}
                 >
-                  Nuestra boda
+                  {texts.envelope.eyebrow}
                 </p>
                 <p
                   className="mt-2 font-elegant-script text-3xl sm:text-4xl"
                   style={{ color: "var(--inv-text)" }}
                 >
-                  ¡Nos casamos!
+                  {texts.envelope.title}
                 </p>
                 <BotanicalSprig className="mt-2 h-7 w-16" />
               </motion.div>
@@ -324,16 +328,18 @@ export function ElegantEnvelope({
                   onClick={handleOpen}
                   disabled={stage !== "closed"}
                   className="elegant-btn disabled:cursor-default"
-                  aria-label={`Abrir invitación de ${coupleName}`}
+                  aria-label={fillTemplate(texts.envelope.openAriaLabel, {
+                    couple: coupleName,
+                  })}
                 >
                   <MailOpen className="h-4 w-4" />
-                  Abrir invitación
+                  {texts.envelope.openButton}
                 </button>
                 <p
                   className="text-[0.55rem] uppercase tracking-[0.3em]"
                   style={{ color: "var(--inv-text-muted)", opacity: 0.8 }}
                 >
-                  Una invitación hecha con amor
+                  {texts.envelope.footerNote}
                 </p>
               </motion.div>
             </div>

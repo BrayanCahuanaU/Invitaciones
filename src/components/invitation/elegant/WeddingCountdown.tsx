@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { WeddingTexts } from "@/content/types";
 import { BotanicalCorner, BotanicalSprig, GoldDivider } from "./Ornaments";
 
 function getRemaining(target: number) {
@@ -18,9 +19,11 @@ const ZERO = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 export function WeddingCountdown({
   eventDate,
   dateLabel,
+  texts,
 }: {
   eventDate: string;
   dateLabel: string;
+  texts: WeddingTexts;
 }) {
   const target = new Date(eventDate).getTime();
   const [remaining, setRemaining] = useState(ZERO);
@@ -32,10 +35,10 @@ export function WeddingCountdown({
   }, [target]);
 
   const units = [
-    { label: "Días", value: remaining.days, pad: false },
-    { label: "Horas", value: remaining.hours, pad: true },
-    { label: "Minutos", value: remaining.minutes, pad: true },
-    { label: "Segundos", value: remaining.seconds, pad: true },
+    { label: texts.countdown.days, value: remaining.days, pad: false },
+    { label: texts.countdown.hours, value: remaining.hours, pad: true },
+    { label: texts.countdown.minutes, value: remaining.minutes, pad: true },
+    { label: texts.countdown.seconds, value: remaining.seconds, pad: true },
   ];
 
   return (
@@ -55,13 +58,13 @@ export function WeddingCountdown({
         <div className="relative">
           <BotanicalSprig className="mx-auto h-7 w-16" />
           <p className="elegant-eyebrow mt-2" style={{ color: "var(--inv-accent)" }}>
-            Cuenta regresiva
+            {texts.countdown.eyebrow}
           </p>
           <h2
             className="mt-3 font-elegant-display text-3xl sm:text-4xl"
             style={{ color: "var(--inv-text)" }}
           >
-            Falta muy poco para nuestro gran día
+            {texts.countdown.title}
           </h2>
           <GoldDivider className="mt-5" />
 

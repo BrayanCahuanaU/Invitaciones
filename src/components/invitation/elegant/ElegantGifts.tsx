@@ -3,10 +3,20 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Check, ChevronDown, Copy, Gift } from "lucide-react";
-import { BankAccount } from "@/content/types";
+import { BankAccount, WeddingTexts } from "@/content/types";
 import { BotanicalCorner, BotanicalSprig, GoldDivider, SectionHeading } from "./Ornaments";
 
-function CopyRow({ label, value }: { label: string; value: string }) {
+function CopyRow({
+  label,
+  value,
+  copiedLabel,
+  copyLabel,
+}: {
+  label: string;
+  value: string;
+  copiedLabel: string;
+  copyLabel: string;
+}) {
   const [copied, setCopied] = useState(false);
 
   async function copy() {
@@ -44,13 +54,19 @@ function CopyRow({ label, value }: { label: string; value: string }) {
         style={{ color: "var(--inv-accent)" }}
       >
         {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-        {copied ? "Copiado" : "Copiar"}
+        {copied ? copiedLabel : copyLabel}
       </span>
     </button>
   );
 }
 
-function BankCard({ account }: { account: BankAccount }) {
+function BankCard({
+  account,
+  texts,
+}: {
+  account: BankAccount;
+  texts: WeddingTexts;
+}) {
   const [open, setOpen] = useState(false);
   const initials = account.bank
     .split(/\s+/)
@@ -101,7 +117,7 @@ function BankCard({ account }: { account: BankAccount }) {
             className="block text-[0.58rem] uppercase tracking-[0.22em]"
             style={{ color: "var(--inv-text-muted)" }}
           >
-            Ver datos
+            {texts.gifts.viewData}
           </span>
         </span>
 
@@ -116,9 +132,26 @@ function BankCard({ account }: { account: BankAccount }) {
           className="px-3 pb-3 pt-1"
           style={{ borderTop: "1px solid var(--elegant-line)" }}
         >
-          <CopyRow label="Titular" value={account.owner} />
-          <CopyRow label="Número de cuenta" value={account.accountNumber} />
-          {account.cci && <CopyRow label="CCI" value={account.cci} />}
+          <CopyRow
+            label={texts.gifts.holderLabel}
+            value={account.owner}
+            copiedLabel={texts.gifts.copied}
+            copyLabel={texts.gifts.copy}
+          />
+          <CopyRow
+            label={texts.gifts.accountLabel}
+            value={account.accountNumber}
+            copiedLabel={texts.gifts.copied}
+            copyLabel={texts.gifts.copy}
+          />
+          {account.cci && (
+            <CopyRow
+              label={texts.gifts.cciLabel}
+              value={account.cci}
+              copiedLabel={texts.gifts.copied}
+              copyLabel={texts.gifts.copy}
+            />
+          )}
         </div>
       )}
     </div>
@@ -130,11 +163,13 @@ export function ElegantGifts({
   envelopeMessage,
   bankAccounts,
   suggestions,
+  texts,
 }: {
   message?: string;
   envelopeMessage?: string;
   bankAccounts?: BankAccount[];
   suggestions?: string[];
+  texts: WeddingTexts;
 }) {
   if (!message && !bankAccounts?.length && !suggestions?.length && !envelopeMessage) {
     return null;
@@ -144,15 +179,19 @@ export function ElegantGifts({
     <section className="w-full px-4 py-14 sm:py-20">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
-          eyebrow="Regalos"
-          title="Un detalle con nosotros"
+          eyebrow={texts.gifts.eyebrow}
+          title={texts.gifts.title}
           subtitle={message}
         />
 
         {bankAccounts && bankAccounts.length > 0 && (
           <div className="mt-11 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
             {bankAccounts.map((account) => (
-              <BankCard key={`${account.bank}-${account.accountNumber}`} account={account} />
+              <BankCard
+                key={`${account.bank}-${account.accountNumber}`}
+                account={account}
+                texts={texts}
+              />
             ))}
           </div>
         )}
@@ -166,7 +205,7 @@ export function ElegantGifts({
                 className="elegant-eyebrow text-[0.56rem]"
                 style={{ color: "var(--inv-accent)" }}
               >
-                Sugerencias de regalo
+                {texts.gifts.suggestionsTitle}
               </p>
             </div>
 
@@ -203,7 +242,7 @@ export function ElegantGifts({
               className="elegant-eyebrow text-[0.55rem]"
               style={{ color: "var(--inv-accent)" }}
             >
-              Lluvia de sobres
+              {texts.gifts.envelopeTitle}
             </p>
             <p
               className="mt-3 text-sm italic leading-relaxed"

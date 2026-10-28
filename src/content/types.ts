@@ -89,7 +89,135 @@ export interface PadrinosGroup {
   names: string[];
 }
 
+// ── Textos de la plantilla "elegant" ──
+// Todo el copy que no es un dato del evento (títulos de sección, botones,
+// etiquetas del formulario, etc.) vive aquí. Cada invitación puede
+// sobreescribir solo lo que necesite; el resto usa los valores por defecto
+// de src/content/wedding-texts.ts.
+export interface WeddingTexts {
+  envelope: {
+    eyebrow: string;
+    title: string;
+    openButton: string;
+    footerNote: string;
+    openAriaLabel: string; // admite {couple}
+  };
+  hero: {
+    title: string;
+    discoverButton: string;
+    discoverAriaLabel: string;
+  };
+  family: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    brideParentsLabel: string;
+    groomParentsLabel: string;
+    padrinosEyebrow: string;
+    padrinosTitle: string;
+  };
+  countdown: {
+    eyebrow: string;
+    title: string;
+    days: string;
+    hours: string;
+    minutes: string;
+    seconds: string;
+  };
+  venues: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    civilLabel: string;
+    churchLabel: string;
+    receptionLabel: string;
+    viewMap: string;
+    openMap: string;
+    closeMap: string;
+    mapAriaLabel: string; // admite {venue}
+    closingNote: string;
+  };
+  timeline: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+  };
+  guidelines: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    dressCodeLabel: string;
+    femaleLabel: string;
+    maleLabel: string;
+    colorsEyebrow: string;
+    colorsTitle: string;
+    colorsNote: string;
+    notesEyebrow: string;
+    notesTitle: string;
+    closingNote: string;
+  };
+  gifts: {
+    eyebrow: string;
+    title: string;
+    suggestionsTitle: string;
+    envelopeTitle: string;
+    viewData: string;
+    holderLabel: string;
+    accountLabel: string;
+    cciLabel: string;
+    copy: string;
+    copied: string;
+  };
+  rsvp: {
+    eyebrow: string;
+    titleOpen: string;
+    titleDone: string;
+    titleClosed: string;
+    deadlineTemplate: string; // admite {date}
+    doneMessage: string;
+    confirmAnother: string;
+    nameLabel: string;
+    namePlaceholder: string;
+    attendingQuestion: string;
+    yes: string;
+    no: string;
+    guestsLabel: string;
+    guestsHint: string;
+    guestsAddAriaLabel: string;
+    guestsRemoveAriaLabel: string;
+    publicLabel: string;
+    submit: string;
+    sending: string;
+    errorMessage: string;
+    whatsappCta: string;
+    whatsappText: string;
+    closedTitle: string;
+    closedMessage: string;
+    goingLabel: string; // admite {count}
+    notGoingLabel: string; // admite {count}
+    emptyMessage: string;
+  };
+  footer: {
+    thanks: string;
+    madeWith: string;
+    forOurDay: string;
+  };
+  music: {
+    label: string;
+    playAriaLabel: string;
+    pauseAriaLabel: string;
+  };
+}
+
+export type WeddingTextsInput = {
+  [K in keyof WeddingTexts]?: Partial<WeddingTexts[K]>;
+};
+
 export interface WeddingDetails {
+  texts?: WeddingTextsInput; // sobreescribe los textos de la plantilla
+  cardBackground?: string; // textura de papel para las tarjetas (ruta en public)
+  heroEmblem?: string; // imagen que reemplaza el monograma de la portada
+  footerEmblem?: string; // imagen que reemplaza el monograma del footer (argollas, etc.)
   monogram?: string; // "V & S" — si no se define se calcula con los nombres
   hashtag?: string; // "#ValentinaYSebastian"
   city?: string; // "Arequipa, Perú"

@@ -9,7 +9,8 @@ import {
   MapPin,
   Music2,
 } from "lucide-react";
-import { WeddingCeremony, WeddingVenue } from "@/content/types";
+import { WeddingCeremony, WeddingVenue, WeddingTexts } from "@/content/types";
+import { fillTemplate } from "@/content/wedding-texts";
 import { BotanicalCorner, BotanicalSprig, GoldDivider, SectionHeading } from "./Ornaments";
 
 function embedUrlFor(venue: WeddingVenue) {
@@ -32,12 +33,14 @@ function VenueCard({
   label,
   venue,
   icon,
+  texts,
   featured = false,
   delay = 0,
 }: {
   label: string;
   venue: WeddingVenue;
   icon: React.ReactNode;
+  texts: WeddingTexts;
   featured?: boolean;
   delay?: number;
 }) {
@@ -121,7 +124,7 @@ function VenueCard({
           className="elegant-btn-outline"
         >
           <MapPin className="h-3.5 w-3.5" />
-          Ver mapa
+          {texts.venues.viewMap}
         </a>
         <button
           type="button"
@@ -130,7 +133,7 @@ function VenueCard({
           aria-expanded={showMap}
           aria-controls={mapId}
         >
-          {showMap ? "Ocultar mapa" : "Abrir mapa"}
+          {showMap ? texts.venues.closeMap : texts.venues.openMap}
         </button>
       </div>
 
@@ -142,7 +145,9 @@ function VenueCard({
         >
           <iframe
             src={embedUrlFor(venue)}
-            title={`Mapa de ${venue.name}`}
+            title={fillTemplate(texts.venues.mapAriaLabel, {
+              venue: venue.name,
+            })}
             width="100%"
             height="230"
             style={{ border: 0 }}
@@ -167,9 +172,11 @@ function ceremonyIcon(kind: WeddingCeremony["kind"]) {
 export function WeddingVenues({
   ceremonies,
   reception,
+  texts,
 }: {
   ceremonies?: WeddingCeremony[];
   reception?: WeddingVenue;
+  texts: WeddingTexts;
 }) {
   if ((!ceremonies || ceremonies.length === 0) && !reception) return null;
 
@@ -177,19 +184,29 @@ export function WeddingVenues({
     <section className="w-full px-4 py-14 sm:py-20">
       <div className="mx-auto max-w-4xl">
         <SectionHeading
-          eyebrow="Ceremonia y celebración"
-          title="Dónde nos encontramos"
-          subtitle="Cada lugar ha sido elegido pensando en ti. Aquí encontrarás los detalles para acompañarnos."
+          eyebrow={texts.venues.eyebrow}
+          title={texts.venues.title}
+          subtitle={texts.venues.subtitle}
         />
 
         {ceremonies && ceremonies.length > 0 && (
-          <div className="mt-11 grid gap-5 sm:grid-cols-2">
+          <div
+            className={`mt-11 grid gap-5 ${
+              ceremonies.length > 1 ? "sm:grid-cols-2" : "mx-auto max-w-md"
+            }`}
+          >
             {ceremonies.map((ceremony, index) => (
               <VenueCard
                 key={`${ceremony.kind}-${ceremony.venue.name}`}
-                label={ceremony.title ?? (ceremony.kind === "iglesia" ? "Ceremonia religiosa" : "Matrimonio civil")}
+                label={
+                  ceremony.title ??
+                  (ceremony.kind === "iglesia"
+                    ? texts.venues.churchLabel
+                    : texts.venues.civilLabel)
+                }
                 venue={ceremony.venue}
                 icon={ceremonyIcon(ceremony.kind)}
+                texts={texts}
                 delay={index * 60}
               />
             ))}
@@ -199,9 +216,10 @@ export function WeddingVenues({
         {reception && (
           <div className="mt-6">
             <VenueCard
-              label="Recepción y fiesta"
+              label={texts.venues.receptionLabel}
               venue={reception}
               icon={<GlassWater className="h-5 w-5" />}
+              texts={texts}
               featured
             />
             <div
@@ -209,7 +227,7 @@ export function WeddingVenues({
               style={{ color: "var(--inv-text-muted)" }}
             >
               <Music2 className="h-4 w-4" style={{ color: "var(--inv-accent)" }} />
-              Te esperamos para celebrar juntos
+              {texts.venues.closingNote}
             </div>
           </div>
         )}

@@ -7,7 +7,7 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
-import { InvitationData } from "@/content/types";
+import { InvitationData, WeddingTexts } from "@/content/types";
 import { BotanicalCorner, BotanicalSprig, GoldDivider, SectionHeading } from "./Ornaments";
 
 function noteIcon(note: string) {
@@ -21,8 +21,10 @@ function noteIcon(note: string) {
 
 export function WeddingGuidelines({
   guidelines,
+  texts,
 }: {
   guidelines: InvitationData["guidelines"];
+  texts: WeddingTexts;
 }) {
   const { dressCode, colorsToAvoid, notes } = guidelines;
   if (!dressCode && !colorsToAvoid?.length && !notes?.length) return null;
@@ -31,9 +33,9 @@ export function WeddingGuidelines({
     <section className="w-full px-4 py-14 sm:py-20">
       <div className="mx-auto max-w-4xl">
         <SectionHeading
-          eyebrow="Indicaciones"
-          title="Para tener en cuenta"
-          subtitle="Queremos que este día sea perfecto para todos. Aquí te compartimos algunos detalles."
+          eyebrow={texts.guidelines.eyebrow}
+          title={texts.guidelines.title}
+          subtitle={texts.guidelines.subtitle}
         />
 
         {dressCode && (
@@ -53,7 +55,7 @@ export function WeddingGuidelines({
               </div>
               <BotanicalSprig className="mt-1 h-5 w-12" />
               <p className="elegant-eyebrow mt-4 text-[0.56rem]" style={{ color: "var(--inv-accent)" }}>
-                Código de vestimenta
+                {texts.guidelines.dressCodeLabel}
               </p>
               <p
                 className="mt-2 font-elegant-display text-xl sm:text-2xl"
@@ -71,7 +73,7 @@ export function WeddingGuidelines({
                     className="text-[0.6rem] uppercase tracking-[0.3em]"
                     style={{ color: "var(--inv-accent)" }}
                   >
-                    Ellas
+                    {texts.guidelines.femaleLabel}
                   </p>
                   <ul className="mt-3 space-y-1.5">
                     {dressCode.femaleSuggestions.map((suggestion) => (
@@ -93,7 +95,7 @@ export function WeddingGuidelines({
                     className="text-[0.6rem] uppercase tracking-[0.3em]"
                     style={{ color: "var(--inv-accent)" }}
                   >
-                    Ellos
+                    {texts.guidelines.maleLabel}
                   </p>
                   <ul className="mt-3 space-y-1.5">
                     {dressCode.maleSuggestions.map((suggestion) => (
@@ -117,19 +119,19 @@ export function WeddingGuidelines({
             <div className="elegant-card rounded-sm px-6 py-8 text-center sm:px-8">
               <BotanicalCorner className="pointer-events-none absolute right-1 top-1 h-10 w-10 rotate-90 opacity-60" />
               <p className="elegant-eyebrow text-[0.56rem]" style={{ color: "var(--inv-accent)" }}>
-                Colores reservados
+                {texts.guidelines.colorsEyebrow}
               </p>
               <p
                 className="mt-3 font-elegant-display text-xl"
                 style={{ color: "var(--inv-text)" }}
               >
-                Evita estos tonos
+                {texts.guidelines.colorsTitle}
               </p>
               <p
                 className="mt-2 text-xs leading-relaxed"
                 style={{ color: "var(--inv-text-muted)" }}
               >
-                Están reservados para los novios y el cortejo.
+                {texts.guidelines.colorsNote}
               </p>
 
               <div className="mt-6 flex flex-wrap justify-center gap-5">
@@ -159,13 +161,13 @@ export function WeddingGuidelines({
               <BotanicalCorner className="pointer-events-none absolute bottom-1 right-1 h-10 w-10 rotate-180 opacity-60" />
               <div className="text-center">
                 <p className="elegant-eyebrow text-[0.56rem]" style={{ color: "var(--inv-accent)" }}>
-                  Indicaciones adicionales
+                  {texts.guidelines.notesEyebrow}
                 </p>
                 <p
                   className="mt-3 font-elegant-display text-xl"
                   style={{ color: "var(--inv-text)" }}
                 >
-                  Un par de detalles
+                  {texts.guidelines.notesTitle}
                 </p>
               </div>
 
@@ -204,7 +206,7 @@ export function WeddingGuidelines({
             className="text-[0.58rem] uppercase tracking-[0.3em]"
             style={{ color: "var(--inv-text-muted)" }}
           >
-            Gracias por ayudarnos a cuidar cada detalle
+            {texts.guidelines.closingNote}
           </span>
         </div>
       </div>

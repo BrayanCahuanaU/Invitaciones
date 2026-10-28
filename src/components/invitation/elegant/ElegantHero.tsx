@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { WeddingTexts } from "@/content/types";
 import {
   BotanicalBranch,
   BotanicalWreath,
@@ -16,12 +17,16 @@ export function ElegantHero({
   city,
   monogram,
   photo,
+  emblem,
+  texts,
 }: {
   protagonists: string;
   dateLabel: string;
   city?: string;
   monogram: string;
   photo?: string;
+  emblem?: string;
+  texts: WeddingTexts;
 }) {
   function scrollToInvitation() {
     document.getElementById("historia")?.scrollIntoView({ behavior: "smooth" });
@@ -30,6 +35,14 @@ export function ElegantHero({
   const parts = protagonists.split(/\s*&\s*/).filter(Boolean);
   const bride = parts[0] ?? protagonists;
   const groom = parts.length > 1 ? parts.slice(1).join(" & ") : undefined;
+
+  // Nombres largos (con apellidos) necesitan un tamaño menor para no
+  // chocar con la corona botánica del hero.
+  const longestName = Math.max(bride.length, groom?.length ?? 0);
+  const nameClass =
+    longestName > 10
+      ? "text-[1.85rem] sm:text-[2.5rem] md:text-[2.8rem]"
+      : "text-[2.15rem] sm:text-[3rem] md:text-[3.4rem]";
 
   return (
     <section className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-3 pb-14 pt-14 sm:px-6 sm:pb-20 sm:pt-20">
@@ -82,6 +95,22 @@ export function ElegantHero({
                 style={{ border: "1px solid var(--elegant-gold-soft)" }}
               />
             </motion.div>
+          ) : emblem ? (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.08, duration: 0.8 }}
+            >
+              <Image
+                src={emblem}
+                alt=""
+                width={112}
+                height={112}
+                sizes="56px"
+                className="h-12 w-12 object-contain sm:h-14 sm:w-14"
+                style={{ mixBlendMode: "multiply" }}
+              />
+            </motion.div>
           ) : (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -102,7 +131,7 @@ export function ElegantHero({
             className="mt-5 font-elegant-script text-2xl sm:mt-6 sm:text-3xl"
             style={{ color: "var(--inv-accent)" }}
           >
-            ¡Nos casamos!
+            {texts.hero.title}
           </motion.p>
 
           <motion.div
@@ -115,7 +144,7 @@ export function ElegantHero({
 
             <div className="absolute inset-0 flex flex-col items-center justify-center px-[21%] text-center">
               <p
-                className="font-elegant-script text-[2.15rem] leading-[0.9] sm:text-[3rem] md:text-[3.4rem]"
+                className={`font-elegant-script leading-[0.9] ${nameClass}`}
                 style={{ color: "var(--inv-text)" }}
               >
                 {bride}
@@ -129,7 +158,7 @@ export function ElegantHero({
                     &amp;
                   </span>
                   <p
-                    className="font-elegant-script text-[2.15rem] leading-[0.9] sm:text-[3rem] md:text-[3.4rem]"
+                    className={`font-elegant-script leading-[0.9] ${nameClass}`}
                     style={{ color: "var(--inv-text)" }}
                   >
                     {groom}
@@ -174,13 +203,13 @@ export function ElegantHero({
               type="button"
               onClick={scrollToInvitation}
               className="group mt-7 flex flex-col items-center gap-2"
-              aria-label="Descubrir la invitación"
+              aria-label={texts.hero.discoverAriaLabel}
             >
               <span
                 className="elegant-btn-outline"
                 style={{ paddingLeft: "1.5rem", paddingRight: "1.5rem" }}
               >
-                Descubre la invitación
+                {texts.hero.discoverButton}
                 <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:translate-y-0.5" />
               </span>
             </button>
