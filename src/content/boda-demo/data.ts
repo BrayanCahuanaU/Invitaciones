@@ -29,7 +29,7 @@ export const bodaDemo: InvitationData = {
   },
 
   hero: {
-    // Opcional: si colocas una foto en public/invitaciones/boda-demo/
+    // Opcional: si colocas una foto en public/invitaciones/yeni-y-hernan/
     // y pones la ruta aquí, aparecerá en el arco del hero.
     photo: "",
     protagonists: "Yeni Arletti Taco Mayta & Hernán Luque Zencara",
@@ -53,30 +53,30 @@ export const bodaDemo: InvitationData = {
     city: "Arequipa",
 
     // Textura de papel propia de esta invitación (tarjetas del layout elegant).
-    cardBackground: "/invitaciones/boda-demo/papel-fondo.png",
+    cardBackground: "/invitaciones/yeni-y-hernan/papel-fondo.png",
 
     // Imagen que reemplaza el monograma en la portada (argollas de boda).
-    heroEmblem: "/invitaciones/boda-demo/argollas.png",
+    heroEmblem: "/invitaciones/yeni-y-hernan/argollas.png",
 
     // Imagen que reemplaza el monograma en el footer (palomas).
-    footerEmblem: "/invitaciones/boda-demo/palomas.png",
+    footerEmblem: "/invitaciones/yeni-y-hernan/palomas.png",
 
     // Imagen que reemplaza el icono de la iglesia en la tarjeta de la ceremonia.
-    churchEmblem: "/invitaciones/boda-demo/iglesia.png",
+    churchEmblem: "/invitaciones/yeni-y-hernan/iglesia.png",
 
     // Imagen que reemplaza el sello de cera del sobre cerrado.
-    sealEmblem: "/invitaciones/boda-demo/sello.png",
+    sealEmblem: "/invitaciones/yeni-y-hernan/sello.png",
 
     // Imagen que reemplaza el icono de la copa en la tarjeta de recepción.
-    receptionEmblem: "/invitaciones/boda-demo/celebracion.png",
+    receptionEmblem: "/invitaciones/yeni-y-hernan/celebracion.png",
 
     // Iconos dorados del código de vestimenta: percha, taco y corbata.
-    dressCodeEmblem: "/invitaciones/boda-demo/percha.png",
-    dressCodeFemaleEmblem: "/invitaciones/boda-demo/taco.png",
-    dressCodeMaleEmblem: "/invitaciones/boda-demo/corbata.png",
+    dressCodeEmblem: "/invitaciones/yeni-y-hernan/percha.png",
+    dressCodeFemaleEmblem: "/invitaciones/yeni-y-hernan/taco.png",
+    dressCodeMaleEmblem: "/invitaciones/yeni-y-hernan/corbata.png",
 
     // Sonido de la primera pantalla (sobre cerrado). Es una bendición.
-    envelopeAudio: "/invitaciones/boda-demo/bendicion.mp3",
+    envelopeAudio: "/invitaciones/yeni-y-hernan/bendicion.mp3",
 
     // Todos los textos de la plantilla viven aquí. Cambia libremente: el
     // diseño (src/components/invitation/elegant) no contiene copy fijo.
@@ -230,7 +230,7 @@ export const bodaDemo: InvitationData = {
           mapsUrl:
             "https://maps.google.com/?q=Parroquia+Santa+Gertrudis+Sachaca+Arequipa",
           // Foto del lugar. Crédito: Gustavo M / Wikimedia Commons (CC BY 2.0).
-          photo: "/invitaciones/boda-demo/parroquia.jpg",
+          photo: "/invitaciones/yeni-y-hernan/parroquia.jpg",
         },
       },
     ],
@@ -241,7 +241,7 @@ export const bodaDemo: InvitationData = {
       time: "19:00",
       mapsUrl: "https://maps.app.goo.gl/NEjyf1F6aFtGe28c9",
       // Foto de la fachada (Google Street View).
-      photo: "/invitaciones/boda-demo/salon.jpg",
+      photo: "/invitaciones/yeni-y-hernan/salon.jpg",
     },
   },
 
@@ -276,7 +276,7 @@ export const bodaDemo: InvitationData = {
     message:
       "Tu presencia es nuestro mayor regalo. Si deseas tener un detalle con nosotros, te dejamos algunas opciones:",
     yape: {
-      image: "/invitaciones/boda-demo/yape.jpg",
+      image: "/invitaciones/yeni-y-hernan/yape.jpg",
       holder: "Yeni Arletti Taco Mayta",
       note: "También puedes enviarnos tu detalle por Yape.",
       message:
@@ -319,13 +319,13 @@ export const bodaDemo: InvitationData = {
 
   // Fondo principal de la invitación abierta (se mantiene fijo al hacer scroll).
   backgroundVideo: {
-    mobile: "/invitaciones/boda-demo/fondo.mp4",
-    desktop: "/invitaciones/boda-demo/fondo.mp4",
+    mobile: "/invitaciones/yeni-y-hernan/fondo.mp4",
+    desktop: "/invitaciones/yeni-y-hernan/fondo.mp4",
   },
 
   // Música de fondo al abrir la invitación.
   backgroundMusic: {
-    src: "/invitaciones/boda-demo/hijo-de-la-luna.mp3",
+    src: "/invitaciones/yeni-y-hernan/hijo-de-la-luna.mp3",
     title: "Hijo de la Luna",
     artist: "Mecano",
   },
