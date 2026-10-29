@@ -71,8 +71,18 @@ en `src/content/boda-demo/data.ts`.
 - Para una foto en la portada, sube la imagen a
   `public/invitaciones/boda-demo/` y coloca la ruta en `hero.photo`; aparece
   como medallón sobre los nombres.
-- Para música de fondo, sube un mp3 y descomenta `backgroundMusic` en
-  `data.ts`; aparece un botón flotante para reproducir/pausar.
+- `wedding.envelopeAudio` es el sonido de la primera pantalla (sobre cerrado).
+  Se intenta reproducir al cargar y, si el navegador lo bloquea, arranca con el
+  primer toque o con el botón de sonido del sobre. Al abrir la invitación se
+  desvanece y entra la música de fondo.
+- Para música de fondo, sube un mp3 y define `backgroundMusic` en `data.ts`;
+  aparece un botón flotante para reproducir/pausar. En esta boda la bendición
+  del sobre es `bendicion.mp3` y la música de la invitación abierta es
+  `hijo-de-la-luna.mp3`.
+- Los adornos florales son SVG y viven en
+  `src/components/invitation/elegant/Ornaments.tsx` (`FloralCluster`,
+  `RoseBloom`, `Butterfly`, `LeafGarland`, `BabyBreath`, además de las ramas y
+  coronas existentes).
 - Para revisar el diseño sin abrir el sobre: `/boda-demo?preview=1`.
 - Para una boda real, duplica la carpeta con el slug definitivo, cambia
   `slug` en `data.ts` y regístralo en `src/content/registry.ts`.

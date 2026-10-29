@@ -12,7 +12,7 @@ export const invitations: Record<string, InvitationData> = {
   "ximena-xv": ximenaCahuanaXv,
   "ximena-xv-adultos": ximenaCahuanaXvAdultos,
   "luciana-xv": lucianaSofiaXv,
-  "boda-demo": bodaDemo,
+  "yeni-y-hernan": bodaDemo,
 };
 
 export function getAllSlugs(): string[] {

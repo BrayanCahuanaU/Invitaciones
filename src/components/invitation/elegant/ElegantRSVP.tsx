@@ -11,7 +11,14 @@ import {
 } from "lucide-react";
 import { WeddingTexts } from "@/content/types";
 import { fillTemplate } from "@/content/wedding-texts";
-import { BotanicalCorner, BotanicalSprig, GoldDivider } from "./Ornaments";
+import {
+  BotanicalCorner,
+  BotanicalSprig,
+  Butterfly,
+  FloralCluster,
+  GoldDivider,
+  RoseBloom,
+} from "./Ornaments";
 
 interface PublicEntry {
   name: string;
@@ -65,7 +72,13 @@ export function ElegantRSVP({
       const res = await fetch("/api/rsvp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug, name, attending, guests, isPublic }),
+        body: JSON.stringify({
+          slug,
+          name,
+          attending,
+          isPublic,
+          ...(allowGuests ? { guests } : {}),
+        }),
       });
       if (!res.ok) throw new Error();
       setStatus("done");
@@ -88,6 +101,13 @@ export function ElegantRSVP({
       <div className="elegant-card relative mx-auto max-w-2xl overflow-hidden rounded-sm px-6 py-10 sm:px-10 sm:py-12">
         <BotanicalCorner className="pointer-events-none absolute left-0 top-0 h-14 w-14 opacity-70" />
         <BotanicalCorner className="pointer-events-none absolute bottom-0 right-0 h-14 w-14 rotate-180 opacity-70" />
+        <FloralCluster className="pointer-events-none absolute left-0 top-0 h-32 w-auto opacity-40" />
+        <FloralCluster
+          flip
+          className="pointer-events-none absolute bottom-0 right-0 h-32 w-auto opacity-40"
+        />
+        <Butterfly className="pointer-events-none absolute right-6 top-5 h-5 w-6 rotate-12 opacity-60" />
+        <RoseBloom className="pointer-events-none absolute -bottom-6 -left-5 h-20 w-20 opacity-60" />
         <div
           aria-hidden
           className="pointer-events-none absolute inset-x-0 top-0 h-40"
@@ -103,7 +123,7 @@ export function ElegantRSVP({
             {texts.rsvp.eyebrow}
           </p>
           <h2
-            className="mt-3 font-elegant-display text-3xl sm:text-4xl"
+            className="mt-3 font-elegant-display text-[2.1rem] sm:text-4xl"
             style={{ color: "var(--inv-text)" }}
           >
             {status === "done"
@@ -115,7 +135,7 @@ export function ElegantRSVP({
           <GoldDivider className="mt-5" />
           {deadline && (
             <p
-              className="mt-5 text-[0.62rem] uppercase tracking-[0.28em]"
+              className="mt-5 text-[0.72rem] uppercase tracking-[0.22em]"
               style={{ color: "var(--inv-text-muted)" }}
             >
               {fillTemplate(texts.rsvp.deadlineTemplate, { date: deadline })}
@@ -136,7 +156,7 @@ export function ElegantRSVP({
               >
                 <Heart className="h-6 w-6" />
               </span>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--inv-text-muted)" }}>
+              <p className="text-base leading-relaxed" style={{ color: "var(--inv-text-muted)" }}>
                 {texts.rsvp.doneMessage}
               </p>
               <button
@@ -152,7 +172,7 @@ export function ElegantRSVP({
               <div>
                 <label
                   htmlFor="elegant-rsvp-name"
-                  className="mb-2 block text-[0.58rem] uppercase tracking-[0.26em]"
+                  className="mb-2 block text-[0.68rem] uppercase tracking-[0.2em]"
                   style={{ color: "var(--inv-text-muted)" }}
                 >
                   {texts.rsvp.nameLabel}
@@ -171,7 +191,7 @@ export function ElegantRSVP({
 
               <div>
                 <p
-                  className="mb-2 text-[0.58rem] uppercase tracking-[0.26em]"
+                  className="mb-2 text-[0.68rem] uppercase tracking-[0.2em]"
                   style={{ color: "var(--inv-text-muted)" }}
                 >
                   {texts.rsvp.attendingQuestion}
@@ -180,7 +200,7 @@ export function ElegantRSVP({
                   <button
                     type="button"
                     onClick={() => setAttending(true)}
-                    className="rounded-full px-4 py-2.5 text-[0.68rem] uppercase tracking-[0.18em] transition-all"
+                    className="rounded-full px-4 py-3 text-[0.78rem] uppercase tracking-[0.14em] transition-all"
                     style={
                       attending
                         ? {
@@ -200,7 +220,7 @@ export function ElegantRSVP({
                   <button
                     type="button"
                     onClick={() => setAttending(false)}
-                    className="rounded-full px-4 py-2.5 text-[0.68rem] uppercase tracking-[0.18em] transition-all"
+                    className="rounded-full px-4 py-3 text-[0.78rem] uppercase tracking-[0.14em] transition-all"
                     style={
                       !attending
                         ? {
@@ -224,12 +244,12 @@ export function ElegantRSVP({
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <p
-                      className="text-[0.58rem] uppercase tracking-[0.26em]"
+                      className="text-[0.68rem] uppercase tracking-[0.2em]"
                       style={{ color: "var(--inv-text-muted)" }}
                     >
                       {texts.rsvp.guestsLabel}
                     </p>
-                    <p className="mt-1 text-xs" style={{ color: "var(--inv-text-muted)", opacity: 0.8 }}>
+                    <p className="mt-1 text-sm" style={{ color: "var(--inv-text-muted)", opacity: 0.8 }}>
                       {texts.rsvp.guestsHint}
                     </p>
                   </div>
@@ -267,7 +287,7 @@ export function ElegantRSVP({
               )}
 
               <label
-                className="flex items-start gap-2.5 text-xs leading-relaxed"
+                className="flex items-start gap-2.5 text-sm leading-relaxed"
                 style={{ color: "var(--inv-text-muted)" }}
               >
                 <input
@@ -290,7 +310,7 @@ export function ElegantRSVP({
               </button>
 
               {status === "error" && (
-                <p className="text-center text-xs" style={{ color: "#A84A3A" }}>
+                <p className="text-center text-sm" style={{ color: "#A84A3A" }}>
                   {texts.rsvp.errorMessage}
                 </p>
               )}
@@ -302,7 +322,7 @@ export function ElegantRSVP({
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 text-[0.62rem] uppercase tracking-[0.22em] transition-opacity hover:opacity-70"
+                  className="flex items-center justify-center gap-2 text-[0.7rem] uppercase tracking-[0.18em] transition-opacity hover:opacity-70"
                   style={{ color: "var(--inv-accent)" }}
                 >
                   <MessageCircle className="h-3.5 w-3.5" />
@@ -312,10 +332,10 @@ export function ElegantRSVP({
             </form>
           ) : (
             <div className="flex flex-col items-center gap-3 py-4 text-center">
-              <p className="font-elegant-display text-xl" style={{ color: "var(--inv-text)" }}>
+              <p className="font-elegant-display text-2xl" style={{ color: "var(--inv-text)" }}>
                 {texts.rsvp.closedTitle}
               </p>
-              <p className="text-sm" style={{ color: "var(--inv-text-muted)" }}>
+              <p className="text-base" style={{ color: "var(--inv-text-muted)" }}>
                 {texts.rsvp.closedMessage}
               </p>
             </div>
@@ -332,7 +352,7 @@ export function ElegantRSVP({
             {going.length > 0 && (
               <div className="mb-5">
                 <p
-                  className="mb-3 text-center text-[0.55rem] uppercase tracking-[0.26em]"
+                  className="mb-3 text-center text-[0.65rem] uppercase tracking-[0.2em]"
                   style={{ color: "var(--inv-text-muted)" }}
                 >
                   {fillTemplate(texts.rsvp.goingLabel, { count: going.length })}
@@ -352,7 +372,7 @@ export function ElegantRSVP({
                         style={{ color: "#6E8B6A" }}
                       />
                       <span
-                        className="min-w-0 truncate text-xs"
+                        className="min-w-0 truncate text-sm"
                         style={{ color: "var(--inv-text)" }}
                       >
                         {entry.name}
@@ -374,7 +394,7 @@ export function ElegantRSVP({
             {notGoing.length > 0 && (
               <div>
                 <p
-                  className="mb-3 text-center text-[0.55rem] uppercase tracking-[0.26em]"
+                  className="mb-3 text-center text-[0.65rem] uppercase tracking-[0.2em]"
                   style={{ color: "var(--inv-text-muted)" }}
                 >
                   {fillTemplate(texts.rsvp.notGoingLabel, { count: notGoing.length })}
@@ -388,7 +408,7 @@ export function ElegantRSVP({
                     >
                       <XCircle className="h-3.5 w-3.5 flex-shrink-0" style={{ color: "#A84A3A" }} />
                       <span
-                        className="min-w-0 truncate text-xs"
+                        className="min-w-0 truncate text-sm"
                         style={{ color: "var(--inv-text-muted)" }}
                       >
                         {entry.name}
@@ -403,7 +423,7 @@ export function ElegantRSVP({
 
         {publicEntries.length === 0 && isOpen && (
           <p
-            className="relative mt-8 text-center text-xs"
+            className="relative mt-8 text-center text-sm"
             style={{ color: "var(--inv-text-muted)" }}
           >
             {texts.rsvp.emptyMessage}

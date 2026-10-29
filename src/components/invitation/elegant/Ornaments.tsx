@@ -408,6 +408,344 @@ export function BotanicalSprig({ className = "" }: { className?: string }) {
   );
 }
 
+/* Ramillete asimétrico: hojas, capullos y flores para esquinas y laterales. */
+export function FloralCluster({
+  className = "",
+  flip = false,
+}: {
+  className?: string;
+  flip?: boolean;
+}) {
+  return (
+    <svg
+      viewBox="0 0 200 210"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+      style={{ transform: flip ? "scaleX(-1)" : undefined }}
+    >
+      <g strokeLinecap="round" strokeLinejoin="round">
+        <path
+          d="M34 202C58 176 76 148 88 118C100 88 112 58 134 30"
+          stroke="#6C876F"
+          strokeWidth="1.4"
+          fill="none"
+        />
+        <path
+          d="M62 164C48 148 40 130 38 110"
+          stroke="#6C876F"
+          strokeWidth="1"
+          fill="none"
+        />
+        <path
+          d="M84 122C102 112 116 96 122 76"
+          stroke="#6C876F"
+          strokeWidth="1"
+          fill="none"
+        />
+        <path
+          d="M100 84C86 72 78 58 76 42"
+          stroke="#6C876F"
+          strokeWidth="0.9"
+          fill="none"
+        />
+
+        <Leaf x={44} y={188} r={-52} s={0.86} t="deep" />
+        <Leaf x={54} y={172} r={112} s={0.82} t="sage" />
+        <Leaf x={62} y={152} r={-44} s={0.8} t="pale" />
+        <Leaf x={72} y={132} r={108} s={0.78} t="olive" />
+        <Leaf x={80} y={112} r={-36} s={0.74} t="sage" />
+        <Leaf x={90} y={92} r={102} s={0.7} t="eucalyptus" />
+        <Leaf x={98} y={72} r={-28} s={0.66} t="pale" />
+        <Leaf x={108} y={52} r={96} s={0.6} t="sage" />
+        <Leaf x={118} y={34} r={-18} s={0.54} t="deep" />
+        <Leaf x={58} y={146} r={-96} s={0.5} t="eucalyptus" />
+        <Leaf x={98} y={98} r={30} s={0.46} t="sage" />
+
+        <RoundLeaf x={34} y={198} r={-12} s={0.9} t="eucalyptus" />
+        <RoundLeaf x={48} y={202} r={16} s={0.75} t="sage" />
+
+        <Bud x={70} y={158} r={-14} s={0.72} />
+        <Bud x={94} y={100} r={18} s={0.62} color="#DDA9A4" />
+        <Bud x={112} y={58} r={-8} s={0.55} />
+        <Bud x={128} y={30} r={20} s={0.5} color="#DDA9A4" />
+
+        <Blossom x={134} y={26} s={0.95} />
+        <Blossom x={48} y={176} s={0.62} r={16} tone="blush" />
+        <Blossom x={104} y={80} s={0.52} r={-12} />
+        <Blossom x={76} y={128} s={0.4} r={22} tone="blush" />
+
+        <circle cx="62" cy="170" r="1.5" fill="#C9A96E" />
+        <circle cx="110" cy="66" r="1.3" fill="#C9A96E" />
+        <circle cx="88" cy="116" r="1.1" fill="#C9A96E" />
+      </g>
+    </svg>
+  );
+}
+
+/* Rosa abierta de pétalos concéntricos. */
+export function RoseBloom({
+  className = "",
+  tone = "blush",
+}: {
+  className?: string;
+  tone?: "blush" | "cream";
+}) {
+  const petal = tone === "blush" ? "#EBCBC6" : "#FBF7EE";
+  const core = tone === "blush" ? "#E3BAB4" : "#F3E9DA";
+  const edge = tone === "blush" ? "#D8ADA8" : "#E4D7C3";
+
+  return (
+    <svg
+      viewBox="0 0 100 100"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <g strokeLinecap="round" strokeLinejoin="round">
+        <path
+          d="M50 96C52 82 54 72 58 62"
+          stroke="#7C9270"
+          strokeWidth="1.2"
+          fill="none"
+        />
+        <Leaf x={46} y={82} r={-118} s={0.42} t="sage" />
+        <Leaf x={58} y={72} r={62} s={0.36} t="deep" />
+
+        <circle cx="50" cy="44" r="30" fill={petal} opacity="0.35" />
+
+        {[0, 60, 120, 180, 240, 300].map((angle) => (
+          <ellipse
+            key={`rose-outer-${angle}`}
+            cx="50"
+            cy="24"
+            rx="11"
+            ry="14"
+            fill={petal}
+            stroke={edge}
+            strokeWidth="0.7"
+            transform={`rotate(${angle} 50 44)`}
+          />
+        ))}
+        {[30, 90, 150, 210, 270, 330].map((angle) => (
+          <ellipse
+            key={`rose-inner-${angle}`}
+            cx="50"
+            cy="31"
+            rx="8.5"
+            ry="10.5"
+            fill={core}
+            stroke={edge}
+            strokeWidth="0.6"
+            transform={`rotate(${angle} 50 44)`}
+          />
+        ))}
+        <circle
+          cx="50"
+          cy="44"
+          r="6.5"
+          fill={tone === "blush" ? "#DCA9A2" : "#EBDCC5"}
+          stroke={edge}
+          strokeWidth="0.6"
+        />
+        <path
+          d="M46 44C48 41 52 41 54 44"
+          stroke="#FFFDF8"
+          strokeWidth="0.8"
+          opacity="0.7"
+          fill="none"
+        />
+      </g>
+    </svg>
+  );
+}
+
+/* Mariposa pequeña para flotar entre las secciones. */
+export function Butterfly({
+  className = "",
+  flip = false,
+}: {
+  className?: string;
+  flip?: boolean;
+}) {
+  return (
+    <svg
+      viewBox="0 0 64 56"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+      style={{ transform: flip ? "scaleX(-1)" : undefined }}
+    >
+      <g strokeLinecap="round" strokeLinejoin="round">
+        <path
+          d="M32 24C26 10 12 4 7 12C2 20 12 31 29 32Z"
+          fill="#D7E2D0"
+          stroke="#7C9270"
+          strokeWidth="0.8"
+        />
+        <path
+          d="M32 24C38 10 52 4 57 12C62 20 52 31 35 32Z"
+          fill="#D7E2D0"
+          stroke="#7C9270"
+          strokeWidth="0.8"
+        />
+        <path
+          d="M30 31C22 33 14 43 18 48C22 53 30 43 32 35Z"
+          fill="#E9D2CD"
+          stroke="#C9958F"
+          strokeWidth="0.7"
+        />
+        <path
+          d="M34 31C42 33 50 43 46 48C42 53 34 43 32 35Z"
+          fill="#E9D2CD"
+          stroke="#C9958F"
+          strokeWidth="0.7"
+        />
+        <path d="M32 22V40" stroke="#8D6C3C" strokeWidth="1.2" />
+        <path d="M32 22C30 16 27 13 24 11" stroke="#8D6C3C" strokeWidth="0.8" />
+        <path d="M32 22C34 16 37 13 40 11" stroke="#8D6C3C" strokeWidth="0.8" />
+        <circle cx="32" cy="21" r="1.4" fill="#B79557" />
+        <circle cx="16" cy="17" r="1.3" fill="#FBF7EE" opacity="0.9" />
+        <circle cx="48" cy="17" r="1.3" fill="#FBF7EE" opacity="0.9" />
+      </g>
+    </svg>
+  );
+}
+
+/* Guirnalda horizontal de hojas y flores para pies y divisores. */
+export function LeafGarland({ className = "" }: { className?: string }) {
+  const leaves = [
+    { x: 30, y: 48, r: -34, s: 0.5, t: "deep" as const },
+    { x: 54, y: 42, r: 152, s: 0.46, t: "sage" as const },
+    { x: 82, y: 36, r: -28, s: 0.48, t: "pale" as const },
+    { x: 108, y: 34, r: 158, s: 0.44, t: "olive" as const },
+    { x: 136, y: 36, r: -22, s: 0.46, t: "sage" as const },
+    { x: 164, y: 40, r: 162, s: 0.44, t: "eucalyptus" as const },
+    { x: 192, y: 40, r: -18, s: 0.46, t: "pale" as const },
+    { x: 220, y: 38, r: 166, s: 0.44, t: "sage" as const },
+    { x: 248, y: 34, r: -26, s: 0.46, t: "deep" as const },
+    { x: 276, y: 30, r: 154, s: 0.44, t: "sage" as const },
+    { x: 304, y: 28, r: -30, s: 0.46, t: "olive" as const },
+    { x: 330, y: 24, r: 158, s: 0.42, t: "pale" as const },
+  ];
+
+  return (
+    <svg
+      viewBox="0 0 360 80"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <g strokeLinecap="round" strokeLinejoin="round">
+        <path
+          d="M8 54C60 26 120 22 180 34C240 46 300 42 352 22"
+          stroke="#7C9270"
+          strokeWidth="1.1"
+          fill="none"
+        />
+        {leaves.map((leaf, index) => (
+          <Leaf
+            key={`garland-leaf-${index}`}
+            x={leaf.x}
+            y={leaf.y}
+            r={leaf.r}
+            s={leaf.s}
+            t={leaf.t}
+          />
+        ))}
+
+        <Bud x={46} y={44} r={-20} s={0.5} />
+        <Bud x={148} y={33} r={18} s={0.46} color="#DDA9A4" />
+        <Bud x={252} y={34} r={-16} s={0.46} />
+        <Bud x={322} y={25} r={20} s={0.42} color="#DDA9A4" />
+
+        <Blossom x={14} y={52} s={0.44} tone="blush" />
+        <Blossom x={96} y={34} s={0.38} />
+        <Blossom x={204} y={42} s={0.4} tone="blush" />
+        <Blossom x={290} y={29} s={0.36} />
+        <Blossom x={348} y={20} s={0.4} tone="blush" />
+
+        <circle cx="70" cy="38" r="1.2" fill="#C9A96E" />
+        <circle cx="176" cy="36" r="1.1" fill="#C9A96E" />
+        <circle cx="268" cy="34" r="1.1" fill="#C9A96E" />
+      </g>
+    </svg>
+  );
+}
+
+/* Ramitas de paniculata (flores minúsculas) para rellenar esquinas. */
+export function BabyBreath({ className = "" }: { className?: string }) {
+  const dots = [
+    { x: 20, y: 12, r: 1.6 },
+    { x: 26, y: 20, r: 1.3 },
+    { x: 14, y: 22, r: 1.2 },
+    { x: 60, y: 58, r: 1.6 },
+    { x: 68, y: 50, r: 1.2 },
+    { x: 54, y: 48, r: 1.1 },
+    { x: 16, y: 34, r: 1.5 },
+    { x: 22, y: 42, r: 1.1 },
+    { x: 10, y: 42, r: 1.2 },
+    { x: 30, y: 30, r: 1.1 },
+    { x: 42, y: 22, r: 1.4 },
+    { x: 50, y: 30, r: 1.1 },
+    { x: 34, y: 44, r: 1.2 },
+    { x: 46, y: 52, r: 1.3 },
+  ];
+
+  return (
+    <svg
+      viewBox="0 0 80 120"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <g strokeLinecap="round" strokeLinejoin="round">
+        <path
+          d="M40 118C38 92 36 70 32 52C28 36 24 24 20 12"
+          stroke="#7C9270"
+          strokeWidth="0.9"
+          fill="none"
+        />
+        <path
+          d="M38 86C48 80 56 70 60 58"
+          stroke="#7C9270"
+          strokeWidth="0.8"
+          fill="none"
+        />
+        <path
+          d="M34 62C24 56 18 46 16 34"
+          stroke="#7C9270"
+          strokeWidth="0.8"
+          fill="none"
+        />
+        <path
+          d="M36 40C42 32 48 26 50 18"
+          stroke="#7C9270"
+          strokeWidth="0.7"
+          fill="none"
+        />
+
+        <Leaf x={36} y={96} r={-118} s={0.3} t="sage" />
+        <Leaf x={40} y={74} r={64} s={0.26} t="deep" />
+        <Leaf x={30} y={52} r={-124} s={0.24} t="pale" />
+        <Leaf x={48} y={64} r={52} s={0.22} t="eucalyptus" />
+
+        {dots.map((dot, index) => (
+          <circle
+            key={`baby-breath-${index}`}
+            cx={dot.x}
+            cy={dot.y}
+            r={dot.r}
+            fill={index % 3 === 0 ? "#E8D6B2" : "#FBF7EE"}
+            stroke="#E4D7C3"
+            strokeWidth="0.3"
+          />
+        ))}
+      </g>
+    </svg>
+  );
+}
+
 export function GoldDivider({
   className = "",
   wide = false,
@@ -426,6 +764,36 @@ export function GoldDivider({
       <span
         className={`h-px ${line}`}
         style={{ background: "linear-gradient(270deg, transparent, var(--elegant-gold))" }}
+      />
+    </div>
+  );
+}
+
+/**
+ * Separador mínimo entre nombres completos de una misma tarjeta.
+ * Sirve para que dos personas no se lean como un único nombre largo.
+ */
+export function NameDivider({ className = "" }: { className?: string }) {
+  return (
+    <div
+      className={`flex items-center justify-center gap-2 ${className}`}
+      aria-hidden
+    >
+      <span
+        className="h-px w-5 sm:w-8"
+        style={{
+          background: "linear-gradient(90deg, transparent, rgba(175, 138, 79, 0.7))",
+        }}
+      />
+      <span
+        className="h-1.5 w-1.5 rotate-45"
+        style={{ backgroundColor: "var(--elegant-gold)" }}
+      />
+      <span
+        className="h-px w-5 sm:w-8"
+        style={{
+          background: "linear-gradient(270deg, transparent, rgba(175, 138, 79, 0.7))",
+        }}
       />
     </div>
   );
@@ -498,7 +866,7 @@ export function SectionHeading({
         </>
       )}
       <h2
-        className="mt-3 font-elegant-display text-3xl leading-tight sm:text-4xl md:text-5xl"
+        className="mt-3 font-elegant-display text-[2.15rem] leading-tight sm:text-4xl md:text-5xl"
         style={{ color: "var(--inv-text)", letterSpacing: "0.02em" }}
       >
         {title}
@@ -506,7 +874,7 @@ export function SectionHeading({
       <GoldDivider className={`mt-5 ${align === "center" ? "" : "justify-start"}`} />
       {subtitle && (
         <p
-          className={`mt-5 max-w-xl text-sm leading-relaxed sm:text-base ${
+          className={`mt-5 max-w-xl text-base leading-relaxed sm:text-lg ${
             align === "center" ? "mx-auto" : ""
           }`}
           style={{ color: "var(--inv-text-muted)" }}

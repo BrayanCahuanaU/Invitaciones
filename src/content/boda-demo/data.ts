@@ -9,15 +9,15 @@ import { InvitationData } from "@/content/types";
 // ══════════════════════════════════════════════════════════════════════
 
 export const bodaDemo: InvitationData = {
-  slug: "boda-demo",
+  slug: "yeni-y-hernan",
   eventType: "boda",
   theme: "botanical-garden",
   layout: "elegant",
 
   seo: {
-    title: "Yeny Taco & Hernan Luque — Nuestra Boda",
+    title: "Yeni & Hernán — Nuestra Boda",
     description:
-      "Con la bendición de nuestras familias, te invitamos a celebrar nuestra boda. 19 de diciembre de 2026 · Arequipa, Perú.",
+      "Con la bendición de nuestras familias, te invitamos a celebrar nuestra boda. 19 de diciembre de 2026 · Arequipa.",
   },
 
   // El layout "elegant" usa su propio sobre ilustrado, por eso estas
@@ -32,7 +32,7 @@ export const bodaDemo: InvitationData = {
     // Opcional: si colocas una foto en public/invitaciones/boda-demo/
     // y pones la ruta aquí, aparecerá en el arco del hero.
     photo: "",
-    protagonists: "Yeny Taco & Hernan Luque",
+    protagonists: "Yeni Arletti Taco Mayta & Hernán Luque Zencara",
     motivo: "Nuestra Boda",
   },
 
@@ -43,14 +43,14 @@ export const bodaDemo: InvitationData = {
 
   location: {
     venueName: "Salón de eventos EL BOSQUE",
-    address: "Arequipa, Perú",
+    address: "Arequipa",
     mapsUrl:
       "https://maps.google.com/?q=Salón+de+eventos+EL+BOSQUE+Arequipa",
   },
 
   wedding: {
     monogram: "Y & H",
-    city: "Arequipa, Perú",
+    city: "Arequipa",
 
     // Textura de papel propia de esta invitación (tarjetas del layout elegant).
     cardBackground: "/invitaciones/boda-demo/papel-fondo.png",
@@ -60,6 +60,23 @@ export const bodaDemo: InvitationData = {
 
     // Imagen que reemplaza el monograma en el footer (palomas).
     footerEmblem: "/invitaciones/boda-demo/palomas.png",
+
+    // Imagen que reemplaza el icono de la iglesia en la tarjeta de la ceremonia.
+    churchEmblem: "/invitaciones/boda-demo/iglesia.png",
+
+    // Imagen que reemplaza el sello de cera del sobre cerrado.
+    sealEmblem: "/invitaciones/boda-demo/sello.png",
+
+    // Imagen que reemplaza el icono de la copa en la tarjeta de recepción.
+    receptionEmblem: "/invitaciones/boda-demo/celebracion.png",
+
+    // Iconos dorados del código de vestimenta: percha, taco y corbata.
+    dressCodeEmblem: "/invitaciones/boda-demo/percha.png",
+    dressCodeFemaleEmblem: "/invitaciones/boda-demo/taco.png",
+    dressCodeMaleEmblem: "/invitaciones/boda-demo/corbata.png",
+
+    // Sonido de la primera pantalla (sobre cerrado). Es una bendición.
+    envelopeAudio: "/invitaciones/boda-demo/bendicion.mp3",
 
     // Todos los textos de la plantilla viven aquí. Cambia libremente: el
     // diseño (src/components/invitation/elegant) no contiene copy fijo.
@@ -151,7 +168,7 @@ export const bodaDemo: InvitationData = {
           "Tu respuesta ha sido registrada. Nos hace muy felices contar contigo en este día tan especial.",
         confirmAnother: "Confirmar otra persona",
         nameLabel: "Nombre completo",
-        namePlaceholder: "Escribe tu nombre",
+        namePlaceholder: "Ejm. José Carlos Rodríguez Valdez",
         attendingQuestion: "¿Nos acompañarás?",
         yes: "Sí asistiré",
         no: "No podré ir",
@@ -184,12 +201,16 @@ export const bodaDemo: InvitationData = {
     },
 
     brideParents: ["Asunción Mayta Quispe", "Agapito Amador Taco Quispe"],
-    groomParents: ["Antonia Zencara Uturunco", "Benito Luque Vargas"],
+    groomParents: ["Antonia Zencara Uturunco", "Toribio Luque Vargas"],
 
     padrinosGroups: [
       {
         role: "Padrinos de iglesia",
-        names: ["Herminia y Epifanio"],
+        names: ["Herminia Gutierrez", "Epifanio Cahuana"],
+      },
+      {
+        role: "Padrinos de arras",
+        names: ["Milagros Giuliana Taco Mayta", "Henrry Sanchez Tapia"],
       },
       {
         role: "Testigos de civil",
@@ -208,16 +229,19 @@ export const bodaDemo: InvitationData = {
           time: "17:00",
           mapsUrl:
             "https://maps.google.com/?q=Parroquia+Santa+Gertrudis+Sachaca+Arequipa",
+          // Foto del lugar. Crédito: Gustavo M / Wikimedia Commons (CC BY 2.0).
+          photo: "/invitaciones/boda-demo/parroquia.jpg",
         },
       },
     ],
 
     reception: {
       name: "Salón de eventos EL BOSQUE",
-      address: "Arequipa, Perú",
+      address: "Arequipa",
       time: "19:00",
-      mapsUrl:
-        "https://maps.google.com/?q=Salón+de+eventos+EL+BOSQUE+Arequipa",
+      mapsUrl: "https://maps.app.goo.gl/NEjyf1F6aFtGe28c9",
+      // Foto de la fachada (Google Street View).
+      photo: "/invitaciones/boda-demo/salon.jpg",
     },
   },
 
@@ -242,12 +266,22 @@ export const bodaDemo: InvitationData = {
       { name: "Marfil", hex: "#F4EFE6" },
       { name: "Dorado", hex: "#C9A227" },
     ],
-    notes: ["Te pedimos llegar 20 minutos antes de la ceremonia"],
+    notes: [
+      "Te pedimos llegar 20 minutos antes de la ceremonia",
+      "No está permitido el ingreso de niños",
+    ],
   },
 
   gifts: {
     message:
       "Tu presencia es nuestro mayor regalo. Si deseas tener un detalle con nosotros, te dejamos algunas opciones:",
+    yape: {
+      image: "/invitaciones/boda-demo/yape.jpg",
+      holder: "Yeni Arletti Taco Mayta",
+      note: "También puedes enviarnos tu detalle por Yape.",
+      message:
+        "No importa el monto, sino la intención. ¡Gracias por acompañarnos!",
+    },
     suggestions: [
       "Lluvia de sobres",
       "Vajilla fina",
@@ -258,7 +292,7 @@ export const bodaDemo: InvitationData = {
   },
 
   rsvp: {
-    allowGuests: true,
+    allowGuests: false,
     status: "open",
   },
 
@@ -266,7 +300,7 @@ export const bodaDemo: InvitationData = {
     "Gracias por acompañarnos en el día más importante de nuestras vidas. Su presencia y sus buenos deseos son el mejor regalo que podemos recibir.",
 
   host: {
-    name: "Yeny & Hernan",
+    name: "Yeni & Hernán",
     relation: "Los novios",
   },
 
@@ -289,11 +323,10 @@ export const bodaDemo: InvitationData = {
     desktop: "/invitaciones/boda-demo/fondo.mp4",
   },
 
-  // Para activar música de fondo, sube un mp3 a
-  // public/invitaciones/boda-demo/ y descomenta:
-  // backgroundMusic: {
-  //   src: "/invitaciones/boda-demo/nuestra-cancion.mp3",
-  //   title: "Nuestra canción",
-  //   artist: "Artista",
-  // },
+  // Música de fondo al abrir la invitación.
+  backgroundMusic: {
+    src: "/invitaciones/boda-demo/hijo-de-la-luna.mp3",
+    title: "Hijo de la Luna",
+    artist: "Mecano",
+  },
 };

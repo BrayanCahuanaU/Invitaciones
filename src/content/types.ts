@@ -9,6 +9,15 @@ export interface BankAccount {
   cci?: string;
 }
 
+// Opción de pago por Yape (imagen del logo + datos opcionales).
+export interface YapeAccount {
+  image: string;
+  holder?: string;
+  phone?: string;
+  note?: string;
+  message?: string;
+}
+
 export interface GuestArtist {
   name: string;
   role?: string;
@@ -75,6 +84,7 @@ export interface WeddingVenue {
   time?: string; // "17:30"
   mapsUrl?: string;
   mapsEmbedUrl?: string;
+  photo?: string; // foto del lugar (ruta en public)
   note?: string;
 }
 
@@ -101,6 +111,8 @@ export interface WeddingTexts {
     openButton: string;
     footerNote: string;
     openAriaLabel: string; // admite {couple}
+    soundOn: string; // texto del botón cuando el sonido está apagado
+    soundOff: string; // texto del botón cuando el sonido está encendido
   };
   hero: {
     title: string;
@@ -134,7 +146,8 @@ export interface WeddingTexts {
     viewMap: string;
     openMap: string;
     closeMap: string;
-    mapAriaLabel: string; // admite {venue}
+    mapAriaLabel: string;
+    photoLabel: string; // admite {venue}
     closingNote: string;
   };
   timeline: {
@@ -161,6 +174,10 @@ export interface WeddingTexts {
     title: string;
     suggestionsTitle: string;
     envelopeTitle: string;
+    yapeTitle: string;
+    yapeNote: string;
+    yapePhoneLabel: string;
+    yapeMessage: string;
     viewData: string;
     holderLabel: string;
     accountLabel: string;
@@ -218,6 +235,13 @@ export interface WeddingDetails {
   cardBackground?: string; // textura de papel para las tarjetas (ruta en public)
   heroEmblem?: string; // imagen que reemplaza el monograma de la portada
   footerEmblem?: string; // imagen que reemplaza el monograma del footer (argollas, etc.)
+  churchEmblem?: string; // imagen que reemplaza el icono de la iglesia en las sedes
+  sealEmblem?: string; // imagen que reemplaza el sello de cera del sobre cerrado
+  receptionEmblem?: string; // imagen que reemplaza el icono de la recepción
+  dressCodeEmblem?: string; // imagen que reemplaza el icono del código de vestimenta
+  dressCodeFemaleEmblem?: string; // imagen sobre la lista "Ellas"
+  dressCodeMaleEmblem?: string; // imagen sobre la lista "Ellos"
+  envelopeAudio?: string; // sonido de la pantalla del sobre cerrado
   monogram?: string; // "V & S" — si no se define se calcula con los nombres
   hashtag?: string; // "#ValentinaYSebastian"
   city?: string; // "Arequipa, Perú"
@@ -299,6 +323,7 @@ export interface InvitationData {
     message?: string;
     envelopeMessage?: string; // texto del sobre de regalo (layout cinematic)
     bankAccounts?: BankAccount[];
+    yape?: YapeAccount;
     suggestions?: string[];
   };
 

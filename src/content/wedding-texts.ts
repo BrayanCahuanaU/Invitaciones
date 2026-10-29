@@ -10,6 +10,8 @@ export const DEFAULT_WEDDING_TEXTS: WeddingTexts = {
     openButton: "Abrir invitación",
     footerNote: "Una invitación hecha con amor",
     openAriaLabel: "Abrir invitación de {couple}",
+    soundOn: "Activar sonido",
+    soundOff: "Silenciar",
   },
   hero: {
     title: "¡Nos casamos!",
@@ -46,6 +48,7 @@ export const DEFAULT_WEDDING_TEXTS: WeddingTexts = {
     openMap: "Abrir mapa",
     closeMap: "Ocultar mapa",
     mapAriaLabel: "Mapa de {venue}",
+    photoLabel: "Foto del lugar",
     closingNote: "Te esperamos para celebrar juntos",
   },
   timeline: {
@@ -74,6 +77,10 @@ export const DEFAULT_WEDDING_TEXTS: WeddingTexts = {
     title: "Un detalle con nosotros",
     suggestionsTitle: "Sugerencias de regalo",
     envelopeTitle: "Lluvia de sobres",
+    yapeTitle: "Yape",
+    yapeNote: "También puedes enviarnos tu detalle por Yape.",
+    yapePhoneLabel: "Número de Yape",
+    yapeMessage: "No importa el monto, sino la intención.",
     viewData: "Ver datos",
     holderLabel: "Titular",
     accountLabel: "Número de cuenta",

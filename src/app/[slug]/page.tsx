@@ -16,6 +16,7 @@ import { Guidelines } from "@/components/invitation/Guidelines";
 import { Gifts } from "@/components/invitation/Gifts";
 import { SongVoting } from "@/components/invitation/SongVoting";
 import { MusicPlayer } from "@/components/invitation/MusicPlayer";
+import { ElegantBackgroundVideo } from "@/components/invitation/elegant/ElegantBackgroundVideo";
 import { Farewell } from "@/components/invitation/Farewell";
 import { RevealSection } from "@/components/invitation/RevealSection";
 import { CinematicHero } from "@/components/invitation/cinematic/CinematicHero";
@@ -177,33 +178,10 @@ export default async function InvitationPage({
     >
       <div className="fixed inset-0 -z-20 bg-[var(--inv-bg)]" />
       {isElegant && data.backgroundVideo && (
-        <>
-          {data.backgroundVideo.mobile && (
-            <video
-              src={data.backgroundVideo.mobile}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="fixed inset-0 z-0 h-full w-full object-cover md:hidden"
-            />
-          )}
-          {data.backgroundVideo.desktop && (
-            <video
-              src={data.backgroundVideo.desktop}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="fixed inset-0 z-0 hidden h-full w-full object-cover md:block"
-            />
-          )}
-          {/* Velo crema para mantener legible el texto sobre el video. */}
-          <div
-            aria-hidden
-            className="pointer-events-none fixed inset-0 z-0 bg-[#f8f4eb]/55"
-          />
-        </>
+        <ElegantBackgroundVideo
+          mobile={data.backgroundVideo.mobile}
+          desktop={data.backgroundVideo.desktop}
+        />
       )}
       {!isCinematic && !isElegant && (
         <>

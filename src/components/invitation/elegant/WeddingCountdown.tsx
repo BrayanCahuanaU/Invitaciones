@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { WeddingTexts } from "@/content/types";
-import { BotanicalCorner, BotanicalSprig, GoldDivider } from "./Ornaments";
+import {
+  BotanicalCorner,
+  BotanicalSprig,
+  Butterfly,
+  FloralCluster,
+  GoldDivider,
+} from "./Ornaments";
 
 function getRemaining(target: number) {
   const diff = Math.max(0, target - Date.now());
@@ -54,6 +60,12 @@ export function WeddingCountdown({
         />
         <BotanicalCorner className="pointer-events-none absolute left-2 top-2 h-14 w-14 opacity-70" />
         <BotanicalCorner className="pointer-events-none absolute bottom-2 right-2 h-14 w-14 rotate-180 opacity-70" />
+        <FloralCluster className="pointer-events-none absolute left-0 top-0 h-36 w-auto opacity-60" />
+        <FloralCluster
+          flip
+          className="pointer-events-none absolute bottom-0 right-0 h-36 w-auto opacity-60"
+        />
+        <Butterfly className="pointer-events-none absolute right-[12%] top-6 h-6 w-7 rotate-12 opacity-70" />
 
         <div className="relative">
           <BotanicalSprig className="mx-auto h-7 w-16" />
@@ -61,7 +73,7 @@ export function WeddingCountdown({
             {texts.countdown.eyebrow}
           </p>
           <h2
-            className="mt-3 font-elegant-display text-3xl sm:text-4xl"
+            className="mt-3 font-elegant-display text-[2rem] sm:text-4xl"
             style={{ color: "var(--inv-text)" }}
           >
             {texts.countdown.title}
@@ -79,13 +91,13 @@ export function WeddingCountdown({
                 }}
               >
                 <div
-                  className="font-elegant-display text-3xl tabular-nums leading-none sm:text-5xl md:text-6xl"
+                  className="font-elegant-display text-[2.1rem] tabular-nums leading-none sm:text-5xl md:text-6xl"
                   style={{ color: "var(--elegant-sage-deep)" }}
                 >
                   {unit.pad ? String(unit.value).padStart(2, "0") : unit.value}
                 </div>
                 <div
-                  className="mt-2 text-[0.5rem] uppercase tracking-[0.24em] sm:text-[0.6rem]"
+                  className="mt-2 text-[0.62rem] uppercase tracking-[0.16em] sm:text-[0.68rem]"
                   style={{ color: "var(--inv-text-muted)" }}
                 >
                   {unit.label}
@@ -95,8 +107,8 @@ export function WeddingCountdown({
           </div>
 
           <p
-            className="mt-7 text-[0.62rem] uppercase tracking-[0.3em]"
-            style={{ color: "var(--inv-text-muted)" }}
+            className="mt-7 text-[1.02rem] font-semibold uppercase tracking-[0.16em] sm:text-[1.15rem]"
+            style={{ color: "var(--inv-text)" }}
           >
             {dateLabel}
           </p>

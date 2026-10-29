@@ -15,23 +15,41 @@ export function ElegantMusicPlayer({
 }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const fadeRef = useRef<number | null>(null);
+  const fadeTimeoutRef = useRef<number | null>(null);
   const [playing, setPlaying] = useState(false);
 
   function fadeIn(audio: HTMLAudioElement, target = 0.38, duration = 2200) {
     if (fadeRef.current !== null) cancelAnimationFrame(fadeRef.current);
-    audio.volume = 0;
+    if (fadeTimeoutRef.current !== null) {
+      window.clearTimeout(fadeTimeoutRef.current);
+      fadeTimeoutRef.current = null;
+    }
     const start = performance.now();
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      if (fadeTimeoutRef.current !== null) {
+        window.clearTimeout(fadeTimeoutRef.current);
+        fadeTimeoutRef.current = null;
+      }
+      audio.volume = target;
+    };
     const step = (now: number) => {
+      if (finished) return;
       const progress = Math.min(1, (now - start) / duration);
       audio.volume = Math.max(0.02, target * progress);
       if (progress < 1) {
         fadeRef.current = requestAnimationFrame(step);
       } else {
-        audio.volume = target;
         fadeRef.current = null;
+        finish();
       }
     };
+    audio.volume = 0;
     fadeRef.current = requestAnimationFrame(step);
+    // Respaldo: rAF se pausa si la pestaña queda oculta.
+    fadeTimeoutRef.current = window.setTimeout(finish, duration + 150);
   }
 
   useEffect(() => {
@@ -53,6 +71,10 @@ export function ElegantMusicPlayer({
     return () => {
       window.removeEventListener("invitation:opened", start);
       if (fadeRef.current !== null) cancelAnimationFrame(fadeRef.current);
+      if (fadeTimeoutRef.current !== null) {
+        window.clearTimeout(fadeTimeoutRef.current);
+        fadeTimeoutRef.current = null;
+      }
     };
   }, []);
 

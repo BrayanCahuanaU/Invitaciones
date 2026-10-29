@@ -1,5 +1,11 @@
 import { Section } from "../Section";
-import { BotanicalBranch, BotanicalSprig, GoldDivider } from "./Ornaments";
+import {
+  BotanicalBranch,
+  BotanicalSprig,
+  Butterfly,
+  FloralCluster,
+  GoldDivider,
+} from "./Ornaments";
 
 export function WeddingQuote({ text }: { text: string }) {
   return (
@@ -9,6 +15,13 @@ export function WeddingQuote({ text }: { text: string }) {
         flip
         className="pointer-events-none absolute -right-14 top-1/2 h-64 w-auto -translate-y-1/2 opacity-50 sm:-right-8"
       />
+
+      <FloralCluster className="pointer-events-none absolute left-0 top-0 h-32 w-auto opacity-50" />
+      <FloralCluster
+        flip
+        className="pointer-events-none absolute bottom-0 right-0 h-32 w-auto opacity-50"
+      />
+      <Butterfly className="pointer-events-none absolute right-[10%] top-0 h-6 w-7 rotate-12 opacity-70" />
 
       <div className="relative">
         <BotanicalSprig className="mx-auto mb-2 h-7 w-16" />
@@ -21,7 +34,7 @@ export function WeddingQuote({ text }: { text: string }) {
         </span>
 
         <p
-          className="mx-auto max-w-2xl px-4 font-elegant-display text-xl italic leading-relaxed sm:text-2xl md:text-[1.7rem]"
+          className="mx-auto max-w-2xl px-4 font-elegant-display text-[1.4rem] italic leading-relaxed sm:text-[1.55rem] md:text-[1.75rem]"
           style={{ color: "var(--inv-text)" }}
         >
           {text}

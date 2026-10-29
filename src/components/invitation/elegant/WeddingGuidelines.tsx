@@ -1,14 +1,22 @@
+import Image from "next/image";
 import {
   Car,
   Clock,
   Info,
   PawPrint,
   Shirt,
-  Sparkles,
   Users,
 } from "lucide-react";
 import { InvitationData, WeddingTexts } from "@/content/types";
-import { BotanicalCorner, BotanicalSprig, GoldDivider, SectionHeading } from "./Ornaments";
+import {
+  BotanicalCorner,
+  BotanicalSprig,
+  Butterfly,
+  FloralCluster,
+  GoldDivider,
+  RoseBloom,
+  SectionHeading,
+} from "./Ornaments";
 
 function noteIcon(note: string) {
   const lower = note.toLowerCase();
@@ -21,17 +29,29 @@ function noteIcon(note: string) {
 
 export function WeddingGuidelines({
   guidelines,
+  dressCodeEmblem,
+  femaleEmblem,
+  maleEmblem,
   texts,
 }: {
   guidelines: InvitationData["guidelines"];
+  dressCodeEmblem?: string;
+  femaleEmblem?: string;
+  maleEmblem?: string;
   texts: WeddingTexts;
 }) {
   const { dressCode, colorsToAvoid, notes } = guidelines;
   if (!dressCode && !colorsToAvoid?.length && !notes?.length) return null;
 
   return (
-    <section className="w-full px-4 py-14 sm:py-20">
-      <div className="mx-auto max-w-4xl">
+    <section className="relative w-full overflow-hidden px-4 py-14 sm:py-20">
+      <FloralCluster className="pointer-events-none absolute -left-14 top-8 h-44 w-auto opacity-50" />
+      <FloralCluster
+        flip
+        className="pointer-events-none absolute -right-14 bottom-16 h-44 w-auto opacity-50"
+      />
+
+      <div className="relative mx-auto max-w-4xl">
         <SectionHeading
           eyebrow={texts.guidelines.eyebrow}
           title={texts.guidelines.title}
@@ -42,6 +62,8 @@ export function WeddingGuidelines({
           <div className="elegant-card relative mt-11 overflow-hidden rounded-sm px-6 py-8 sm:px-9 sm:py-10">
             <BotanicalCorner className="pointer-events-none absolute left-0 top-0 h-14 w-14 opacity-75" />
             <BotanicalCorner className="pointer-events-none absolute bottom-0 right-0 h-14 w-14 rotate-180 opacity-75" />
+            <RoseBloom className="pointer-events-none absolute -bottom-7 -left-5 h-24 w-24 opacity-70" />
+            <Butterfly className="pointer-events-none absolute right-4 top-4 h-6 w-7 rotate-12 opacity-70" />
             <div className="flex flex-col items-center text-center">
               <div
                 className="flex h-11 w-11 items-center justify-center rounded-full"
@@ -51,14 +73,25 @@ export function WeddingGuidelines({
                   background: "rgba(139, 165, 139, 0.14)",
                 }}
               >
-                <Shirt className="h-5 w-5" />
+                {dressCodeEmblem ? (
+                  <Image
+                    src={dressCodeEmblem}
+                    alt=""
+                    width={64}
+                    height={64}
+                    sizes="40px"
+                    className="h-8 w-8 object-contain"
+                  />
+                ) : (
+                  <Shirt className="h-5 w-5" />
+                )}
               </div>
               <BotanicalSprig className="mt-1 h-5 w-12" />
-              <p className="elegant-eyebrow mt-4 text-[0.56rem]" style={{ color: "var(--inv-accent)" }}>
+              <p className="elegant-eyebrow mt-4 text-[0.66rem]" style={{ color: "var(--inv-accent)" }}>
                 {texts.guidelines.dressCodeLabel}
               </p>
               <p
-                className="mt-2 font-elegant-display text-xl sm:text-2xl"
+                className="mt-2 font-elegant-display text-[1.6rem] sm:text-2xl"
                 style={{ color: "var(--inv-text)" }}
               >
                 {dressCode.level}
@@ -69,8 +102,18 @@ export function WeddingGuidelines({
             <div className="mt-7 grid gap-6 sm:grid-cols-2 sm:gap-10">
               {dressCode.femaleSuggestions && dressCode.femaleSuggestions.length > 0 && (
                 <div className="text-center">
+                  {femaleEmblem && (
+                    <Image
+                      src={femaleEmblem}
+                      alt=""
+                      width={64}
+                      height={64}
+                      sizes="56px"
+                      className="mx-auto mb-2 h-14 w-14 object-contain"
+                    />
+                  )}
                   <p
-                    className="text-[0.6rem] uppercase tracking-[0.3em]"
+                    className="text-[0.7rem] uppercase tracking-[0.22em]"
                     style={{ color: "var(--inv-accent)" }}
                   >
                     {texts.guidelines.femaleLabel}
@@ -79,7 +122,7 @@ export function WeddingGuidelines({
                     {dressCode.femaleSuggestions.map((suggestion) => (
                       <li
                         key={suggestion}
-                        className="text-sm leading-relaxed"
+                        className="text-base leading-relaxed"
                         style={{ color: "var(--inv-text-muted)" }}
                       >
                         {suggestion}
@@ -91,8 +134,18 @@ export function WeddingGuidelines({
 
               {dressCode.maleSuggestions && dressCode.maleSuggestions.length > 0 && (
                 <div className="text-center">
+                  {maleEmblem && (
+                    <Image
+                      src={maleEmblem}
+                      alt=""
+                      width={64}
+                      height={64}
+                      sizes="56px"
+                      className="mx-auto mb-2 h-14 w-14 object-contain"
+                    />
+                  )}
                   <p
-                    className="text-[0.6rem] uppercase tracking-[0.3em]"
+                    className="text-[0.7rem] uppercase tracking-[0.22em]"
                     style={{ color: "var(--inv-accent)" }}
                   >
                     {texts.guidelines.maleLabel}
@@ -101,7 +154,7 @@ export function WeddingGuidelines({
                     {dressCode.maleSuggestions.map((suggestion) => (
                       <li
                         key={suggestion}
-                        className="text-sm leading-relaxed"
+                        className="text-base leading-relaxed"
                         style={{ color: "var(--inv-text-muted)" }}
                       >
                         {suggestion}
@@ -118,17 +171,17 @@ export function WeddingGuidelines({
           {colorsToAvoid && colorsToAvoid.length > 0 && (
             <div className="elegant-card rounded-sm px-6 py-8 text-center sm:px-8">
               <BotanicalCorner className="pointer-events-none absolute right-1 top-1 h-10 w-10 rotate-90 opacity-60" />
-              <p className="elegant-eyebrow text-[0.56rem]" style={{ color: "var(--inv-accent)" }}>
+              <p className="elegant-eyebrow text-[0.66rem]" style={{ color: "var(--inv-accent)" }}>
                 {texts.guidelines.colorsEyebrow}
               </p>
               <p
-                className="mt-3 font-elegant-display text-xl"
+                className="mt-3 font-elegant-display text-[1.5rem]"
                 style={{ color: "var(--inv-text)" }}
               >
                 {texts.guidelines.colorsTitle}
               </p>
               <p
-                className="mt-2 text-xs leading-relaxed"
+                className="mt-2 text-sm leading-relaxed"
                 style={{ color: "var(--inv-text-muted)" }}
               >
                 {texts.guidelines.colorsNote}
@@ -145,7 +198,7 @@ export function WeddingGuidelines({
                       }}
                     />
                     <span
-                      className="text-xs sm:text-sm"
+                      className="text-sm sm:text-base"
                       style={{ color: "var(--inv-text-muted)" }}
                     >
                       {color.name}
@@ -160,11 +213,11 @@ export function WeddingGuidelines({
             <div className="elegant-card rounded-sm px-6 py-8 sm:px-8">
               <BotanicalCorner className="pointer-events-none absolute bottom-1 right-1 h-10 w-10 rotate-180 opacity-60" />
               <div className="text-center">
-                <p className="elegant-eyebrow text-[0.56rem]" style={{ color: "var(--inv-accent)" }}>
+                <p className="elegant-eyebrow text-[0.66rem]" style={{ color: "var(--inv-accent)" }}>
                   {texts.guidelines.notesEyebrow}
                 </p>
                 <p
-                  className="mt-3 font-elegant-display text-xl"
+                  className="mt-3 font-elegant-display text-[1.5rem]"
                   style={{ color: "var(--inv-text)" }}
                 >
                   {texts.guidelines.notesTitle}
@@ -187,7 +240,7 @@ export function WeddingGuidelines({
                         <Icon className="h-3.5 w-3.5" />
                       </span>
                       <span
-                        className="pt-0.5 text-sm leading-relaxed"
+                        className="pt-0.5 text-base leading-relaxed"
                         style={{ color: "var(--inv-text-muted)" }}
                       >
                         {note}
@@ -198,16 +251,6 @@ export function WeddingGuidelines({
               </ul>
             </div>
           )}
-        </div>
-
-        <div className="mt-8 flex items-center justify-center gap-2 text-center">
-          <Sparkles className="h-3.5 w-3.5" style={{ color: "var(--inv-accent)" }} />
-          <span
-            className="text-[0.58rem] uppercase tracking-[0.3em]"
-            style={{ color: "var(--inv-text-muted)" }}
-          >
-            {texts.guidelines.closingNote}
-          </span>
         </div>
       </div>
     </section>

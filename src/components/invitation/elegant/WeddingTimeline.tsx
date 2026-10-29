@@ -1,5 +1,5 @@
 import { TimelineItem, WeddingTexts } from "@/content/types";
-import { SectionHeading } from "./Ornaments";
+import { Butterfly, FloralCluster, RoseBloom, SectionHeading } from "./Ornaments";
 
 export function WeddingTimeline({
   items,
@@ -11,8 +11,15 @@ export function WeddingTimeline({
   if (!items.length) return null;
 
   return (
-    <section className="w-full px-4 py-14 sm:py-20">
-      <div className="mx-auto max-w-2xl">
+    <section className="relative w-full overflow-hidden px-4 py-14 sm:py-20">
+      <FloralCluster className="pointer-events-none absolute -left-14 top-6 h-44 w-auto opacity-50" />
+      <FloralCluster
+        flip
+        className="pointer-events-none absolute -right-14 bottom-10 h-44 w-auto opacity-50"
+      />
+      <Butterfly className="pointer-events-none absolute right-[12%] top-16 h-5 w-6 rotate-12 opacity-60" />
+
+      <div className="relative mx-auto max-w-2xl">
         <SectionHeading
           eyebrow={texts.timeline.eyebrow}
           title={texts.timeline.title}
@@ -27,8 +34,8 @@ export function WeddingTimeline({
             >
               <div className="pt-0.5 text-right">
                 <span
-                  className="font-elegant-display text-lg leading-none sm:text-xl"
-                  style={{ color: "var(--elegant-sage-deep)" }}
+                  className="font-elegant-display text-[1.6rem] font-medium leading-none tabular-nums sm:text-[2rem]"
+                  style={{ color: "var(--inv-text)" }}
                 >
                   {item.time}
                 </span>
@@ -53,14 +60,14 @@ export function WeddingTimeline({
                   aria-hidden
                 />
                 <h3
-                  className="font-elegant-display text-lg leading-snug sm:text-xl"
+                  className="font-elegant-display text-xl leading-snug sm:text-2xl"
                   style={{ color: "var(--inv-text)" }}
                 >
                   {item.title}
                 </h3>
                 {item.description && (
                   <p
-                    className="mt-1 text-sm leading-relaxed"
+                    className="mt-1 text-base leading-relaxed"
                     style={{ color: "var(--inv-text-muted)" }}
                   >
                     {item.description}
@@ -70,6 +77,11 @@ export function WeddingTimeline({
             </div>
           ))}
         </div>
+
+        <RoseBloom
+          tone="cream"
+          className="pointer-events-none mx-auto mt-2 h-10 w-10 opacity-60"
+        />
       </div>
     </section>
   );

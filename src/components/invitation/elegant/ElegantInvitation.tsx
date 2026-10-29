@@ -46,9 +46,13 @@ export function ElegantInvitation({ data }: { data: InvitationData }) {
   const monogram = wedding?.monogram ?? buildMonogram(data.hero.protagonists);
   const city = wedding?.city ?? data.location.district;
 
-  // Sobre el video el texto atenuado necesita un tono más oscuro para leerse.
+  // Sobre el video (verde oliva) el texto atenuado necesita un tono más
+  // oscuro para no perderse; los acentos también se refuerzan.
   const contentStyle = data.backgroundVideo
-    ? ({ "--inv-text-muted": "#5f5a4e" } as CSSProperties)
+    ? ({
+        "--inv-text-muted": "#3f4a3b",
+        "--inv-accent": "#35503c",
+      } as CSSProperties)
     : undefined;
 
   const ceremonies = wedding?.ceremonies ?? [];
@@ -70,6 +74,8 @@ export function ElegantInvitation({ data }: { data: InvitationData }) {
       dateLabel={dateLabel}
       city={city}
       monogram={monogram}
+      audioSrc={wedding?.envelopeAudio}
+      sealEmblem={wedding?.sealEmblem}
       texts={texts}
     >
       {!data.backgroundVideo && (
@@ -118,6 +124,8 @@ export function ElegantInvitation({ data }: { data: InvitationData }) {
           <WeddingVenues
             ceremonies={ceremonies}
             reception={reception}
+            churchEmblem={wedding?.churchEmblem}
+            receptionEmblem={wedding?.receptionEmblem}
             texts={texts}
           />
         </RevealSection>
@@ -127,7 +135,13 @@ export function ElegantInvitation({ data }: { data: InvitationData }) {
         </RevealSection>
 
         <RevealSection>
-          <WeddingGuidelines guidelines={data.guidelines} texts={texts} />
+          <WeddingGuidelines
+            guidelines={data.guidelines}
+            dressCodeEmblem={wedding?.dressCodeEmblem}
+            femaleEmblem={wedding?.dressCodeFemaleEmblem}
+            maleEmblem={wedding?.dressCodeMaleEmblem}
+            texts={texts}
+          />
         </RevealSection>
 
         <RevealSection>
@@ -135,6 +149,7 @@ export function ElegantInvitation({ data }: { data: InvitationData }) {
             message={data.gifts.message}
             envelopeMessage={data.gifts.envelopeMessage}
             bankAccounts={data.gifts.bankAccounts}
+            yape={data.gifts.yape}
             suggestions={data.gifts.suggestions}
             texts={texts}
           />
