@@ -46,12 +46,12 @@ export function ElegantInvitation({ data }: { data: InvitationData }) {
   const monogram = wedding?.monogram ?? buildMonogram(data.hero.protagonists);
   const city = wedding?.city ?? data.location.district;
 
-  // Sobre el video (verde oliva) el texto atenuado necesita un tono más
-  // oscuro para no perderse; los acentos también se refuerzan.
+  // Sobre el fondo guinda, los textos fuera de las tarjetas van en marfil
+  // y los acentos en un tono champagne suave.
   const contentStyle = data.backgroundVideo
     ? ({
-        "--inv-text-muted": "#3f4a3b",
-        "--inv-accent": "#35503c",
+        "--inv-text-muted": "#E6CFCB",
+        "--inv-accent": "#EFD3B8",
       } as CSSProperties)
     : undefined;
 
@@ -95,6 +95,7 @@ export function ElegantInvitation({ data }: { data: InvitationData }) {
           monogram={monogram}
           photo={data.hero.photo || undefined}
           emblem={wedding?.heroEmblem}
+          phrase={data.hero.phrase}
           texts={texts}
         />
 
@@ -140,6 +141,7 @@ export function ElegantInvitation({ data }: { data: InvitationData }) {
             dressCodeEmblem={wedding?.dressCodeEmblem}
             femaleEmblem={wedding?.dressCodeFemaleEmblem}
             maleEmblem={wedding?.dressCodeMaleEmblem}
+            arriveIcon={data.guidelines?.arriveIcon}
             texts={texts}
           />
         </RevealSection>
@@ -151,6 +153,7 @@ export function ElegantInvitation({ data }: { data: InvitationData }) {
             bankAccounts={data.gifts.bankAccounts}
             yape={data.gifts.yape}
             suggestions={data.gifts.suggestions}
+            suggestionIcons={data.gifts.suggestionIcons}
             texts={texts}
           />
         </RevealSection>

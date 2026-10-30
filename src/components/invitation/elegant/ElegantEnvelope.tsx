@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { MailOpen, Volume2, VolumeX } from "lucide-react";
@@ -223,11 +224,16 @@ export function ElegantEnvelope({
           <motion.div
             key="elegant-envelope"
             className="fixed inset-0 z-50 overflow-hidden"
-            style={{
-              background:
-                "radial-gradient(120% 90% at 50% 0%, #FCF9F2 0%, #F6F1E7 48%, #EDE5D7 100%)",
-              color: "var(--inv-text)",
-            }}
+            style={
+              {
+                background:
+                  "radial-gradient(120% 90% at 50% 0%, #FCF9F2 0%, #F6F1E7 48%, #EDE5D7 100%)",
+                color: "#2e1a21",
+                "--inv-text": "#2e1a21",
+                "--inv-text-muted": "#6d565c",
+                "--inv-accent": "#6e1f33",
+              } as CSSProperties
+            }
             exit={{ opacity: 0 }}
             transition={{ duration: 0.9, ease: "easeInOut" }}
           >
@@ -240,23 +246,23 @@ export function ElegantEnvelope({
               style={{ border: "1px solid var(--elegant-line)" }}
             />
 
-            <div className="pointer-events-none absolute -bottom-28 -left-24 h-[480px] opacity-80 sm:-left-10 sm:h-[600px]">
+            <div className="pointer-events-none absolute -bottom-28 -left-24 h-[480px] opacity-90 sm:-left-10 sm:h-[600px]">
               <BotanicalBranch className="h-full w-auto" />
             </div>
-            <div className="pointer-events-none absolute -right-24 -top-24 h-[420px] opacity-70 sm:-right-6 sm:h-[520px]">
+            <div className="pointer-events-none absolute -right-24 -top-24 h-[420px] opacity-85 sm:-right-6 sm:h-[520px]">
               <BotanicalBranch className="h-full w-auto" flip />
             </div>
 
-            <FloralCluster className="pointer-events-none absolute -left-16 top-8 hidden h-64 w-auto opacity-60 sm:block" />
+            <FloralCluster className="pointer-events-none absolute -left-16 top-8 hidden h-64 w-auto opacity-78 sm:block" />
             <FloralCluster
               flip
-              className="pointer-events-none absolute -right-16 bottom-4 hidden h-64 w-auto opacity-60 sm:block"
+              className="pointer-events-none absolute -right-16 bottom-4 hidden h-64 w-auto opacity-78 sm:block"
             />
 
-            <Butterfly className="pointer-events-none absolute left-[6%] top-[24%] h-7 w-8 -rotate-12 opacity-70 sm:left-[13%] sm:h-9 sm:w-10" />
+            <Butterfly className="pointer-events-none absolute left-[6%] top-[24%] h-7 w-8 -rotate-12 opacity-85 sm:left-[13%] sm:h-9 sm:w-10" />
             <Butterfly
               flip
-              className="pointer-events-none absolute bottom-[22%] right-[6%] h-6 w-7 rotate-12 opacity-60 sm:right-[13%] sm:h-8 sm:w-9"
+              className="pointer-events-none absolute bottom-[22%] right-[6%] h-6 w-7 rotate-12 opacity-78 sm:right-[13%] sm:h-8 sm:w-9"
             />
 
             <div className="relative flex min-h-dvh flex-col items-center justify-center px-6 py-10">
@@ -281,7 +287,7 @@ export function ElegantEnvelope({
                 <BotanicalSprig className="mt-2 h-7 w-16" />
               </motion.div>
 
-              {/* Sobre verde salvia */}
+              {/* Sobre guinda */}
               <motion.div
                 className="relative mt-5 w-[min(88vw,380px)] sm:mt-6"
                 style={{ perspective: 1400 }}
@@ -290,19 +296,19 @@ export function ElegantEnvelope({
                 transition={{ delay: 0.26, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="relative aspect-[5/6.4] w-full">
-                  <Butterfly className="pointer-events-none absolute -left-5 top-[28%] z-30 h-6 w-7 -rotate-12 opacity-80" />
+                  <Butterfly className="pointer-events-none absolute -left-5 top-[28%] z-30 h-6 w-7 -rotate-12 opacity-90" />
                   <Butterfly
                     flip
-                    className="pointer-events-none absolute -right-4 top-[44%] z-30 h-5 w-6 rotate-12 opacity-70"
+                    className="pointer-events-none absolute -right-4 top-[44%] z-30 h-5 w-6 rotate-12 opacity-85"
                   />
                   {/* Cuerpo trasero del sobre */}
                   <div
                     className="absolute inset-0 z-0 rounded-[3px]"
                     style={{
                       background:
-                        "linear-gradient(155deg, #98AC97 0%, #7E967F 55%, #6A836E 100%)",
-                      border: "1px solid rgba(79, 104, 84, 0.55)",
-                      boxShadow: "0 34px 70px -42px rgba(34,49,39,0.7)",
+                        "linear-gradient(155deg, #7A2038 0%, #5E1A2C 55%, #4A1424 100%)",
+                      border: "1px solid rgba(110, 31, 51, 0.6)",
+                      boxShadow: "0 34px 70px -42px rgba(30,6,14,0.75)",
                     }}
                   />
 
@@ -316,7 +322,7 @@ export function ElegantEnvelope({
                       background:
                         "linear-gradient(180deg, #FFFDF8 0%, #FBF7EF 62%, #F3EBDE 100%)",
                       border: "1px solid rgba(216, 196, 155, 0.9)",
-                      boxShadow: "0 18px 40px -30px rgba(34,49,39,0.55)",
+                      boxShadow: "0 18px 40px -30px rgba(40,10,20,0.5)",
                     }}
                     initial={{ opacity: 0 }}
                     animate={
@@ -328,12 +334,12 @@ export function ElegantEnvelope({
                   >
                     <div
                       className="pointer-events-none absolute inset-[6px]"
-                      style={{ border: "1px solid rgba(175, 138, 79, 0.35)" }}
+                      style={{ border: "1px solid rgba(201, 164, 106, 0.4)" }}
                     />
-                    <div className="pointer-events-none absolute left-1.5 top-1.5 h-10 w-10 opacity-70">
+                    <div className="pointer-events-none absolute left-1.5 top-1.5 h-10 w-10 opacity-85">
                       <CornerFlourish className="h-full w-full" />
                     </div>
-                    <div className="pointer-events-none absolute bottom-1.5 right-1.5 h-10 w-10 rotate-180 opacity-70">
+                    <div className="pointer-events-none absolute bottom-1.5 right-1.5 h-10 w-10 rotate-180 opacity-85">
                       <CornerFlourish className="h-full w-full" />
                     </div>
 
@@ -376,10 +382,10 @@ export function ElegantEnvelope({
                       )}
                     </div>
 
-                    <BotanicalBranch className="pointer-events-none absolute -bottom-4 -left-5 h-24 w-auto opacity-80" />
+                    <BotanicalBranch className="pointer-events-none absolute -bottom-4 -left-5 h-24 w-auto opacity-90" />
                     <BotanicalBranch
                       flip
-                      className="pointer-events-none absolute -bottom-4 -right-5 h-24 w-auto opacity-80"
+                      className="pointer-events-none absolute -bottom-4 -right-5 h-24 w-auto opacity-90"
                     />
                   </motion.div>
 
@@ -390,7 +396,7 @@ export function ElegantEnvelope({
                       clipPath:
                         "polygon(0 36%, 50% 62%, 100% 36%, 100% 100%, 0 100%)",
                       background:
-                        "linear-gradient(155deg, #8FA58E 0%, #7B947D 55%, #68816C 100%)",
+                        "linear-gradient(155deg, #6E1F33 0%, #58172A 55%, #45111F 100%)",
                     }}
                   >
                     <div
@@ -423,8 +429,8 @@ export function ElegantEnvelope({
                       transformStyle: "preserve-3d",
                       backfaceVisibility: "hidden",
                       background:
-                        "linear-gradient(180deg, #A3B6A0 0%, #8DA38C 68%, #7C947E 100%)",
-                      filter: "drop-shadow(0 10px 10px rgba(34, 49, 39, 0.22))",
+                        "linear-gradient(180deg, #8C3A4E 0%, #6E1F33 68%, #57182B 100%)",
+                      filter: "drop-shadow(0 10px 10px rgba(30, 6, 14, 0.3))",
                     }}
                     animate={stage === "opening" ? { rotateX: -178 } : { rotateX: 0 }}
                     transition={{ duration: 1.05, ease: [0.4, 0, 0.2, 1] }}
@@ -556,7 +562,7 @@ export function ElegantEnvelope({
                 >
                   {texts.envelope.footerNote}
                 </p>
-                <LeafGarland className="mt-0.5 h-5 w-36 opacity-80" />
+                <LeafGarland className="mt-0.5 h-5 w-36 opacity-90" />
               </motion.div>
             </div>
 
@@ -572,7 +578,7 @@ export function ElegantEnvelope({
                   background: "rgba(255,253,248,0.86)",
                   color: "var(--inv-text-muted)",
                   backdropFilter: "blur(6px)",
-                  boxShadow: "0 10px 26px -18px rgba(34,49,39,0.55)",
+                  boxShadow: "0 10px 26px -18px rgba(40,10,20,0.55)",
                 }}
               >
                 {soundOn ? (

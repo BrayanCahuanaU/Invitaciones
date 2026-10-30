@@ -20,9 +20,9 @@ function FamilyCard({
   if (!names.length) return null;
   return (
     <div className="elegant-card elegant-card-hover relative overflow-hidden rounded-sm px-6 py-8 text-center sm:px-8 sm:py-10">
-      <BotanicalCorner className="pointer-events-none absolute left-0 top-0 h-14 w-14 opacity-80" />
-      <BotanicalCorner className="pointer-events-none absolute bottom-0 right-0 h-14 w-14 rotate-180 opacity-80" />
-      <Butterfly className="pointer-events-none absolute right-3 top-3 h-5 w-6 rotate-12 opacity-70" />
+      <BotanicalCorner className="pointer-events-none absolute left-0 top-0 h-14 w-14 opacity-90" />
+      <BotanicalCorner className="pointer-events-none absolute bottom-0 right-0 h-14 w-14 rotate-180 opacity-90" />
+      <Butterfly className="pointer-events-none absolute right-3 top-3 h-5 w-6 rotate-12 opacity-85" />
       <p className="elegant-eyebrow text-[0.68rem]" style={{ color: "var(--inv-accent)" }}>
         {label}
       </p>
@@ -66,10 +66,10 @@ export function WeddingFamily({
 
   return (
     <Section className="relative overflow-hidden">
-      <FloralCluster className="pointer-events-none absolute left-0 top-2 h-36 w-auto opacity-50" />
+      <FloralCluster className="pointer-events-none absolute left-0 top-2 h-36 w-auto opacity-70" />
       <FloralCluster
         flip
-        className="pointer-events-none absolute bottom-2 right-0 h-36 w-auto opacity-50"
+        className="pointer-events-none absolute bottom-2 right-0 h-36 w-auto opacity-70"
       />
 
       <SectionHeading
@@ -108,7 +108,7 @@ export function WeddingFamily({
                   <BotanicalSprig className="mx-auto h-6 w-14" />
                   <Butterfly
                     flip
-                    className="pointer-events-none absolute bottom-2 right-3 h-4 w-5 -rotate-12 opacity-60"
+                    className="pointer-events-none absolute bottom-2 right-3 h-4 w-5 -rotate-12 opacity-78"
                   />
                   <p
                     className="elegant-eyebrow mt-1 text-[0.65rem]"

@@ -58,14 +58,14 @@ export function WeddingCountdown({
               "radial-gradient(70% 90% at 50% 0%, rgba(255,255,255,0.9) 0%, rgba(255,253,248,0) 70%)",
           }}
         />
-        <BotanicalCorner className="pointer-events-none absolute left-2 top-2 h-14 w-14 opacity-70" />
-        <BotanicalCorner className="pointer-events-none absolute bottom-2 right-2 h-14 w-14 rotate-180 opacity-70" />
-        <FloralCluster className="pointer-events-none absolute left-0 top-0 h-36 w-auto opacity-60" />
+        <BotanicalCorner className="pointer-events-none absolute left-2 top-2 h-14 w-14 opacity-85" />
+        <BotanicalCorner className="pointer-events-none absolute bottom-2 right-2 h-14 w-14 rotate-180 opacity-85" />
+        <FloralCluster className="pointer-events-none absolute left-0 top-0 h-36 w-auto opacity-78" />
         <FloralCluster
           flip
-          className="pointer-events-none absolute bottom-0 right-0 h-36 w-auto opacity-60"
+          className="pointer-events-none absolute bottom-0 right-0 h-36 w-auto opacity-78"
         />
-        <Butterfly className="pointer-events-none absolute right-[12%] top-6 h-6 w-7 rotate-12 opacity-70" />
+        <Butterfly className="pointer-events-none absolute right-[12%] top-6 h-6 w-7 rotate-12 opacity-85" />
 
         <div className="relative">
           <BotanicalSprig className="mx-auto h-7 w-16" />

@@ -64,7 +64,7 @@ export function ElegantParticles({ count = 26 }: { count?: number }) {
             width: p.size,
             height: p.petal ? p.size * 1.7 : p.size,
             borderRadius: p.petal ? "100% 0 100% 0" : "999px",
-            backgroundColor: p.petal ? "#E8C6C1" : "#9AAF94",
+            backgroundColor: p.petal ? "#D9A9AE" : "#EFD3B8",
             opacity: p.opacity,
             filter: p.petal ? "blur(0.2px)" : undefined,
           }}

@@ -78,7 +78,7 @@ export function ElegantBackgroundVideo({
       className="pointer-events-none fixed inset-0 z-0 h-[100dvh] w-full overflow-hidden"
       style={{
         background:
-          "linear-gradient(180deg, #b7c2b1 0%, #a9b6a4 55%, #9fac9b 100%)",
+          "linear-gradient(180deg, #5A1A2B 0%, #4A1424 55%, #3A0E1B 100%)",
       }}
     >
       {/* Relleno desenfocado: cubre los laterales sin recortar el encuadre principal. */}
@@ -120,7 +120,7 @@ export function ElegantBackgroundVideo({
           preload="auto"
           tabIndex={-1}
           disablePictureInPicture
-          className="absolute inset-0 h-full w-full object-contain md:hidden"
+          className="absolute inset-0 h-full w-full object-cover md:hidden"
         />
       )}
       {desktop && (
@@ -133,12 +133,12 @@ export function ElegantBackgroundVideo({
           preload="auto"
           tabIndex={-1}
           disablePictureInPicture
-          className="absolute inset-0 hidden h-full w-full object-contain md:block"
+          className="absolute inset-0 hidden h-full w-full object-cover md:block"
         />
       )}
 
-      {/* Velo crema suave para que los textos sigan siendo legibles. */}
-      <div className="absolute inset-0 bg-[#f8f4eb]/38" />
+      {/* Velo guinda suave para que los textos marfil sigan siendo legibles. */}
+      <div className="absolute inset-0 bg-[#3A0E1B]/30" />
     </div>
   );
 }

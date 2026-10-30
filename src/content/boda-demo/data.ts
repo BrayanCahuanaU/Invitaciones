@@ -3,7 +3,7 @@ import { InvitationData } from "@/content/types";
 // ══════════════════════════════════════════════════════════════════════
 // INVITACIÓN DE BODA — YENY TACO & HERNAN LUQUE
 // Datos oficiales del evento.
-// El diseño se controla con layout: "elegant" + theme: "botanical-garden".
+// El diseño se controla con layout: "elegant" + theme: "guinda-ivory".
 // Para publicar con otro slug, duplica esta carpeta y regístrala en
 // src/content/registry.ts.
 // ══════════════════════════════════════════════════════════════════════
@@ -11,7 +11,7 @@ import { InvitationData } from "@/content/types";
 export const bodaDemo: InvitationData = {
   slug: "yeni-y-hernan",
   eventType: "boda",
-  theme: "botanical-garden",
+  theme: "guinda-ivory",
   layout: "elegant",
 
   seo: {
@@ -34,12 +34,13 @@ export const bodaDemo: InvitationData = {
     photo: "",
     protagonists: "Yeni Arletti Taco Mayta & Hernán Luque Zencara",
     motivo: "Nuestra Boda",
+    phrase: "Queremos compartir contigo la felicidad de nuestra unión",
   },
 
   quote:
     "Hoy, delante de Dios y de nuestras familias, unimos nuestras vidas y comenzamos el viaje más hermoso: el de amarnos para siempre.",
 
-  eventDate: "2026-12-19T17:00:00-05:00",
+  eventDate: "2026-12-19T14:30:00-05:00",
 
   location: {
     venueName: "Salón de eventos EL BOSQUE",
@@ -90,8 +91,8 @@ export const bodaDemo: InvitationData = {
       },
       hero: {
         title: "¡Nos casamos!",
-        discoverButton: "Descubre la invitación",
-        discoverAriaLabel: "Descubrir la invitación",
+        discoverButton: "Confirmar asistencia",
+        discoverAriaLabel: "Confirmar asistencia",
       },
       family: {
         eyebrow: "Con la bendición de",
@@ -206,7 +207,10 @@ export const bodaDemo: InvitationData = {
     padrinosGroups: [
       {
         role: "Padrinos de iglesia",
-        names: ["Herminia Gutierrez", "Epifanio Cahuana"],
+        names: [
+          "Herminia Vicentina Gutierrez Pineda",
+          "Epifano Cahuana Huañahue",
+        ],
       },
       {
         role: "Padrinos de arras",
@@ -226,11 +230,23 @@ export const bodaDemo: InvitationData = {
           name: "Parroquia Santa Gertrudis",
           address: "Av. Fernandini",
           district: "Sachaca, Arequipa",
-          time: "17:00",
+          time: "14:30",
           mapsUrl:
             "https://maps.google.com/?q=Parroquia+Santa+Gertrudis+Sachaca+Arequipa",
           // Foto del lugar. Crédito: Gustavo M / Wikimedia Commons (CC BY 2.0).
           photo: "/invitaciones/yeni-y-hernan/parroquia.jpg",
+        },
+      },
+      {
+        kind: "civil",
+        title: "Matrimonio civil",
+        venue: {
+          name: "Salón de eventos EL BOSQUE",
+          address: "Arequipa",
+          time: "17:00",
+          mapsUrl: "https://maps.app.goo.gl/NEjyf1F6aFtGe28c9",
+          photo: "/invitaciones/yeni-y-hernan/salon.jpg",
+          note: "En el mismo local de la recepción",
         },
       },
     ],
@@ -262,14 +278,11 @@ export const bodaDemo: InvitationData = {
       ],
     },
     colorsToAvoid: [
-      { name: "Blanco", hex: "#FFFFFF" },
+      { name: "Guinda", hex: "#7A1F35" },
       { name: "Marfil", hex: "#F4EFE6" },
-      { name: "Dorado", hex: "#C9A227" },
     ],
-    notes: [
-      "Te pedimos llegar 20 minutos antes de la ceremonia",
-      "No está permitido el ingreso de niños",
-    ],
+    notes: ["Te pedimos llegar 20 minutos antes de la ceremonia"],
+    arriveIcon: "/invitaciones/yeni-y-hernan/llegar.png",
   },
 
   gifts: {
@@ -289,6 +302,13 @@ export const bodaDemo: InvitationData = {
       "Electrodomésticos",
       "Tarjeta de regalo",
     ],
+    suggestionIcons: {
+      "Lluvia de sobres": "/invitaciones/yeni-y-hernan/lluvia-sobres.png",
+      "Vajilla fina": "/invitaciones/yeni-y-hernan/vajilla.png",
+      "Blancos y lencería": "/invitaciones/yeni-y-hernan/blancos.png",
+      "Electrodomésticos": "/invitaciones/yeni-y-hernan/electrodomesticos.png",
+      "Tarjeta de regalo": "/invitaciones/yeni-y-hernan/tarjeta-regalo.png",
+    },
   },
 
   rsvp: {
@@ -306,13 +326,13 @@ export const bodaDemo: InvitationData = {
 
   timeline: [
     {
-      time: "17:00",
+      time: "14:30",
       title: "Ceremonia religiosa",
       description: "Parroquia Santa Gertrudis, Sachaca",
     },
     {
-      time: "19:00",
-      title: "Recepción y fiesta",
+      time: "17:00",
+      title: "Matrimonio civil",
       description: "Salón de eventos EL BOSQUE",
     },
   ],

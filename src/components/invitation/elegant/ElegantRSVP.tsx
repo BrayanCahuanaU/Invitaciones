@@ -99,15 +99,15 @@ export function ElegantRSVP({
   return (
     <section id="confirmar" className="w-full px-4 py-14 sm:py-20">
       <div className="elegant-card relative mx-auto max-w-2xl overflow-hidden rounded-sm px-6 py-10 sm:px-10 sm:py-12">
-        <BotanicalCorner className="pointer-events-none absolute left-0 top-0 h-14 w-14 opacity-70" />
-        <BotanicalCorner className="pointer-events-none absolute bottom-0 right-0 h-14 w-14 rotate-180 opacity-70" />
-        <FloralCluster className="pointer-events-none absolute left-0 top-0 h-32 w-auto opacity-40" />
+        <BotanicalCorner className="pointer-events-none absolute left-0 top-0 h-14 w-14 opacity-85" />
+        <BotanicalCorner className="pointer-events-none absolute bottom-0 right-0 h-14 w-14 rotate-180 opacity-85" />
+        <FloralCluster className="pointer-events-none absolute left-0 top-0 h-32 w-auto opacity-65" />
         <FloralCluster
           flip
-          className="pointer-events-none absolute bottom-0 right-0 h-32 w-auto opacity-40"
+          className="pointer-events-none absolute bottom-0 right-0 h-32 w-auto opacity-65"
         />
-        <Butterfly className="pointer-events-none absolute right-6 top-5 h-5 w-6 rotate-12 opacity-60" />
-        <RoseBloom className="pointer-events-none absolute -bottom-6 -left-5 h-20 w-20 opacity-60" />
+        <Butterfly className="pointer-events-none absolute right-6 top-5 h-5 w-6 rotate-12 opacity-78" />
+        <RoseBloom className="pointer-events-none absolute -bottom-6 -left-5 h-20 w-20 opacity-78" />
         <div
           aria-hidden
           className="pointer-events-none absolute inset-x-0 top-0 h-40"
@@ -151,7 +151,7 @@ export function ElegantRSVP({
                 style={{
                   border: "1px solid var(--elegant-line-strong)",
                   color: "var(--elegant-sage-deep)",
-                  background: "rgba(139, 165, 139, 0.14)",
+                  background: "rgba(110, 31, 51, 0.12)",
                 }}
               >
                 <Heart className="h-6 w-6" />
@@ -204,9 +204,9 @@ export function ElegantRSVP({
                     style={
                       attending
                         ? {
-                            background: "linear-gradient(135deg, #7D977E, #4C6855)",
+                            background: "linear-gradient(135deg, #8C3A4E, #6E1F33)",
                             border: "1px solid transparent",
-                            color: "#FFFDF8",
+                            color: "#FFF9F1",
                           }
                         : {
                             border: "1px solid var(--elegant-line-strong)",
@@ -224,9 +224,9 @@ export function ElegantRSVP({
                     style={
                       !attending
                         ? {
-                            background: "linear-gradient(135deg, #7D977E, #4C6855)",
+                            background: "linear-gradient(135deg, #8C3A4E, #6E1F33)",
                             border: "1px solid transparent",
-                            color: "#FFFDF8",
+                            color: "#FFF9F1",
                           }
                         : {
                             border: "1px solid var(--elegant-line-strong)",
@@ -261,7 +261,7 @@ export function ElegantRSVP({
                     <button
                       type="button"
                       onClick={() => setGuests((value) => Math.max(0, value - 1))}
-                      className="flex h-8 w-8 items-center justify-center rounded-full transition-colors hover:bg-[rgba(139,165,139,0.14)]"
+                      className="flex h-8 w-8 items-center justify-center rounded-full transition-colors hover:bg-[rgba(110,31,51,0.1)]"
                       aria-label={texts.rsvp.guestsRemoveAriaLabel}
                       style={{ color: "var(--inv-accent)" }}
                     >
@@ -276,7 +276,7 @@ export function ElegantRSVP({
                     <button
                       type="button"
                       onClick={() => setGuests((value) => Math.min(10, value + 1))}
-                      className="flex h-8 w-8 items-center justify-center rounded-full transition-colors hover:bg-[rgba(139,165,139,0.14)]"
+                      className="flex h-8 w-8 items-center justify-center rounded-full transition-colors hover:bg-[rgba(110,31,51,0.1)]"
                       aria-label={texts.rsvp.guestsAddAriaLabel}
                       style={{ color: "var(--inv-accent)" }}
                     >
@@ -296,7 +296,7 @@ export function ElegantRSVP({
                   name="isPublic"
                   checked={isPublic}
                   onChange={(event) => setIsPublic(event.target.checked)}
-                  className="mt-0.5 accent-[#5D7A64]"
+                  className="mt-0.5 accent-[#6E1F33]"
                 />
                 {texts.rsvp.publicLabel}
               </label>

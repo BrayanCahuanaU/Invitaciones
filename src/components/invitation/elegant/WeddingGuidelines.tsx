@@ -32,12 +32,14 @@ export function WeddingGuidelines({
   dressCodeEmblem,
   femaleEmblem,
   maleEmblem,
+  arriveIcon,
   texts,
 }: {
   guidelines: InvitationData["guidelines"];
   dressCodeEmblem?: string;
   femaleEmblem?: string;
   maleEmblem?: string;
+  arriveIcon?: string;
   texts: WeddingTexts;
 }) {
   const { dressCode, colorsToAvoid, notes } = guidelines;
@@ -45,10 +47,10 @@ export function WeddingGuidelines({
 
   return (
     <section className="relative w-full overflow-hidden px-4 py-14 sm:py-20">
-      <FloralCluster className="pointer-events-none absolute -left-14 top-8 h-44 w-auto opacity-50" />
+      <FloralCluster className="pointer-events-none absolute -left-14 top-8 h-44 w-auto opacity-70" />
       <FloralCluster
         flip
-        className="pointer-events-none absolute -right-14 bottom-16 h-44 w-auto opacity-50"
+        className="pointer-events-none absolute -right-14 bottom-16 h-44 w-auto opacity-70"
       />
 
       <div className="relative mx-auto max-w-4xl">
@@ -60,17 +62,17 @@ export function WeddingGuidelines({
 
         {dressCode && (
           <div className="elegant-card relative mt-11 overflow-hidden rounded-sm px-6 py-8 sm:px-9 sm:py-10">
-            <BotanicalCorner className="pointer-events-none absolute left-0 top-0 h-14 w-14 opacity-75" />
-            <BotanicalCorner className="pointer-events-none absolute bottom-0 right-0 h-14 w-14 rotate-180 opacity-75" />
-            <RoseBloom className="pointer-events-none absolute -bottom-7 -left-5 h-24 w-24 opacity-70" />
-            <Butterfly className="pointer-events-none absolute right-4 top-4 h-6 w-7 rotate-12 opacity-70" />
+            <BotanicalCorner className="pointer-events-none absolute left-0 top-0 h-14 w-14 opacity-88" />
+            <BotanicalCorner className="pointer-events-none absolute bottom-0 right-0 h-14 w-14 rotate-180 opacity-88" />
+            <RoseBloom className="pointer-events-none absolute -bottom-7 -left-5 h-24 w-24 opacity-85" />
+            <Butterfly className="pointer-events-none absolute right-4 top-4 h-6 w-7 rotate-12 opacity-85" />
             <div className="flex flex-col items-center text-center">
               <div
                 className="flex h-11 w-11 items-center justify-center rounded-full"
                 style={{
                   border: "1px solid var(--elegant-line-strong)",
                   color: "var(--elegant-sage-deep)",
-                  background: "rgba(139, 165, 139, 0.14)",
+                  background: "rgba(110, 31, 51, 0.12)",
                 }}
               >
                 {dressCodeEmblem ? (
@@ -170,7 +172,7 @@ export function WeddingGuidelines({
         <div className="mt-5 grid gap-5 lg:grid-cols-2">
           {colorsToAvoid && colorsToAvoid.length > 0 && (
             <div className="elegant-card rounded-sm px-6 py-8 text-center sm:px-8">
-              <BotanicalCorner className="pointer-events-none absolute right-1 top-1 h-10 w-10 rotate-90 opacity-60" />
+              <BotanicalCorner className="pointer-events-none absolute right-1 top-1 h-10 w-10 rotate-90 opacity-78" />
               <p className="elegant-eyebrow text-[0.66rem]" style={{ color: "var(--inv-accent)" }}>
                 {texts.guidelines.colorsEyebrow}
               </p>
@@ -211,7 +213,7 @@ export function WeddingGuidelines({
 
           {notes && notes.length > 0 && (
             <div className="elegant-card rounded-sm px-6 py-8 sm:px-8">
-              <BotanicalCorner className="pointer-events-none absolute bottom-1 right-1 h-10 w-10 rotate-180 opacity-60" />
+              <BotanicalCorner className="pointer-events-none absolute bottom-1 right-1 h-10 w-10 rotate-180 opacity-78" />
               <div className="text-center">
                 <p className="elegant-eyebrow text-[0.66rem]" style={{ color: "var(--inv-accent)" }}>
                   {texts.guidelines.notesEyebrow}
@@ -224,23 +226,34 @@ export function WeddingGuidelines({
                 </p>
               </div>
 
-              <ul className="mt-6 space-y-4">
+              <ul className="mt-6 space-y-5">
                 {notes.map((note) => {
                   const Icon = noteIcon(note);
+                  const isArrive = !!arriveIcon && note.toLowerCase().includes("llegar");
                   return (
-                    <li key={note} className="flex items-start gap-3">
+                    <li key={note} className="flex flex-col items-center gap-3 text-center">
                       <span
-                        className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full"
+                        className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full"
                         style={{
                           border: "1px solid var(--elegant-line)",
                           color: "var(--elegant-sage-deep)",
-                          background: "rgba(139, 165, 139, 0.12)",
+                          background: "rgba(110, 31, 51, 0.1)",
                         }}
                       >
-                        <Icon className="h-3.5 w-3.5" />
+                        {isArrive ? (
+                          <Image
+                            src={arriveIcon!}
+                            alt=""
+                            width={44}
+                            height={44}
+                            className="h-9 w-9 object-contain"
+                          />
+                        ) : (
+                          <Icon className="h-5 w-5" />
+                        )}
                       </span>
                       <span
-                        className="pt-0.5 text-base leading-relaxed"
+                        className="text-lg leading-relaxed"
                         style={{ color: "var(--inv-text-muted)" }}
                       >
                         {note}

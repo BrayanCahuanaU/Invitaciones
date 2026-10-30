@@ -17,7 +17,7 @@ export function ElegantScrollProgress() {
       style={{
         scaleX,
         background:
-          "linear-gradient(90deg, rgba(93,122,100,0) 0%, #5D7A64 30%, #AF8A4F 65%, rgba(175,138,79,0) 100%)",
+          "linear-gradient(90deg, rgba(110,31,51,0) 0%, #6E1F33 30%, #C9A46A 65%, rgba(201,164,106,0) 100%)",
       }}
     />
   );

@@ -61,16 +61,16 @@ function VenueCard({
           : {}),
       }}
     >
-      <BotanicalCorner className="pointer-events-none absolute right-0 top-0 h-12 w-12 rotate-90 opacity-70" />
-      <BotanicalCorner className="pointer-events-none absolute bottom-0 left-0 h-12 w-12 -rotate-90 opacity-70" />
-      <RoseBloom className="pointer-events-none absolute -bottom-6 -right-5 h-20 w-20 opacity-70" />
-      <Butterfly className="pointer-events-none absolute left-3 top-3 h-5 w-6 -rotate-12 opacity-60" />
+      <BotanicalCorner className="pointer-events-none absolute right-0 top-0 h-12 w-12 rotate-90 opacity-85" />
+      <BotanicalCorner className="pointer-events-none absolute bottom-0 left-0 h-12 w-12 -rotate-90 opacity-85" />
+      <RoseBloom className="pointer-events-none absolute -bottom-6 -right-5 h-20 w-20 opacity-85" />
+      <Butterfly className="pointer-events-none absolute left-3 top-3 h-5 w-6 -rotate-12 opacity-78" />
 
       <div
         className="mx-auto flex h-12 w-12 items-center justify-center rounded-full"
         style={{
           border: "1px solid var(--elegant-line-strong)",
-          background: "rgba(139, 165, 139, 0.14)",
+          background: "rgba(110, 31, 51, 0.12)",
           color: "var(--elegant-sage-deep)",
         }}
       >
@@ -124,7 +124,7 @@ function VenueCard({
           style={{
             border: "1px solid var(--elegant-line)",
             background:
-              "linear-gradient(160deg, rgba(139,165,139,0.22) 0%, rgba(255,253,248,0.9) 70%)",
+              "linear-gradient(160deg, rgba(110,31,51,0.18) 0%, rgba(255,253,248,0.9) 70%)",
           }}
         >
           {venue.photo ? (
@@ -137,14 +137,14 @@ function VenueCard({
             />
           ) : (
             <div className="flex h-full w-full flex-col items-center justify-center gap-2">
-              <BotanicalBranch className="h-1/2 w-auto opacity-60" />
+              <BotanicalBranch className="h-1/2 w-auto opacity-78" />
               <span
                 className="elegant-eyebrow text-[0.6rem]"
                 style={{ color: "var(--inv-text-muted)", opacity: 0.8 }}
               >
                 {texts.venues.photoLabel}
               </span>
-              <FloralCluster className="absolute -bottom-5 -right-5 h-24 w-auto opacity-45" />
+              <FloralCluster className="absolute -bottom-5 -right-5 h-24 w-auto opacity-65" />
             </div>
           )}
         </div>
@@ -227,15 +227,15 @@ export function WeddingVenues({
   receptionEmblem?: string;
   texts: WeddingTexts;
 }) {
-  if ((!ceremonies || ceremonies.length === 0) && !reception) return null;
+  if (!ceremonies || ceremonies.length === 0) return null;
 
   return (
     <section className="relative w-full overflow-hidden px-4 py-14 sm:py-20">
       <div className="relative mx-auto max-w-4xl">
-        <FloralCluster className="pointer-events-none absolute -left-16 -top-10 h-44 w-auto opacity-50" />
+        <FloralCluster className="pointer-events-none absolute -left-16 -top-10 h-44 w-auto opacity-70" />
         <FloralCluster
           flip
-          className="pointer-events-none absolute -right-16 top-24 h-40 w-auto opacity-50"
+          className="pointer-events-none absolute -right-16 top-24 h-40 w-auto opacity-70"
         />
 
         <SectionHeading
@@ -268,17 +268,6 @@ export function WeddingVenues({
           </div>
         )}
 
-        {reception && (
-          <div className="mt-6">
-            <VenueCard
-              label={texts.venues.receptionLabel}
-              venue={reception}
-              icon={receptionIcon(receptionEmblem)}
-              texts={texts}
-              featured
-            />
-          </div>
-        )}
       </div>
     </section>
   );

@@ -281,6 +281,7 @@ export interface InvitationData {
     photo: string;
     protagonists: string; // "Emireth" o "Ana & Luis"
     motivo: string; // "Mis XV Años" / "Nuestra Boda"
+    phrase?: string; // frase opcional bajo los nombres
   };
 
   quote: string;
@@ -317,6 +318,7 @@ export interface InvitationData {
       hex: string;
     }[];
     notes?: string[];
+    arriveIcon?: string;
   };
 
   gifts: {
@@ -325,6 +327,7 @@ export interface InvitationData {
     bankAccounts?: BankAccount[];
     yape?: YapeAccount;
     suggestions?: string[];
+    suggestionIcons?: Record<string, string>;
   };
 
   rsvp: {

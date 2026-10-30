@@ -41,7 +41,7 @@ function CopyRow({
     <button
       type="button"
       onClick={copy}
-      className="flex w-full items-center justify-between gap-3 rounded-sm px-3 py-2 text-left transition-colors hover:bg-[rgba(139,165,139,0.1)]"
+      className="flex w-full items-center justify-between gap-3 rounded-sm px-3 py-2 text-left transition-colors hover:bg-[rgba(110,31,51,0.08)]"
     >
       <span className="min-w-0">
         <span
@@ -124,7 +124,7 @@ function BankCard({
             style={{
               border: "1px solid var(--elegant-line-strong)",
               color: "var(--elegant-sage-deep)",
-              background: "rgba(139, 165, 139, 0.12)",
+              background: "rgba(110, 31, 51, 0.1)",
             }}
           >
             {initials}
@@ -189,6 +189,7 @@ export function ElegantGifts({
   bankAccounts,
   yape,
   suggestions,
+  suggestionIcons,
   texts,
 }: {
   message?: string;
@@ -196,6 +197,7 @@ export function ElegantGifts({
   bankAccounts?: BankAccount[];
   yape?: YapeAccount;
   suggestions?: string[];
+  suggestionIcons?: Record<string, string>;
   texts: WeddingTexts;
 }) {
   if (
@@ -210,10 +212,10 @@ export function ElegantGifts({
 
   return (
     <section className="relative w-full overflow-hidden px-4 py-14 sm:py-20">
-      <FloralCluster className="pointer-events-none absolute -left-14 top-10 h-44 w-auto opacity-50" />
+      <FloralCluster className="pointer-events-none absolute -left-14 top-10 h-44 w-auto opacity-70" />
       <FloralCluster
         flip
-        className="pointer-events-none absolute -right-14 bottom-12 h-44 w-auto opacity-50"
+        className="pointer-events-none absolute -right-14 bottom-12 h-44 w-auto opacity-70"
       />
 
       <div className="relative mx-auto max-w-3xl">
@@ -237,9 +239,9 @@ export function ElegantGifts({
 
         {suggestions && suggestions.length > 0 && (
           <div className="elegant-card relative mt-5 overflow-hidden rounded-sm px-6 py-7 text-center">
-            <BotanicalCorner className="pointer-events-none absolute left-1 top-1 h-10 w-10 opacity-60" />
-            <RoseBloom className="pointer-events-none absolute -bottom-5 -right-4 h-20 w-20 opacity-70" />
-            <Butterfly className="pointer-events-none absolute right-6 top-4 h-5 w-6 rotate-12 opacity-60" />
+            <BotanicalCorner className="pointer-events-none absolute left-1 top-1 h-10 w-10 opacity-78" />
+            <RoseBloom className="pointer-events-none absolute -bottom-5 -right-4 h-20 w-20 opacity-85" />
+            <Butterfly className="pointer-events-none absolute right-6 top-4 h-5 w-6 rotate-12 opacity-78" />
             <div className="flex items-center justify-center gap-2">
               <Gift className="h-4 w-4" style={{ color: "var(--elegant-sage-deep)" }} />
               <p
@@ -253,37 +255,52 @@ export function ElegantGifts({
             <GoldDivider className="my-5" />
 
             <div className="mt-6 flex flex-wrap justify-center gap-2.5">
-              {suggestions.map((suggestion) => (
-                <span
-                  key={suggestion}
-                  className="flex basis-[calc(50%-0.3125rem)] flex-col items-center justify-start gap-2 rounded-sm px-3 py-3.5 sm:basis-[calc(33.333%-0.417rem)]"
-                  style={{
-                    border: "1px solid var(--elegant-line)",
-                    background: "rgba(242, 235, 221, 0.55)",
-                  }}
-                >
-                  <SuggestionIcon label={suggestion} className="h-5 w-5" />
+              {suggestions.map((suggestion) => {
+                const iconSrc = suggestionIcons?.[suggestion];
+                return (
                   <span
-                    className="text-[0.82rem] leading-snug"
-                    style={{ color: "var(--inv-text-muted)" }}
+                    key={suggestion}
+                    className="flex basis-[calc(50%-0.3125rem)] flex-col items-center justify-start gap-2 rounded-sm px-3 py-3.5 sm:basis-[calc(33.333%-0.417rem)]"
+                    style={{
+                      border: "1px solid var(--elegant-line)",
+                      background: "rgba(242, 235, 221, 0.55)",
+                    }}
                   >
-                    {suggestion}
+                    {iconSrc ? (
+                      <span className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full bg-white/60">
+                        <Image
+                          src={iconSrc}
+                          alt={suggestion}
+                          fill
+                          sizes="48px"
+                          className="object-contain p-1.5"
+                        />
+                      </span>
+                    ) : (
+                      <SuggestionIcon label={suggestion} className="h-5 w-5" />
+                    )}
+                    <span
+                      className="text-[0.82rem] leading-snug"
+                      style={{ color: "var(--inv-text-muted)" }}
+                    >
+                      {suggestion}
+                    </span>
                   </span>
-                </span>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
 
         {yape && (
           <div className="elegant-card relative mt-5 overflow-hidden rounded-sm px-5 py-6 sm:px-7 sm:py-7">
-            <BotanicalCorner className="pointer-events-none absolute left-1 top-1 h-10 w-10 opacity-60" />
+            <BotanicalCorner className="pointer-events-none absolute left-1 top-1 h-10 w-10 opacity-78" />
             <Butterfly
               flip
-              className="pointer-events-none absolute bottom-3 right-4 h-4 w-5 -rotate-12 opacity-60"
+              className="pointer-events-none absolute bottom-3 right-4 h-4 w-5 -rotate-12 opacity-78"
             />
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:gap-6">
-              <span className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-2xl shadow-[0_10px_24px_-12px_rgba(34,49,39,0.45)] ring-1 ring-black/5 sm:h-28 sm:w-28">
+              <span className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-2xl shadow-[0_10px_24px_-12px_rgba(40,10,20,0.45)] ring-1 ring-black/5 sm:h-28 sm:w-28">
                 <Image
                   src={yape.image}
                   alt={texts.gifts.yapeTitle}
@@ -362,7 +379,7 @@ export function ElegantGifts({
             <BotanicalSprig className="mx-auto h-6 w-14" />
             <RoseBloom
               tone="cream"
-              className="pointer-events-none absolute -bottom-4 -left-3 h-16 w-16 opacity-60"
+              className="pointer-events-none absolute -bottom-4 -left-3 h-16 w-16 opacity-78"
             />
             <p
               className="elegant-eyebrow text-[0.65rem]"

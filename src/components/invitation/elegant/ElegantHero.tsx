@@ -21,6 +21,7 @@ export function ElegantHero({
   monogram,
   photo,
   emblem,
+  phrase,
   texts,
 }: {
   protagonists: string;
@@ -29,10 +30,11 @@ export function ElegantHero({
   monogram: string;
   photo?: string;
   emblem?: string;
+  phrase?: string;
   texts: WeddingTexts;
 }) {
   function scrollToInvitation() {
-    document.getElementById("historia")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("confirmar")?.scrollIntoView({ behavior: "smooth" });
   }
 
   const parts = protagonists.split(/\s*&\s*/).filter(Boolean);
@@ -56,26 +58,26 @@ export function ElegantHero({
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(85% 60% at 50% 12%, rgba(255,255,255,0.85) 0%, rgba(248,244,235,0) 72%)",
+            "radial-gradient(85% 60% at 50% 12%, rgba(255,245,235,0.12) 0%, rgba(255,245,235,0) 72%)",
         }}
       />
 
-      <BotanicalBranch className="pointer-events-none absolute -bottom-32 -left-24 h-[440px] w-auto opacity-80 sm:-left-16 sm:h-[560px]" />
+      <BotanicalBranch className="pointer-events-none absolute -bottom-32 -left-24 h-[440px] w-auto opacity-90 sm:-left-16 sm:h-[560px]" />
       <BotanicalBranch
         flip
-        className="pointer-events-none absolute -bottom-32 -right-24 h-[440px] w-auto opacity-80 sm:-right-16 sm:h-[560px]"
+        className="pointer-events-none absolute -bottom-32 -right-24 h-[440px] w-auto opacity-90 sm:-right-16 sm:h-[560px]"
       />
 
-      <FloralCluster className="pointer-events-none absolute -left-12 -top-8 hidden h-48 w-auto opacity-70 sm:block" />
+      <FloralCluster className="pointer-events-none absolute -left-12 -top-8 hidden h-48 w-auto opacity-85 sm:block" />
       <FloralCluster
         flip
-        className="pointer-events-none absolute -right-12 -top-6 hidden h-44 w-auto opacity-60 sm:block"
+        className="pointer-events-none absolute -right-12 -top-6 hidden h-44 w-auto opacity-78 sm:block"
       />
 
-      <Butterfly className="pointer-events-none absolute right-[8%] top-[18%] h-6 w-7 rotate-12 opacity-70 sm:h-8 sm:w-9" />
+      <Butterfly className="pointer-events-none absolute right-[8%] top-[18%] h-6 w-7 rotate-12 opacity-85 sm:h-8 sm:w-9" />
       <Butterfly
         flip
-        className="pointer-events-none absolute bottom-[20%] left-[7%] h-5 w-6 -rotate-12 opacity-60 sm:h-7 sm:w-8"
+        className="pointer-events-none absolute bottom-[20%] left-[7%] h-5 w-6 -rotate-12 opacity-78 sm:h-7 sm:w-8"
       />
 
       <motion.div
@@ -84,15 +86,15 @@ export function ElegantHero({
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         className="elegant-paper-frame relative w-full max-w-[640px] px-4 pb-10 pt-9 sm:px-9 sm:pb-14 sm:pt-12"
       >
-        <div className="pointer-events-none absolute -left-8 top-10 hidden w-28 opacity-90 sm:block">
+        <div className="pointer-events-none absolute -left-8 top-10 hidden w-28 opacity-96 sm:block">
           <BotanicalBranch className="h-auto w-full" />
         </div>
-        <div className="pointer-events-none absolute -right-8 bottom-10 hidden w-28 opacity-90 sm:block">
+        <div className="pointer-events-none absolute -right-8 bottom-10 hidden w-28 opacity-96 sm:block">
           <BotanicalBranch className="h-auto w-full" flip />
         </div>
 
-        <BabyBreath className="pointer-events-none absolute bottom-3 left-1 hidden h-24 w-auto opacity-60 sm:block" />
-        <BabyBreath className="pointer-events-none absolute right-1 top-3 hidden h-24 w-auto rotate-180 opacity-50 sm:block" />
+        <BabyBreath className="pointer-events-none absolute bottom-3 left-1 hidden h-24 w-auto opacity-78 sm:block" />
+        <BabyBreath className="pointer-events-none absolute right-1 top-3 hidden h-24 w-auto rotate-180 opacity-70 sm:block" />
 
         <div className="relative flex flex-col items-center text-center">
           {photo ? (
@@ -124,10 +126,10 @@ export function ElegantHero({
               <Image
                 src={emblem}
                 alt=""
-                width={112}
-                height={112}
-                sizes="56px"
-                className="h-12 w-12 object-contain sm:h-14 sm:w-14"
+                width={224}
+                height={224}
+                sizes="112px"
+                className="h-24 w-24 object-contain sm:h-28 sm:w-28"
                 style={{ mixBlendMode: "multiply" }}
               />
             </motion.div>
@@ -148,11 +150,23 @@ export function ElegantHero({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.22, duration: 0.9 }}
-            className="mt-5 font-elegant-script text-[1.7rem] sm:mt-6 sm:text-3xl"
+            className="mt-5 font-elegant-display text-[2.3rem] uppercase leading-none sm:mt-6 sm:text-[3.4rem]"
             style={{ color: "var(--inv-accent)" }}
           >
             {texts.hero.title}
           </motion.p>
+
+          {phrase && (
+            <motion.p
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.32, duration: 0.9 }}
+              className="mt-3 max-w-md font-elegant-script text-[1.5rem] leading-snug sm:text-[1.35rem]"
+              style={{ color: "var(--inv-text-muted)" }}
+            >
+              {phrase}
+            </motion.p>
+          )}
 
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
@@ -164,7 +178,7 @@ export function ElegantHero({
 
             <div className="absolute inset-0 flex flex-col items-center justify-center px-[17%] text-center">
               <p
-                className={`font-elegant-script leading-[0.9] ${nameClass}`}
+                className={`font-elegant-script leading-[1] ${nameClass}`}
                 style={{ color: "var(--inv-text)" }}
               >
                 {bride}
@@ -178,7 +192,7 @@ export function ElegantHero({
                     &amp;
                   </span>
                   <p
-                    className={`font-elegant-script leading-[0.9] ${nameClass}`}
+                    className={`font-elegant-script leading-[1] ${nameClass}`}
                     style={{ color: "var(--inv-text)" }}
                   >
                     {groom}

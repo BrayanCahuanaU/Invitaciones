@@ -34,7 +34,7 @@ export function ElegantFooter({
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(242,235,221,0) 0%, rgba(242,235,221,0.65) 38%, rgba(139,165,139,0.16) 100%)",
+            "linear-gradient(180deg, rgba(74,20,36,0) 0%, rgba(74,20,36,0.55) 38%, rgba(34,8,16,0.82) 100%)",
         }}
       />
       <div
@@ -46,22 +46,22 @@ export function ElegantFooter({
         }}
       />
 
-      <BotanicalBranch className="pointer-events-none absolute -bottom-24 -left-16 h-[340px] w-auto opacity-80" />
+      <BotanicalBranch className="pointer-events-none absolute -bottom-24 -left-16 h-[340px] w-auto opacity-90" />
       <BotanicalBranch
         flip
-        className="pointer-events-none absolute -bottom-24 -right-16 h-[340px] w-auto opacity-80"
+        className="pointer-events-none absolute -bottom-24 -right-16 h-[340px] w-auto opacity-90"
       />
 
-      <FloralCluster className="pointer-events-none absolute -bottom-16 -left-10 h-56 w-auto opacity-70 sm:-left-2 sm:h-64" />
+      <FloralCluster className="pointer-events-none absolute -bottom-16 -left-10 h-56 w-auto opacity-85 sm:-left-2 sm:h-64" />
       <FloralCluster
         flip
-        className="pointer-events-none absolute -bottom-16 -right-10 h-56 w-auto opacity-70 sm:-right-2 sm:h-64"
+        className="pointer-events-none absolute -bottom-16 -right-10 h-56 w-auto opacity-85 sm:-right-2 sm:h-64"
       />
 
-      <Butterfly className="pointer-events-none absolute left-[16%] top-12 h-6 w-7 -rotate-12 opacity-70 sm:left-[22%]" />
+      <Butterfly className="pointer-events-none absolute left-[16%] top-12 h-6 w-7 -rotate-12 opacity-85 sm:left-[22%]" />
       <Butterfly
         flip
-        className="pointer-events-none absolute right-[16%] top-24 h-5 w-6 rotate-12 opacity-60 sm:right-[22%]"
+        className="pointer-events-none absolute right-[16%] top-24 h-5 w-6 rotate-12 opacity-78 sm:right-[22%]"
       />
 
       <div className="relative mx-auto flex max-w-2xl flex-col items-center text-center">

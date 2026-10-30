@@ -110,9 +110,9 @@ export function ElegantMusicPlayer({
         className="group relative flex h-12 w-12 items-center justify-center rounded-full transition-transform hover:scale-105"
         style={{
           border: "1px solid var(--elegant-gold-soft)",
-          background: "linear-gradient(135deg, #7D977E 0%, #4C6855 100%)",
-          color: "#FFFDF8",
-          boxShadow: "0 12px 30px -18px rgba(34,49,39,0.65)",
+          background: "linear-gradient(135deg, #8C3A4E 0%, #6E1F33 55%, #4A1424 100%)",
+          color: "#FFF9F1",
+          boxShadow: "0 12px 30px -18px rgba(40,10,20,0.7)",
           backdropFilter: "blur(8px)",
         }}
       >
@@ -130,8 +130,8 @@ export function ElegantMusicPlayer({
           className="pointer-events-none absolute right-14 top-1/2 hidden -translate-y-1/2 whitespace-nowrap rounded-full px-3 py-1.5 text-[0.58rem] uppercase tracking-[0.22em] opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:block"
           style={{
             border: "1px solid var(--elegant-line)",
-            background: "rgba(255,253,249,0.92)",
-            color: "var(--inv-text-muted)",
+            background: "rgba(255,253,249,0.94)",
+            color: "#6d565c",
           }}
         >
           {title ?? texts.music.label}

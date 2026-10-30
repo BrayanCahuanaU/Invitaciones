@@ -3,6 +3,7 @@ import { pinkGala } from "./pink-gala";
 import { darkLuxuryCinematic } from "./dark-luxury-cinematic";
 import { elegantIvory } from "./elegant-ivory";
 import { botanicalGarden } from "./botanical-garden";
+import { guindaIvory } from "./guinda-ivory";
 
 // Para agregar un tema nuevo: crear el archivo (ej. azul-clasico.ts)
 // exportando un Theme, e importarlo/agregarlo aquí.
@@ -11,6 +12,7 @@ export const themes: Record<string, Theme> = {
   "dark-luxury-cinematic": darkLuxuryCinematic,
   "elegant-ivory": elegantIvory,
   "botanical-garden": botanicalGarden,
+  "guinda-ivory": guindaIvory,
 };
 
 export function getTheme(key: string): Theme {
