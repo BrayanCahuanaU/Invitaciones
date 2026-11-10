@@ -213,7 +213,7 @@ export const bodaDemo: InvitationData = {
         ],
       },
       {
-        role: "Padrinos de arras",
+        role: "Padrinos de aros",
         names: ["Milagros Giuliana Taco Mayta", "Henrry Sanchez Tapia"],
       },
       {
@@ -266,13 +266,13 @@ export const bodaDemo: InvitationData = {
       level: "Formal",
       maleSuggestions: [
         "Traje formal en tonos oscuros",
-        "Camisa blanca o marfil",
+        "Camisa elegante",
         "Corbata o moño",
         "Zapatos de vestir",
       ],
       femaleSuggestions: [
-        "Vestido largo o midi",
-        "Tonos suaves, joya o pastel",
+        "Vestido largo",
+        "Tonos suaves y joyas",
         "Tacones o sandalias elegantes",
         "Accesorios discretos",
       ],
@@ -296,7 +296,7 @@ export const bodaDemo: InvitationData = {
         "No importa el monto, sino la intención. ¡Gracias por acompañarnos!",
     },
     suggestions: [
-      "Lluvia de sobres",
+      "Sobres cerrados",
       "Vajilla fina",
       "Blancos y lencería",
       "Electrodomésticos",
